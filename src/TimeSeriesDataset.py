@@ -48,6 +48,12 @@ class TimeSeriesDataset():
         df = download_data(url)
         # create the dattaframe staring with the polity data
         self.raw = pd.DataFrame(columns = ["NGA", "PolityID", "PolityName", "Year", "PolityActive", "Note"])
+        # specify the columns data types
+        self.raw['PolityID'] = self.raw['PolityID'].astype('int')
+        self.raw['Year'] = self.raw['Year'].astype('int')
+        self.raw['PolityActive'] = self.raw['PolityActive'].astype('bool')
+        self.raw['Note'] = self.raw['Note'].astype('object')
+
         # polity_home_nga_id, polity_id, polity_name 
         polityIDs = df.id.unique()
 
@@ -63,7 +69,9 @@ class TimeSeriesDataset():
             row = pol_df.iloc[0]
             #Mark the years when the polity was active
             pol_df_new.loc[(pol_df_new.Year >= row.start_year) & (pol_df_new.Year <= row.end_year), 'PolityActive'] = True
-
+            # Ensure the index is unique before concatenating
+            if not pol_df_new.index.is_unique:
+                pol_df_new = pol_df_new.reset_index(drop=True)
             self.raw = pd.concat([self.raw, pol_df_new])
 
     def download_all_categories(self):
@@ -108,7 +116,15 @@ class TimeSeriesDataset():
 
         new_columns = pd.DataFrame(columns = new_keys)
         # add new columns to the dataframe
-        self.raw = pd.concat([self.raw, new_columns], axis=1)
+        if not new_columns.index.is_unique:
+            new_columns = new_columns.reset_index(drop=True)
+        try:
+            self.raw = pd.concat([self.raw, new_columns])
+        except Exception as e:
+            print(f"Error adding {key} to dataset")
+            print(e)
+            return
+        
         # define data type for the new columns (done to avoid warnings)
         for k in new_keys[:-1]: #don't change note column
             self.raw[k] = np.nan
