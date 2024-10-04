@@ -363,6 +363,7 @@ class TimeSeriesDataset():
                     except Exception as e:
                         print(f"Error fitting {col} with {relevant_cols[1:]}")
                         print(e)
+
         for index, row in scv.iterrows():
             # find positions of nans
             nan_cols = row[row.isna()].index
