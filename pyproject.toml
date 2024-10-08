@@ -13,6 +13,7 @@ scikit-learn = "^1.0.1"
 matplotlib = "^3.4.3"
 seaborn = "^0.11.2"
 statsmodels = "^0.13.2"
+pyreadr = "^0.4.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

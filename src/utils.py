@@ -75,15 +75,15 @@ def weighted_mean(row, mappings, variable = 'wf', category = "Metal", imputation
         entries = [entry for entry, value in zip(entries, values) if not np.isnan(value)]
         values = values.dropna()
     elif imputation == 'mean':
-        values = values.infer_objects(copy=False)
+        values = values.infer_objects()
         values = values.fillna(values.mean())
         entries = [entry for entry, value in zip(entries, values) if not np.isnan(value)]
     elif imputation == 'zero':
-        values = values.infer_objects(copy=False)
+        values = values.infer_objects()
         values = values.fillna(0)
         entries = [entry for entry, value in zip(entries, values) if not np.isnan(value)]
     elif imputation == 'half':
-        values = values.infer_objects(copy=False)
+        values = values.infer_objects()
         values = values.fillna(0.5)
     
         entries = [entry for entry, value in zip(entries, values) if not np.isnan(value)]
@@ -132,3 +132,49 @@ def is_same(list1,list2):
         if list1[i] not in list2:
             return False
     return True
+
+def convert_to_year(year_str):
+    """Convert string of the type '1000CE' or '1000BCE' to integer, any non string is returned as is"""
+    # check if str
+    if type(year_str) != str:
+        return year_str
+    if 'BCE' in year_str:
+        return -int(year_str.split('B')[0])
+    elif 'CE' in year_str:
+        return int(year_str.split('C')[0])
+    
+
+def is_same(list1,list2):
+    if len(list1) != len(list2):
+        print("Lengths are different")
+        return False
+    same = True
+    for i in range(len(list1)):
+        if list1[i] not in list2:
+            print(f"Element {list1[i]} not in list2")
+            same = False
+    return same
+
+def compare(old, new, common_columns):
+    # check if two have same entries
+    for col in common_columns:
+        if col == 'polityname' or col == 'year':
+            continue
+            # remove nan values
+        old_col = old[col].dropna()
+        new_col = new[col].dropna()
+        if len(old_col) == 0 and len(new_col) == 0:
+            print("no values for", col)
+            continue
+        if len(old_col) != len(new_col):
+            print("different lengths for", col)
+            print("old data")
+            print(old_col)
+            print("new data")
+            print(new_col)
+            print("\n\n")
+            continue
+        if not (old_col.values == new_col.values).all():
+            print("same values for", col)
+
+            continue

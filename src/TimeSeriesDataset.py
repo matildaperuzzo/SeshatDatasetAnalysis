@@ -175,9 +175,12 @@ class TimeSeriesDataset():
                 value_to = np.nan
 
             # fill in the values in raw dataframe
-            current_value = self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year), key].values[0]
+
             # sometimes there is a value for the entire year range and a value for a part of the range, in that case chose the value from the part of the range
-            if row.years_absent and current_value is not None:
+            if row.years_absent: # if the years are absent, only fill out the values if they are not already filled outs
+                self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year) & (self.raw[key_from]).isna(), key_from] = value_from
+                self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year) & (self.raw[key_from]).isna(), key_to] = value_to
+                self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year) & (self.raw[key_from]).isna(), key] = np.mean([value_from, value_to])
                 pass
             else:
                 self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year), key_from] = value_from
@@ -205,9 +208,9 @@ class TimeSeriesDataset():
                 value = values.mean()
 
             # fill in the values in raw dataframe
-            current_value = self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year), key].values[0]
             # sometimes there is a value for the entire year range and a value for a part of the range, in that case chose the value from the part of the range
-            if row.years_absent and current_value is not None:
+            if row.years_absent: # if the years are absent, only fill out the values if they are not already filled outs
+                self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year) & (self.raw[key]).isna(), key] = value
                 pass
             else:   
                 self.raw.loc[(self.raw.PolityID == polityID) & (self.raw.Year >= start_year) & (self.raw.Year <= end_year), key] = value
@@ -414,14 +417,19 @@ class TimeSeriesDataset():
         
 
 if __name__ == "__main__":
+    import sys
+    import os
+
+    # Add the src directory to the Python path
+    sys.path.append(os.path.abspath(os.path.join('..', 'src')))
     # initialize dataset by downloading dataset or downloading the data from polity_url
     dataset = TimeSeriesDataset(categories=['sc'])
     # download all datasets
     dataset.download_all_categories()
-    dataset.save_dataset(path = "/Users/mperuzzo/Documents/PT_analysis")
+    dataset.save_dataset(path = "datasets")
     # remove all rows that have less than 30% of the columns filled in
     # dataset.remove_incomplete_rows(nan_threshold=0.3)
     # build the social complexity variables
     dataset.build_social_complexity()
-    dataset.impute_missing_values()
+    # dataset.impute_missing_values()
     print("Done")
