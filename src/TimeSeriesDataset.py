@@ -5,7 +5,7 @@ import sys
 import os
 
 from utils import download_data, fetch_urls, weighted_mean, get_max, is_same
-import requests
+
 
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
