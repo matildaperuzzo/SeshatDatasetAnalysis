@@ -26,6 +26,7 @@ value_mapping = {
     "U": np.nan,
     "suspected unknown": np.nan,
     "Suspected Unknown": np.nan,
+    'SU' : np.nan,
     "U*": np.nan
 }
 
