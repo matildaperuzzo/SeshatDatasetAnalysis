@@ -190,7 +190,7 @@ class Template():
         pol_df = pol_df.sort_values(by = 'year_from')
         pol_df = pol_df.reset_index(drop=True)
 
-        polity_years = np.array([self.template.loc[self.template.PolityID == pol, 'StartYear'].values[0], self.template.loc[self.template.PolityID == pol, 'EndYear'].values[0]])
+        polity_years = [self.template.loc[self.template.PolityID == pol, 'StartYear'].values[0], self.template.loc[self.template.PolityID == pol, 'EndYear'].values[0]]
         
         # reset variable dict variables
         times = []
@@ -342,7 +342,7 @@ class Template():
                     times = times + t
                     times = list(np.unique(times))
 
-        variable_dict = dict({"t": times, "value": values, "polity_years": polity_years})
+        variable_dict = {"t": times, "value": values, "polity_years": polity_years}
 
         for dict_row in variable_dict['value']:
             if len(variable_dict["t"]) != len(dict_row):
@@ -372,9 +372,20 @@ class Template():
         return "Passed tests"
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
+    def sample_row(self, row, variable, t):
+        # if t is not a list or array convert it to a list
+        if not isinstance(t, (list, np.ndarray)):
+            t = [t]
+        vals = np.zeros(len(t))
+        pol = row.PolityID
+        for ind, time in enumerate(t):
+            _dict = self.template.loc[self.template.PolityID == pol, variable].values[0]
+            vals[ind] = self.sample_dict(_dict, time)
+        return vals
 
-    def sample(variable_dict, t):
-        if variable_dict is None:
+
+    def sample_dict(self, variable_dict, t):
+        if variable_dict is None or pd.isna(variable_dict):
             return None
         if variable_dict['t'] == []:
             return None
