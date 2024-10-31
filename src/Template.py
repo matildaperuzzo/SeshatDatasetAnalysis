@@ -167,7 +167,8 @@ class Template():
         
         variable_name = df.name.unique()[0].lower()
         range_var =  variable_name + "_from" in df.columns
-        self.add_empty_col(variable_name)
+        col_name = key.split('/')[-1]
+        self.add_empty_col(col_name)
         polities = self.template.PolityID.unique()
         
         for pol in polities:
@@ -175,18 +176,18 @@ class Template():
             pol_df = df.loc[df.polity_id == pol]
             if pol_df.empty:
                 continue
-            self.add_polity(pol_df, range_var, variable_name)
+            self.add_polity(pol_df, range_var, variable_name, col_name)
         
-        self.perform_tests(df, variable_name, range_var)
+        self.perform_tests(df, variable_name, range_var, col_name)
         print(f"Added {key} dataset to template")
 
-    def add_polity(self, pol_df, range_var, variable_name):
+    def add_polity(self, pol_df, range_var, variable_name, col_name):
         
         # create a dataframe with only the data for the current polity and sort it by year
         # this allows to assume entries are dealth with in chronological order
         pol = pol_df.polity_id.values[0]
-        if pol_df.polity_new_name.values[0] == 'iq_abbasid_cal_1':
-            print(pol_df)
+        # if pol_df.polity_new_name.values[0] == 'iq_abbasid_cal_1':
+        #     print(pol_df)
         pol_df = pol_df.sort_values(by = 'year_from')
         pol_df = pol_df.reset_index(drop=True)
 
@@ -352,20 +353,20 @@ class Template():
         if variable_dict['t'] == []:
             return "Error: No data for polity"
             
-        self.template.loc[self.template.PolityID == pol, variable_name] = [variable_dict]
+        self.template.loc[self.template.PolityID == pol, col_name] = [variable_dict]
 
-    def perform_tests(self, df, variable_name, range_var):
-        if self.template[variable_name].apply(lambda x: self.check_for_nans(x)).any():
+    def perform_tests(self, df, variable_name, range_var, col_name):
+        if self.template[col_name].apply(lambda x: self.check_for_nans(x)).any():
             print("Error: NaNs found in the data")
             sys.exit(4)
         if range_var:
             var_name = variable_name + "_from"
         else:
             var_name = variable_name
-        if (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) > self.template[variable_name].isna()).all():
+        if (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) > self.template[col_name].isna()).all():
             print("Nans in template that are not in the template")
             sys.exit(5)
-        elif (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) < self.template[variable_name].isna()).all():
+        elif (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) < self.template[col_name].isna()).all():
             print("Extra entries in the template")
             sys.exit(6)
 

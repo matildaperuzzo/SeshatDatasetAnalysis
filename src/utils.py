@@ -51,12 +51,11 @@ def fetch_urls(category):
     return variable_urs
 
 
-def weighted_mean(row, mappings, variable = 'wf', category = "Metal", imputation = 'remove'):
+def weighted_mean(row, mappings, category = "Metal", imputation = 'remove'):
     weights = 0
     result = 0
 
     keys = mappings[category].keys()
-    keys = [str(variable) + '/' + key for key in keys]
     entries = [mappings[category][key] for key in mappings[category].keys()]
 
     for key in keys:
@@ -91,11 +90,10 @@ def weighted_mean(row, mappings, variable = 'wf', category = "Metal", imputation
     return np.average(values, weights = entries)
 
 
-def get_max(row, mappings, variable = 'wf', category = "Metal"):
+def get_max(row, mappings, category = "Metal"):
 
     result = -1
     for key, entry in mappings[category].items():
-        key = str(variable) + '/' + key
         if key not in row:
             if key + "_from" in row:
                 if np.isnan(row[key + "_from"]):
@@ -146,12 +144,10 @@ def convert_to_year(year_str):
 
 def is_same(list1,list2):
     if len(list1) != len(list2):
-        print("Lengths are different")
         return False
     same = True
     for i in range(len(list1)):
         if list1[i] not in list2:
-            print(f"Element {list1[i]} not in list2")
             same = False
     return same
 
