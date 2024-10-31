@@ -51,7 +51,6 @@ class TimeSeriesDataset():
         self.raw['PolityID'] = self.raw['PolityID'].astype('int')
         self.raw['Year'] = self.raw['Year'].astype('int')
         self.raw['PolityActive'] = self.raw['PolityActive'].astype('bool')
-        self.raw['Note'] = self.raw['Note'].astype('object')
 
         # polity_home_nga_id, polity_id, polity_name 
         polityIDs = df.id.unique()
@@ -64,8 +63,7 @@ class TimeSeriesDataset():
                                             "PolityID": pol_df.id.values[0], 
                                             "PolityName": pol_df.new_name.values[0], 
                                             "Year": timeline, 
-                                            "PolityActive": False, 
-                                            "Note": ""}))
+                                            "PolityActive": False}))
             row = pol_df.iloc[0]
             #Mark the years when the polity was active
             pol_df_new.loc[(pol_df_new.Year >= row.start_year) & (pol_df_new.Year <= row.end_year), 'PolityActive'] = True
@@ -75,6 +73,40 @@ class TimeSeriesDataset():
             self.raw = pd.concat([self.raw, pol_df_new])
         self.raw = self.raw.loc[self.raw.PolityActive == True]
         self.raw.drop(columns=['PolityActive'], inplace=True)
+        self.raw.reset_index(drop=True, inplace=True)
+    
+    def add_polities(self):
+        df = download_data(self.polity_url)
+        # create the dattaframe staring with the polity data
+        self.raw = pd.DataFrame(columns = ["NGA", "PolityID", "PolityName", "Year"])
+        # specify the columns data types
+        self.raw['PolityID'] = self.raw['PolityID'].astype('int')
+        self.raw['Year'] = self.raw['Year'].astype('int')
+
+        # polity_home_nga_id, polity_id, polity_name 
+        polityIDs = df.id.unique()
+
+        for polID in polityIDs:
+            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'new_name','start_year','end_year']]
+            # create a temporary dataframe with all data for current polity
+            pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
+                                            "PolityID": pol_df.id.values[0], 
+                                            "PolityName": pol_df.new_name.values[0], 
+                                            "Year": np.nan}), index=[0])
+            self.raw = pd.concat([self.raw, pol_df_new])
+        self.raw.reset_index(drop=True, inplace=True)
+
+    def add_years(self,polID, year):
+
+        pol_df = self.raw.loc[self.raw.PolityID == polID]
+        pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.NGA.values[0], 
+                                        "PolityID": pol_df.PolityID.values[0], 
+                                        "PolityName": pol_df.PolityName.values[0], 
+                                        "Year": year}), index=[0])
+        self.raw = pd.concat([self.raw, pol_df_new])
+        row = self.raw.loc[self.raw.Year.isna()&(self.raw.PolityID == polID)]
+        if len(row) > 0:
+            self.raw.drop(row.index, inplace=True)
         self.raw.reset_index(drop=True, inplace=True)
 
     def download_all_categories(self):
