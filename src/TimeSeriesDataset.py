@@ -24,8 +24,7 @@ class TimeSeriesDataset():
         self.raw = pd.DataFrame()
         self.scv = pd.DataFrame()
         self.scv_imputed = pd.DataFrame()
-
-        self.debug_unknowns = pd.DataFrame(columns = ["category", "unknown label"])
+        self.debug = pd.DataFrame(columns=["polity", "variable", "label", "issue"])
 
         if (polity_url is not None ) and (template_path is None):
             self.template = Template(categories=categories, polity_url=polity_url)
@@ -120,16 +119,25 @@ class TimeSeriesDataset():
         variable_name = key.split('/')[-1]
         self.raw[variable_name] = self.raw.apply(lambda row: self.sample_from_template(row, variable_name), axis=1)
     
-    def sample_from_template(self, row, variable):
+    def sample_from_template(self, row, variable, label = 'pt'):
         pol = row.PolityID
         year = row.Year
         entry = self.template.template.loc[(self.template.template.PolityID == pol), variable]
         if len(entry) == 0:
             return np.nan
+        
         if pd.isna(entry.values[0]):
             return np.nan
         _dict = eval(entry.values[0])
-        return self.template.sample_dict(_dict, year)
+        result =  self.template.sample_dict(_dict, year)
+        if result == "Out of bounds":
+            debug_row = {"polity" : row.PolityName,
+                        "variable": variable, 
+                        "label": label,
+                        "issue": f"{year} ouside of polity years"}
+            self.debug = pd.concat([self.debug, pd.DataFrame([debug_row], columns=self.debug.columns)], ignore_index=True)
+            return np.nan
+        return result
 
     def remove_incomplete_rows(self, nan_threshold = 0.3):
         # add all columns from sc_mapping
@@ -153,7 +161,7 @@ class TimeSeriesDataset():
         self.scv['Cap'] = (self.raw['population-of-the-largest-settlements']).apply(np.log10)
 
         # add hierarchy variables
-        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='remove'), axis=1)
+        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='mean'), axis=1)
         self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero'), axis=1)
         self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero'), axis=1)
         self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero'), axis=1)
@@ -265,9 +273,7 @@ class TimeSeriesDataset():
         if dataset == 'raw':
             path = os.path.join(path, "raw.csv")
             self.raw = pd.read_csv(path, low_memory=False)
-        elif dataset == 'debug':
-            path = os.path.join(path, "debug_unknowns.csv")
-            self.debug_unknowns = pd.read_csv(path)
+
         else:
             print("Dataset not found")
             return
@@ -276,17 +282,37 @@ class TimeSeriesDataset():
 if __name__ == "__main__":
     import sys
     import os
+    import numpy as np
 
     # Add the src directory to the Python path
     sys.path.append(os.path.abspath(os.path.join('..', 'src')))
+    from utils import download_data
+    from mappings import value_mapping
     # initialize dataset by downloading dataset or downloading the data from polity_url
-    dataset = TimeSeriesDataset(categories=['sc'])
-    # download all datasets
+    dataset = TimeSeriesDataset(categories=['sc'], template_path='/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv')
+    dataset.add_polities()
+    url = "https://seshatdata.com/api/crisisdb/power-transitions/"
+    pt_df = download_data(url)
+    PT_types = ['overturn', 'predecessor_assassination', 'intra_elite',
+        'military_revolt', 'popular_uprising', 'separatist_rebellion',
+        'external_invasion', 'external_interference']
+    for type in PT_types:
+        pt_df[type] = pt_df[type].apply(lambda x: value_mapping[x] if x in value_mapping.keys() else np.nan)
+
+    # set nan values to 0
+    pt_df.fillna(0, inplace=True)
+    for idx, row in pt_df.iterrows():
+        polity = row['polity_id']
+        if polity not in dataset.raw.PolityID.unique():
+            continue
+        year = np.mean([row['year_from'], row['year_to']])
+        dataset.add_years(polID=polity, year=year)
+    dataset.raw = dataset.raw.loc[(dataset.raw.Year.notna())&(dataset.raw.Year!=0)]
+
+    # delete duplicates
+    dataset.raw.drop_duplicates(subset=['PolityID', 'Year'], inplace=True)
+
+    dataset.raw = dataset.raw.sort_values(by=['PolityID', 'Year'])
+    dataset.raw.reset_index(drop=True, inplace=True)
     dataset.download_all_categories()
-    dataset.save_dataset(path = "datasets")
-    # remove all rows that have less than 30% of the columns filled in
-    # dataset.remove_incomplete_rows(nan_threshold=0.3)
-    # build the social complexity variables
-    dataset.build_social_complexity()
-    # dataset.impute_missing_values()
-    print("Done")
+    print(dataset.debug)

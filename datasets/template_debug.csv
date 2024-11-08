@@ -1,0 +1,11 @@
+polity,variable,label,issue
+99,polity_territory,template,year 1800 outside polity years
+149,polity_population,template,year 1500 outside polity years
+99,polity_population,template,year 1814 outside polity years
+30,polity_population,template,year 1800 outside polity years
+106,polity_population,template,year 670 outside polity years
+149,population_of_the_largest_settlement,template,year 1500 outside polity years
+149,population_of_the_largest_settlement,template,year 1550 outside polity years
+99,population_of_the_largest_settlement,template,year 1800 outside polity years
+183,population_of_the_largest_settlement,template,year -100 outside polity years
+566,population_of_the_largest_settlement,template,year 1815 outside polity years

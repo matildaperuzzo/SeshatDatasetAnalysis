@@ -19,7 +19,7 @@ class Template():
         self.categories = categories
         self.polity_url = polity_url
 
-        self.debug = pd.DataFrame(columns = ["category", "issue"])
+        self.debug = pd.DataFrame(columns=["polity", "variable", "label", "issue"])
 
         if (polity_url is not None ) and (file_path is None):
             self.initialize_dataset(polity_url)
@@ -186,15 +186,14 @@ class Template():
         # create a dataframe with only the data for the current polity and sort it by year
         # this allows to assume entries are dealth with in chronological order
         pol = pol_df.polity_id.values[0]
-        # if pol_df.polity_new_name.values[0] == 'iq_abbasid_cal_1':
-        #     print(pol_df)
+
         pol_df = pol_df.sort_values(by = 'year_from')
         pol_df = pol_df.reset_index(drop=True)
 
         polity_years = [self.template.loc[self.template.PolityID == pol, 'StartYear'].values[0], self.template.loc[self.template.PolityID == pol, 'EndYear'].values[0]]
         
         # reset variable dict variables
-        times = []
+        times = [[]]
         values = [[]]
 
         for ind,row in pol_df.iterrows():
@@ -210,7 +209,7 @@ class Template():
                 else:
                     relevant_columns = ['polity_id','year_from', 'year_to', 'is_disputed', 'is_uncertain', variable_name]
                 # if the row is a duplicate of the previous row, skip it
-                if pol_df.loc[:ind, relevant_columns].apply(lambda x: self.is_same(x, pol_df.loc[ind,relevant_columns]), axis=1).any():
+                if pol_df.loc[:ind-1, relevant_columns].apply(lambda x: self.is_same(x, pol_df.loc[ind,relevant_columns]), axis=1).any():
                     print("Duplicate rows found")
                     continue
                 elif pol_df.loc[ind,'is_disputed']:
@@ -245,7 +244,12 @@ class Template():
                     if val is None:
                         continue
                 else:
-                    if (value_mapping[row[variable_name]] is None) or pd.isna(value_mapping[row[variable_name]]):
+                    v = value_mapping.get(row[variable_name], -1)
+                    if (v is None) or pd.isna(v):
+                        continue
+                    elif v == -1:
+                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
+                        self.debug = pd.concat([self.debug, debug_row])
                         continue
                     val = (value_mapping[row[variable_name]], value_mapping[row[variable_name]])
 
@@ -267,18 +271,27 @@ class Template():
                         continue
                     
                 else:
-                    if (value_mapping[row[variable_name]] is None) or pd.isna(value_mapping[row[variable_name]]):
+                    v = value_mapping.get(row[variable_name], -1)
+                    if (v is None) or pd.isna(v):
                         continue
-                    val = (value_mapping[row[variable_name]], value_mapping[row[variable_name]])
+                    elif v == -1:
+                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
+                        self.debug = pd.concat([self.debug, debug_row])
+                        continue
+                    val = (v, v)
 
                 value.append(val)
                 year = row.year_from if row.year_from is not None else row.year_to
                 
                 if year < self.template.loc[self.template.PolityID == pol, 'StartYear'].values[0]:
                     print("Error: The year is outside the polity's start and end year")
+                    debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"year {year} outside polity years"}, index = [0])
+                    self.debug = pd.concat([self.debug, debug_row])
                     continue
                 elif year > self.template.loc[self.template.PolityID == pol, 'EndYear'].values[0]:
                     print("Error: The year is outside the polity's start and end year")
+                    debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"year {year} outside polity years"}, index = [0])
+                    self.debug = pd.concat([self.debug, debug_row])
                     continue
                     
                 t.append(year)
@@ -293,9 +306,14 @@ class Template():
                     if val is None:
                         continue
                 else:
-                    if (value_mapping[row[variable_name]] is None) or pd.isna(value_mapping[row[variable_name]]):
+                    v = value_mapping.get(row[variable_name], -1)
+                    if (v is None) or pd.isna(v):
                         continue
-                    val = (value_mapping[row[variable_name]], value_mapping[row[variable_name]])
+                    elif v == -1:
+                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
+                        self.debug = pd.concat([self.debug, debug_row])
+                        continue
+                    val = (v, v)
 
                 value.append(val)
                 value.append(val)
@@ -303,9 +321,13 @@ class Template():
                 t_to = row.year_to
                 if t_from<self.template.loc[self.template.PolityID == pol, 'StartYear'].values[0]:
                     print("Error: The year is outside the polity's start and end year")
+                    debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": "template", "issue": f"year {t_from} outside polity years"}, index = [0])
+                    self.debug = pd.concat([self.debug, debug_row])
                     continue
                 elif t_to > self.template.loc[self.template.PolityID == pol, 'EndYear'].values[0]:
                     print("Error: The year is outside the polity's start and end year")
+                    debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": "template", "issue": f"{t_to} outside polity years"}, index = [0])
+                    self.debug = pd.concat([self.debug, debug_row])
                     continue
                     
                 t.append(t_from)
@@ -315,42 +337,45 @@ class Template():
                 sys.exit(1) 
                 
             if disp or unc:
-                # find position in t vector of disputed years
-                if times == []:
-                    times = t
-                else:
-                    times = times + t
-                    times = list(np.unique(times))
-                # find the position of the disputed years in the t vector
-                positions = list(np.where(np.isin(times, t))[0].astype(int))
-                # create a list of new timelines
+
                 new_vals = []
-                for val_row in values:
-                    new_row = np.array(val_row.copy())
-                    new_row[positions] = val
-                    new_vals.append(list(new_row))
+                new_t = []
+                for val_row,time_row in zip(values,times):
+                    # find the closest year to t
+                    for ti in t:
+                        time_diff = np.abs(np.array(time_row)-np.array(ti))
+                        ind = np.argmin(time_diff)
+                        new_t_row = time_row.copy()
+                        new_t_row[ind] = ti
+                        new_t.append(new_t_row)
+                        new_row = val_row.copy()
+                        new_row[ind] = val
+                        new_vals.append(new_row)
                 #  append new timeline to the value entry of the dictionary
                 values = values + new_vals
+                times = times + new_t
             else:
-                if values == [[]]:
-                    values = [value]
+                if len(values[0]) == 0:
+                    values = list([value])
                 else:
                     for val_row in range(len(values)):
                         values[val_row] = values[val_row] + value
-                if times == []:
-                    times = t
+                if len(times[0]) == 0:
+                    times = list([t])
                 else:
-                    times = times + t
-                    times = list(np.unique(times))
+                    for time_row in range(len(times)):
+                        times[time_row] = list(times[time_row]) + t
 
         variable_dict = {"t": times, "value": values, "polity_years": polity_years}
 
-        for dict_row in variable_dict['value']:
-            if len(variable_dict["t"]) != len(dict_row):
+        for dict_row,t_row in zip(variable_dict['value'],variable_dict['t']):
+            if len(t_row) != len(dict_row):
                 # add to debug dataframe
+                debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": "template", "issue": "mismatched lengths"}, index = [0])
+                self.debug = pd.concat([self.debug, debug_row])
                 return "Error: The length of the time and value arrays are not the same"
     
-        if variable_dict['t'] == []:
+        if len(variable_dict['t'][0]) == 0:
             return "Error: No data for polity"
             
         self.template.loc[self.template.PolityID == pol, col_name] = [variable_dict]
@@ -388,21 +413,23 @@ class Template():
     def sample_dict(self, variable_dict, t):
         if variable_dict is None or pd.isna(variable_dict):
             return None
-        if variable_dict['t'] == []:
+        if len(variable_dict['t'][0]) == 0:
             return None
-        if variable_dict['value'] == []:
+        if len(variable_dict['value'][0]) == 0:
             return None
-        if variable_dict['polity_years'] == []:
+        if len(variable_dict['polity_years']) == 0:
             return None
         
-        times = variable_dict['t']
         n_timelines = len(variable_dict['value'])
-        values = variable_dict['value'][random.randint(0, n_timelines-1)]
+        s = random.randint(0, n_timelines-1)
+        times = variable_dict['t'][s]
+        values = variable_dict['value'][s]
         polity_years = variable_dict['polity_years']
 
         if polity_years[0] not in times:
             times = [polity_years[0]] + times
             values = [values[0]] + values
+
         if polity_years[1] not in times:
             times = times + [polity_years[1]]
             values = values + [values[-1]]
@@ -410,7 +437,7 @@ class Template():
         times = np.array(times)
         if t < polity_years[0] or t > polity_years[1]:
             print("Error: The year is outside the polity's start and end year")
-            return None
+            return "Out of bounds"
         
         # find the closest year to t
         times = times[times<=t]
@@ -434,3 +461,4 @@ if __name__ == "__main__":
     template = Template(categories = ['sc'])
     template.download_all_categories()
     template.save_dataset("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv")
+    template.debug.to_csv("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/template_debug.csv", index = False)
