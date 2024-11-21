@@ -9,6 +9,9 @@ from Template import Template
 
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
+from sklearn.decomposition import PCA
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 
 
 class TimeSeriesDataset():
@@ -23,12 +26,17 @@ class TimeSeriesDataset():
         self.polity_url = polity_url
         self.raw = pd.DataFrame()
         self.scv = pd.DataFrame()
+        self.scv_clean = pd.DataFrame()
         self.scv_imputed = pd.DataFrame()
         self.debug = pd.DataFrame(columns=["polity", "variable", "label", "issue"])
 
-        if (polity_url is not None ) and (template_path is None):
+        if file_path is not None:
+            path = os.path.dirname(file_path)
+            filename = os.path.basename(file_path).split('.')[0]
+            self.load_dataset(path=path, name=filename)
+        elif (polity_url is not None ) and (template_path is None) and (file_path is None):
             self.template = Template(categories=categories, polity_url=polity_url)
-        elif (template_path is not None):
+        elif (template_path is not None) and (file_path is None):
             self.template = Template(categories=categories, file_path=template_path)
         else:
             print("Please provide either a polity_url or a template_path")
@@ -38,10 +46,12 @@ class TimeSeriesDataset():
         # check what datasets are available
         return len(self.raw)
 
-    def __getitem__(self, idx):
+    def __getitem__(self, cond):
         # check what datasets are available
-        return self.raw.iloc[idx]
+        return self.raw.loc[cond]
     
+    ########################## BUILDING FUNCTIONS ####################################
+
     def initialize_dataset_grid(self, start_year, end_year, dt):
         df = download_data(self.polity_url)
         # create the dattaframe staring with the polity data
@@ -117,27 +127,34 @@ class TimeSeriesDataset():
     
     def add_column(self, key):
         variable_name = key.split('/')[-1]
-        self.raw[variable_name] = self.raw.apply(lambda row: self.sample_from_template(row, variable_name), axis=1)
-    
-    def sample_from_template(self, row, variable, label = 'pt'):
-        pol = row.PolityID
-        year = row.Year
+        grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name))
+        for polity in grouped_variables.index:
+            self.raw.loc[self.raw.PolityName == polity, variable_name] = grouped_variables[polity]
+
+    def sample_from_template(self, rows, variable, label = 'pt'):
+        pol = rows.PolityID.values[0]
+        years = rows.Year.values
         entry = self.template.template.loc[(self.template.template.PolityID == pol), variable]
         if len(entry) == 0:
-            return np.nan
-        
+            return [np.nan]*len(years)
         if pd.isna(entry.values[0]):
-            return np.nan
+            return [np.nan]*len(years)
+        
         _dict = eval(entry.values[0])
-        result =  self.template.sample_dict(_dict, year)
-        if result == "Out of bounds":
-            debug_row = {"polity" : row.PolityName,
+        results = self.template.sample_dict(_dict, years)
+
+        # check if any of the years are out of bounds
+        if np.any([r == "Out of bounds" for r in results]):
+            debug_row = {"polity" : rows.PolityName.values[0],
                         "variable": variable, 
                         "label": label,
-                        "issue": f"{year} ouside of polity years"}
+                        "issue": f"{years} ouside of polity years"}
             self.debug = pd.concat([self.debug, pd.DataFrame([debug_row], columns=self.debug.columns)], ignore_index=True)
-            return np.nan
-        return result
+            # substitute the out of bounds years with np.nan
+            results = [np.nan if result == "Out of bounds" else result for result in results]
+        return results
+
+    ##################################### ANALYSIS FUNCTIONS ############################################
 
     def remove_incomplete_rows(self, nan_threshold = 0.3):
         # add all columns from sc_mapping
@@ -172,7 +189,7 @@ class TimeSeriesDataset():
 
         sc_columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
         scv = self.scv[sc_columns]
-        self.scv_imputed = scv.copy()
+        self.scv_imputed = self.scv.copy()
 
         df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values"])
         df_fits['X columns'] = df_fits['X columns'].astype(object)
@@ -259,24 +276,69 @@ class TimeSeriesDataset():
                 input_data = pd.DataFrame([row[feature_columns].values], columns=feature_columns)
                 self.scv_imputed.loc[index, col] = col_df.loc[best_overlap]['fit'].predict(input_data)[0]
 
-    def save_dataset(self, path=''):
+    ######################################## PCA FUNCTIONS #################################################
+
+    def compute_PCA(self, cols, col_name, n_cols, n_PCA):
+
+        if len(self.scv_imputed) == 0:
+            print("No imputed data found")
+            return
+
+        if self.scv_imputed[cols].isna().any().any():
+            print("there are some NaNs in the imputed dataset")
+            return
+        
+        # 
+        scaler = StandardScaler()
+        df_scaled = scaler.fit_transform(self.scv_imputed[cols])
+        pca = PCA(n_components=n_PCA)
+        pca.fit(df_scaled)
+
+        scv_clean = self.scv.copy()
+        scv_clean.dropna(subset=cols, inplace=True)
+        scv_scaled = scaler.transform(scv_clean[cols])
+        self.scv_clean = scv_clean
+        # Quantify variance explained by each PC
+        explained_variance = pca.explained_variance_ratio_
+
+        print("Explained variance by each PC:")
+        for i, variance in enumerate(explained_variance):
+            print(f"PC{i+1}: {variance*100:.2f}%")
+
+        # calculate the PCA components for each dataset row
+        for col in range(n_cols):
+            self.scv_clean[f"{col_name}_{col+1}"] = pca.transform(scv_scaled)[:,col]
+            self.scv_imputed[f"{col_name}_{col+1}"] = pca.transform(df_scaled)[:,col]
+
+    ######################################## SAVE AND LOAD FUNCTIONS ###########################################
+
+    def save_dataset(self, path='', name = 'dataset'):
         if path == '':
             path = os.getcwd()
-        raw_path = os.path.join(path, "raw.csv")
-        self.raw.to_csv(raw_path, index=False)
-        debug_path = os.path.join(path, "debug.csv")
+        file_path = os.path.join(path, name + ".xlsx")
         
-        #TODO: check if other datasets are empty and if not save them as well
+        with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
+            self.raw.to_excel(writer, sheet_name='Raw', index=False)
+            self.scv.to_excel(writer, sheet_name='SCV', index=False)
+            self.scv_imputed.to_excel(writer, sheet_name='SCV_Imputed', index=False)
+            self.scv_clean.to_excel(writer, sheet_name='SCV_Clean', index=False)
+            self.debug.to_excel(writer, sheet_name='Debug', index=False)
 
-    def load_dataset(self, path, dataset = 'raw'):
+        print(f"Dataset saved to {file_path}")
+
+    def load_dataset(self, path='', name = 'dataset'):
+        if path == '':
+            path = os.getcwd()
+        file_path = os.path.join(path, name + ".xlsx")
         
-        if dataset == 'raw':
-            path = os.path.join(path, "raw.csv")
-            self.raw = pd.read_csv(path, low_memory=False)
+        with pd.ExcelFile(file_path) as reader:
+            self.raw = pd.read_excel(reader, sheet_name='Raw')
+            self.scv = pd.read_excel(reader, sheet_name='SCV')
+            self.scv_imputed = pd.read_excel(reader, sheet_name='SCV_Imputed')
+            self.scv_clean = pd.read_excel(reader, sheet_name='SCV_Clean')
+            self.debug = pd.read_excel(reader, sheet_name='Debug')
 
-        else:
-            print("Dataset not found")
-            return
+        print(f"Dataset loaded from {file_path}")
         
 
 if __name__ == "__main__":

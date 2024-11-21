@@ -398,17 +398,6 @@ class Template():
         return "Passed tests"
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
-    def sample_row(self, row, variable, t):
-        # if t is not a list or array convert it to a list
-        if not isinstance(t, (list, np.ndarray)):
-            t = [t]
-        vals = np.zeros(len(t))
-        pol = row.PolityID
-        for ind, time in enumerate(t):
-            _dict = self.template.loc[self.template.PolityID == pol, variable].values[0]
-            vals[ind] = self.sample_dict(_dict, time)
-        return vals
-
 
     def sample_dict(self, variable_dict, t):
         if variable_dict is None or pd.isna(variable_dict):
@@ -435,16 +424,30 @@ class Template():
             values = values + [values[-1]]
 
         times = np.array(times)
-        if t < polity_years[0] or t > polity_years[1]:
-            print("Error: The year is outside the polity's start and end year")
-            return "Out of bounds"
         
-        # find the closest year to t
-        times = times[times<=t]
-        ind = np.argmin(np.abs(np.array(times) - t))
-        # sample the values
-        val = values[ind][0] + random.random() * (values[ind][1] - values[ind][0])
-        return val
+        random_number = random.random()
+        if isinstance(t, (list, np.ndarray)):
+            vals = [None] * len(t)
+            for i, time in enumerate(t):
+                if time < polity_years[0] or time > polity_years[1]:
+                    print("Error: The year is outside the polity's start and end year")
+                    vals[i] = "Out of bounds"
+                    continue
+                time_selection = times[times<=time]
+                ind = np.argmin(np.abs(np.array(time_selection) - time))
+                val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
+                vals[i] = val
+            return vals
+        elif isinstance(t, (int, float)):
+            if t < polity_years[0] or t > polity_years[1]:
+                print("Error: The year is outside the polity's start and end year")
+                return "Out of bounds"
+            # find the closest year to t
+            times = times[times<=t]
+            ind = np.argmin(np.abs(np.array(times) - t))
+            # sample the values
+            val = values[ind][0] + random.random() * (values[ind][1] - values[ind][0])
+            return val
     # ---------------------- SAVING FUNCTIONS ---------------------- #
     def save_dataset(self, file_path):
         self.template.to_csv(file_path, index = False)
