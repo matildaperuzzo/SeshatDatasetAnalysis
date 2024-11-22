@@ -140,16 +140,7 @@ def convert_to_year(year_str):
         return -int(year_str.split('B')[0])
     elif 'CE' in year_str:
         return int(year_str.split('C')[0])
-    
 
-def is_same(list1,list2):
-    if len(list1) != len(list2):
-        return False
-    same = True
-    for i in range(len(list1)):
-        if list1[i] not in list2:
-            same = False
-    return same
 
 def compare(old, new, common_columns):
     # check if two have same entries

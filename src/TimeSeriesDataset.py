@@ -178,17 +178,20 @@ class TimeSeriesDataset():
         self.scv['Cap'] = (self.raw['population-of-the-largest-settlements']).apply(np.log10)
 
         # add hierarchy variables
-        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='mean'), axis=1)
+        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='remove'), axis=1)
         self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero'), axis=1)
         self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero'), axis=1)
         self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero'), axis=1)
 
         self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)
+        
+    def build_MSP(self):
+        from mappings import ideology_mapping
+        self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", imputation='remove'), axis=1)
 
-    def impute_missing_values(self):
+    def impute_missing_values(self, columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']):
 
-        sc_columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
-        scv = self.scv[sc_columns]
+        scv = self.scv[columns]
         self.scv_imputed = self.scv.copy()
 
         df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values"])

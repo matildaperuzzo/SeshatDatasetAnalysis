@@ -147,9 +147,9 @@ class Template():
         for category in self.categories:
             urls.update(fetch_urls(category))
         for key in urls.keys():
-            self.add_dataset(key,urls[key])
+            self.add_dataset_from_url(key,urls[key])
     
-    def add_dataset(self, key, url):
+    def add_dataset_from_url(self, key, url):
 
         # check if the dataset is already in the dataframe
         if key in self.template.columns:
@@ -164,7 +164,9 @@ class Template():
         if len(df) == 0:
             print(f"Empty dataset for {key}")
             return
-        
+        self.add_to_template(df, key)
+
+    def add_to_template(self, df, key):
         variable_name = df.name.unique()[0].lower()
         range_var =  variable_name + "_from" in df.columns
         col_name = key.split('/')[-1]
@@ -172,6 +174,9 @@ class Template():
         polities = self.template.PolityID.unique()
         
         for pol in polities:
+            if pol not in df.polity_id.values:
+                print (f"Polity {pol} not in dataset")
+                continue
 
             pol_df = df.loc[df.polity_id == pol]
             if pol_df.empty:
@@ -222,7 +227,7 @@ class Template():
                 elif pol_df.loc[ind,'is_uncertain']:
                     if pol_df.loc[:ind-1,'year_from'].apply(lambda x: x == pol_df.loc[ind,'year_from']).any():
                         unc = True
-                    elif pol_df.loc[:ind-1,'year_from'].isna().any() and pol_df.loc[ind,'year_from'].isna():
+                    elif pol_df.loc[:ind-1,'year_from'].isna().any() and pd.isna(pol_df.loc[ind,'year_from']):
                         unc = True
 
             if ind < len(pol_df)-1:
@@ -234,7 +239,7 @@ class Template():
                         row.year_to = row.year_to - 1
                     
             # check if polity has no year data and in that case use the polity start and end year
-            if (row.year_from is None) and (row.year_to is None):
+            if (row.year_from is None or pd.isna(row.year_from)) and (row.year_to is None or pd.isna(row.year_to)):
                 # if the variable is a range variable, check if the range is defined
                 if range_var:
                     val_from = row[variable_name + "_from"]
@@ -296,7 +301,8 @@ class Template():
                     
                 t.append(year)
 
-            elif (row.year_from != row.year_to) and (row.year_from is not None) and (row.year_to is not None):
+            # elif (row.year_from != row.year_to) and ((row.year_from is not None) or (pd.isnan(row.year_from))) and ((row.year_to is not None) or (pd.isnan(row.year_to))):
+            elif (row.year_from != row.year_to) and pd.notna(row.year_from) and pd.notna(row.year_to):
                 
                 if range_var:
                     val_from = row[variable_name + "_from"]
@@ -319,6 +325,14 @@ class Template():
                 value.append(val)
                 t_from = row.year_from
                 t_to = row.year_to
+
+                if isinstance(t_from, (str)):
+                    t_from = t_from.replace('CE', '').replace('BCE','')
+                    t_from = int(t_from)
+                if isinstance(t_to, (str)):
+                    t_to = t_to.replace('CE', '').replace('BCE','')
+                    t_to = int(t_to)
+
                 if t_from<self.template.loc[self.template.PolityID == pol, 'StartYear'].values[0]:
                     print("Error: The year is outside the polity's start and end year")
                     debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": "template", "issue": f"year {t_from} outside polity years"}, index = [0])
@@ -461,7 +475,42 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc'])
-    template.download_all_categories()
-    template.save_dataset("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv")
-    template.debug.to_csv("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/template_debug.csv", index = False)
+    # template = Template(categories = ['sc'])
+    # template.download_all_categories()
+    # template.save_dataset("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv")
+    # template.debug.to_csv("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/template_debug.csv", index = False)
+
+    import sys
+    import os
+
+
+    from mappings import ideology_mapping
+    template = Template(categories = ['sc'], file_path= 'datasets/test.csv')
+    df = pd.read_csv('datasets/Equinox2020.05.2023_MSP.csv', sep = '|')
+    polity_df = download_data("https://seshatdata.com/api/core/polities/?page_size=100")
+    column_mappings = {}
+    for column in df.columns:
+        column_mappings[column] = column.lower().replace('.', '_').replace('-', '_')
+    column_mappings['Date.From'] = 'year_from'
+    column_mappings['Date.To'] = 'year_to'
+    column_mappings['Variable'] = 'name'
+    df.rename(columns=column_mappings, inplace=True)
+
+    df['polity_id'] = df.apply(lambda x: int(polity_df.loc[polity_df['name'] == x['polity'], 'id'].values[0]) if x['polity'] in polity_df['name'].values else None, axis=1)
+    df = df[df.polity_id.notna()]
+    df.polity_id = df.polity_id.astype(int)
+
+    df['polity_new_name'] = df.apply(lambda x: polity_df.loc[polity_df['id'] == x['polity_id'], 'new_name'].values[0] if x['polity_id'] in polity_df['id'].values else None, axis=1)
+    df['is_disputed'] = False
+    df['is_uncertain'] = df.value_note.apply(lambda x: True if x == 'uncertain' else False)
+
+    variables = df.name.unique()
+    for variable in variables:
+        var_df = df.loc[df['name'] == variable]
+        variable = variable.replace(' ', '-')
+        if (variable in ideology_mapping['MSP'].keys()):
+            print(variable)
+            variable = variable.lower()
+            var_df.name = variable
+            var_df.rename(columns={'value_from': variable+'_from', 'value_to': variable+'_to'}, inplace=True)
+            template.add_to_template(var_df, variable)

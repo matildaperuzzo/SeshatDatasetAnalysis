@@ -161,16 +161,16 @@ social_complexity_mapping = {
 }
 
 ideology_mapping = {
-    'MSP' : {"Moral-concern-is-primary" : 1, # "PrimaryMSP"
-                "Moralizing-enforcement-is-certain" : 1, # "CertainMSP"
-                "Moralizing-norms-are-broad" : 1, # "BroadMSP"
-                "Moralizing-enforcement-is-targeted" : 1, # "TargetedMSP"
-                "Moralizing-enforcement-of-rulers" : 1, # "RulerMSP"
-                "Moralizing-religion-adopted-by-elites" : 1, # "ElitesMSP"
-                "Moralizing-religion-adopted-by-commoners" : 1, # "CommonersMSP"
-                "Moralizing-enforcement-in-afterlife" : 1, # "AfterlifeMSP"
-                "Moralizing-enforcement-in-this-life" : 1, # "ThislifeMSP"
-                "Moralizing-enforcement-is-agentic" : 1
+    'MSP' : {"moral-concern-is-primary" : 1, # "PrimaryMSP"
+                "moralizing-enforcement-is-certain" : 1, # "CertainMSP"
+                "moralizing-norms-are-broad" : 1, # "BroadMSP"
+                "moralizing-enforcement-is-targeted" : 1, # "TargetedMSP"
+                "moralizing-enforcement-of-rulers" : 1, # "RulerMSP"
+                "moralizing-religion-adopted-by-elites" : 1, # "ElitesMSP"
+                "moralizing-religion-adopted-by-commoners" : 1, # "CommonersMSP"
+                "moralizing-enforcement-in-afterlife" : 1, # "AfterlifeMSP"
+                "moralizing-enforcement-in-this-life" : 1, # "ThislifeMSP"
+                "moralizing-enforcement-is-agentic" : 1
     },
     'EgalID' : {"Ideological-reinforcement-of-equality" : 1,
                 "Ideological-thought-equates-elites-and-commoners" : 1,
