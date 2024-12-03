@@ -4,15 +4,15 @@ import time
 import sys
 import os
 import random
-
-from utils import download_data, fetch_urls, weighted_mean, get_max
-from mappings import value_mapping, social_complexity_mapping, miltech_mapping, ideology_mapping
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.utils import download_data, fetch_urls, weighted_mean, get_max
+from src.mappings import value_mapping, social_complexity_mapping, miltech_mapping, ideology_mapping
 
 
 class Template():
     def __init__(self, 
                  categories = list(['sc']),
-                 polity_url = "https://seshatdata.com/api/core/polities/?page_size=1000",
+                 polity_url = "https://seshat-db.com/api/core/polities/",
                  file_path = None
                  ):
         self.template = pd.DataFrame()
@@ -444,7 +444,7 @@ class Template():
             vals = [None] * len(t)
             for i, time in enumerate(t):
                 if time < polity_years[0] or time > polity_years[1]:
-                    print("Error: The year is outside the polity's start and end year")
+                    print(f"Error: The year {time} is outside the polity years {polity_years}")
                     vals[i] = "Out of bounds"
                     continue
                 time_selection = times[times<=time]
@@ -454,7 +454,7 @@ class Template():
             return vals
         elif isinstance(t, (int, float)):
             if t < polity_years[0] or t > polity_years[1]:
-                print("Error: The year is outside the polity's start and end year")
+                print(f"Error: The year {t} is outside the polity years {polity_years}")
                 return "Out of bounds"
             # find the closest year to t
             times = times[times<=t]
@@ -462,6 +462,75 @@ class Template():
             # sample the values
             val = values[ind][0] + random.random() * (values[ind][1] - values[ind][0])
             return val
+        
+    # ---------------------- DEBUG FUNCTIONS ---------------------- #
+
+    def is_in_range(self, variable_dict, t, value):
+        if variable_dict is None and pd.notna(value):
+            return False
+        elif variable_dict is None and pd.isna(value):
+            return True
+        
+        if len(variable_dict['t'][0]) == 0:
+            return np.nan
+        if len(variable_dict['value'][0]) == 0:
+            return np.nan
+        if len(variable_dict['polity_years']) == 0:
+            return np.nan
+
+        times = variable_dict['t'][0]
+        values = self.reduce_to_largest_ranges(variable_dict['value'])
+        polity_years = variable_dict['polity_years']
+
+        if polity_years[0] not in times:
+            times = [polity_years[0]] + times
+            values = [values[0]] + values
+
+        if polity_years[1] not in times:
+            times = times + [polity_years[1]]
+            values = values + [values[-1]]
+
+        if t < polity_years[0] or t > polity_years[1]:
+            print(f"Error: The year {t} is outside the polity years {polity_years}")
+            return "Out of bounds"
+        # find the closest year to t
+        times = np.array(times)[times<=t]
+        ind = np.argmin(np.abs(times - t))
+        # sample the values
+        val = values[ind]
+        if min(val) <= value <= max(val):
+            return True
+        else:
+            return False
+
+    def reduce_to_largest_ranges(self, values):
+        # Initialize a list to store the (min, max) tuples
+        result = []
+        
+        # Get the length of the inner lists (assuming all inner lists have the same length)
+        num_points = len(values[0])
+        
+        # Iterate through the indices of the inner lists
+        for i in range(num_points):
+            # Initialize min and max values for the current index
+            min_value = float('inf')
+            max_value = float('-inf')
+            
+            # Iterate through the outer list
+            for inner_list in values:
+                # Get the tuple at the current index
+                x1, x2 = inner_list[i]
+                
+                # Update min and max values
+                min_value = min(min_value, x1)
+                max_value = max(max_value, x2)
+            
+            # Append the (min, max) tuple to the result list
+            result.append((min_value, max_value))
+        
+        # Return the result list
+        return result
+
     # ---------------------- SAVING FUNCTIONS ---------------------- #
     def save_dataset(self, file_path):
         self.template.to_csv(file_path, index = False)
@@ -475,10 +544,10 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    # template = Template(categories = ['sc'])
-    # template.download_all_categories()
-    # template.save_dataset("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv")
-    # template.debug.to_csv("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/template_debug.csv", index = False)
+    template = Template(categories = ['sc'])
+    template.download_all_categories()
+    template.save_dataset("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv")
+    template.debug.to_csv("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/template_debug.csv", index = False)
 
     import sys
     import os
@@ -514,3 +583,5 @@ if __name__ == "__main__":
             var_df.name = variable
             var_df.rename(columns={'value_from': variable+'_from', 'value_to': variable+'_to'}, inplace=True)
             template.add_to_template(var_df, variable)
+
+    template.save_dataset("../datasets/MSP_template.csv")

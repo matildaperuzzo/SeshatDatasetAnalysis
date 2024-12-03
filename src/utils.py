@@ -2,13 +2,18 @@ import pandas as pd
 import requests
 from pandas import json_normalize
 import numpy as np
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 def download_data(url):
+    url = url+"?page_size=1000"
     df = pd.DataFrame()
     while True:
         try:
             try:
-                response = requests.get(url, timeout=0.5)
+                response = requests.get(url, timeout=5)
             except requests.exceptions.Timeout:
                 # print("Timeout occurred")
                 continue
@@ -28,11 +33,11 @@ def download_data(url):
             return df
 
 def fetch_urls(category):
-    url = "https://seshatdata.com/api/"
+    url = "https://seshat-db.com/api/"
     response = requests.get(url)
     data = response.json()
     variable_urs = dict()
-    import mappings
+    import src.mappings as mappings
     if category == 'wf':
         mapping = mappings.miltech_mapping
     elif category == 'sc':

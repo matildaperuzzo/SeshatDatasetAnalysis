@@ -4,8 +4,8 @@ import time
 import sys
 import os
 
-from utils import download_data, fetch_urls, weighted_mean, get_max, is_same
-from Template import Template
+from src.utils import download_data, fetch_urls, weighted_mean, get_max, is_same
+from src.Template import Template
 
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
@@ -158,7 +158,7 @@ class TimeSeriesDataset():
 
     def remove_incomplete_rows(self, nan_threshold = 0.3):
         # add all columns from sc_mapping
-        from mappings import social_complexity_mapping
+        from src.mappings import social_complexity_mapping
         cols = []
         for key in social_complexity_mapping.keys():
             cols += [key for key in list(social_complexity_mapping[key].keys())]
@@ -168,7 +168,7 @@ class TimeSeriesDataset():
         self.raw.reset_index(drop=True, inplace=True)
 
     def build_social_complexity(self):
-        from mappings import social_complexity_mapping
+        from src.mappings import social_complexity_mapping
         # create dataframe for social complexity
         self.scv = self.raw[['NGA', 'PolityID', 'PolityName', 'Year']].copy()
 
@@ -186,7 +186,7 @@ class TimeSeriesDataset():
         self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)
         
     def build_MSP(self):
-        from mappings import ideology_mapping
+        from src.mappings import ideology_mapping
         self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", imputation='remove'), axis=1)
 
     def impute_missing_values(self, columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']):
@@ -281,7 +281,7 @@ class TimeSeriesDataset():
 
     ######################################## PCA FUNCTIONS #################################################
 
-    def compute_PCA(self, cols, col_name, n_cols, n_PCA):
+    def compute_PCA(self, cols, col_name, n_cols, n_PCA, pca_func = None):
 
         if len(self.scv_imputed) == 0:
             print("No imputed data found")
@@ -291,16 +291,20 @@ class TimeSeriesDataset():
             print("there are some NaNs in the imputed dataset")
             return
         
-        # 
         scaler = StandardScaler()
         df_scaled = scaler.fit_transform(self.scv_imputed[cols])
-        pca = PCA(n_components=n_PCA)
-        pca.fit(df_scaled)
 
-        scv_clean = self.scv.copy()
-        scv_clean.dropna(subset=cols, inplace=True)
-        scv_scaled = scaler.transform(scv_clean[cols])
-        self.scv_clean = scv_clean
+        if pca_func is None:
+            pca = PCA(n_components=n_PCA)
+            pca.fit(df_scaled)
+        else:
+            pca = pca_func
+        
+        if len(self.scv_clean) == 0:
+            scv_clean = self.scv.copy()
+            self.scv_clean = scv_clean
+        self.scv_clean.dropna(subset=cols, inplace=True)
+        scv_scaled = scaler.transform(self.scv_clean[cols])
         # Quantify variance explained by each PC
         explained_variance = pca.explained_variance_ratio_
 
@@ -312,6 +316,13 @@ class TimeSeriesDataset():
         for col in range(n_cols):
             self.scv_clean[f"{col_name}_{col+1}"] = pca.transform(scv_scaled)[:,col]
             self.scv_imputed[f"{col_name}_{col+1}"] = pca.transform(df_scaled)[:,col]
+
+        # rescale the PCA components to be between 1 and 10
+        for col in range(n_cols):
+            self.scv_clean[f"{col_name}_{col+1}"] = self.scv_clean[f"{col_name}_{col+1}"].apply(lambda x: (x - min(self.scv_imputed[f"{col_name}_{col+1}"]))/(max(self.scv_imputed[f"{col_name}_{col+1}"]) - min(self.scv_imputed[f"{col_name}_{col+1}"]))*9 + 1)
+            self.scv_imputed[f"{col_name}_{col+1}"] = self.scv_imputed[f"{col_name}_{col+1}"].apply(lambda x: (x - min(self.scv_imputed[f"{col_name}_{col+1}"]))/(max(self.scv_imputed[f"{col_name}_{col+1}"]) - min(self.scv_imputed[f"{col_name}_{col+1}"]))*9 + 1)
+        
+        return pca
 
     ######################################## SAVE AND LOAD FUNCTIONS ###########################################
 
@@ -352,7 +363,7 @@ if __name__ == "__main__":
     # Add the src directory to the Python path
     sys.path.append(os.path.abspath(os.path.join('..', 'src')))
     from utils import download_data
-    from mappings import value_mapping
+    from src.mappings import value_mapping
     # initialize dataset by downloading dataset or downloading the data from polity_url
     dataset = TimeSeriesDataset(categories=['sc'], template_path='/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv')
     dataset.add_polities()
