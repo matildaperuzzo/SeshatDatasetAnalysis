@@ -171,14 +171,14 @@ class Template():
         range_var =  variable_name + "_from" in df.columns
         col_name = key.split('/')[-1]
         self.add_empty_col(col_name)
-        polities = self.template.PolityID.unique()
+        polities = self.template.PolityName.unique()
         
         for pol in polities:
-            if pol not in df.polity_id.values:
-                print (f"Polity {pol} not in dataset")
+            if pol not in df.polity_new_name.values:
+                # print (f"Polity {pol} not in dataset")
                 continue
 
-            pol_df = df.loc[df.polity_id == pol]
+            pol_df = df.loc[df.polity_new_name == pol]
             if pol_df.empty:
                 continue
             self.add_polity(pol_df, range_var, variable_name, col_name)

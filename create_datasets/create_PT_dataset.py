@@ -70,7 +70,7 @@ for key in ideology_mapping['MSP'].keys():
     dataset.add_column('ideo/'+key.lower())
 
 # remove all rows that have less than 30% of the columns filled in
-dataset.remove_incomplete_rows(nan_threshold=0.3)
+# dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
 dataset.build_MSP()
@@ -89,5 +89,9 @@ dataset.scv_imputed['Crisis'] = dataset.scv['Crisis']
 for type in PT_types:
     dataset.scv_imputed[type] = dataset.scv[type]
 
+sc_columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
+nan_rows = dataset.scv_imputed[sc_columns].isnull().any(axis=1)
+dataset.scv = dataset.scv[~nan_rows]
+dataset.scv_imputed = dataset.scv_imputed[~nan_rows]
 # save dataset
 dataset.save_dataset(path='datasets/', name='power_transitions')
