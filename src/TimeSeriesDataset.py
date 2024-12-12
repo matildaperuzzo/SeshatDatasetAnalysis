@@ -17,7 +17,7 @@ from sklearn.preprocessing import StandardScaler
 class TimeSeriesDataset():
     def __init__(self, 
                  categories = list(['sc']),
-                 polity_url = "https://seshatdata.com/api/core/polities/?page_size=1000",
+                 polity_url = "https://seshat-db.com/api/core/polities/",
                  template_path = None,
                  file_path = None
                  ):
@@ -118,20 +118,20 @@ class TimeSeriesDataset():
             self.raw.drop(row.index, inplace=True)
         self.raw.reset_index(drop=True, inplace=True)
 
-    def download_all_categories(self):
+    def download_all_categories(self, polity_year_error = 0):
         urls = {}
         for category in self.categories:
             urls.update(fetch_urls(category))
         for key in urls.keys():
-            self.add_column(key)
+            self.add_column(key, polity_year_error)
     
-    def add_column(self, key):
+    def add_column(self, key, polity_year_error = 0):
         variable_name = key.split('/')[-1]
-        grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name))
+        grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name, polity_year_error=polity_year_error))
         for polity in grouped_variables.index:
             self.raw.loc[self.raw.PolityName == polity, variable_name] = grouped_variables[polity]
 
-    def sample_from_template(self, rows, variable, label = 'pt'):
+    def sample_from_template(self, rows, variable, label = 'pt', polity_year_error = 0):
         pol = rows.PolityID.values[0]
         years = rows.Year.values
         entry = self.template.template.loc[(self.template.template.PolityID == pol), variable]
@@ -141,14 +141,15 @@ class TimeSeriesDataset():
             return [np.nan]*len(years)
         
         _dict = eval(entry.values[0])
-        results = self.template.sample_dict(_dict, years)
+        results = self.template.sample_dict(_dict, years, polity_year_error)
 
         # check if any of the years are out of bounds
-        if np.any([r == "Out of bounds" for r in results]):
+        not_in_bounds = np.array([r == "Out of bounds" for r in results])
+        if np.any(not_in_bounds):
             debug_row = {"polity" : rows.PolityName.values[0],
                         "variable": variable, 
                         "label": label,
-                        "issue": f"{years} ouside of polity years"}
+                        "issue": f"{years[not_in_bounds]} ouside of polity years"}
             self.debug = pd.concat([self.debug, pd.DataFrame([debug_row], columns=self.debug.columns)], ignore_index=True)
             # substitute the out of bounds years with np.nan
             results = [np.nan if result == "Out of bounds" else result for result in results]
@@ -192,7 +193,7 @@ class TimeSeriesDataset():
     def impute_missing_values(self, columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']):
 
         scv = self.scv[columns]
-        self.scv_imputed = self.scv.copy()
+        self.scv_imputed[columns] = self.scv[columns].copy()
 
         df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values"])
         df_fits['X columns'] = df_fits['X columns'].astype(object)
@@ -281,7 +282,7 @@ class TimeSeriesDataset():
 
     ######################################## PCA FUNCTIONS #################################################
 
-    def compute_PCA(self, cols, col_name, n_cols, n_PCA, pca_func = None):
+    def compute_PCA(self, cols, col_name, n_cols, n_PCA, pca_func = None, rescale = False, contributions = False):
 
         if len(self.scv_imputed) == 0:
             print("No imputed data found")
@@ -317,11 +318,18 @@ class TimeSeriesDataset():
             self.scv_clean[f"{col_name}_{col+1}"] = pca.transform(scv_scaled)[:,col]
             self.scv_imputed[f"{col_name}_{col+1}"] = pca.transform(df_scaled)[:,col]
 
-        # rescale the PCA components to be between 1 and 10
-        for col in range(n_cols):
-            self.scv_clean[f"{col_name}_{col+1}"] = self.scv_clean[f"{col_name}_{col+1}"].apply(lambda x: (x - min(self.scv_imputed[f"{col_name}_{col+1}"]))/(max(self.scv_imputed[f"{col_name}_{col+1}"]) - min(self.scv_imputed[f"{col_name}_{col+1}"]))*9 + 1)
-            self.scv_imputed[f"{col_name}_{col+1}"] = self.scv_imputed[f"{col_name}_{col+1}"].apply(lambda x: (x - min(self.scv_imputed[f"{col_name}_{col+1}"]))/(max(self.scv_imputed[f"{col_name}_{col+1}"]) - min(self.scv_imputed[f"{col_name}_{col+1}"]))*9 + 1)
-        
+        if rescale:
+            # rescale the PCA components to be between 1 and 10
+            for col in range(n_cols):
+                self.scv_clean[f"{col_name}_{col+1}"] = self.scv_clean[f"{col_name}_{col+1}"].apply(lambda x: (x - min(self.scv_imputed[f"{col_name}_{col+1}"]))/(max(self.scv_imputed[f"{col_name}_{col+1}"]) - min(self.scv_imputed[f"{col_name}_{col+1}"]))*9 + 1)
+                self.scv_imputed[f"{col_name}_{col+1}"] = self.scv_imputed[f"{col_name}_{col+1}"].apply(lambda x: (x - min(self.scv_imputed[f"{col_name}_{col+1}"]))/(max(self.scv_imputed[f"{col_name}_{col+1}"]) - min(self.scv_imputed[f"{col_name}_{col+1}"]))*9 + 1)
+            
+        if contributions:
+            # print how much each variable contributes to each PC
+            for col in range(n_cols):
+                print(f"PC{1} contributions:")
+                for i, variable in enumerate(cols):
+                    print(f"{variable}: {pca.components_[col][i]:.2f}")
         return pca
 
     ######################################## SAVE AND LOAD FUNCTIONS ###########################################

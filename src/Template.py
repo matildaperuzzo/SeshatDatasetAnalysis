@@ -312,13 +312,17 @@ class Template():
                     if val is None:
                         continue
                 else:
-                    v = value_mapping.get(row[variable_name], -1)
-                    if (v is None) or pd.isna(v):
-                        continue
-                    elif v == -1:
-                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
-                        self.debug = pd.concat([self.debug, debug_row])
-                        continue
+                    # check if row[variable_name] is a finite number
+                    if isinstance(row[variable_name], (int, float)) and pd.notna(row[variable_name]):
+                        v = row[variable_name]
+                    else:
+                        v = value_mapping.get(row[variable_name], -1)
+                        if (v is None) or pd.isna(v):
+                            continue
+                        elif v == -1:
+                            debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
+                            self.debug = pd.concat([self.debug, debug_row])
+                            continue
                     val = (v, v)
 
                 value.append(val)
@@ -413,7 +417,7 @@ class Template():
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
 
-    def sample_dict(self, variable_dict, t):
+    def sample_dict(self, variable_dict, t, error = 0):
         if variable_dict is None or pd.isna(variable_dict):
             return None
         if len(variable_dict['t'][0]) == 0:
@@ -428,6 +432,8 @@ class Template():
         times = variable_dict['t'][s]
         values = variable_dict['value'][s]
         polity_years = variable_dict['polity_years']
+        error = abs(error)
+        polity_years = [polity_years[0] - error, polity_years[1] + error]
 
         if polity_years[0] not in times:
             times = [polity_years[0]] + times

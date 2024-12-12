@@ -7,8 +7,9 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
-def download_data(url):
-    url = url+"?page_size=1000"
+def download_data(url,size = 1000):
+    
+    url = url+"?page_size="+str(size)
     df = pd.DataFrame()
     while True:
         try:

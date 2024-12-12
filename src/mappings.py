@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 value_mapping = {
     "present": 1,
@@ -28,6 +29,17 @@ value_mapping = {
     "Suspected Unknown": np.nan,
     'SU' : np.nan,
     "U*": np.nan
+}
+
+PT_value_mapping = {
+    'A': 0,
+    'P': 1,
+    'U': np.nan,
+    'IA': 0.1,
+    'IP': 0.9,
+    'SU': np.nan,
+    'None': np.nan,
+    'DIS' : random.choice([0,1])
 }
 
 miltech_mapping = {
