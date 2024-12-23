@@ -12,7 +12,7 @@ from src.mappings import value_mapping, ideology_mapping
 
 dt = 100
 filename = f"{dt}_yr_dataset"
-template_path = f"datasets/MSP_template.csv"
+template_path = f"datasets/MSP_template_new.csv"
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
 dataset = TSD(categories=['sc'], template_path=template_path)

@@ -33,6 +33,7 @@ def download_data(url,size = 1000):
             print(f"Downloaded {len(df)} rows")
             return df
 
+
 def fetch_urls(category):
     url = "https://seshat-db.com/api/"
     response = requests.get(url)

@@ -552,8 +552,8 @@ if __name__ == "__main__":
     # Test the Template class
     template = Template(categories = ['sc'])
     template.download_all_categories()
-    template.save_dataset("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv")
-    template.debug.to_csv("/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/template_debug.csv", index = False)
+    template.save_dataset("datasets/test.csv")
+    template.debug.to_csv("datasets/template_debug.csv", index = False)
 
     import sys
     import os
@@ -561,8 +561,8 @@ if __name__ == "__main__":
 
     from mappings import ideology_mapping
     template = Template(categories = ['sc'], file_path= 'datasets/test.csv')
-    df = pd.read_csv('datasets/Equinox2020.05.2023_MSP.csv', sep = '|')
-    polity_df = download_data("https://seshatdata.com/api/core/polities/?page_size=100")
+    df = pd.read_csv('datasets/mr_dataset.04.2021.csv')
+    polity_df = download_data("https://seshat-db.com/api/core/polities/")
     column_mappings = {}
     for column in df.columns:
         column_mappings[column] = column.lower().replace('.', '_').replace('-', '_')
@@ -571,23 +571,37 @@ if __name__ == "__main__":
     column_mappings['Variable'] = 'name'
     df.rename(columns=column_mappings, inplace=True)
 
-    df['polity_id'] = df.apply(lambda x: int(polity_df.loc[polity_df['name'] == x['polity'], 'id'].values[0]) if x['polity'] in polity_df['name'].values else None, axis=1)
+    df['polity_id'] = df.apply(lambda x: int(polity_df.loc[polity_df['name'] == x['polid'], 'id'].values[0]) if x['polid'] in polity_df['name'].values else None, axis=1)
+
     df = df[df.polity_id.notna()]
     df.polity_id = df.polity_id.astype(int)
 
     df['polity_new_name'] = df.apply(lambda x: polity_df.loc[polity_df['id'] == x['polity_id'], 'new_name'].values[0] if x['polity_id'] in polity_df['id'].values else None, axis=1)
-    df['is_disputed'] = False
-    df['is_uncertain'] = df.value_note.apply(lambda x: True if x == 'uncertain' else False)
+    col_replace = {'primary' : 'moral-concern-is-primary',
+               'certain' : 'moralizing-enforcement-is-certain',
+               'broad' : 'moralizing-norms-are-broad',
+               'targeted' : 'moralizing-enforcement-is-targeted',
+               'ruler': 'moralizing-enforcement-of-rulers',
+               'elite' : 'moralizing-religion-adopted-by-elites',
+               'commoners' : 'moralizing-religion-adopted-by-commoners',
+               'afterlife' : 'moralizing-enforcement-in-afterlife',
+               'thislife' : 'moralizing-enforcement-in-this-life',
+               'agency' : 'moralizing-enforcement-is-agentic',
+               'start' : 'year_from',
+                'end' : 'year_to',
+               }
 
-    variables = df.name.unique()
+    df.rename(columns=col_replace, inplace=True)    
+    df['is_disputed'] = False
+    df['is_uncertain'] = False
+
+    variables = [col for col in col_replace.values()]
     for variable in variables:
-        var_df = df.loc[df['name'] == variable]
-        variable = variable.replace(' ', '-')
         if (variable in ideology_mapping['MSP'].keys()):
             print(variable)
-            variable = variable.lower()
-            var_df.name = variable
-            var_df.rename(columns={'value_from': variable+'_from', 'value_to': variable+'_to'}, inplace=True)
+            var_df = df.copy()
+            var_df['name'] = variable
+            # make sure that if an element of the col variable has more than one entry, the first one is taken
             template.add_to_template(var_df, variable)
 
-    template.save_dataset("../datasets/MSP_template.csv")
+    template.save_dataset("datasets/MSP_template_new.csv")

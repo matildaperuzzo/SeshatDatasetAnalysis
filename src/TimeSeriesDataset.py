@@ -3,7 +3,7 @@ import numpy as np
 import time
 import sys
 import os
-
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.utils import download_data, fetch_urls, weighted_mean, get_max, is_same
 from src.Template import Template
 
@@ -111,7 +111,7 @@ class TimeSeriesDataset():
         pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.NGA.values[0], 
                                         "PolityID": pol_df.PolityID.values[0], 
                                         "PolityName": pol_df.PolityName.values[0], 
-                                        "Year": year}), index=[0])
+                                        "Year": year}), index=[self.raw.index.max()+1])
         self.raw = pd.concat([self.raw, pol_df_new])
         row = self.raw.loc[self.raw.Year.isna()&(self.raw.PolityID == polID)]
         if len(row) > 0:
@@ -192,6 +192,9 @@ class TimeSeriesDataset():
 
     def impute_missing_values(self, columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']):
 
+        if self.scv_imputed.empty:
+            polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']
+            self.scv_imputed = self.scv[polity_cols].copy()
         scv = self.scv[columns]
         self.scv_imputed[columns] = self.scv[columns].copy()
 
@@ -290,10 +293,10 @@ class TimeSeriesDataset():
 
         if self.scv_imputed[cols].isna().any().any():
             print("there are some NaNs in the imputed dataset")
-            return
         
         scaler = StandardScaler()
-        df_scaled = scaler.fit_transform(self.scv_imputed[cols])
+        clean_data = self.scv_imputed[cols].dropna()
+        df_scaled = scaler.fit_transform(clean_data)
 
         if pca_func is None:
             pca = PCA(n_components=n_PCA)
@@ -316,8 +319,7 @@ class TimeSeriesDataset():
         # calculate the PCA components for each dataset row
         for col in range(n_cols):
             self.scv_clean[f"{col_name}_{col+1}"] = pca.transform(scv_scaled)[:,col]
-            self.scv_imputed[f"{col_name}_{col+1}"] = pca.transform(df_scaled)[:,col]
-
+            self.scv_imputed.loc[self.scv_imputed.index.isin(clean_data.index), f"{col_name}_{col+1}"] = pca.transform(df_scaled)[:, col]
         if rescale:
             # rescale the PCA components to be between 1 and 10
             for col in range(n_cols):
@@ -364,39 +366,11 @@ class TimeSeriesDataset():
         
 
 if __name__ == "__main__":
-    import sys
-    import os
-    import numpy as np
 
     # Add the src directory to the Python path
-    sys.path.append(os.path.abspath(os.path.join('..', 'src')))
+    sys.path.append(os.path.abspath(os.path.join('..')))
     from utils import download_data
     from src.mappings import value_mapping
-    # initialize dataset by downloading dataset or downloading the data from polity_url
-    dataset = TimeSeriesDataset(categories=['sc'], template_path='/Users/mperuzzo/Documents/repos/SeshatDatasetAnalysis/datasets/test.csv')
-    dataset.add_polities()
-    url = "https://seshatdata.com/api/crisisdb/power-transitions/"
-    pt_df = download_data(url)
-    PT_types = ['overturn', 'predecessor_assassination', 'intra_elite',
-        'military_revolt', 'popular_uprising', 'separatist_rebellion',
-        'external_invasion', 'external_interference']
-    for type in PT_types:
-        pt_df[type] = pt_df[type].apply(lambda x: value_mapping[x] if x in value_mapping.keys() else np.nan)
-
-    # set nan values to 0
-    pt_df.fillna(0, inplace=True)
-    for idx, row in pt_df.iterrows():
-        polity = row['polity_id']
-        if polity not in dataset.raw.PolityID.unique():
-            continue
-        year = np.mean([row['year_from'], row['year_to']])
-        dataset.add_years(polID=polity, year=year)
-    dataset.raw = dataset.raw.loc[(dataset.raw.Year.notna())&(dataset.raw.Year!=0)]
-
-    # delete duplicates
-    dataset.raw.drop_duplicates(subset=['PolityID', 'Year'], inplace=True)
-
-    dataset.raw = dataset.raw.sort_values(by=['PolityID', 'Year'])
-    dataset.raw.reset_index(drop=True, inplace=True)
-    dataset.download_all_categories()
-    print(dataset.debug)
+    dataset_100y = TimeSeriesDataset(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
+    scale_cols = ['Pop','Terr','Cap','Hierarchy']
+    scale_pca = dataset_100y.compute_PCA(cols = scale_cols, col_name = 'Scale', n_cols = 1, n_PCA= len(scale_cols))

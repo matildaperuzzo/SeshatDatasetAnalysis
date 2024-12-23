@@ -31,7 +31,7 @@ for idx, row in pt_df.iterrows():
     polity = row['polity_id']
     # check if polity is in dataset 
     if polity not in dataset.raw.PolityID.unique():
-        print(f"Polity {polity} in PT dataset but not in polity dataset")
+        print(f"Polity {row['polity_new_name']} in PT dataset but not in polity dataset")
         continue
     # get year
     year_from = row['year_from']
@@ -45,6 +45,8 @@ for idx, row in pt_df.iterrows():
     elif pd.isna(year_from) and pd.isna(year_to):
         year = np.nan
 
+    if pd.isna(year):
+        continue
     # add years to dataset
     dataset.add_years(polID=polity, year=year)
     # add PT types
@@ -60,7 +62,7 @@ dataset.raw = dataset.raw.sort_values(by=['PolityID', 'Year'])
 dataset.raw.reset_index(drop=True, inplace=True)
 
 # download sc raw variables at PT years
-dataset.download_all_categories(polity_year_error=2)
+dataset.download_all_categories(polity_year_error=20)
 
 for key in ideology_mapping['MSP'].keys():
     dataset.add_column('ideo/'+key.lower())
@@ -79,15 +81,14 @@ dataset.scv['Crisis'] = dataset.raw.apply(lambda row: weighted_mean(row, PT_mapp
 for type in PT_types:
     dataset.scv[type] = dataset.raw[type] 
 
-dataset_100y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
 # add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
 dataset_merged = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
 dataset_merged.scv['dataset'] = '100y'
-pt_dat = dataset.scv
+pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
 dataset_merged.scv = pd.concat([pt_dat, dataset_merged.scv])
-dataset_merged.scv.reset_index(drop=True, inplace=True)
+dataset_merged.scv.reset_idatndex(drop=True, inplace=True)
 # impute scale and non scale variables separately
 scale_cols = ['Pop','Terr','Cap','Hierarchy']
 dataset_merged.impute_missing_values(scale_cols)
@@ -95,6 +96,8 @@ non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
 dataset_merged.impute_missing_values(non_scale_cols)
 dataset_merged.scv_imputed['dataset'] = dataset_merged.scv['dataset']
 
+dataset.scv = dataset_merged.scv.groupby('dataset').get_group('PT')
 dataset.scv_imputed = dataset_merged.scv_imputed.groupby('dataset').get_group('PT')
-
+dataset.scv.reset_index(drop=True, inplace=True)
+dataset.scv_imputed.reset_index(drop=True, inplace=True)
 dataset.save_dataset(path='datasets/', name='power_transitions')
