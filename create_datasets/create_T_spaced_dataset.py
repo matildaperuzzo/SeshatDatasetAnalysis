@@ -10,7 +10,7 @@ from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 from src.utils import download_data
 from src.mappings import value_mapping, ideology_mapping
 
-dt = 100
+dt = 50
 filename = f"{dt}_yr_dataset"
 template_path = f"datasets/MSP_template_new.csv"
 

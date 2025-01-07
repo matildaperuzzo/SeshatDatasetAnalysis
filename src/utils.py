@@ -9,7 +9,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def download_data(url,size = 1000):
     
-    url = url+"?page_size="+str(size)
+    if pd.isna(size):
+        url = url
+    elif isinstance(size, int):
+        url = url+"?page_size="+str(size)
     df = pd.DataFrame()
     while True:
         try:
@@ -30,7 +33,8 @@ def download_data(url,size = 1000):
             url = df_temp.next.values[0]
 
         except:
-            print(f"Downloaded {len(df)} rows")
+            if len(df) > 0:
+                print(f"Downloaded {len(df)} rows")
             return df
 
 

@@ -27,6 +27,8 @@ for type in PT_types:
 for type in PT_types:
     dataset.raw[type] = np.nan
 
+dataset.raw['duration'] = np.nan
+
 for idx, row in pt_df.iterrows():
     polity = row['polity_id']
     # check if polity is in dataset 
@@ -38,12 +40,16 @@ for idx, row in pt_df.iterrows():
     year_to = row['year_to']
     if pd.notna(year_from) and pd.notna(year_to):
         year = year_to
+        duration = year_to - year_from
     elif pd.notna(year_from) and pd.isna(year_to):
         year = year_to
+        duration = np.nan
     elif pd.isna(year_from) and pd.notna(year_to):
         year = year_from
+        duration = np.nan
     elif pd.isna(year_from) and pd.isna(year_to):
         year = np.nan
+        duration = np.nan
 
     if pd.isna(year):
         continue
@@ -52,6 +58,7 @@ for idx, row in pt_df.iterrows():
     # add PT types
     for col in PT_types:
         dataset.raw.loc[(dataset.raw.PolityID == polity)&(dataset.raw.Year==year), col] = row[col]
+    dataset.raw.loc[(dataset.raw.PolityID == polity)&(dataset.raw.Year==year), 'duration'] = duration
 
 dataset.raw = dataset.raw.loc[(dataset.raw.Year.notna())]
 
@@ -73,14 +80,6 @@ for key in ideology_mapping['MSP'].keys():
 dataset.build_social_complexity()
 dataset.build_MSP()
 
-# add crisis to scv dataset
-PT_mapping = {'PT_types':{}}
-for col in PT_types:
-    PT_mapping['PT_types'][col] = 1
-dataset.scv['Crisis'] = dataset.raw.apply(lambda row: weighted_mean(row, PT_mapping, "PT_types", imputation='remove'), axis=1)
-for type in PT_types:
-    dataset.scv[type] = dataset.raw[type] 
-
 # add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
 dataset_merged = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
@@ -88,16 +87,20 @@ dataset_merged.scv['dataset'] = '100y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
 dataset_merged.scv = pd.concat([pt_dat, dataset_merged.scv])
-dataset_merged.scv.reset_idatndex(drop=True, inplace=True)
+dataset_merged.scv.reset_index(drop=True, inplace=True)
+dataset_merged.scv_imputed = pd.DataFrame([])
+dataset_merged.scv['Hierarchy_sq'] = dataset_merged.scv['Hierarchy']**2
 # impute scale and non scale variables separately
-scale_cols = ['Pop','Terr','Cap','Hierarchy']
-dataset_merged.impute_missing_values(scale_cols)
+scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
+dataset_merged.impute_missing_values(scale_cols, use_duplicates=False)
 non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-dataset_merged.impute_missing_values(non_scale_cols)
+dataset_merged.impute_missing_values(non_scale_cols, use_duplicates = False)
 dataset_merged.scv_imputed['dataset'] = dataset_merged.scv['dataset']
 
 dataset.scv = dataset_merged.scv.groupby('dataset').get_group('PT')
 dataset.scv_imputed = dataset_merged.scv_imputed.groupby('dataset').get_group('PT')
 dataset.scv.reset_index(drop=True, inplace=True)
 dataset.scv_imputed.reset_index(drop=True, inplace=True)
+# remove dataset column
+dataset.scv.drop(columns='dataset', inplace=True)
 dataset.save_dataset(path='datasets/', name='power_transitions')

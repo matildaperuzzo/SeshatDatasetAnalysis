@@ -25,10 +25,9 @@ polity,variable,label,issue
 708,settlement_hierarchy,template,year -1529 outside polity years
 506,administrative_level,template,year -359 outside polity years
 506,administrative_level,template,-294 outside polity years
-708,military_level,template,year -1579 outside polity years
-708,military_level,template,year -1567 outside polity years
 246,professional_military_officer,template,value uncoded is not in mapping
 56,professional_military_officer,template,value uncoded is not in mapping
+313,professional_military_officer,template,value uncoded is not in mapping
 709,professional_military_officer,template,value uncoded is not in mapping
 375,professional_military_officer,template,value uncoded is not in mapping
 248,professional_military_officer,template,value uncoded is not in mapping
@@ -39,6 +38,7 @@ polity,variable,label,issue
 248,professional_soldier,template,value uncoded is not in mapping
 54,professional_priesthood,template,value uncoded is not in mapping
 406,professional_priesthood,template,value uncoded is not in mapping
+53,professional_priesthood,template,value uncoded is not in mapping
 56,professional_priesthood,template,value uncoded is not in mapping
 55,professional_priesthood,template,value uncoded is not in mapping
 52,professional_priesthood,template,value uncoded is not in mapping
@@ -83,8 +83,10 @@ polity,variable,label,issue
 257,market,template,value uncoded is not in mapping
 256,market,template,value uncoded is not in mapping
 293,food_storage_site,template,value uncoded is not in mapping
+218,road,template,value uncoded is not in mapping
 506,canal,template,value uncoded is not in mapping
 246,port,template,value uncoded is not in mapping
+218,port,template,value uncoded is not in mapping
 54,mines_or_quarry,template,value uncoded is not in mapping
 429,mines_or_quarry,template,value uncoded is not in mapping
 56,mines_or_quarry,template,value uncoded is not in mapping
@@ -139,4 +141,5 @@ polity,variable,label,issue
 259,foreign_coin,template,value uncoded is not in mapping
 249,indigenous_coin,template,value uncoded is not in mapping
 423,indigenous_coin,template,value uncoded is not in mapping
+391,indigenous_coin,template,value uncoded is not in mapping
 383,indigenous_coin,template,year 1395 outside polity years

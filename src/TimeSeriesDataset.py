@@ -183,19 +183,24 @@ class TimeSeriesDataset():
         self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero'), axis=1)
         self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero'), axis=1)
         self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero'), axis=1)
-
-        self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)
+        # find the maximum weight for money
+        max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: item[1])[1]
+        self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)/max_money
         
     def build_MSP(self):
         from src.mappings import ideology_mapping
         self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", imputation='remove'), axis=1)
 
-    def impute_missing_values(self, columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']):
+    def impute_missing_values(self, columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money'], use_duplicates = False):
 
         if self.scv_imputed.empty:
             polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']
             self.scv_imputed = self.scv[polity_cols].copy()
         scv = self.scv[columns]
+        if not use_duplicates:
+            # remove duplicates
+            scv = scv.drop_duplicates()
+
         self.scv_imputed[columns] = self.scv[columns].copy()
 
         df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values"])
@@ -252,7 +257,7 @@ class TimeSeriesDataset():
                         print(f"Error fitting {col} with {relevant_cols[1:]}")
                         print(e)
 
-        for index, row in scv.iterrows():
+        for index, row in self.scv[columns].iterrows():
             # find positions of nans
             nan_cols = row[row.isna()].index
             non_nan_cols = row[row.notna()].index

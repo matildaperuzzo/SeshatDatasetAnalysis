@@ -131,11 +131,12 @@ class Template():
         polityIDs = df.id.unique()
         # iterate over all polities
         for polID in polityIDs:
-            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'new_name','start_year','end_year']]
+            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'new_name', 'name','start_year','end_year']]
             # create a temporary dataframe with all data for current polity
             pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
                                             "PolityID": pol_df.id.values[0], 
                                             "PolityName": pol_df.new_name.values[0], 
+                                            "PolityOldName": pol_df.name.values[0],
                                             "StartYear": pol_df.start_year.values[0],
                                             "EndYear": pol_df.end_year.values[0]}), index = [0])
             # add the temporary dataframe to the template
@@ -166,6 +167,7 @@ class Template():
             return
         self.add_to_template(df, key)
 
+
     def add_to_template(self, df, key):
         variable_name = df.name.unique()[0].lower()
         range_var =  variable_name + "_from" in df.columns
@@ -175,12 +177,15 @@ class Template():
         
         for pol in polities:
             if pol not in df.polity_new_name.values:
-                # print (f"Polity {pol} not in dataset")
-                continue
-
-            pol_df = df.loc[df.polity_new_name == pol]
-            if pol_df.empty:
-                continue
+                pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
+                pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity__name__icontains={pol_old_name}",size = None)
+                if pol_df.empty:
+                    continue
+                else:
+                    print(f"Found {pol_old_name} in {key} dataset")
+            else:
+                pol_df = df.loc[df.polity_new_name == pol]
+            
             self.add_polity(pol_df, range_var, variable_name, col_name)
         
         self.perform_tests(df, variable_name, range_var, col_name)
