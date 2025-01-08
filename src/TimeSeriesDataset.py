@@ -55,7 +55,7 @@ class TimeSeriesDataset():
     def initialize_dataset_grid(self, start_year, end_year, dt):
         df = download_data(self.polity_url)
         # create the dattaframe staring with the polity data
-        self.raw = pd.DataFrame(columns = ["NGA", "PolityID", "PolityName", "Year", "PolityActive", "Note"])
+        self.raw = pd.DataFrame(columns = ["NGA", "PolityID", "PolityName", "Year", "PolityActive"])
         # specify the columns data types
         self.raw['PolityID'] = self.raw['PolityID'].astype('int')
         self.raw['Year'] = self.raw['Year'].astype('int')
@@ -268,9 +268,12 @@ class TimeSeriesDataset():
                 col_df = df_fits.loc[df_fits['Y column'] == col]
                 overlap_rows = (col_df['X columns'].apply(lambda x: len(x)*set(x).issubset(set(non_nan_cols))))
                 # find positions of best overlap
-                best_overlap = np.where(overlap_rows == overlap_rows.max())[0]
+                best_overlap = np.where(overlap_rows == True)[0]
                 try:
-                    if len(best_overlap) > 1:
+                    if len(best_overlap) == 0:
+                        print(f"No best overlap found for {col}")
+                        continue
+                    elif len(best_overlap) > 1:
                         # if there are multiple best overlaps, choose the one with the highest number of rows
                         sorted_col_df = col_df.iloc[best_overlap].copy()
                         sorted_col_df.sort_values('num_rows', ascending=False)

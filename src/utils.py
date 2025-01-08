@@ -62,7 +62,7 @@ def fetch_urls(category):
     return variable_urs
 
 
-def weighted_mean(row, mappings, category = "Metal", imputation = 'remove'):
+def weighted_mean(row, mappings, category = "Metal", imputation = 'remove', min_vals = 0.):
     weights = 0
     result = 0
 
@@ -78,7 +78,7 @@ def weighted_mean(row, mappings, category = "Metal", imputation = 'remove'):
                 continue
     
     values = row[keys]
-    if values.isna().sum() == len(values):
+    if values.isna().sum() >= len(values)*(1-min_vals):
         return np.nan
     
     if imputation == 'remove':
