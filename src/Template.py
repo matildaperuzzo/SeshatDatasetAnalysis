@@ -463,7 +463,7 @@ class Template():
                 val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
                 vals[i] = val
             return vals
-        elif isinstance(t, (int, float)):
+        elif isinstance(t, (int, float, np.int64, np.int32, np.float64, np.float32)):
             if t < polity_years[0] or t > polity_years[1]:
                 print(f"Error: The year {t} is outside the polity years {polity_years}")
                 return "Out of bounds"
@@ -473,6 +473,9 @@ class Template():
             # sample the values
             val = values[ind][0] + random.random() * (values[ind][1] - values[ind][0])
             return val
+        else:
+            print("Error: The year is not a number")
+            return "Error: The year is not a number"
         
     # ---------------------- DEBUG FUNCTIONS ---------------------- #
 
@@ -565,7 +568,7 @@ if __name__ == "__main__":
 
 
     from mappings import ideology_mapping
-    template = Template(categories = ['sc'], file_path= 'datasets/test.csv')
+    template = Template(categories = ['sc','wf'], file_path= 'datasets/test.csv')
     df = pd.read_csv('datasets/mr_dataset.04.2021.csv')
     polity_df = download_data("https://seshat-db.com/api/core/polities/")
     column_mappings = {}
@@ -609,4 +612,4 @@ if __name__ == "__main__":
             # make sure that if an element of the col variable has more than one entry, the first one is taken
             template.add_to_template(var_df, variable)
 
-    template.save_dataset("datasets/MSP_template_new.csv")
+    template.save_dataset("datasets/SC_WF_MSP_template.csv")
