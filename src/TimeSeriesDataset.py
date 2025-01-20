@@ -179,14 +179,35 @@ class TimeSeriesDataset():
         self.scv['Cap'] = (self.raw['population-of-the-largest-settlements']).apply(np.log10)
 
         # add hierarchy variables
-        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='remove'), axis=1)
-        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero'), axis=1)
-        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero'), axis=1)
-        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero'), axis=1)
+        self.raw['examination-systems'] = self.raw['examination-systems'].fillna(0)
+        self.raw['merit-promotions'] = self.raw['merit-promotions'].fillna(0)
+        # self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='remove', min_vals=0.5), axis=1)
+        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='zero', min_vals=0.5), axis=1)
+        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero', min_vals=0.5), axis=1)
+        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero', min_vals=0.5), axis=1)
+        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero', min_vals=0.5), axis=1)
         # find the maximum weight for money
         max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: item[1])[1]
         self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)/max_money
-        
+    
+    def build_warfare(self):
+        # build warfare variables
+        from src.mappings import miltech_mapping
+        self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
+        self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
+        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon'), axis=1)
+        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals"), axis=1)
+        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals"), axis=1)
+        fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
+        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications"), axis=1)
+        long_wall = self.raw['long-walls'].notna()*1
+        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings"), axis=1)
+        self.scv['Defense'] = fort_max + fort_mean + long_wall + surroundings
+        self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite-bows"] or row["self-bows"]) and row["horses"], axis=1)
+        self.scv['Iron'] = self.raw['irons']
+        self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] and row["Cavalry"], axis=1)
+
+
     def build_MSP(self):
         from src.mappings import ideology_mapping
         self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", imputation='remove'), axis=1)
@@ -303,7 +324,7 @@ class TimeSeriesDataset():
             print("there are some NaNs in the imputed dataset")
         
         scaler = StandardScaler()
-        clean_data = self.scv_imputed[cols].dropna()
+        clean_data = self.scv_imputed[cols].dropna().drop_duplicates(subset=cols)
         df_scaled = scaler.fit_transform(clean_data)
 
         if pca_func is None:

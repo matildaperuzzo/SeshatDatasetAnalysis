@@ -11,7 +11,7 @@ from src.mappings import PT_value_mapping, ideology_mapping
 from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc'], template_path='datasets/MSP_template_new.csv')
+dataset = TSD(categories=['sc','wf'], template_path='datasets/SC_WF_MSP_template.csv')
 dataset.add_polities()
 
 url = "https://seshat-db.com/api/crisisdb/power-transitions/"
@@ -78,29 +78,28 @@ for key in ideology_mapping['MSP'].keys():
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
+dataset.build_warfare()
 dataset.build_MSP()
 
 # add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
-dataset_merged = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
-dataset_merged.scv['dataset'] = '100y'
+dataset_100y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
+dataset_100y.scv['dataset'] = '100y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
-dataset_merged.scv = pd.concat([pt_dat, dataset_merged.scv])
-dataset_merged.scv.reset_index(drop=True, inplace=True)
-dataset_merged.scv_imputed = pd.DataFrame([])
-dataset_merged.scv['Hierarchy_sq'] = dataset_merged.scv['Hierarchy']**2
+dataset.scv = pd.concat([pt_dat, dataset_100y.scv])
+dataset.scv.reset_index(drop=True, inplace=True)
+dataset.scv_imputed = pd.DataFrame([])
+dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
 # impute scale and non scale variables separately
 scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
-dataset_merged.impute_missing_values(scale_cols, use_duplicates=False)
+dataset.impute_missing_values(scale_cols, use_duplicates = False)
 non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-dataset_merged.impute_missing_values(non_scale_cols, use_duplicates = False)
-dataset_merged.scv_imputed['dataset'] = dataset_merged.scv['dataset']
+dataset.impute_missing_values(non_scale_cols, use_duplicates = False)
+dataset.scv_imputed['dataset'] = dataset.scv['dataset']
 
-dataset.scv = dataset_merged.scv.groupby('dataset').get_group('PT')
-dataset.scv_imputed = dataset_merged.scv_imputed.groupby('dataset').get_group('PT')
 dataset.scv.reset_index(drop=True, inplace=True)
 dataset.scv_imputed.reset_index(drop=True, inplace=True)
+
 # remove dataset column
-dataset.scv.drop(columns='dataset', inplace=True)
 dataset.save_dataset(path='datasets/', name='power_transitions')

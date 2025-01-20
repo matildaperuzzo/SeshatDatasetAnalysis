@@ -1,4 +1,22 @@
 polity,variable,label,issue
+384,steel,template,-300 outside polity years
+474,javelin,template,year -4200 outside polity years
+474,self_bow,template,year -4200 outside polity years
+173,gunpowder_siege_artillery,template,year 1290 outside polity years
+173,gunpowder_siege_artillery,template,1413 outside polity years
+173,gunpowder_siege_artillery,template,1413 outside polity years
+474,dagger,template,year -4200 outside polity years
+421,horse,template,-1301 outside polity years
+421,horse,template,-1250 outside polity years
+173,camel,template,year 1290 outside polity years
+145,helmet,template,538 outside polity years
+145,breastplate,template,538 outside polity years
+145,scaled_armor,template,538 outside polity years
+145,laminar_armor,template,538 outside polity years
+78,settlements_in_a_defensive_position,template,500 outside polity years
+114,stone_walls_mortared,template,1897 outside polity years
+114,fortified_camp,template,1897 outside polity years
+78,fortified_camp,template,500 outside polity years
 337,polity_territory,template,year 1478 outside polity years
 326,polity_territory,template,year 1130 outside polity years
 326,polity_territory,template,year 1144 outside polity years

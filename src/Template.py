@@ -558,7 +558,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc'])
+    template = Template(categories = ['wf','sc'])
     template.download_all_categories()
     template.save_dataset("datasets/test.csv")
     template.debug.to_csv("datasets/template_debug.csv", index = False)
@@ -568,7 +568,7 @@ if __name__ == "__main__":
 
 
     from mappings import ideology_mapping
-    template = Template(categories = ['sc','wf'], file_path= 'datasets/test.csv')
+    template = Template(categories = ['wf','sc'], file_path= 'datasets/test.csv')
     df = pd.read_csv('datasets/mr_dataset.04.2021.csv')
     polity_df = download_data("https://seshat-db.com/api/core/polities/")
     column_mappings = {}

@@ -54,7 +54,7 @@ def fetch_urls(category):
     used_keys = []
     for key in mapping.keys():
         used_keys.append(mapping[key].keys())
-    used_keys = ['sc/'+key for sublist in used_keys for key in sublist]
+    used_keys = [category+'/'+key for sublist in used_keys for key in sublist]
     for key in data.keys():
         if key.split('/')[0] == category:
             if key in used_keys:

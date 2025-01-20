@@ -43,6 +43,9 @@ PT_value_mapping = {
 }
 
 miltech_mapping = {
+        "Long_walls" : {
+            "long-walls" : 1
+            },
         "Metal" : {
         "coppers" : 1,
         "bronzes" : 2,
@@ -107,7 +110,7 @@ miltech_mapping = {
 
         "Surroundings" : {
         "ditches" : 5,
-        "moats" : 5 } 
+        "moats" : 5 }
         
 }
 
