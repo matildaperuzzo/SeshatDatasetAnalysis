@@ -182,10 +182,10 @@ class TimeSeriesDataset():
         self.raw['examination-systems'] = self.raw['examination-systems'].fillna(0)
         self.raw['merit-promotions'] = self.raw['merit-promotions'].fillna(0)
         # self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='remove', min_vals=0.5), axis=1)
-        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='zero', min_vals=0.5), axis=1)
-        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero', min_vals=0.5), axis=1)
-        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero', min_vals=0.5), axis=1)
-        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero', min_vals=0.5), axis=1)
+        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='zero', min_vals=0.3), axis=1)
+        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero', min_vals=0.3), axis=1)
+        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero', min_vals=0.3), axis=1)
+        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero', min_vals=0.3), axis=1)
         # find the maximum weight for money
         max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: item[1])[1]
         self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)/max_money
@@ -217,6 +217,9 @@ class TimeSeriesDataset():
         if self.scv_imputed.empty:
             polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']
             self.scv_imputed = self.scv[polity_cols].copy()
+            self.scv_imputed[columns] = self.scv[columns].copy()
+        else:
+            self.scv_imputed[columns] = self.scv[columns].copy()
         scv = self.scv[columns]
         if not use_duplicates:
             # remove duplicates
@@ -324,7 +327,8 @@ class TimeSeriesDataset():
             print("there are some NaNs in the imputed dataset")
         
         scaler = StandardScaler()
-        clean_data = self.scv_imputed[cols].dropna().drop_duplicates(subset=cols)
+        clean_data = self.scv_imputed.copy()
+        clean_data = clean_data[cols].dropna().drop_duplicates(subset=cols)
         df_scaled = scaler.fit_transform(clean_data)
 
         if pca_func is None:
@@ -400,6 +404,14 @@ if __name__ == "__main__":
     sys.path.append(os.path.abspath(os.path.join('..')))
     from utils import download_data
     from src.mappings import value_mapping
-    dataset_100y = TimeSeriesDataset(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
-    scale_cols = ['Pop','Terr','Cap','Hierarchy']
-    scale_pca = dataset_100y.compute_PCA(cols = scale_cols, col_name = 'Scale', n_cols = 1, n_PCA= len(scale_cols))
+    from src.TimeSeriesDataset import TimeSeriesDataset as TSD
+
+    dataset = TSD(categories=['sc'], file_path="datasets/power_transitions.csv")
+    dataset.scv_imputed = pd.DataFrame()
+    imp_columns =  ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
+    dataset.impute_missing_values(imp_columns, use_duplicates=False)
+    sc_columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
+
+    pca = dataset.compute_PCA(imp_columns, 'PC', n_cols = 2, n_PCA = 8)
+
+    print(dataset.scv_clean)

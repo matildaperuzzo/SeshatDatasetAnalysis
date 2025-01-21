@@ -48,7 +48,7 @@ for idx, row in pt_df.iterrows():
         year = year_from
         duration = np.nan
     elif pd.isna(year_from) and pd.isna(year_to):
-        year = np.nan
+        year = row[['polity_start_year','polity_end_year']].mean()
         duration = np.nan
 
     if pd.isna(year):
@@ -69,7 +69,7 @@ dataset.raw = dataset.raw.sort_values(by=['PolityID', 'Year'])
 dataset.raw.reset_index(drop=True, inplace=True)
 
 # download sc raw variables at PT years
-dataset.download_all_categories(polity_year_error=20)
+dataset.download_all_categories(polity_year_error=25)
 
 for key in ideology_mapping['MSP'].keys():
     dataset.add_column('ideo/'+key.lower())
@@ -83,11 +83,11 @@ dataset.build_MSP()
 
 # add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
-dataset_100y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
-dataset_100y.scv['dataset'] = '100y'
+dataset_25y = TSD(categories=['sc'], file_path="datasets/25_yr_dataset.csv")
+dataset_25y.scv['dataset'] = '25y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
-dataset.scv = pd.concat([pt_dat, dataset_100y.scv])
+dataset.scv = pd.concat([pt_dat, dataset_25y.scv])
 dataset.scv.reset_index(drop=True, inplace=True)
 dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
