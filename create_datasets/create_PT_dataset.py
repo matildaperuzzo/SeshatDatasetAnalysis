@@ -69,11 +69,12 @@ dataset.raw = dataset.raw.sort_values(by=['PolityID', 'Year'])
 dataset.raw.reset_index(drop=True, inplace=True)
 
 # download sc raw variables at PT years
-dataset.download_all_categories(polity_year_error=25)
+dataset.download_all_categories(polity_year_error=150)
 
 for key in ideology_mapping['MSP'].keys():
     dataset.add_column('ideo/'+key.lower())
-
+    
+dataset.remove_incomplete_rows(nan_threshold=0.3)
 # remove all rows that have less than 30% of the columns filled in
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
@@ -83,7 +84,7 @@ dataset.build_MSP()
 
 # add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
-dataset_25y = TSD(categories=['sc'], file_path="datasets/25_yr_dataset.csv")
+dataset_25y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
 dataset_25y.scv['dataset'] = '25y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'

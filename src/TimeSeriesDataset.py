@@ -105,7 +105,7 @@ class TimeSeriesDataset():
             self.raw = pd.concat([self.raw, pol_df_new])
         self.raw.reset_index(drop=True, inplace=True)
 
-    def add_years(self,polID, year):
+    def add_years(self,polID, year, ignore_polity_years = False):
 
         pol_df = self.raw.loc[self.raw.PolityID == polID]
         pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.NGA.values[0], 
@@ -182,10 +182,12 @@ class TimeSeriesDataset():
         self.raw['examination-systems'] = self.raw['examination-systems'].fillna(0)
         self.raw['merit-promotions'] = self.raw['merit-promotions'].fillna(0)
         # self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='remove', min_vals=0.5), axis=1)
-        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='zero', min_vals=0.3), axis=1)
-        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'zero', min_vals=0.3), axis=1)
-        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'zero', min_vals=0.3), axis=1)
-        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero', min_vals=0.3), axis=1)
+        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", imputation='remove', min_vals=0.0), axis=1)
+        percentage_gov = 4./11. #at least 4/11 of the variables need to be present
+        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", imputation = 'remove', min_vals=percentage_gov), axis=1)
+        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", imputation= 'remove', min_vals=0.0), axis=1)
+        percentage_info = 2./13. #at least 2/13 of the variables need to be present
+        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", imputation='zero', min_vals=percentage_info), axis=1)
         # find the maximum weight for money
         max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: item[1])[1]
         self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)/max_money
