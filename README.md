@@ -45,7 +45,7 @@ For example, consider the following representation:
 
 | PolID | Start | End  | var1  | var2  | var3  | var4  |
 |-------|-------|------|-------|-------|-------|-------|
-||| 1700  | 1850  | valds1 | valds2 | valds3 | valds4 |
+|| 1700  | 1850  | valds1 | valds2 | valds3 | valds4 |
 
 
 Each variable (var1, var2, etc.) is encoded as a dictionary. Here are some examples of how different types of data are encoded:
@@ -73,9 +73,9 @@ valds4 = {'t': [1700, 1850], 'val': [[val41, val41], [val42, val42]]}
 The t values are always ascending and within the start and end dates of the polity. The dictionary data structures encode the value and date assumptions from the SQL database in a uniform and time-ordered way.
 
 ## Sampling
-Once all variables are constructed, a function is applied to 'sample' the variable dictionary at a specific time t. The function sample_var(var_dict, t, sampling_method_disputes, sampling_method_ranges, interpolation_method) performs the following steps:<br /><br />
+Once all variables are constructed, a function is applied to 'sample' the variable dictionary at a specific time t. The function sample_var(var_dict, t, sampling_method_disputes, sampling_method_ranges, interpolation_method) performs the following steps:<br />
 
-Ensures that t is between the start and end of the polity.
+Ensures that t is between the start and end of the polity.<br />
 Samples one of the entries in val using the sampling_method_disputes function.
 Resolves any range uncertainties in that entry by applying the sampling_method_ranges function.<br />
 Interpolates the resolved values using the interpolation_method at time t.
@@ -88,7 +88,7 @@ TimeSeriesDataset Module: The TimeSeriesDataset module creates a dataset based o
 Construct Social Complexity Variables and Perform Imputations: The sampled data is used to construct social complexity variables and perform imputations.<br />
 The template serves as a snapshot of the database, allowing for resampling with different methods. The current sampling process involves resolving disputes by sampling one of the rows in values, sampling uniformly for each range variable, extending the data by adding the start and end of the polity, and taking the value for the closest time preceding the specified year.
 
-## ßCode References
+## Code References
 Template Data Structure: The template data structure is constructed in the Template class, which can be found in the src/Template.py file.<br />
 Sampling Function: The sample_var function is used to sample the variable dictionary at a specific time t. This function is part of the Template class.<br />
 TimeSeriesDataset Module: The TimeSeriesDataset class, which creates datasets based on the template, is located in the src/TimeSeriesDataset.py file.<br />
