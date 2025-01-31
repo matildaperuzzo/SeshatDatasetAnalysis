@@ -16,18 +16,19 @@ template_path = f"datasets/SC_WF_MSP_template.csv"
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
 dataset = TSD(categories=['sc'], template_path=template_path)
-dataset.initialize_dataset_grid(-10000,2000,dt)
+dataset.initialize_dataset_grid(-10000,2024,dt)
 
-dataset.download_all_categories(polity_year_error=50)
+error = 150
+dataset.download_all_categories(polity_year_error=error)
 for key in ideology_mapping['MSP'].keys():
-    dataset.add_column('ideo/'+key.lower())
+    dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
 
 # remove all rows that have less than 30% of the columns filled in
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
 
-dataset.build_MSP()
+# dataset.build_MSP()
 
 # imp_columns =  ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
 # dataset.impute_missing_values()

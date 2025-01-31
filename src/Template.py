@@ -422,7 +422,7 @@ class Template():
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
 
-    def sample_dict(self, variable_dict, t, error = 0):
+    def sample_dict(self, variable_dict, t, error):
         if variable_dict is None or pd.isna(variable_dict):
             return None
         if len(variable_dict['t'][0]) == 0:
@@ -438,7 +438,7 @@ class Template():
         values = variable_dict['value'][s]
         polity_years = variable_dict['polity_years']
         error = abs(error)
-        polity_years = [polity_years[0] - error, polity_years[1] + error]
+        polity_years = [min(polity_years) - error, max(polity_years) + error]
 
         if polity_years[0] not in times:
             times = [polity_years[0]] + times

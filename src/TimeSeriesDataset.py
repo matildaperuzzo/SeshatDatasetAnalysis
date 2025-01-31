@@ -76,6 +76,10 @@ class TimeSeriesDataset():
             row = pol_df.iloc[0]
             #Mark the years when the polity was active
             pol_df_new.loc[(pol_df_new.Year >= row.start_year) & (pol_df_new.Year <= row.end_year), 'PolityActive'] = True
+            # if a polity has no entries as PolityActive set the year closest to the start year as active
+            if not pol_df_new.PolityActive.any():
+                closest_year = np.floor(pol_df.start_year.values[0]/100)*100
+                pol_df_new.loc[pol_df_new.Year == closest_year, 'PolityActive'] = True
             # Ensure the index is unique before concatenating
             if not pol_df_new.index.is_unique:
                 pol_df_new = pol_df_new.reset_index(drop=True)
@@ -123,7 +127,7 @@ class TimeSeriesDataset():
         for category in self.categories:
             urls.update(fetch_urls(category))
         for key in urls.keys():
-            self.add_column(key, polity_year_error)
+            self.add_column(key, polity_year_error = polity_year_error)
     
     def add_column(self, key, polity_year_error = 0):
         variable_name = key.split('/')[-1]
@@ -141,7 +145,7 @@ class TimeSeriesDataset():
             return [np.nan]*len(years)
         
         _dict = eval(entry.values[0])
-        results = self.template.sample_dict(_dict, years, polity_year_error)
+        results = self.template.sample_dict(_dict, years, error = polity_year_error)
 
         # check if any of the years are out of bounds
         not_in_bounds = np.array([r == "Out of bounds" for r in results])
@@ -343,6 +347,10 @@ class TimeSeriesDataset():
             scv_clean = self.scv.copy()
             self.scv_clean = scv_clean
         self.scv_clean.dropna(subset=cols, inplace=True)
+        to_transform = self.scv_imputed.copy()
+        to_transform = to_transform[cols].dropna()
+    
+
         scv_scaled = scaler.transform(self.scv_clean[cols])
         # Quantify variance explained by each PC
         explained_variance = pca.explained_variance_ratio_
@@ -354,7 +362,7 @@ class TimeSeriesDataset():
         # calculate the PCA components for each dataset row
         for col in range(n_cols):
             self.scv_clean[f"{col_name}_{col+1}"] = pca.transform(scv_scaled)[:,col]
-            self.scv_imputed.loc[self.scv_imputed.index.isin(clean_data.index), f"{col_name}_{col+1}"] = pca.transform(df_scaled)[:, col]
+            self.scv_imputed.loc[self.scv_imputed.index.isin(to_transform.index), f"{col_name}_{col+1}"] = pca.transform(scaler.transform(to_transform))[:, col]
         if rescale:
             # rescale the PCA components to be between 1 and 10
             for col in range(n_cols):
