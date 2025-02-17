@@ -202,6 +202,7 @@ class TimeSeriesDataset():
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
         self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon'), axis=1)
+        self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean"), axis=1)
         self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals"), axis=1)
         self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals"), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
@@ -233,7 +234,7 @@ class TimeSeriesDataset():
 
         self.scv_imputed[columns] = self.scv[columns].copy()
 
-        df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values"])
+        df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values", 'R2'])
         df_fits['X columns'] = df_fits['X columns'].astype(object)
 
         for index, row in scv.iterrows():
@@ -262,7 +263,7 @@ class TimeSeriesDataset():
                     print(f'p-values for {col} are {p_values}')
                 else:
 
-                    relevant_cols = p_values[p_values<0.001].index
+                    relevant_cols = p_values[p_values<0.05].index
                     # check if the amount of relevant columns is greater than 1
                     if len(relevant_cols) < 1:
                         continue
@@ -276,16 +277,19 @@ class TimeSeriesDataset():
                     y = scv[relevant_cols][mask][col]
                     try:
                         reg = LinearRegression().fit(X, y)
+                        r2 = reg.score(X, y)
                         # impute the missing values
                         fit_row_dict = {"Y column": col, 
                                         "X columns": relevant_cols[1:], 
                                         "fit": reg,
                                         "num_rows": len(X),
-                                        "p-values": p_values}
+                                        "p-values": p_values,
+                                        "R2": r2}
                         df_fits = pd.concat([df_fits, pd.DataFrame([fit_row_dict], columns=df_fits.columns)], ignore_index=True)
                     except Exception as e:
                         print(f"Error fitting {col} with {relevant_cols[1:]}")
                         print(e)
+        self.imputation_fits = df_fits
 
         for index, row in self.scv[columns].iterrows():
             # find positions of nans

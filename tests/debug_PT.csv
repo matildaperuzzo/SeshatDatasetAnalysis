@@ -1,0 +1,2351 @@
+,polity,variable,label,issue
+0,af_durrani_emp,polity-territories,pt,[1839.] ouside of polity years
+1,cn_western_jin_dyn,polity-territories,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+2,eg_mamluk_sultanate_1,polity-territories,pt,[1257.] ouside of polity years
+3,eg_old_k_1,polity-territories,pt,[-2667. -2345.] ouside of polity years
+4,eg_ptolemaic_k_1,polity-territories,pt,[-204.] ouside of polity years
+5,eg_regions,polity-territories,pt,[-2004.] ouside of polity years
+6,eg_thebes_hyksos,polity-territories,pt,[-1555. -1550.] ouside of polity years
+7,es_spanish_emp_1,polity-territories,pt,[1746.] ouside of polity years
+8,es_spanish_emp_2,polity-territories,pt,[1833.] ouside of polity years
+9,fr_capetian_k_2,polity-territories,pt,[1137.] ouside of polity years
+10,fr_merovingian_emp_1,polity-territories,pt,[558.] ouside of polity years
+11,fr_merovingian_emp_2,polity-territories,pt,[690.] ouside of polity years
+12,fr_valois_k_1,polity-territories,pt,[1461.] ouside of polity years
+13,gr_macedonian_emp,polity-territories,pt,[-309.] ouside of polity years
+14,gt_tikal_late_classic,polity-territories,pt,[889.] ouside of polity years
+15,il_judea,polity-territories,pt,[-165. -160.  -40.  -37.] ouside of polity years
+16,in_gahadavala_dyn,polity-territories,pt,[1197.] ouside of polity years
+17,in_gurjara_pratihara_dyn,polity-territories,pt,[1036.] ouside of polity years
+18,in_mauryan_emp,polity-territories,pt,[-184.] ouside of polity years
+19,in_rashtrakuta_emp,polity-territories,pt,[982.] ouside of polity years
+20,iq_akkad_emp,polity-territories,pt,[-2279.] ouside of polity years
+21,iq_neo_assyrian_emp,polity-territories,pt,[-609.] ouside of polity years
+22,ir_buyid_confederation,polity-territories,pt,[1075.] ouside of polity years
+23,ir_il_khanate,polity-territories,pt,[1343.] ouside of polity years
+24,ir_safavid_emp,polity-territories,pt,[1732. 1736.] ouside of polity years
+25,ir_sassanid_emp_2,polity-territories,pt,[651.] ouside of polity years
+26,ir_seljuk_sultanate,polity-territories,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+27,it_roman_k,polity-territories,pt,[-753.] ouside of polity years
+28,it_st_peter_rep_2,polity-territories,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+29,jp_ashikaga,polity-territories,pt,[1473. 1489. 1493.] ouside of polity years
+30,jp_kamakura,polity-territories,pt,[1336.] ouside of polity years
+31,kh_angkor_2,polity-territories,pt,[1066. 1080.] ouside of polity years
+32,no_norway_k_2,polity-territories,pt,[1257.] ouside of polity years
+33,ru_golden_horde,polity-territories,pt,[1227. 1459.] ouside of polity years
+34,th_rattanakosin,polity-territories,pt,[1910.] ouside of polity years
+35,tr_byzantine_emp_2,polity-territories,pt,[1078.] ouside of polity years
+36,tr_east_roman_emp,polity-territories,pt,[641.] ouside of polity years
+37,tr_ottoman_emirate,polity-territories,pt,[1413. 1421.] ouside of polity years
+38,uz_chagatai_khanate,polity-territories,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+39,cn_western_jin_dyn,polity-populations,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+40,eg_mamluk_sultanate_1,polity-populations,pt,[1257.] ouside of polity years
+41,eg_old_k_1,polity-populations,pt,[-2667. -2345.] ouside of polity years
+42,eg_ptolemaic_k_1,polity-populations,pt,[-204.] ouside of polity years
+43,es_spanish_emp_1,polity-populations,pt,[1746.] ouside of polity years
+44,es_spanish_emp_2,polity-populations,pt,[1833.] ouside of polity years
+45,fr_capetian_k_2,polity-populations,pt,[1137.] ouside of polity years
+46,fr_merovingian_emp_1,polity-populations,pt,[558.] ouside of polity years
+47,fr_merovingian_emp_2,polity-populations,pt,[690.] ouside of polity years
+48,fr_valois_k_1,polity-populations,pt,[1461.] ouside of polity years
+49,gb_anglo_saxon_1,polity-populations,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+50,gt_tikal_late_classic,polity-populations,pt,[889.] ouside of polity years
+51,in_mauryan_emp,polity-populations,pt,[-184.] ouside of polity years
+52,in_rashtrakuta_emp,polity-populations,pt,[982.] ouside of polity years
+53,ir_buyid_confederation,polity-populations,pt,[1075.] ouside of polity years
+54,ir_il_khanate,polity-populations,pt,[1343.] ouside of polity years
+55,ir_safavid_emp,polity-populations,pt,[1732. 1736.] ouside of polity years
+56,ir_sassanid_emp_2,polity-populations,pt,[651.] ouside of polity years
+57,ir_seljuk_sultanate,polity-populations,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+58,it_italy_k,polity-populations,pt,[493.] ouside of polity years
+59,it_roman_k,polity-populations,pt,[-753.] ouside of polity years
+60,it_st_peter_rep_2,polity-populations,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+61,jp_ashikaga,polity-populations,pt,[1473. 1489. 1493.] ouside of polity years
+62,jp_kamakura,polity-populations,pt,[1336.] ouside of polity years
+63,jp_nara,polity-populations,pt,[707.] ouside of polity years
+64,kh_angkor_2,polity-populations,pt,[1066. 1080.] ouside of polity years
+65,no_norway_k_2,polity-populations,pt,[1257.] ouside of polity years
+66,pt_portuguese_emp_2,polity-populations,pt,[1816.] ouside of polity years
+67,ru_golden_horde,polity-populations,pt,[1227. 1459.] ouside of polity years
+68,th_rattanakosin,polity-populations,pt,[1910.] ouside of polity years
+69,tr_byzantine_emp_2,polity-populations,pt,[1078.] ouside of polity years
+70,tr_east_roman_emp,polity-populations,pt,[641.] ouside of polity years
+71,tr_ottoman_emirate,polity-populations,pt,[1413. 1421.] ouside of polity years
+72,ug_bunyoro_k_2,polity-populations,pt,[1899.] ouside of polity years
+73,uz_chagatai_khanate,polity-populations,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+74,cn_western_jin_dyn,population-of-the-largest-settlements,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+75,eg_mamluk_sultanate_1,population-of-the-largest-settlements,pt,[1257.] ouside of polity years
+76,eg_old_k_1,population-of-the-largest-settlements,pt,[-2667. -2345.] ouside of polity years
+77,eg_ptolemaic_k_1,population-of-the-largest-settlements,pt,[-204.] ouside of polity years
+78,eg_regions,population-of-the-largest-settlements,pt,[-2004.] ouside of polity years
+79,eg_thebes_hyksos,population-of-the-largest-settlements,pt,[-1555. -1550.] ouside of polity years
+80,es_spanish_emp_1,population-of-the-largest-settlements,pt,[1746.] ouside of polity years
+81,es_spanish_emp_2,population-of-the-largest-settlements,pt,[1833.] ouside of polity years
+82,fr_capetian_k_2,population-of-the-largest-settlements,pt,[1137.] ouside of polity years
+83,fr_merovingian_emp_1,population-of-the-largest-settlements,pt,[558.] ouside of polity years
+84,fr_merovingian_emp_2,population-of-the-largest-settlements,pt,[690.] ouside of polity years
+85,fr_valois_k_1,population-of-the-largest-settlements,pt,[1461.] ouside of polity years
+86,gb_anglo_saxon_1,population-of-the-largest-settlements,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+87,gr_macedonian_emp,population-of-the-largest-settlements,pt,[-309.] ouside of polity years
+88,gt_tikal_late_classic,population-of-the-largest-settlements,pt,[889.] ouside of polity years
+89,il_judea,population-of-the-largest-settlements,pt,[-165. -160.  -40.  -37.] ouside of polity years
+90,in_gahadavala_dyn,population-of-the-largest-settlements,pt,[1197.] ouside of polity years
+91,in_gurjara_pratihara_dyn,population-of-the-largest-settlements,pt,[1036.] ouside of polity years
+92,in_mauryan_emp,population-of-the-largest-settlements,pt,[-184.] ouside of polity years
+93,in_rashtrakuta_emp,population-of-the-largest-settlements,pt,[982.] ouside of polity years
+94,iq_akkad_emp,population-of-the-largest-settlements,pt,[-2279.] ouside of polity years
+95,iq_neo_assyrian_emp,population-of-the-largest-settlements,pt,[-609.] ouside of polity years
+96,ir_buyid_confederation,population-of-the-largest-settlements,pt,[1075.] ouside of polity years
+97,ir_il_khanate,population-of-the-largest-settlements,pt,[1343.] ouside of polity years
+98,ir_safavid_emp,population-of-the-largest-settlements,pt,[1732. 1736.] ouside of polity years
+99,ir_sassanid_emp_2,population-of-the-largest-settlements,pt,[651.] ouside of polity years
+100,ir_seljuk_sultanate,population-of-the-largest-settlements,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+101,it_italy_k,population-of-the-largest-settlements,pt,[493.] ouside of polity years
+102,it_roman_k,population-of-the-largest-settlements,pt,[-753.] ouside of polity years
+103,it_st_peter_rep_2,population-of-the-largest-settlements,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+104,jp_ashikaga,population-of-the-largest-settlements,pt,[1473. 1489. 1493.] ouside of polity years
+105,jp_kamakura,population-of-the-largest-settlements,pt,[1336.] ouside of polity years
+106,jp_nara,population-of-the-largest-settlements,pt,[707.] ouside of polity years
+107,kh_angkor_2,population-of-the-largest-settlements,pt,[1066. 1080.] ouside of polity years
+108,no_norway_k_2,population-of-the-largest-settlements,pt,[1257.] ouside of polity years
+109,pt_portuguese_emp_2,population-of-the-largest-settlements,pt,[1816.] ouside of polity years
+110,ru_golden_horde,population-of-the-largest-settlements,pt,[1227. 1459.] ouside of polity years
+111,th_rattanakosin,population-of-the-largest-settlements,pt,[1910.] ouside of polity years
+112,tr_byzantine_emp_2,population-of-the-largest-settlements,pt,[1078.] ouside of polity years
+113,tr_east_roman_emp,population-of-the-largest-settlements,pt,[641.] ouside of polity years
+114,tr_ottoman_emirate,population-of-the-largest-settlements,pt,[1413. 1421.] ouside of polity years
+115,ug_bunyoro_k_2,population-of-the-largest-settlements,pt,[1899.] ouside of polity years
+116,af_durrani_emp,settlement-hierarchies,pt,[1839.] ouside of polity years
+117,cn_western_jin_dyn,settlement-hierarchies,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+118,eg_mamluk_sultanate_1,settlement-hierarchies,pt,[1257.] ouside of polity years
+119,eg_ptolemaic_k_1,settlement-hierarchies,pt,[-204.] ouside of polity years
+120,eg_regions,settlement-hierarchies,pt,[-2004.] ouside of polity years
+121,eg_thebes_hyksos,settlement-hierarchies,pt,[-1555. -1550.] ouside of polity years
+122,es_spanish_emp_1,settlement-hierarchies,pt,[1746.] ouside of polity years
+123,es_spanish_emp_2,settlement-hierarchies,pt,[1833.] ouside of polity years
+124,fr_capetian_k_2,settlement-hierarchies,pt,[1137.] ouside of polity years
+125,fr_merovingian_emp_1,settlement-hierarchies,pt,[558.] ouside of polity years
+126,fr_merovingian_emp_2,settlement-hierarchies,pt,[690.] ouside of polity years
+127,fr_valois_k_1,settlement-hierarchies,pt,[1461.] ouside of polity years
+128,gb_anglo_saxon_1,settlement-hierarchies,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+129,gr_macedonian_emp,settlement-hierarchies,pt,[-309.] ouside of polity years
+130,il_judea,settlement-hierarchies,pt,[-165. -160.  -40.  -37.] ouside of polity years
+131,in_carnatic_sul,settlement-hierarchies,pt,[1949.] ouside of polity years
+132,in_mauryan_emp,settlement-hierarchies,pt,[-184.] ouside of polity years
+133,in_rashtrakuta_emp,settlement-hierarchies,pt,[982.] ouside of polity years
+134,iq_akkad_emp,settlement-hierarchies,pt,[-2279.] ouside of polity years
+135,ir_buyid_confederation,settlement-hierarchies,pt,[1075.] ouside of polity years
+136,ir_il_khanate,settlement-hierarchies,pt,[1343.] ouside of polity years
+137,ir_safavid_emp,settlement-hierarchies,pt,[1732. 1736.] ouside of polity years
+138,ir_sassanid_emp_2,settlement-hierarchies,pt,[651.] ouside of polity years
+139,ir_seljuk_sultanate,settlement-hierarchies,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+140,it_roman_k,settlement-hierarchies,pt,[-753.] ouside of polity years
+141,it_st_peter_rep_2,settlement-hierarchies,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+142,jp_ashikaga,settlement-hierarchies,pt,[1473. 1489. 1493.] ouside of polity years
+143,jp_kamakura,settlement-hierarchies,pt,[1336.] ouside of polity years
+144,jp_nara,settlement-hierarchies,pt,[707.] ouside of polity years
+145,kh_angkor_2,settlement-hierarchies,pt,[1066. 1080.] ouside of polity years
+146,ni_kwararafa,settlement-hierarchies,pt,[1848.] ouside of polity years
+147,no_norway_k_2,settlement-hierarchies,pt,[1257.] ouside of polity years
+148,pt_portuguese_emp_2,settlement-hierarchies,pt,[1816.] ouside of polity years
+149,ru_golden_horde,settlement-hierarchies,pt,[1227. 1459.] ouside of polity years
+150,se_baol_k,settlement-hierarchies,pt,[1894.] ouside of polity years
+151,th_rattanakosin,settlement-hierarchies,pt,[1910.] ouside of polity years
+152,tr_byzantine_emp_2,settlement-hierarchies,pt,[1078.] ouside of polity years
+153,tr_ottoman_emirate,settlement-hierarchies,pt,[1413. 1421.] ouside of polity years
+154,ug_bunyoro_k_2,settlement-hierarchies,pt,[1899.] ouside of polity years
+155,uz_chagatai_khanate,settlement-hierarchies,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+156,af_durrani_emp,administrative-levels,pt,[1839.] ouside of polity years
+157,cn_western_jin_dyn,administrative-levels,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+158,eg_mamluk_sultanate_1,administrative-levels,pt,[1257.] ouside of polity years
+159,eg_old_k_1,administrative-levels,pt,[-2667. -2345.] ouside of polity years
+160,eg_ptolemaic_k_1,administrative-levels,pt,[-204.] ouside of polity years
+161,eg_regions,administrative-levels,pt,[-2004.] ouside of polity years
+162,eg_thebes_hyksos,administrative-levels,pt,[-1555. -1550.] ouside of polity years
+163,es_spanish_emp_1,administrative-levels,pt,[1746.] ouside of polity years
+164,es_spanish_emp_2,administrative-levels,pt,[1833.] ouside of polity years
+165,fr_capetian_k_2,administrative-levels,pt,[1137.] ouside of polity years
+166,fr_merovingian_emp_1,administrative-levels,pt,[558.] ouside of polity years
+167,fr_merovingian_emp_2,administrative-levels,pt,[690.] ouside of polity years
+168,fr_valois_k_1,administrative-levels,pt,[1461.] ouside of polity years
+169,gb_anglo_saxon_1,administrative-levels,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+170,in_carnatic_sul,administrative-levels,pt,[1949.] ouside of polity years
+171,in_mauryan_emp,administrative-levels,pt,[-184.] ouside of polity years
+172,in_rashtrakuta_emp,administrative-levels,pt,[982.] ouside of polity years
+173,iq_akkad_emp,administrative-levels,pt,[-2279.] ouside of polity years
+174,iq_neo_assyrian_emp,administrative-levels,pt,[-609.] ouside of polity years
+175,ir_buyid_confederation,administrative-levels,pt,[1075.] ouside of polity years
+176,ir_il_khanate,administrative-levels,pt,[1343.] ouside of polity years
+177,ir_safavid_emp,administrative-levels,pt,[1732. 1736.] ouside of polity years
+178,ir_sassanid_emp_2,administrative-levels,pt,[651.] ouside of polity years
+179,ir_seljuk_sultanate,administrative-levels,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+180,it_st_peter_rep_2,administrative-levels,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+181,jp_ashikaga,administrative-levels,pt,[1473. 1489. 1493.] ouside of polity years
+182,jp_kamakura,administrative-levels,pt,[1336.] ouside of polity years
+183,jp_nara,administrative-levels,pt,[707.] ouside of polity years
+184,kh_angkor_2,administrative-levels,pt,[1066. 1080.] ouside of polity years
+185,no_norway_k_2,administrative-levels,pt,[1257.] ouside of polity years
+186,om_busaidi_imamate_1,administrative-levels,pt,[1913.] ouside of polity years
+187,pt_portuguese_emp_2,administrative-levels,pt,[1816.] ouside of polity years
+188,ru_golden_horde,administrative-levels,pt,[1227. 1459.] ouside of polity years
+189,th_rattanakosin,administrative-levels,pt,[1910.] ouside of polity years
+190,tr_byzantine_emp_2,administrative-levels,pt,[1078.] ouside of polity years
+191,tr_east_roman_emp,administrative-levels,pt,[641.] ouside of polity years
+192,tr_ottoman_emirate,administrative-levels,pt,[1413. 1421.] ouside of polity years
+193,ug_bunyoro_k_2,administrative-levels,pt,[1899.] ouside of polity years
+194,zi_torwa_rozvi,administrative-levels,pt,[1866.] ouside of polity years
+195,af_durrani_emp,religious-levels,pt,[1839.] ouside of polity years
+196,cn_western_jin_dyn,religious-levels,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+197,eg_mamluk_sultanate_1,religious-levels,pt,[1257.] ouside of polity years
+198,eg_old_k_1,religious-levels,pt,[-2667. -2345.] ouside of polity years
+199,eg_ptolemaic_k_1,religious-levels,pt,[-204.] ouside of polity years
+200,eg_regions,religious-levels,pt,[-2004.] ouside of polity years
+201,eg_thebes_hyksos,religious-levels,pt,[-1555. -1550.] ouside of polity years
+202,es_spanish_emp_1,religious-levels,pt,[1746.] ouside of polity years
+203,es_spanish_emp_2,religious-levels,pt,[1833.] ouside of polity years
+204,fr_capetian_k_2,religious-levels,pt,[1137.] ouside of polity years
+205,fr_merovingian_emp_1,religious-levels,pt,[558.] ouside of polity years
+206,fr_merovingian_emp_2,religious-levels,pt,[690.] ouside of polity years
+207,fr_valois_k_1,religious-levels,pt,[1461.] ouside of polity years
+208,gb_anglo_saxon_1,religious-levels,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+209,gr_macedonian_emp,religious-levels,pt,[-309.] ouside of polity years
+210,in_mauryan_emp,religious-levels,pt,[-184.] ouside of polity years
+211,in_rashtrakuta_emp,religious-levels,pt,[982.] ouside of polity years
+212,iq_akkad_emp,religious-levels,pt,[-2279.] ouside of polity years
+213,iq_neo_assyrian_emp,religious-levels,pt,[-609.] ouside of polity years
+214,ir_buyid_confederation,religious-levels,pt,[1075.] ouside of polity years
+215,ir_il_khanate,religious-levels,pt,[1343.] ouside of polity years
+216,ir_safavid_emp,religious-levels,pt,[1732. 1736.] ouside of polity years
+217,ir_sassanid_emp_2,religious-levels,pt,[651.] ouside of polity years
+218,ir_seljuk_sultanate,religious-levels,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+219,it_roman_k,religious-levels,pt,[-753.] ouside of polity years
+220,it_st_peter_rep_2,religious-levels,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+221,jp_ashikaga,religious-levels,pt,[1473. 1489. 1493.] ouside of polity years
+222,jp_kamakura,religious-levels,pt,[1336.] ouside of polity years
+223,kh_angkor_2,religious-levels,pt,[1066. 1080.] ouside of polity years
+224,no_norway_k_2,religious-levels,pt,[1257.] ouside of polity years
+225,om_busaidi_imamate_1,religious-levels,pt,[1913.] ouside of polity years
+226,pt_portuguese_emp_2,religious-levels,pt,[1816.] ouside of polity years
+227,ru_golden_horde,religious-levels,pt,[1227. 1459.] ouside of polity years
+228,th_rattanakosin,religious-levels,pt,[1910.] ouside of polity years
+229,tr_byzantine_emp_2,religious-levels,pt,[1078.] ouside of polity years
+230,tr_east_roman_emp,religious-levels,pt,[641.] ouside of polity years
+231,tr_ottoman_emirate,religious-levels,pt,[1413. 1421.] ouside of polity years
+232,uz_chagatai_khanate,religious-levels,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+233,af_durrani_emp,military-levels,pt,[1839.] ouside of polity years
+234,cn_western_jin_dyn,military-levels,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+235,eg_mamluk_sultanate_1,military-levels,pt,[1257.] ouside of polity years
+236,eg_old_k_1,military-levels,pt,[-2667. -2345.] ouside of polity years
+237,eg_ptolemaic_k_1,military-levels,pt,[-204.] ouside of polity years
+238,eg_regions,military-levels,pt,[-2004.] ouside of polity years
+239,eg_thebes_hyksos,military-levels,pt,[-1555. -1550.] ouside of polity years
+240,es_spanish_emp_1,military-levels,pt,[1746.] ouside of polity years
+241,es_spanish_emp_2,military-levels,pt,[1833.] ouside of polity years
+242,fr_capetian_k_2,military-levels,pt,[1137.] ouside of polity years
+243,fr_merovingian_emp_1,military-levels,pt,[558.] ouside of polity years
+244,fr_merovingian_emp_2,military-levels,pt,[690.] ouside of polity years
+245,fr_valois_k_1,military-levels,pt,[1461.] ouside of polity years
+246,gb_anglo_saxon_1,military-levels,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+247,gr_macedonian_emp,military-levels,pt,[-309.] ouside of polity years
+248,in_carnatic_sul,military-levels,pt,[1949.] ouside of polity years
+249,in_mauryan_emp,military-levels,pt,[-184.] ouside of polity years
+250,in_rashtrakuta_emp,military-levels,pt,[982.] ouside of polity years
+251,iq_akkad_emp,military-levels,pt,[-2279.] ouside of polity years
+252,iq_neo_assyrian_emp,military-levels,pt,[-609.] ouside of polity years
+253,ir_buyid_confederation,military-levels,pt,[1075.] ouside of polity years
+254,ir_il_khanate,military-levels,pt,[1343.] ouside of polity years
+255,ir_safavid_emp,military-levels,pt,[1732. 1736.] ouside of polity years
+256,ir_sassanid_emp_2,military-levels,pt,[651.] ouside of polity years
+257,ir_seljuk_sultanate,military-levels,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+258,it_roman_k,military-levels,pt,[-753.] ouside of polity years
+259,it_st_peter_rep_2,military-levels,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+260,jp_ashikaga,military-levels,pt,[1473. 1489. 1493.] ouside of polity years
+261,jp_kamakura,military-levels,pt,[1336.] ouside of polity years
+262,kh_angkor_2,military-levels,pt,[1066. 1080.] ouside of polity years
+263,no_norway_k_2,military-levels,pt,[1257.] ouside of polity years
+264,pt_portuguese_emp_2,military-levels,pt,[1816.] ouside of polity years
+265,ru_golden_horde,military-levels,pt,[1227. 1459.] ouside of polity years
+266,th_rattanakosin,military-levels,pt,[1910.] ouside of polity years
+267,tr_east_roman_emp,military-levels,pt,[641.] ouside of polity years
+268,tr_ottoman_emirate,military-levels,pt,[1413. 1421.] ouside of polity years
+269,ug_buganda_k_1,military-levels,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+270,uz_chagatai_khanate,military-levels,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+271,af_durrani_emp,professional-military-officers,pt,[1839.] ouside of polity years
+272,cn_western_jin_dyn,professional-military-officers,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+273,eg_mamluk_sultanate_1,professional-military-officers,pt,[1257.] ouside of polity years
+274,eg_old_k_1,professional-military-officers,pt,[-2667. -2345.] ouside of polity years
+275,eg_ptolemaic_k_1,professional-military-officers,pt,[-204.] ouside of polity years
+276,eg_regions,professional-military-officers,pt,[-2004.] ouside of polity years
+277,eg_thebes_hyksos,professional-military-officers,pt,[-1555. -1550.] ouside of polity years
+278,es_spanish_emp_1,professional-military-officers,pt,[1746.] ouside of polity years
+279,es_spanish_emp_2,professional-military-officers,pt,[1833.] ouside of polity years
+280,fr_merovingian_emp_1,professional-military-officers,pt,[558.] ouside of polity years
+281,fr_merovingian_emp_2,professional-military-officers,pt,[690.] ouside of polity years
+282,fr_valois_k_1,professional-military-officers,pt,[1461.] ouside of polity years
+283,gr_macedonian_emp,professional-military-officers,pt,[-309.] ouside of polity years
+284,in_gurjara_pratihara_dyn,professional-military-officers,pt,[1036.] ouside of polity years
+285,in_mauryan_emp,professional-military-officers,pt,[-184.] ouside of polity years
+286,in_rashtrakuta_emp,professional-military-officers,pt,[982.] ouside of polity years
+287,iq_akkad_emp,professional-military-officers,pt,[-2279.] ouside of polity years
+288,iq_neo_assyrian_emp,professional-military-officers,pt,[-609.] ouside of polity years
+289,ir_buyid_confederation,professional-military-officers,pt,[1075.] ouside of polity years
+290,ir_il_khanate,professional-military-officers,pt,[1343.] ouside of polity years
+291,ir_safavid_emp,professional-military-officers,pt,[1732. 1736.] ouside of polity years
+292,ir_sassanid_emp_2,professional-military-officers,pt,[651.] ouside of polity years
+293,ir_seljuk_sultanate,professional-military-officers,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+294,it_italy_k,professional-military-officers,pt,[493.] ouside of polity years
+295,it_roman_k,professional-military-officers,pt,[-753.] ouside of polity years
+296,it_st_peter_rep_2,professional-military-officers,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+297,jp_ashikaga,professional-military-officers,pt,[1473. 1489. 1493.] ouside of polity years
+298,jp_kamakura,professional-military-officers,pt,[1336.] ouside of polity years
+299,jp_nara,professional-military-officers,pt,[707.] ouside of polity years
+300,kh_angkor_2,professional-military-officers,pt,[1066. 1080.] ouside of polity years
+301,no_norway_k_2,professional-military-officers,pt,[1257.] ouside of polity years
+302,om_busaidi_imamate_1,professional-military-officers,pt,[1913.] ouside of polity years
+303,pt_portuguese_emp_2,professional-military-officers,pt,[1816.] ouside of polity years
+304,th_rattanakosin,professional-military-officers,pt,[1910.] ouside of polity years
+305,tr_byzantine_emp_2,professional-military-officers,pt,[1078.] ouside of polity years
+306,tr_east_roman_emp,professional-military-officers,pt,[641.] ouside of polity years
+307,tr_ottoman_emirate,professional-military-officers,pt,[1413. 1421.] ouside of polity years
+308,ug_buganda_k_1,professional-military-officers,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+309,ug_bunyoro_k_2,professional-military-officers,pt,[1899.] ouside of polity years
+310,uz_chagatai_khanate,professional-military-officers,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+311,af_durrani_emp,professional-soldiers,pt,[1839.] ouside of polity years
+312,eg_mamluk_sultanate_1,professional-soldiers,pt,[1257.] ouside of polity years
+313,eg_ptolemaic_k_1,professional-soldiers,pt,[-204.] ouside of polity years
+314,eg_regions,professional-soldiers,pt,[-2004.] ouside of polity years
+315,es_spanish_emp_1,professional-soldiers,pt,[1746.] ouside of polity years
+316,es_spanish_emp_2,professional-soldiers,pt,[1833.] ouside of polity years
+317,fr_capetian_k_2,professional-soldiers,pt,[1137.] ouside of polity years
+318,fr_merovingian_emp_1,professional-soldiers,pt,[558.] ouside of polity years
+319,fr_merovingian_emp_2,professional-soldiers,pt,[690.] ouside of polity years
+320,fr_valois_k_1,professional-soldiers,pt,[1461.] ouside of polity years
+321,gb_anglo_saxon_1,professional-soldiers,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+322,gr_macedonian_emp,professional-soldiers,pt,[-309.] ouside of polity years
+323,il_judea,professional-soldiers,pt,[-165. -160.  -40.  -37.] ouside of polity years
+324,in_gurjara_pratihara_dyn,professional-soldiers,pt,[1036.] ouside of polity years
+325,in_mauryan_emp,professional-soldiers,pt,[-184.] ouside of polity years
+326,in_rashtrakuta_emp,professional-soldiers,pt,[982.] ouside of polity years
+327,iq_akkad_emp,professional-soldiers,pt,[-2279.] ouside of polity years
+328,iq_neo_assyrian_emp,professional-soldiers,pt,[-609.] ouside of polity years
+329,ir_buyid_confederation,professional-soldiers,pt,[1075.] ouside of polity years
+330,ir_il_khanate,professional-soldiers,pt,[1343.] ouside of polity years
+331,ir_safavid_emp,professional-soldiers,pt,[1732. 1736.] ouside of polity years
+332,ir_sassanid_emp_2,professional-soldiers,pt,[651.] ouside of polity years
+333,ir_seljuk_sultanate,professional-soldiers,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+334,it_italy_k,professional-soldiers,pt,[493.] ouside of polity years
+335,it_roman_k,professional-soldiers,pt,[-753.] ouside of polity years
+336,it_st_peter_rep_2,professional-soldiers,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+337,jp_ashikaga,professional-soldiers,pt,[1473. 1489. 1493.] ouside of polity years
+338,jp_kamakura,professional-soldiers,pt,[1336.] ouside of polity years
+339,jp_nara,professional-soldiers,pt,[707.] ouside of polity years
+340,kh_angkor_2,professional-soldiers,pt,[1066. 1080.] ouside of polity years
+341,no_norway_k_2,professional-soldiers,pt,[1257.] ouside of polity years
+342,om_busaidi_imamate_1,professional-soldiers,pt,[1913.] ouside of polity years
+343,pt_portuguese_emp_2,professional-soldiers,pt,[1816.] ouside of polity years
+344,th_rattanakosin,professional-soldiers,pt,[1910.] ouside of polity years
+345,tr_byzantine_emp_2,professional-soldiers,pt,[1078.] ouside of polity years
+346,tr_east_roman_emp,professional-soldiers,pt,[641.] ouside of polity years
+347,tr_ottoman_emirate,professional-soldiers,pt,[1413. 1421.] ouside of polity years
+348,ug_buganda_k_1,professional-soldiers,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+349,ug_bunyoro_k_2,professional-soldiers,pt,[1899.] ouside of polity years
+350,uz_chagatai_khanate,professional-soldiers,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+351,af_durrani_emp,professional-priesthoods,pt,[1839.] ouside of polity years
+352,cn_western_jin_dyn,professional-priesthoods,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+353,eg_mamluk_sultanate_1,professional-priesthoods,pt,[1257.] ouside of polity years
+354,eg_old_k_1,professional-priesthoods,pt,[-2667. -2345.] ouside of polity years
+355,eg_ptolemaic_k_1,professional-priesthoods,pt,[-204.] ouside of polity years
+356,eg_regions,professional-priesthoods,pt,[-2004.] ouside of polity years
+357,eg_thebes_hyksos,professional-priesthoods,pt,[-1555. -1550.] ouside of polity years
+358,es_spanish_emp_1,professional-priesthoods,pt,[1746.] ouside of polity years
+359,es_spanish_emp_2,professional-priesthoods,pt,[1833.] ouside of polity years
+360,fr_capetian_k_2,professional-priesthoods,pt,[1137.] ouside of polity years
+361,fr_merovingian_emp_1,professional-priesthoods,pt,[558.] ouside of polity years
+362,fr_merovingian_emp_2,professional-priesthoods,pt,[690.] ouside of polity years
+363,gb_anglo_saxon_1,professional-priesthoods,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+364,il_judea,professional-priesthoods,pt,[-165. -160.  -40.  -37.] ouside of polity years
+365,in_mauryan_emp,professional-priesthoods,pt,[-184.] ouside of polity years
+366,in_rashtrakuta_emp,professional-priesthoods,pt,[982.] ouside of polity years
+367,iq_akkad_emp,professional-priesthoods,pt,[-2279.] ouside of polity years
+368,iq_neo_assyrian_emp,professional-priesthoods,pt,[-609.] ouside of polity years
+369,ir_il_khanate,professional-priesthoods,pt,[1343.] ouside of polity years
+370,ir_safavid_emp,professional-priesthoods,pt,[1732. 1736.] ouside of polity years
+371,ir_sassanid_emp_2,professional-priesthoods,pt,[651.] ouside of polity years
+372,ir_seljuk_sultanate,professional-priesthoods,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+373,it_italy_k,professional-priesthoods,pt,[493.] ouside of polity years
+374,it_roman_k,professional-priesthoods,pt,[-753.] ouside of polity years
+375,it_st_peter_rep_2,professional-priesthoods,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+376,jp_ashikaga,professional-priesthoods,pt,[1473. 1489. 1493.] ouside of polity years
+377,jp_kamakura,professional-priesthoods,pt,[1336.] ouside of polity years
+378,jp_nara,professional-priesthoods,pt,[707.] ouside of polity years
+379,kh_angkor_2,professional-priesthoods,pt,[1066. 1080.] ouside of polity years
+380,no_norway_k_2,professional-priesthoods,pt,[1257.] ouside of polity years
+381,ru_golden_horde,professional-priesthoods,pt,[1227. 1459.] ouside of polity years
+382,th_rattanakosin,professional-priesthoods,pt,[1910.] ouside of polity years
+383,tr_byzantine_emp_2,professional-priesthoods,pt,[1078.] ouside of polity years
+384,tr_east_roman_emp,professional-priesthoods,pt,[641.] ouside of polity years
+385,tr_ottoman_emirate,professional-priesthoods,pt,[1413. 1421.] ouside of polity years
+386,uz_chagatai_khanate,professional-priesthoods,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+387,zi_torwa_rozvi,professional-priesthoods,pt,[1866.] ouside of polity years
+388,af_durrani_emp,full-time-bureaucrats,pt,[1839.] ouside of polity years
+389,cn_western_jin_dyn,full-time-bureaucrats,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+390,eg_mamluk_sultanate_1,full-time-bureaucrats,pt,[1257.] ouside of polity years
+391,eg_old_k_1,full-time-bureaucrats,pt,[-2667. -2345.] ouside of polity years
+392,eg_ptolemaic_k_1,full-time-bureaucrats,pt,[-204.] ouside of polity years
+393,eg_regions,full-time-bureaucrats,pt,[-2004.] ouside of polity years
+394,eg_thebes_hyksos,full-time-bureaucrats,pt,[-1555. -1550.] ouside of polity years
+395,es_spanish_emp_1,full-time-bureaucrats,pt,[1746.] ouside of polity years
+396,es_spanish_emp_2,full-time-bureaucrats,pt,[1833.] ouside of polity years
+397,fr_capetian_k_2,full-time-bureaucrats,pt,[1137.] ouside of polity years
+398,fr_merovingian_emp_1,full-time-bureaucrats,pt,[558.] ouside of polity years
+399,fr_merovingian_emp_2,full-time-bureaucrats,pt,[690.] ouside of polity years
+400,fr_valois_k_1,full-time-bureaucrats,pt,[1461.] ouside of polity years
+401,gb_anglo_saxon_1,full-time-bureaucrats,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+402,in_gahadavala_dyn,full-time-bureaucrats,pt,[1197.] ouside of polity years
+403,in_mauryan_emp,full-time-bureaucrats,pt,[-184.] ouside of polity years
+404,in_rashtrakuta_emp,full-time-bureaucrats,pt,[982.] ouside of polity years
+405,iq_akkad_emp,full-time-bureaucrats,pt,[-2279.] ouside of polity years
+406,iq_neo_assyrian_emp,full-time-bureaucrats,pt,[-609.] ouside of polity years
+407,ir_buyid_confederation,full-time-bureaucrats,pt,[1075.] ouside of polity years
+408,ir_il_khanate,full-time-bureaucrats,pt,[1343.] ouside of polity years
+409,ir_safavid_emp,full-time-bureaucrats,pt,[1732. 1736.] ouside of polity years
+410,ir_sassanid_emp_2,full-time-bureaucrats,pt,[651.] ouside of polity years
+411,ir_seljuk_sultanate,full-time-bureaucrats,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+412,it_roman_k,full-time-bureaucrats,pt,[-753.] ouside of polity years
+413,it_st_peter_rep_2,full-time-bureaucrats,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+414,jp_ashikaga,full-time-bureaucrats,pt,[1473. 1489. 1493.] ouside of polity years
+415,jp_kamakura,full-time-bureaucrats,pt,[1336.] ouside of polity years
+416,jp_nara,full-time-bureaucrats,pt,[707.] ouside of polity years
+417,kh_angkor_2,full-time-bureaucrats,pt,[1066. 1080.] ouside of polity years
+418,no_norway_k_2,full-time-bureaucrats,pt,[1257.] ouside of polity years
+419,pt_portuguese_emp_2,full-time-bureaucrats,pt,[1816.] ouside of polity years
+420,ru_golden_horde,full-time-bureaucrats,pt,[1227. 1459.] ouside of polity years
+421,th_rattanakosin,full-time-bureaucrats,pt,[1910.] ouside of polity years
+422,tr_byzantine_emp_2,full-time-bureaucrats,pt,[1078.] ouside of polity years
+423,tr_east_roman_emp,full-time-bureaucrats,pt,[641.] ouside of polity years
+424,tr_ottoman_emirate,full-time-bureaucrats,pt,[1413. 1421.] ouside of polity years
+425,ug_bunyoro_k_2,full-time-bureaucrats,pt,[1899.] ouside of polity years
+426,af_durrani_emp,examination-systems,pt,[1839.] ouside of polity years
+427,cn_western_jin_dyn,examination-systems,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+428,eg_mamluk_sultanate_1,examination-systems,pt,[1257.] ouside of polity years
+429,eg_old_k_1,examination-systems,pt,[-2667. -2345.] ouside of polity years
+430,eg_ptolemaic_k_1,examination-systems,pt,[-204.] ouside of polity years
+431,eg_regions,examination-systems,pt,[-2004.] ouside of polity years
+432,eg_thebes_hyksos,examination-systems,pt,[-1555. -1550.] ouside of polity years
+433,es_spanish_emp_1,examination-systems,pt,[1746.] ouside of polity years
+434,fr_capetian_k_2,examination-systems,pt,[1137.] ouside of polity years
+435,fr_valois_k_1,examination-systems,pt,[1461.] ouside of polity years
+436,gr_macedonian_emp,examination-systems,pt,[-309.] ouside of polity years
+437,in_mauryan_emp,examination-systems,pt,[-184.] ouside of polity years
+438,iq_akkad_emp,examination-systems,pt,[-2279.] ouside of polity years
+439,iq_neo_assyrian_emp,examination-systems,pt,[-609.] ouside of polity years
+440,ir_il_khanate,examination-systems,pt,[1343.] ouside of polity years
+441,ir_safavid_emp,examination-systems,pt,[1732. 1736.] ouside of polity years
+442,ir_sassanid_emp_2,examination-systems,pt,[651.] ouside of polity years
+443,ir_seljuk_sultanate,examination-systems,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+444,it_italy_k,examination-systems,pt,[493.] ouside of polity years
+445,it_roman_k,examination-systems,pt,[-753.] ouside of polity years
+446,it_st_peter_rep_2,examination-systems,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+447,jp_ashikaga,examination-systems,pt,[1473. 1489. 1493.] ouside of polity years
+448,jp_kamakura,examination-systems,pt,[1336.] ouside of polity years
+449,jp_nara,examination-systems,pt,[707.] ouside of polity years
+450,kh_angkor_2,examination-systems,pt,[1066. 1080.] ouside of polity years
+451,no_norway_k_2,examination-systems,pt,[1257.] ouside of polity years
+452,pt_portuguese_emp_2,examination-systems,pt,[1816.] ouside of polity years
+453,ru_golden_horde,examination-systems,pt,[1227. 1459.] ouside of polity years
+454,th_rattanakosin,examination-systems,pt,[1910.] ouside of polity years
+455,tr_byzantine_emp_2,examination-systems,pt,[1078.] ouside of polity years
+456,tr_east_roman_emp,examination-systems,pt,[641.] ouside of polity years
+457,tr_ottoman_emirate,examination-systems,pt,[1413. 1421.] ouside of polity years
+458,ug_bunyoro_k_2,examination-systems,pt,[1899.] ouside of polity years
+459,af_durrani_emp,merit-promotions,pt,[1839.] ouside of polity years
+460,cn_western_jin_dyn,merit-promotions,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+461,eg_mamluk_sultanate_1,merit-promotions,pt,[1257.] ouside of polity years
+462,eg_old_k_1,merit-promotions,pt,[-2667. -2345.] ouside of polity years
+463,eg_ptolemaic_k_1,merit-promotions,pt,[-204.] ouside of polity years
+464,eg_thebes_hyksos,merit-promotions,pt,[-1555. -1550.] ouside of polity years
+465,es_spanish_emp_1,merit-promotions,pt,[1746.] ouside of polity years
+466,es_spanish_emp_2,merit-promotions,pt,[1833.] ouside of polity years
+467,fr_capetian_k_2,merit-promotions,pt,[1137.] ouside of polity years
+468,fr_merovingian_emp_2,merit-promotions,pt,[690.] ouside of polity years
+469,fr_valois_k_1,merit-promotions,pt,[1461.] ouside of polity years
+470,gr_macedonian_emp,merit-promotions,pt,[-309.] ouside of polity years
+471,in_mauryan_emp,merit-promotions,pt,[-184.] ouside of polity years
+472,in_rashtrakuta_emp,merit-promotions,pt,[982.] ouside of polity years
+473,iq_neo_assyrian_emp,merit-promotions,pt,[-609.] ouside of polity years
+474,ir_buyid_confederation,merit-promotions,pt,[1075.] ouside of polity years
+475,ir_il_khanate,merit-promotions,pt,[1343.] ouside of polity years
+476,ir_safavid_emp,merit-promotions,pt,[1732. 1736.] ouside of polity years
+477,ir_sassanid_emp_2,merit-promotions,pt,[651.] ouside of polity years
+478,ir_seljuk_sultanate,merit-promotions,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+479,it_italy_k,merit-promotions,pt,[493.] ouside of polity years
+480,it_roman_k,merit-promotions,pt,[-753.] ouside of polity years
+481,it_st_peter_rep_2,merit-promotions,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+482,jp_ashikaga,merit-promotions,pt,[1473. 1489. 1493.] ouside of polity years
+483,jp_kamakura,merit-promotions,pt,[1336.] ouside of polity years
+484,jp_nara,merit-promotions,pt,[707.] ouside of polity years
+485,kh_angkor_2,merit-promotions,pt,[1066. 1080.] ouside of polity years
+486,no_norway_k_2,merit-promotions,pt,[1257.] ouside of polity years
+487,pt_portuguese_emp_2,merit-promotions,pt,[1816.] ouside of polity years
+488,th_rattanakosin,merit-promotions,pt,[1910.] ouside of polity years
+489,tr_byzantine_emp_2,merit-promotions,pt,[1078.] ouside of polity years
+490,tr_east_roman_emp,merit-promotions,pt,[641.] ouside of polity years
+491,tr_ottoman_emirate,merit-promotions,pt,[1413. 1421.] ouside of polity years
+492,ug_bunyoro_k_2,merit-promotions,pt,[1899.] ouside of polity years
+493,af_durrani_emp,specialized-government-buildings,pt,[1839.] ouside of polity years
+494,cn_western_jin_dyn,specialized-government-buildings,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+495,eg_mamluk_sultanate_1,specialized-government-buildings,pt,[1257.] ouside of polity years
+496,eg_old_k_1,specialized-government-buildings,pt,[-2667. -2345.] ouside of polity years
+497,eg_ptolemaic_k_1,specialized-government-buildings,pt,[-204.] ouside of polity years
+498,eg_thebes_hyksos,specialized-government-buildings,pt,[-1555. -1550.] ouside of polity years
+499,es_spanish_emp_1,specialized-government-buildings,pt,[1746.] ouside of polity years
+500,fr_capetian_k_2,specialized-government-buildings,pt,[1137.] ouside of polity years
+501,fr_merovingian_emp_1,specialized-government-buildings,pt,[558.] ouside of polity years
+502,fr_merovingian_emp_2,specialized-government-buildings,pt,[690.] ouside of polity years
+503,fr_valois_k_1,specialized-government-buildings,pt,[1461.] ouside of polity years
+504,gb_anglo_saxon_1,specialized-government-buildings,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+505,gr_macedonian_emp,specialized-government-buildings,pt,[-309.] ouside of polity years
+506,in_gahadavala_dyn,specialized-government-buildings,pt,[1197.] ouside of polity years
+507,in_gurjara_pratihara_dyn,specialized-government-buildings,pt,[1036.] ouside of polity years
+508,in_mauryan_emp,specialized-government-buildings,pt,[-184.] ouside of polity years
+509,iq_akkad_emp,specialized-government-buildings,pt,[-2279.] ouside of polity years
+510,iq_neo_assyrian_emp,specialized-government-buildings,pt,[-609.] ouside of polity years
+511,ir_il_khanate,specialized-government-buildings,pt,[1343.] ouside of polity years
+512,ir_safavid_emp,specialized-government-buildings,pt,[1732. 1736.] ouside of polity years
+513,ir_sassanid_emp_2,specialized-government-buildings,pt,[651.] ouside of polity years
+514,ir_seljuk_sultanate,specialized-government-buildings,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+515,it_italy_k,specialized-government-buildings,pt,[493.] ouside of polity years
+516,it_roman_k,specialized-government-buildings,pt,[-753.] ouside of polity years
+517,it_st_peter_rep_2,specialized-government-buildings,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+518,jp_ashikaga,specialized-government-buildings,pt,[1473. 1489. 1493.] ouside of polity years
+519,jp_kamakura,specialized-government-buildings,pt,[1336.] ouside of polity years
+520,kh_angkor_2,specialized-government-buildings,pt,[1066. 1080.] ouside of polity years
+521,no_norway_k_2,specialized-government-buildings,pt,[1257.] ouside of polity years
+522,pt_portuguese_emp_2,specialized-government-buildings,pt,[1816.] ouside of polity years
+523,ru_golden_horde,specialized-government-buildings,pt,[1227. 1459.] ouside of polity years
+524,th_rattanakosin,specialized-government-buildings,pt,[1910.] ouside of polity years
+525,tr_byzantine_emp_2,specialized-government-buildings,pt,[1078.] ouside of polity years
+526,tr_east_roman_emp,specialized-government-buildings,pt,[641.] ouside of polity years
+527,tr_ottoman_emirate,specialized-government-buildings,pt,[1413. 1421.] ouside of polity years
+528,ug_bunyoro_k_2,specialized-government-buildings,pt,[1899.] ouside of polity years
+529,uz_chagatai_khanate,specialized-government-buildings,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+530,af_durrani_emp,formal-legal-codes,pt,[1839.] ouside of polity years
+531,cn_western_jin_dyn,formal-legal-codes,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+532,eg_mamluk_sultanate_1,formal-legal-codes,pt,[1257.] ouside of polity years
+533,eg_old_k_1,formal-legal-codes,pt,[-2667. -2345.] ouside of polity years
+534,eg_ptolemaic_k_1,formal-legal-codes,pt,[-204.] ouside of polity years
+535,eg_regions,formal-legal-codes,pt,[-2004.] ouside of polity years
+536,eg_thebes_hyksos,formal-legal-codes,pt,[-1555. -1550.] ouside of polity years
+537,es_spanish_emp_1,formal-legal-codes,pt,[1746.] ouside of polity years
+538,es_spanish_emp_2,formal-legal-codes,pt,[1833.] ouside of polity years
+539,fr_capetian_k_2,formal-legal-codes,pt,[1137.] ouside of polity years
+540,fr_merovingian_emp_1,formal-legal-codes,pt,[558.] ouside of polity years
+541,fr_merovingian_emp_2,formal-legal-codes,pt,[690.] ouside of polity years
+542,fr_valois_k_1,formal-legal-codes,pt,[1461.] ouside of polity years
+543,gb_anglo_saxon_1,formal-legal-codes,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+544,in_mauryan_emp,formal-legal-codes,pt,[-184.] ouside of polity years
+545,in_rashtrakuta_emp,formal-legal-codes,pt,[982.] ouside of polity years
+546,iq_akkad_emp,formal-legal-codes,pt,[-2279.] ouside of polity years
+547,iq_neo_assyrian_emp,formal-legal-codes,pt,[-609.] ouside of polity years
+548,ir_buyid_confederation,formal-legal-codes,pt,[1075.] ouside of polity years
+549,ir_il_khanate,formal-legal-codes,pt,[1343.] ouside of polity years
+550,ir_safavid_emp,formal-legal-codes,pt,[1732. 1736.] ouside of polity years
+551,ir_sassanid_emp_2,formal-legal-codes,pt,[651.] ouside of polity years
+552,ir_seljuk_sultanate,formal-legal-codes,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+553,it_italy_k,formal-legal-codes,pt,[493.] ouside of polity years
+554,it_roman_k,formal-legal-codes,pt,[-753.] ouside of polity years
+555,it_st_peter_rep_2,formal-legal-codes,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+556,jp_ashikaga,formal-legal-codes,pt,[1473. 1489. 1493.] ouside of polity years
+557,jp_kamakura,formal-legal-codes,pt,[1336.] ouside of polity years
+558,jp_nara,formal-legal-codes,pt,[707.] ouside of polity years
+559,kh_angkor_2,formal-legal-codes,pt,[1066. 1080.] ouside of polity years
+560,no_norway_k_2,formal-legal-codes,pt,[1257.] ouside of polity years
+561,pt_portuguese_emp_2,formal-legal-codes,pt,[1816.] ouside of polity years
+562,ru_golden_horde,formal-legal-codes,pt,[1227. 1459.] ouside of polity years
+563,th_rattanakosin,formal-legal-codes,pt,[1910.] ouside of polity years
+564,tr_byzantine_emp_2,formal-legal-codes,pt,[1078.] ouside of polity years
+565,tr_east_roman_emp,formal-legal-codes,pt,[641.] ouside of polity years
+566,tr_ottoman_emirate,formal-legal-codes,pt,[1413. 1421.] ouside of polity years
+567,uz_chagatai_khanate,formal-legal-codes,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+568,af_durrani_emp,judges,pt,[1839.] ouside of polity years
+569,cn_western_jin_dyn,judges,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+570,eg_mamluk_sultanate_1,judges,pt,[1257.] ouside of polity years
+571,eg_old_k_1,judges,pt,[-2667. -2345.] ouside of polity years
+572,eg_ptolemaic_k_1,judges,pt,[-204.] ouside of polity years
+573,eg_thebes_hyksos,judges,pt,[-1555. -1550.] ouside of polity years
+574,es_spanish_emp_2,judges,pt,[1833.] ouside of polity years
+575,fr_capetian_k_2,judges,pt,[1137.] ouside of polity years
+576,fr_merovingian_emp_1,judges,pt,[558.] ouside of polity years
+577,fr_merovingian_emp_2,judges,pt,[690.] ouside of polity years
+578,fr_valois_k_1,judges,pt,[1461.] ouside of polity years
+579,gb_anglo_saxon_1,judges,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+580,in_gahadavala_dyn,judges,pt,[1197.] ouside of polity years
+581,in_mauryan_emp,judges,pt,[-184.] ouside of polity years
+582,in_rashtrakuta_emp,judges,pt,[982.] ouside of polity years
+583,iq_akkad_emp,judges,pt,[-2279.] ouside of polity years
+584,iq_neo_assyrian_emp,judges,pt,[-609.] ouside of polity years
+585,ir_buyid_confederation,judges,pt,[1075.] ouside of polity years
+586,ir_il_khanate,judges,pt,[1343.] ouside of polity years
+587,ir_safavid_emp,judges,pt,[1732. 1736.] ouside of polity years
+588,ir_sassanid_emp_2,judges,pt,[651.] ouside of polity years
+589,ir_seljuk_sultanate,judges,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+590,it_italy_k,judges,pt,[493.] ouside of polity years
+591,it_roman_k,judges,pt,[-753.] ouside of polity years
+592,it_st_peter_rep_2,judges,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+593,jp_kamakura,judges,pt,[1336.] ouside of polity years
+594,jp_nara,judges,pt,[707.] ouside of polity years
+595,kh_angkor_2,judges,pt,[1066. 1080.] ouside of polity years
+596,no_norway_k_2,judges,pt,[1257.] ouside of polity years
+597,pt_portuguese_emp_2,judges,pt,[1816.] ouside of polity years
+598,ru_golden_horde,judges,pt,[1227. 1459.] ouside of polity years
+599,th_rattanakosin,judges,pt,[1910.] ouside of polity years
+600,tr_byzantine_emp_2,judges,pt,[1078.] ouside of polity years
+601,tr_ottoman_emirate,judges,pt,[1413. 1421.] ouside of polity years
+602,uz_chagatai_khanate,judges,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+603,af_durrani_emp,courts,pt,[1839.] ouside of polity years
+604,cn_western_jin_dyn,courts,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+605,eg_mamluk_sultanate_1,courts,pt,[1257.] ouside of polity years
+606,eg_old_k_1,courts,pt,[-2667. -2345.] ouside of polity years
+607,eg_ptolemaic_k_1,courts,pt,[-204.] ouside of polity years
+608,eg_regions,courts,pt,[-2004.] ouside of polity years
+609,eg_thebes_hyksos,courts,pt,[-1555. -1550.] ouside of polity years
+610,es_spanish_emp_1,courts,pt,[1746.] ouside of polity years
+611,fr_capetian_k_2,courts,pt,[1137.] ouside of polity years
+612,fr_merovingian_emp_1,courts,pt,[558.] ouside of polity years
+613,fr_merovingian_emp_2,courts,pt,[690.] ouside of polity years
+614,fr_valois_k_1,courts,pt,[1461.] ouside of polity years
+615,gb_anglo_saxon_1,courts,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+616,in_mauryan_emp,courts,pt,[-184.] ouside of polity years
+617,in_rashtrakuta_emp,courts,pt,[982.] ouside of polity years
+618,iq_akkad_emp,courts,pt,[-2279.] ouside of polity years
+619,iq_neo_assyrian_emp,courts,pt,[-609.] ouside of polity years
+620,ir_il_khanate,courts,pt,[1343.] ouside of polity years
+621,ir_safavid_emp,courts,pt,[1732. 1736.] ouside of polity years
+622,ir_sassanid_emp_2,courts,pt,[651.] ouside of polity years
+623,ir_seljuk_sultanate,courts,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+624,it_italy_k,courts,pt,[493.] ouside of polity years
+625,it_roman_k,courts,pt,[-753.] ouside of polity years
+626,it_st_peter_rep_2,courts,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+627,jp_kamakura,courts,pt,[1336.] ouside of polity years
+628,kh_angkor_2,courts,pt,[1066. 1080.] ouside of polity years
+629,no_norway_k_2,courts,pt,[1257.] ouside of polity years
+630,pt_portuguese_emp_2,courts,pt,[1816.] ouside of polity years
+631,ru_golden_horde,courts,pt,[1227. 1459.] ouside of polity years
+632,th_rattanakosin,courts,pt,[1910.] ouside of polity years
+633,tr_byzantine_emp_2,courts,pt,[1078.] ouside of polity years
+634,tr_east_roman_emp,courts,pt,[641.] ouside of polity years
+635,tr_ottoman_emirate,courts,pt,[1413. 1421.] ouside of polity years
+636,uz_chagatai_khanate,courts,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+637,af_durrani_emp,professional-lawyers,pt,[1839.] ouside of polity years
+638,cn_western_jin_dyn,professional-lawyers,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+639,eg_mamluk_sultanate_1,professional-lawyers,pt,[1257.] ouside of polity years
+640,eg_old_k_1,professional-lawyers,pt,[-2667. -2345.] ouside of polity years
+641,eg_ptolemaic_k_1,professional-lawyers,pt,[-204.] ouside of polity years
+642,eg_regions,professional-lawyers,pt,[-2004.] ouside of polity years
+643,eg_thebes_hyksos,professional-lawyers,pt,[-1555. -1550.] ouside of polity years
+644,es_spanish_emp_1,professional-lawyers,pt,[1746.] ouside of polity years
+645,es_spanish_emp_2,professional-lawyers,pt,[1833.] ouside of polity years
+646,fr_capetian_k_2,professional-lawyers,pt,[1137.] ouside of polity years
+647,fr_merovingian_emp_1,professional-lawyers,pt,[558.] ouside of polity years
+648,fr_merovingian_emp_2,professional-lawyers,pt,[690.] ouside of polity years
+649,fr_valois_k_1,professional-lawyers,pt,[1461.] ouside of polity years
+650,gr_macedonian_emp,professional-lawyers,pt,[-309.] ouside of polity years
+651,in_gahadavala_dyn,professional-lawyers,pt,[1197.] ouside of polity years
+652,in_gurjara_pratihara_dyn,professional-lawyers,pt,[1036.] ouside of polity years
+653,in_mauryan_emp,professional-lawyers,pt,[-184.] ouside of polity years
+654,in_rashtrakuta_emp,professional-lawyers,pt,[982.] ouside of polity years
+655,iq_akkad_emp,professional-lawyers,pt,[-2279.] ouside of polity years
+656,iq_neo_assyrian_emp,professional-lawyers,pt,[-609.] ouside of polity years
+657,ir_buyid_confederation,professional-lawyers,pt,[1075.] ouside of polity years
+658,ir_safavid_emp,professional-lawyers,pt,[1732. 1736.] ouside of polity years
+659,ir_sassanid_emp_2,professional-lawyers,pt,[651.] ouside of polity years
+660,ir_seljuk_sultanate,professional-lawyers,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+661,it_italy_k,professional-lawyers,pt,[493.] ouside of polity years
+662,it_roman_k,professional-lawyers,pt,[-753.] ouside of polity years
+663,it_st_peter_rep_2,professional-lawyers,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+664,jp_ashikaga,professional-lawyers,pt,[1473. 1489. 1493.] ouside of polity years
+665,jp_kamakura,professional-lawyers,pt,[1336.] ouside of polity years
+666,jp_nara,professional-lawyers,pt,[707.] ouside of polity years
+667,kh_angkor_2,professional-lawyers,pt,[1066. 1080.] ouside of polity years
+668,no_norway_k_2,professional-lawyers,pt,[1257.] ouside of polity years
+669,pt_portuguese_emp_2,professional-lawyers,pt,[1816.] ouside of polity years
+670,ru_golden_horde,professional-lawyers,pt,[1227. 1459.] ouside of polity years
+671,th_rattanakosin,professional-lawyers,pt,[1910.] ouside of polity years
+672,tr_byzantine_emp_2,professional-lawyers,pt,[1078.] ouside of polity years
+673,tr_east_roman_emp,professional-lawyers,pt,[641.] ouside of polity years
+674,tr_ottoman_emirate,professional-lawyers,pt,[1413. 1421.] ouside of polity years
+675,af_durrani_emp,irrigation-systems,pt,[1839.] ouside of polity years
+676,cn_western_jin_dyn,irrigation-systems,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+677,eg_mamluk_sultanate_1,irrigation-systems,pt,[1257.] ouside of polity years
+678,eg_old_k_1,irrigation-systems,pt,[-2667. -2345.] ouside of polity years
+679,eg_ptolemaic_k_1,irrigation-systems,pt,[-204.] ouside of polity years
+680,eg_regions,irrigation-systems,pt,[-2004.] ouside of polity years
+681,eg_thebes_hyksos,irrigation-systems,pt,[-1555. -1550.] ouside of polity years
+682,es_spanish_emp_1,irrigation-systems,pt,[1746.] ouside of polity years
+683,es_spanish_emp_2,irrigation-systems,pt,[1833.] ouside of polity years
+684,fr_capetian_k_2,irrigation-systems,pt,[1137.] ouside of polity years
+685,fr_merovingian_emp_1,irrigation-systems,pt,[558.] ouside of polity years
+686,fr_merovingian_emp_2,irrigation-systems,pt,[690.] ouside of polity years
+687,fr_valois_k_1,irrigation-systems,pt,[1461.] ouside of polity years
+688,gr_macedonian_emp,irrigation-systems,pt,[-309.] ouside of polity years
+689,gt_tikal_late_classic,irrigation-systems,pt,[889.] ouside of polity years
+690,il_judea,irrigation-systems,pt,[-165. -160.  -40.  -37.] ouside of polity years
+691,in_mauryan_emp,irrigation-systems,pt,[-184.] ouside of polity years
+692,in_rashtrakuta_emp,irrigation-systems,pt,[982.] ouside of polity years
+693,iq_akkad_emp,irrigation-systems,pt,[-2279.] ouside of polity years
+694,iq_neo_assyrian_emp,irrigation-systems,pt,[-609.] ouside of polity years
+695,ir_buyid_confederation,irrigation-systems,pt,[1075.] ouside of polity years
+696,ir_il_khanate,irrigation-systems,pt,[1343.] ouside of polity years
+697,ir_safavid_emp,irrigation-systems,pt,[1732. 1736.] ouside of polity years
+698,ir_sassanid_emp_2,irrigation-systems,pt,[651.] ouside of polity years
+699,ir_seljuk_sultanate,irrigation-systems,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+700,it_roman_k,irrigation-systems,pt,[-753.] ouside of polity years
+701,it_st_peter_rep_2,irrigation-systems,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+702,jp_ashikaga,irrigation-systems,pt,[1473. 1489. 1493.] ouside of polity years
+703,jp_kamakura,irrigation-systems,pt,[1336.] ouside of polity years
+704,jp_nara,irrigation-systems,pt,[707.] ouside of polity years
+705,kh_angkor_2,irrigation-systems,pt,[1066. 1080.] ouside of polity years
+706,no_norway_k_2,irrigation-systems,pt,[1257.] ouside of polity years
+707,pt_portuguese_emp_2,irrigation-systems,pt,[1816.] ouside of polity years
+708,ru_golden_horde,irrigation-systems,pt,[1227. 1459.] ouside of polity years
+709,th_rattanakosin,irrigation-systems,pt,[1910.] ouside of polity years
+710,tr_byzantine_emp_2,irrigation-systems,pt,[1078.] ouside of polity years
+711,tr_east_roman_emp,irrigation-systems,pt,[641.] ouside of polity years
+712,tr_ottoman_emirate,irrigation-systems,pt,[1413. 1421.] ouside of polity years
+713,uz_chagatai_khanate,irrigation-systems,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+714,af_durrani_emp,drinking-water-supplies,pt,[1839.] ouside of polity years
+715,eg_mamluk_sultanate_1,drinking-water-supplies,pt,[1257.] ouside of polity years
+716,eg_old_k_1,drinking-water-supplies,pt,[-2667. -2345.] ouside of polity years
+717,eg_ptolemaic_k_1,drinking-water-supplies,pt,[-204.] ouside of polity years
+718,eg_regions,drinking-water-supplies,pt,[-2004.] ouside of polity years
+719,eg_thebes_hyksos,drinking-water-supplies,pt,[-1555. -1550.] ouside of polity years
+720,es_spanish_emp_1,drinking-water-supplies,pt,[1746.] ouside of polity years
+721,fr_capetian_k_2,drinking-water-supplies,pt,[1137.] ouside of polity years
+722,fr_merovingian_emp_1,drinking-water-supplies,pt,[558.] ouside of polity years
+723,fr_merovingian_emp_2,drinking-water-supplies,pt,[690.] ouside of polity years
+724,fr_valois_k_1,drinking-water-supplies,pt,[1461.] ouside of polity years
+725,gr_macedonian_emp,drinking-water-supplies,pt,[-309.] ouside of polity years
+726,gt_tikal_late_classic,drinking-water-supplies,pt,[889.] ouside of polity years
+727,il_judea,drinking-water-supplies,pt,[-165. -160.  -40.  -37.] ouside of polity years
+728,in_carnatic_sul,drinking-water-supplies,pt,[1949.] ouside of polity years
+729,in_mauryan_emp,drinking-water-supplies,pt,[-184.] ouside of polity years
+730,ir_il_khanate,drinking-water-supplies,pt,[1343.] ouside of polity years
+731,ir_safavid_emp,drinking-water-supplies,pt,[1732. 1736.] ouside of polity years
+732,ir_sassanid_emp_2,drinking-water-supplies,pt,[651.] ouside of polity years
+733,ir_seljuk_sultanate,drinking-water-supplies,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+734,it_roman_k,drinking-water-supplies,pt,[-753.] ouside of polity years
+735,it_st_peter_rep_2,drinking-water-supplies,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+736,jp_ashikaga,drinking-water-supplies,pt,[1473. 1489. 1493.] ouside of polity years
+737,jp_nara,drinking-water-supplies,pt,[707.] ouside of polity years
+738,kh_angkor_2,drinking-water-supplies,pt,[1066. 1080.] ouside of polity years
+739,no_norway_k_2,drinking-water-supplies,pt,[1257.] ouside of polity years
+740,pt_portuguese_emp_2,drinking-water-supplies,pt,[1816.] ouside of polity years
+741,ru_golden_horde,drinking-water-supplies,pt,[1227. 1459.] ouside of polity years
+742,th_rattanakosin,drinking-water-supplies,pt,[1910.] ouside of polity years
+743,tr_byzantine_emp_2,drinking-water-supplies,pt,[1078.] ouside of polity years
+744,tr_east_roman_emp,drinking-water-supplies,pt,[641.] ouside of polity years
+745,af_durrani_emp,markets,pt,[1839.] ouside of polity years
+746,cn_western_jin_dyn,markets,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+747,eg_mamluk_sultanate_1,markets,pt,[1257.] ouside of polity years
+748,eg_old_k_1,markets,pt,[-2667. -2345.] ouside of polity years
+749,eg_ptolemaic_k_1,markets,pt,[-204.] ouside of polity years
+750,eg_regions,markets,pt,[-2004.] ouside of polity years
+751,eg_thebes_hyksos,markets,pt,[-1555. -1550.] ouside of polity years
+752,es_spanish_emp_1,markets,pt,[1746.] ouside of polity years
+753,es_spanish_emp_2,markets,pt,[1833.] ouside of polity years
+754,fr_capetian_k_2,markets,pt,[1137.] ouside of polity years
+755,fr_merovingian_emp_1,markets,pt,[558.] ouside of polity years
+756,fr_merovingian_emp_2,markets,pt,[690.] ouside of polity years
+757,fr_valois_k_1,markets,pt,[1461.] ouside of polity years
+758,gb_anglo_saxon_1,markets,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+759,gr_macedonian_emp,markets,pt,[-309.] ouside of polity years
+760,gt_tikal_late_classic,markets,pt,[889.] ouside of polity years
+761,il_judea,markets,pt,[-165. -160.  -40.  -37.] ouside of polity years
+762,in_carnatic_sul,markets,pt,[1949.] ouside of polity years
+763,in_gurjara_pratihara_dyn,markets,pt,[1036.] ouside of polity years
+764,in_mauryan_emp,markets,pt,[-184.] ouside of polity years
+765,in_rashtrakuta_emp,markets,pt,[982.] ouside of polity years
+766,iq_akkad_emp,markets,pt,[-2279.] ouside of polity years
+767,ir_buyid_confederation,markets,pt,[1075.] ouside of polity years
+768,ir_il_khanate,markets,pt,[1343.] ouside of polity years
+769,ir_safavid_emp,markets,pt,[1732. 1736.] ouside of polity years
+770,ir_sassanid_emp_2,markets,pt,[651.] ouside of polity years
+771,ir_seljuk_sultanate,markets,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+772,it_italy_k,markets,pt,[493.] ouside of polity years
+773,it_roman_k,markets,pt,[-753.] ouside of polity years
+774,it_st_peter_rep_2,markets,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+775,jp_ashikaga,markets,pt,[1473. 1489. 1493.] ouside of polity years
+776,jp_kamakura,markets,pt,[1336.] ouside of polity years
+777,jp_nara,markets,pt,[707.] ouside of polity years
+778,kh_angkor_2,markets,pt,[1066. 1080.] ouside of polity years
+779,ru_golden_horde,markets,pt,[1227. 1459.] ouside of polity years
+780,se_baol_k,markets,pt,[1894.] ouside of polity years
+781,th_rattanakosin,markets,pt,[1910.] ouside of polity years
+782,tr_byzantine_emp_2,markets,pt,[1078.] ouside of polity years
+783,tr_east_roman_emp,markets,pt,[641.] ouside of polity years
+784,tr_ottoman_emirate,markets,pt,[1413. 1421.] ouside of polity years
+785,ug_bunyoro_k_2,markets,pt,[1899.] ouside of polity years
+786,zi_torwa_rozvi,markets,pt,[1866.] ouside of polity years
+787,af_durrani_emp,food-storage-sites,pt,[1839.] ouside of polity years
+788,cn_western_jin_dyn,food-storage-sites,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+789,eg_mamluk_sultanate_1,food-storage-sites,pt,[1257.] ouside of polity years
+790,eg_old_k_1,food-storage-sites,pt,[-2667. -2345.] ouside of polity years
+791,eg_ptolemaic_k_1,food-storage-sites,pt,[-204.] ouside of polity years
+792,eg_regions,food-storage-sites,pt,[-2004.] ouside of polity years
+793,eg_thebes_hyksos,food-storage-sites,pt,[-1555. -1550.] ouside of polity years
+794,es_spanish_emp_1,food-storage-sites,pt,[1746.] ouside of polity years
+795,es_spanish_emp_2,food-storage-sites,pt,[1833.] ouside of polity years
+796,fr_merovingian_emp_1,food-storage-sites,pt,[558.] ouside of polity years
+797,fr_merovingian_emp_2,food-storage-sites,pt,[690.] ouside of polity years
+798,gb_anglo_saxon_1,food-storage-sites,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+799,gt_tikal_late_classic,food-storage-sites,pt,[889.] ouside of polity years
+800,il_judea,food-storage-sites,pt,[-165. -160.  -40.  -37.] ouside of polity years
+801,in_gahadavala_dyn,food-storage-sites,pt,[1197.] ouside of polity years
+802,in_gurjara_pratihara_dyn,food-storage-sites,pt,[1036.] ouside of polity years
+803,in_mauryan_emp,food-storage-sites,pt,[-184.] ouside of polity years
+804,in_rashtrakuta_emp,food-storage-sites,pt,[982.] ouside of polity years
+805,iq_akkad_emp,food-storage-sites,pt,[-2279.] ouside of polity years
+806,ir_safavid_emp,food-storage-sites,pt,[1732. 1736.] ouside of polity years
+807,ir_sassanid_emp_2,food-storage-sites,pt,[651.] ouside of polity years
+808,ir_seljuk_sultanate,food-storage-sites,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+809,it_italy_k,food-storage-sites,pt,[493.] ouside of polity years
+810,it_roman_k,food-storage-sites,pt,[-753.] ouside of polity years
+811,it_st_peter_rep_2,food-storage-sites,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+812,jp_ashikaga,food-storage-sites,pt,[1473. 1489. 1493.] ouside of polity years
+813,jp_kamakura,food-storage-sites,pt,[1336.] ouside of polity years
+814,jp_nara,food-storage-sites,pt,[707.] ouside of polity years
+815,kh_angkor_2,food-storage-sites,pt,[1066. 1080.] ouside of polity years
+816,ni_kwararafa,food-storage-sites,pt,[1848.] ouside of polity years
+817,no_norway_k_2,food-storage-sites,pt,[1257.] ouside of polity years
+818,pt_portuguese_emp_2,food-storage-sites,pt,[1816.] ouside of polity years
+819,ru_golden_horde,food-storage-sites,pt,[1227. 1459.] ouside of polity years
+820,tr_byzantine_emp_2,food-storage-sites,pt,[1078.] ouside of polity years
+821,tr_east_roman_emp,food-storage-sites,pt,[641.] ouside of polity years
+822,tr_ottoman_emirate,food-storage-sites,pt,[1413. 1421.] ouside of polity years
+823,ug_bunyoro_k_2,food-storage-sites,pt,[1899.] ouside of polity years
+824,cn_western_jin_dyn,roads,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+825,eg_mamluk_sultanate_1,roads,pt,[1257.] ouside of polity years
+826,eg_old_k_1,roads,pt,[-2667. -2345.] ouside of polity years
+827,eg_ptolemaic_k_1,roads,pt,[-204.] ouside of polity years
+828,eg_regions,roads,pt,[-2004.] ouside of polity years
+829,eg_thebes_hyksos,roads,pt,[-1555. -1550.] ouside of polity years
+830,es_spanish_emp_1,roads,pt,[1746.] ouside of polity years
+831,es_spanish_emp_2,roads,pt,[1833.] ouside of polity years
+832,fr_capetian_k_2,roads,pt,[1137.] ouside of polity years
+833,fr_merovingian_emp_1,roads,pt,[558.] ouside of polity years
+834,fr_merovingian_emp_2,roads,pt,[690.] ouside of polity years
+835,fr_valois_k_1,roads,pt,[1461.] ouside of polity years
+836,gb_anglo_saxon_1,roads,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+837,gr_macedonian_emp,roads,pt,[-309.] ouside of polity years
+838,il_judea,roads,pt,[-165. -160.  -40.  -37.] ouside of polity years
+839,in_carnatic_sul,roads,pt,[1949.] ouside of polity years
+840,in_gurjara_pratihara_dyn,roads,pt,[1036.] ouside of polity years
+841,in_mauryan_emp,roads,pt,[-184.] ouside of polity years
+842,in_rashtrakuta_emp,roads,pt,[982.] ouside of polity years
+843,iq_akkad_emp,roads,pt,[-2279.] ouside of polity years
+844,iq_neo_assyrian_emp,roads,pt,[-609.] ouside of polity years
+845,ir_buyid_confederation,roads,pt,[1075.] ouside of polity years
+846,ir_il_khanate,roads,pt,[1343.] ouside of polity years
+847,ir_safavid_emp,roads,pt,[1732. 1736.] ouside of polity years
+848,ir_seljuk_sultanate,roads,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+849,it_italy_k,roads,pt,[493.] ouside of polity years
+850,it_roman_k,roads,pt,[-753.] ouside of polity years
+851,it_st_peter_rep_2,roads,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+852,jp_ashikaga,roads,pt,[1473. 1489. 1493.] ouside of polity years
+853,jp_kamakura,roads,pt,[1336.] ouside of polity years
+854,jp_nara,roads,pt,[707.] ouside of polity years
+855,kh_angkor_2,roads,pt,[1066. 1080.] ouside of polity years
+856,no_norway_k_2,roads,pt,[1257.] ouside of polity years
+857,om_busaidi_imamate_1,roads,pt,[1913.] ouside of polity years
+858,pt_portuguese_emp_2,roads,pt,[1816.] ouside of polity years
+859,ru_golden_horde,roads,pt,[1227. 1459.] ouside of polity years
+860,se_baol_k,roads,pt,[1894.] ouside of polity years
+861,th_rattanakosin,roads,pt,[1910.] ouside of polity years
+862,tr_byzantine_emp_2,roads,pt,[1078.] ouside of polity years
+863,tr_east_roman_emp,roads,pt,[641.] ouside of polity years
+864,tr_ottoman_emirate,roads,pt,[1413. 1421.] ouside of polity years
+865,ug_bunyoro_k_2,roads,pt,[1899.] ouside of polity years
+866,uz_chagatai_khanate,roads,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+867,af_durrani_emp,bridges,pt,[1839.] ouside of polity years
+868,cn_western_jin_dyn,bridges,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+869,eg_mamluk_sultanate_1,bridges,pt,[1257.] ouside of polity years
+870,eg_old_k_1,bridges,pt,[-2667. -2345.] ouside of polity years
+871,eg_ptolemaic_k_1,bridges,pt,[-204.] ouside of polity years
+872,eg_regions,bridges,pt,[-2004.] ouside of polity years
+873,es_spanish_emp_1,bridges,pt,[1746.] ouside of polity years
+874,es_spanish_emp_2,bridges,pt,[1833.] ouside of polity years
+875,fr_capetian_k_2,bridges,pt,[1137.] ouside of polity years
+876,fr_merovingian_emp_1,bridges,pt,[558.] ouside of polity years
+877,fr_merovingian_emp_2,bridges,pt,[690.] ouside of polity years
+878,fr_valois_k_1,bridges,pt,[1461.] ouside of polity years
+879,gb_anglo_saxon_1,bridges,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+880,gr_macedonian_emp,bridges,pt,[-309.] ouside of polity years
+881,il_judea,bridges,pt,[-165. -160.  -40.  -37.] ouside of polity years
+882,in_mauryan_emp,bridges,pt,[-184.] ouside of polity years
+883,iq_neo_assyrian_emp,bridges,pt,[-609.] ouside of polity years
+884,ir_buyid_confederation,bridges,pt,[1075.] ouside of polity years
+885,ir_il_khanate,bridges,pt,[1343.] ouside of polity years
+886,ir_safavid_emp,bridges,pt,[1732. 1736.] ouside of polity years
+887,ir_sassanid_emp_2,bridges,pt,[651.] ouside of polity years
+888,ir_seljuk_sultanate,bridges,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+889,it_roman_k,bridges,pt,[-753.] ouside of polity years
+890,it_st_peter_rep_2,bridges,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+891,jp_ashikaga,bridges,pt,[1473. 1489. 1493.] ouside of polity years
+892,jp_kamakura,bridges,pt,[1336.] ouside of polity years
+893,jp_nara,bridges,pt,[707.] ouside of polity years
+894,kh_angkor_2,bridges,pt,[1066. 1080.] ouside of polity years
+895,no_norway_k_2,bridges,pt,[1257.] ouside of polity years
+896,ru_golden_horde,bridges,pt,[1227. 1459.] ouside of polity years
+897,th_rattanakosin,bridges,pt,[1910.] ouside of polity years
+898,tr_byzantine_emp_2,bridges,pt,[1078.] ouside of polity years
+899,tr_east_roman_emp,bridges,pt,[641.] ouside of polity years
+900,tr_ottoman_emirate,bridges,pt,[1413. 1421.] ouside of polity years
+901,uz_chagatai_khanate,bridges,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+902,af_durrani_emp,canals,pt,[1839.] ouside of polity years
+903,cn_western_jin_dyn,canals,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+904,eg_mamluk_sultanate_1,canals,pt,[1257.] ouside of polity years
+905,eg_old_k_1,canals,pt,[-2667. -2345.] ouside of polity years
+906,eg_ptolemaic_k_1,canals,pt,[-204.] ouside of polity years
+907,eg_regions,canals,pt,[-2004.] ouside of polity years
+908,eg_thebes_hyksos,canals,pt,[-1555. -1550.] ouside of polity years
+909,es_spanish_emp_1,canals,pt,[1746.] ouside of polity years
+910,es_spanish_emp_2,canals,pt,[1833.] ouside of polity years
+911,fr_capetian_k_2,canals,pt,[1137.] ouside of polity years
+912,fr_merovingian_emp_1,canals,pt,[558.] ouside of polity years
+913,fr_merovingian_emp_2,canals,pt,[690.] ouside of polity years
+914,gb_anglo_saxon_1,canals,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+915,gt_tikal_late_classic,canals,pt,[889.] ouside of polity years
+916,il_judea,canals,pt,[-165. -160.  -40.  -37.] ouside of polity years
+917,in_mauryan_emp,canals,pt,[-184.] ouside of polity years
+918,iq_akkad_emp,canals,pt,[-2279.] ouside of polity years
+919,iq_neo_assyrian_emp,canals,pt,[-609.] ouside of polity years
+920,ir_buyid_confederation,canals,pt,[1075.] ouside of polity years
+921,ir_il_khanate,canals,pt,[1343.] ouside of polity years
+922,ir_safavid_emp,canals,pt,[1732. 1736.] ouside of polity years
+923,ir_sassanid_emp_2,canals,pt,[651.] ouside of polity years
+924,ir_seljuk_sultanate,canals,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+925,it_roman_k,canals,pt,[-753.] ouside of polity years
+926,it_st_peter_rep_2,canals,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+927,jp_ashikaga,canals,pt,[1473. 1489. 1493.] ouside of polity years
+928,jp_kamakura,canals,pt,[1336.] ouside of polity years
+929,jp_nara,canals,pt,[707.] ouside of polity years
+930,kh_angkor_2,canals,pt,[1066. 1080.] ouside of polity years
+931,no_norway_k_2,canals,pt,[1257.] ouside of polity years
+932,ru_golden_horde,canals,pt,[1227. 1459.] ouside of polity years
+933,th_rattanakosin,canals,pt,[1910.] ouside of polity years
+934,tr_byzantine_emp_2,canals,pt,[1078.] ouside of polity years
+935,tr_east_roman_emp,canals,pt,[641.] ouside of polity years
+936,af_durrani_emp,ports,pt,[1839.] ouside of polity years
+937,cn_western_jin_dyn,ports,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+938,eg_mamluk_sultanate_1,ports,pt,[1257.] ouside of polity years
+939,eg_old_k_1,ports,pt,[-2667. -2345.] ouside of polity years
+940,eg_ptolemaic_k_1,ports,pt,[-204.] ouside of polity years
+941,eg_regions,ports,pt,[-2004.] ouside of polity years
+942,eg_thebes_hyksos,ports,pt,[-1555. -1550.] ouside of polity years
+943,es_spanish_emp_1,ports,pt,[1746.] ouside of polity years
+944,es_spanish_emp_2,ports,pt,[1833.] ouside of polity years
+945,fr_capetian_k_2,ports,pt,[1137.] ouside of polity years
+946,fr_merovingian_emp_1,ports,pt,[558.] ouside of polity years
+947,fr_merovingian_emp_2,ports,pt,[690.] ouside of polity years
+948,fr_valois_k_1,ports,pt,[1461.] ouside of polity years
+949,gb_anglo_saxon_1,ports,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+950,gr_macedonian_emp,ports,pt,[-309.] ouside of polity years
+951,il_judea,ports,pt,[-165. -160.  -40.  -37.] ouside of polity years
+952,in_gurjara_pratihara_dyn,ports,pt,[1036.] ouside of polity years
+953,in_mauryan_emp,ports,pt,[-184.] ouside of polity years
+954,in_rashtrakuta_emp,ports,pt,[982.] ouside of polity years
+955,iq_akkad_emp,ports,pt,[-2279.] ouside of polity years
+956,iq_neo_assyrian_emp,ports,pt,[-609.] ouside of polity years
+957,ir_buyid_confederation,ports,pt,[1075.] ouside of polity years
+958,ir_il_khanate,ports,pt,[1343.] ouside of polity years
+959,ir_safavid_emp,ports,pt,[1732. 1736.] ouside of polity years
+960,ir_sassanid_emp_2,ports,pt,[651.] ouside of polity years
+961,ir_seljuk_sultanate,ports,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+962,it_italy_k,ports,pt,[493.] ouside of polity years
+963,it_roman_k,ports,pt,[-753.] ouside of polity years
+964,it_st_peter_rep_2,ports,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+965,jp_ashikaga,ports,pt,[1473. 1489. 1493.] ouside of polity years
+966,jp_kamakura,ports,pt,[1336.] ouside of polity years
+967,jp_nara,ports,pt,[707.] ouside of polity years
+968,kh_angkor_2,ports,pt,[1066. 1080.] ouside of polity years
+969,no_norway_k_2,ports,pt,[1257.] ouside of polity years
+970,om_busaidi_imamate_1,ports,pt,[1913.] ouside of polity years
+971,pt_portuguese_emp_2,ports,pt,[1816.] ouside of polity years
+972,ru_golden_horde,ports,pt,[1227. 1459.] ouside of polity years
+973,se_baol_k,ports,pt,[1894.] ouside of polity years
+974,th_rattanakosin,ports,pt,[1910.] ouside of polity years
+975,tr_byzantine_emp_2,ports,pt,[1078.] ouside of polity years
+976,tr_east_roman_emp,ports,pt,[641.] ouside of polity years
+977,ug_buganda_k_1,ports,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+978,uz_chagatai_khanate,ports,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+979,cn_western_jin_dyn,mines-or-quarries,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+980,eg_mamluk_sultanate_1,mines-or-quarries,pt,[1257.] ouside of polity years
+981,eg_old_k_1,mines-or-quarries,pt,[-2667. -2345.] ouside of polity years
+982,eg_ptolemaic_k_1,mines-or-quarries,pt,[-204.] ouside of polity years
+983,eg_regions,mines-or-quarries,pt,[-2004.] ouside of polity years
+984,eg_thebes_hyksos,mines-or-quarries,pt,[-1555. -1550.] ouside of polity years
+985,es_spanish_emp_1,mines-or-quarries,pt,[1746.] ouside of polity years
+986,es_spanish_emp_2,mines-or-quarries,pt,[1833.] ouside of polity years
+987,fr_capetian_k_2,mines-or-quarries,pt,[1137.] ouside of polity years
+988,fr_merovingian_emp_1,mines-or-quarries,pt,[558.] ouside of polity years
+989,fr_merovingian_emp_2,mines-or-quarries,pt,[690.] ouside of polity years
+990,fr_valois_k_1,mines-or-quarries,pt,[1461.] ouside of polity years
+991,gb_anglo_saxon_1,mines-or-quarries,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+992,gr_macedonian_emp,mines-or-quarries,pt,[-309.] ouside of polity years
+993,il_judea,mines-or-quarries,pt,[-165. -160.  -40.  -37.] ouside of polity years
+994,in_gahadavala_dyn,mines-or-quarries,pt,[1197.] ouside of polity years
+995,in_mauryan_emp,mines-or-quarries,pt,[-184.] ouside of polity years
+996,in_rashtrakuta_emp,mines-or-quarries,pt,[982.] ouside of polity years
+997,iq_akkad_emp,mines-or-quarries,pt,[-2279.] ouside of polity years
+998,ir_safavid_emp,mines-or-quarries,pt,[1732. 1736.] ouside of polity years
+999,it_roman_k,mines-or-quarries,pt,[-753.] ouside of polity years
+1000,it_st_peter_rep_2,mines-or-quarries,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1001,jp_ashikaga,mines-or-quarries,pt,[1473. 1489. 1493.] ouside of polity years
+1002,jp_kamakura,mines-or-quarries,pt,[1336.] ouside of polity years
+1003,jp_nara,mines-or-quarries,pt,[707.] ouside of polity years
+1004,kh_angkor_2,mines-or-quarries,pt,[1066. 1080.] ouside of polity years
+1005,no_norway_k_2,mines-or-quarries,pt,[1257.] ouside of polity years
+1006,pt_portuguese_emp_2,mines-or-quarries,pt,[1816.] ouside of polity years
+1007,ru_golden_horde,mines-or-quarries,pt,[1227. 1459.] ouside of polity years
+1008,th_rattanakosin,mines-or-quarries,pt,[1910.] ouside of polity years
+1009,tr_byzantine_emp_2,mines-or-quarries,pt,[1078.] ouside of polity years
+1010,tr_east_roman_emp,mines-or-quarries,pt,[641.] ouside of polity years
+1011,tr_ottoman_emirate,mines-or-quarries,pt,[1413. 1421.] ouside of polity years
+1012,ug_buganda_k_1,mines-or-quarries,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1013,zi_torwa_rozvi,mines-or-quarries,pt,[1866.] ouside of polity years
+1014,cn_western_jin_dyn,mnemonic-devices,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1015,eg_mamluk_sultanate_1,mnemonic-devices,pt,[1257.] ouside of polity years
+1016,eg_ptolemaic_k_1,mnemonic-devices,pt,[-204.] ouside of polity years
+1017,gr_macedonian_emp,mnemonic-devices,pt,[-309.] ouside of polity years
+1018,il_judea,mnemonic-devices,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1019,iq_akkad_emp,mnemonic-devices,pt,[-2279.] ouside of polity years
+1020,it_st_peter_rep_2,mnemonic-devices,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1021,kh_angkor_2,mnemonic-devices,pt,[1066. 1080.] ouside of polity years
+1022,tr_byzantine_emp_2,mnemonic-devices,pt,[1078.] ouside of polity years
+1023,tr_east_roman_emp,mnemonic-devices,pt,[641.] ouside of polity years
+1024,tr_ottoman_emirate,mnemonic-devices,pt,[1413. 1421.] ouside of polity years
+1025,cn_western_jin_dyn,nonwritten-records,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1026,eg_mamluk_sultanate_1,nonwritten-records,pt,[1257.] ouside of polity years
+1027,eg_old_k_1,nonwritten-records,pt,[-2667. -2345.] ouside of polity years
+1028,eg_ptolemaic_k_1,nonwritten-records,pt,[-204.] ouside of polity years
+1029,eg_regions,nonwritten-records,pt,[-2004.] ouside of polity years
+1030,eg_thebes_hyksos,nonwritten-records,pt,[-1555. -1550.] ouside of polity years
+1031,es_spanish_emp_1,nonwritten-records,pt,[1746.] ouside of polity years
+1032,gb_anglo_saxon_1,nonwritten-records,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1033,gr_macedonian_emp,nonwritten-records,pt,[-309.] ouside of polity years
+1034,gt_tikal_late_classic,nonwritten-records,pt,[889.] ouside of polity years
+1035,in_mauryan_emp,nonwritten-records,pt,[-184.] ouside of polity years
+1036,in_rashtrakuta_emp,nonwritten-records,pt,[982.] ouside of polity years
+1037,iq_akkad_emp,nonwritten-records,pt,[-2279.] ouside of polity years
+1038,ir_safavid_emp,nonwritten-records,pt,[1732. 1736.] ouside of polity years
+1039,it_roman_k,nonwritten-records,pt,[-753.] ouside of polity years
+1040,it_st_peter_rep_2,nonwritten-records,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1041,kh_angkor_2,nonwritten-records,pt,[1066. 1080.] ouside of polity years
+1042,no_norway_k_2,nonwritten-records,pt,[1257.] ouside of polity years
+1043,ru_golden_horde,nonwritten-records,pt,[1227. 1459.] ouside of polity years
+1044,th_rattanakosin,nonwritten-records,pt,[1910.] ouside of polity years
+1045,tr_byzantine_emp_2,nonwritten-records,pt,[1078.] ouside of polity years
+1046,tr_east_roman_emp,nonwritten-records,pt,[641.] ouside of polity years
+1047,tr_ottoman_emirate,nonwritten-records,pt,[1413. 1421.] ouside of polity years
+1048,uz_chagatai_khanate,nonwritten-records,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1049,af_durrani_emp,written-records,pt,[1839.] ouside of polity years
+1050,cn_western_jin_dyn,written-records,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1051,eg_mamluk_sultanate_1,written-records,pt,[1257.] ouside of polity years
+1052,es_spanish_emp_1,written-records,pt,[1746.] ouside of polity years
+1053,es_spanish_emp_2,written-records,pt,[1833.] ouside of polity years
+1054,fr_capetian_k_2,written-records,pt,[1137.] ouside of polity years
+1055,fr_merovingian_emp_1,written-records,pt,[558.] ouside of polity years
+1056,fr_merovingian_emp_2,written-records,pt,[690.] ouside of polity years
+1057,fr_valois_k_1,written-records,pt,[1461.] ouside of polity years
+1058,gb_anglo_saxon_1,written-records,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1059,gr_macedonian_emp,written-records,pt,[-309.] ouside of polity years
+1060,gt_tikal_late_classic,written-records,pt,[889.] ouside of polity years
+1061,il_judea,written-records,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1062,in_carnatic_sul,written-records,pt,[1949.] ouside of polity years
+1063,in_gahadavala_dyn,written-records,pt,[1197.] ouside of polity years
+1064,in_gurjara_pratihara_dyn,written-records,pt,[1036.] ouside of polity years
+1065,in_mauryan_emp,written-records,pt,[-184.] ouside of polity years
+1066,in_rashtrakuta_emp,written-records,pt,[982.] ouside of polity years
+1067,iq_akkad_emp,written-records,pt,[-2279.] ouside of polity years
+1068,iq_neo_assyrian_emp,written-records,pt,[-609.] ouside of polity years
+1069,ir_buyid_confederation,written-records,pt,[1075.] ouside of polity years
+1070,ir_il_khanate,written-records,pt,[1343.] ouside of polity years
+1071,ir_safavid_emp,written-records,pt,[1732. 1736.] ouside of polity years
+1072,ir_sassanid_emp_2,written-records,pt,[651.] ouside of polity years
+1073,ir_seljuk_sultanate,written-records,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1074,it_italy_k,written-records,pt,[493.] ouside of polity years
+1075,it_roman_k,written-records,pt,[-753.] ouside of polity years
+1076,it_st_peter_rep_2,written-records,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1077,jp_ashikaga,written-records,pt,[1473. 1489. 1493.] ouside of polity years
+1078,jp_kamakura,written-records,pt,[1336.] ouside of polity years
+1079,jp_nara,written-records,pt,[707.] ouside of polity years
+1080,kh_angkor_2,written-records,pt,[1066. 1080.] ouside of polity years
+1081,no_norway_k_2,written-records,pt,[1257.] ouside of polity years
+1082,pt_portuguese_emp_2,written-records,pt,[1816.] ouside of polity years
+1083,ru_golden_horde,written-records,pt,[1227. 1459.] ouside of polity years
+1084,th_rattanakosin,written-records,pt,[1910.] ouside of polity years
+1085,tr_byzantine_emp_2,written-records,pt,[1078.] ouside of polity years
+1086,tr_east_roman_emp,written-records,pt,[641.] ouside of polity years
+1087,tr_ottoman_emirate,written-records,pt,[1413. 1421.] ouside of polity years
+1088,ug_buganda_k_1,written-records,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1089,ug_bunyoro_k_2,written-records,pt,[1899.] ouside of polity years
+1090,uz_chagatai_khanate,written-records,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1091,af_durrani_emp,scripts,pt,[1839.] ouside of polity years
+1092,cn_western_jin_dyn,scripts,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1093,eg_mamluk_sultanate_1,scripts,pt,[1257.] ouside of polity years
+1094,eg_old_k_1,scripts,pt,[-2667. -2345.] ouside of polity years
+1095,eg_ptolemaic_k_1,scripts,pt,[-204.] ouside of polity years
+1096,eg_regions,scripts,pt,[-2004.] ouside of polity years
+1097,eg_thebes_hyksos,scripts,pt,[-1555. -1550.] ouside of polity years
+1098,es_spanish_emp_1,scripts,pt,[1746.] ouside of polity years
+1099,es_spanish_emp_2,scripts,pt,[1833.] ouside of polity years
+1100,fr_capetian_k_2,scripts,pt,[1137.] ouside of polity years
+1101,fr_merovingian_emp_1,scripts,pt,[558.] ouside of polity years
+1102,fr_merovingian_emp_2,scripts,pt,[690.] ouside of polity years
+1103,gb_anglo_saxon_1,scripts,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1104,gr_macedonian_emp,scripts,pt,[-309.] ouside of polity years
+1105,gt_tikal_late_classic,scripts,pt,[889.] ouside of polity years
+1106,in_carnatic_sul,scripts,pt,[1949.] ouside of polity years
+1107,in_gahadavala_dyn,scripts,pt,[1197.] ouside of polity years
+1108,in_gurjara_pratihara_dyn,scripts,pt,[1036.] ouside of polity years
+1109,in_mauryan_emp,scripts,pt,[-184.] ouside of polity years
+1110,in_rashtrakuta_emp,scripts,pt,[982.] ouside of polity years
+1111,iq_akkad_emp,scripts,pt,[-2279.] ouside of polity years
+1112,iq_neo_assyrian_emp,scripts,pt,[-609.] ouside of polity years
+1113,ir_buyid_confederation,scripts,pt,[1075.] ouside of polity years
+1114,ir_il_khanate,scripts,pt,[1343.] ouside of polity years
+1115,ir_safavid_emp,scripts,pt,[1732. 1736.] ouside of polity years
+1116,ir_sassanid_emp_2,scripts,pt,[651.] ouside of polity years
+1117,ir_seljuk_sultanate,scripts,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1118,it_italy_k,scripts,pt,[493.] ouside of polity years
+1119,it_roman_k,scripts,pt,[-753.] ouside of polity years
+1120,it_st_peter_rep_2,scripts,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1121,jp_ashikaga,scripts,pt,[1473. 1489. 1493.] ouside of polity years
+1122,jp_kamakura,scripts,pt,[1336.] ouside of polity years
+1123,jp_nara,scripts,pt,[707.] ouside of polity years
+1124,kh_angkor_2,scripts,pt,[1066. 1080.] ouside of polity years
+1125,no_norway_k_2,scripts,pt,[1257.] ouside of polity years
+1126,om_busaidi_imamate_1,scripts,pt,[1913.] ouside of polity years
+1127,pt_portuguese_emp_2,scripts,pt,[1816.] ouside of polity years
+1128,ru_golden_horde,scripts,pt,[1227. 1459.] ouside of polity years
+1129,th_rattanakosin,scripts,pt,[1910.] ouside of polity years
+1130,tr_byzantine_emp_2,scripts,pt,[1078.] ouside of polity years
+1131,tr_east_roman_emp,scripts,pt,[641.] ouside of polity years
+1132,tr_ottoman_emirate,scripts,pt,[1413. 1421.] ouside of polity years
+1133,ug_buganda_k_1,scripts,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1134,ug_bunyoro_k_2,scripts,pt,[1899.] ouside of polity years
+1135,uz_chagatai_khanate,scripts,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1136,af_durrani_emp,non-phonetic-writings,pt,[1839.] ouside of polity years
+1137,cn_western_jin_dyn,non-phonetic-writings,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1138,eg_mamluk_sultanate_1,non-phonetic-writings,pt,[1257.] ouside of polity years
+1139,eg_old_k_1,non-phonetic-writings,pt,[-2667. -2345.] ouside of polity years
+1140,eg_ptolemaic_k_1,non-phonetic-writings,pt,[-204.] ouside of polity years
+1141,eg_regions,non-phonetic-writings,pt,[-2004.] ouside of polity years
+1142,eg_thebes_hyksos,non-phonetic-writings,pt,[-1555. -1550.] ouside of polity years
+1143,es_spanish_emp_1,non-phonetic-writings,pt,[1746.] ouside of polity years
+1144,fr_capetian_k_2,non-phonetic-writings,pt,[1137.] ouside of polity years
+1145,fr_merovingian_emp_1,non-phonetic-writings,pt,[558.] ouside of polity years
+1146,fr_merovingian_emp_2,non-phonetic-writings,pt,[690.] ouside of polity years
+1147,fr_valois_k_1,non-phonetic-writings,pt,[1461.] ouside of polity years
+1148,gb_anglo_saxon_1,non-phonetic-writings,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1149,gr_macedonian_emp,non-phonetic-writings,pt,[-309.] ouside of polity years
+1150,gt_tikal_late_classic,non-phonetic-writings,pt,[889.] ouside of polity years
+1151,in_gahadavala_dyn,non-phonetic-writings,pt,[1197.] ouside of polity years
+1152,in_gurjara_pratihara_dyn,non-phonetic-writings,pt,[1036.] ouside of polity years
+1153,in_mauryan_emp,non-phonetic-writings,pt,[-184.] ouside of polity years
+1154,iq_akkad_emp,non-phonetic-writings,pt,[-2279.] ouside of polity years
+1155,iq_neo_assyrian_emp,non-phonetic-writings,pt,[-609.] ouside of polity years
+1156,ir_buyid_confederation,non-phonetic-writings,pt,[1075.] ouside of polity years
+1157,ir_il_khanate,non-phonetic-writings,pt,[1343.] ouside of polity years
+1158,ir_safavid_emp,non-phonetic-writings,pt,[1732. 1736.] ouside of polity years
+1159,ir_sassanid_emp_2,non-phonetic-writings,pt,[651.] ouside of polity years
+1160,ir_seljuk_sultanate,non-phonetic-writings,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1161,it_st_peter_rep_2,non-phonetic-writings,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1162,jp_ashikaga,non-phonetic-writings,pt,[1473. 1489. 1493.] ouside of polity years
+1163,jp_kamakura,non-phonetic-writings,pt,[1336.] ouside of polity years
+1164,om_busaidi_imamate_1,non-phonetic-writings,pt,[1913.] ouside of polity years
+1165,pt_portuguese_emp_2,non-phonetic-writings,pt,[1816.] ouside of polity years
+1166,ru_golden_horde,non-phonetic-writings,pt,[1227. 1459.] ouside of polity years
+1167,tr_byzantine_emp_2,non-phonetic-writings,pt,[1078.] ouside of polity years
+1168,ug_buganda_k_1,non-phonetic-writings,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1169,ug_bunyoro_k_2,non-phonetic-writings,pt,[1899.] ouside of polity years
+1170,uz_chagatai_khanate,non-phonetic-writings,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1171,af_durrani_emp,phonetic-alphabetic-writings,pt,[1839.] ouside of polity years
+1172,cn_western_jin_dyn,phonetic-alphabetic-writings,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1173,eg_mamluk_sultanate_1,phonetic-alphabetic-writings,pt,[1257.] ouside of polity years
+1174,eg_old_k_1,phonetic-alphabetic-writings,pt,[-2667. -2345.] ouside of polity years
+1175,eg_ptolemaic_k_1,phonetic-alphabetic-writings,pt,[-204.] ouside of polity years
+1176,eg_regions,phonetic-alphabetic-writings,pt,[-2004.] ouside of polity years
+1177,eg_thebes_hyksos,phonetic-alphabetic-writings,pt,[-1555. -1550.] ouside of polity years
+1178,es_spanish_emp_1,phonetic-alphabetic-writings,pt,[1746.] ouside of polity years
+1179,es_spanish_emp_2,phonetic-alphabetic-writings,pt,[1833.] ouside of polity years
+1180,fr_capetian_k_2,phonetic-alphabetic-writings,pt,[1137.] ouside of polity years
+1181,fr_merovingian_emp_1,phonetic-alphabetic-writings,pt,[558.] ouside of polity years
+1182,fr_merovingian_emp_2,phonetic-alphabetic-writings,pt,[690.] ouside of polity years
+1183,fr_valois_k_1,phonetic-alphabetic-writings,pt,[1461.] ouside of polity years
+1184,gr_macedonian_emp,phonetic-alphabetic-writings,pt,[-309.] ouside of polity years
+1185,il_judea,phonetic-alphabetic-writings,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1186,in_carnatic_sul,phonetic-alphabetic-writings,pt,[1949.] ouside of polity years
+1187,in_gahadavala_dyn,phonetic-alphabetic-writings,pt,[1197.] ouside of polity years
+1188,in_mauryan_emp,phonetic-alphabetic-writings,pt,[-184.] ouside of polity years
+1189,iq_neo_assyrian_emp,phonetic-alphabetic-writings,pt,[-609.] ouside of polity years
+1190,ir_buyid_confederation,phonetic-alphabetic-writings,pt,[1075.] ouside of polity years
+1191,ir_il_khanate,phonetic-alphabetic-writings,pt,[1343.] ouside of polity years
+1192,ir_safavid_emp,phonetic-alphabetic-writings,pt,[1732. 1736.] ouside of polity years
+1193,ir_sassanid_emp_2,phonetic-alphabetic-writings,pt,[651.] ouside of polity years
+1194,ir_seljuk_sultanate,phonetic-alphabetic-writings,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1195,it_italy_k,phonetic-alphabetic-writings,pt,[493.] ouside of polity years
+1196,it_roman_k,phonetic-alphabetic-writings,pt,[-753.] ouside of polity years
+1197,it_st_peter_rep_2,phonetic-alphabetic-writings,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1198,jp_ashikaga,phonetic-alphabetic-writings,pt,[1473. 1489. 1493.] ouside of polity years
+1199,jp_kamakura,phonetic-alphabetic-writings,pt,[1336.] ouside of polity years
+1200,jp_nara,phonetic-alphabetic-writings,pt,[707.] ouside of polity years
+1201,kh_angkor_2,phonetic-alphabetic-writings,pt,[1066. 1080.] ouside of polity years
+1202,no_norway_k_2,phonetic-alphabetic-writings,pt,[1257.] ouside of polity years
+1203,om_busaidi_imamate_1,phonetic-alphabetic-writings,pt,[1913.] ouside of polity years
+1204,pt_portuguese_emp_2,phonetic-alphabetic-writings,pt,[1816.] ouside of polity years
+1205,ru_golden_horde,phonetic-alphabetic-writings,pt,[1227. 1459.] ouside of polity years
+1206,th_rattanakosin,phonetic-alphabetic-writings,pt,[1910.] ouside of polity years
+1207,tr_byzantine_emp_2,phonetic-alphabetic-writings,pt,[1078.] ouside of polity years
+1208,tr_east_roman_emp,phonetic-alphabetic-writings,pt,[641.] ouside of polity years
+1209,ug_buganda_k_1,phonetic-alphabetic-writings,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1210,ug_bunyoro_k_2,phonetic-alphabetic-writings,pt,[1899.] ouside of polity years
+1211,uz_chagatai_khanate,phonetic-alphabetic-writings,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1212,af_durrani_emp,lists-tables-and-classifications,pt,[1839.] ouside of polity years
+1213,eg_mamluk_sultanate_1,lists-tables-and-classifications,pt,[1257.] ouside of polity years
+1214,eg_old_k_1,lists-tables-and-classifications,pt,[-2667. -2345.] ouside of polity years
+1215,eg_ptolemaic_k_1,lists-tables-and-classifications,pt,[-204.] ouside of polity years
+1216,eg_regions,lists-tables-and-classifications,pt,[-2004.] ouside of polity years
+1217,eg_thebes_hyksos,lists-tables-and-classifications,pt,[-1555. -1550.] ouside of polity years
+1218,es_spanish_emp_1,lists-tables-and-classifications,pt,[1746.] ouside of polity years
+1219,es_spanish_emp_2,lists-tables-and-classifications,pt,[1833.] ouside of polity years
+1220,fr_capetian_k_2,lists-tables-and-classifications,pt,[1137.] ouside of polity years
+1221,fr_merovingian_emp_1,lists-tables-and-classifications,pt,[558.] ouside of polity years
+1222,fr_valois_k_1,lists-tables-and-classifications,pt,[1461.] ouside of polity years
+1223,gb_anglo_saxon_1,lists-tables-and-classifications,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1224,il_judea,lists-tables-and-classifications,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1225,in_carnatic_sul,lists-tables-and-classifications,pt,[1949.] ouside of polity years
+1226,in_mauryan_emp,lists-tables-and-classifications,pt,[-184.] ouside of polity years
+1227,iq_akkad_emp,lists-tables-and-classifications,pt,[-2279.] ouside of polity years
+1228,iq_neo_assyrian_emp,lists-tables-and-classifications,pt,[-609.] ouside of polity years
+1229,ir_il_khanate,lists-tables-and-classifications,pt,[1343.] ouside of polity years
+1230,ir_safavid_emp,lists-tables-and-classifications,pt,[1732. 1736.] ouside of polity years
+1231,ir_sassanid_emp_2,lists-tables-and-classifications,pt,[651.] ouside of polity years
+1232,ir_seljuk_sultanate,lists-tables-and-classifications,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1233,it_roman_k,lists-tables-and-classifications,pt,[-753.] ouside of polity years
+1234,it_st_peter_rep_2,lists-tables-and-classifications,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1235,jp_ashikaga,lists-tables-and-classifications,pt,[1473. 1489. 1493.] ouside of polity years
+1236,jp_kamakura,lists-tables-and-classifications,pt,[1336.] ouside of polity years
+1237,kh_angkor_2,lists-tables-and-classifications,pt,[1066. 1080.] ouside of polity years
+1238,no_norway_k_2,lists-tables-and-classifications,pt,[1257.] ouside of polity years
+1239,ru_golden_horde,lists-tables-and-classifications,pt,[1227. 1459.] ouside of polity years
+1240,th_rattanakosin,lists-tables-and-classifications,pt,[1910.] ouside of polity years
+1241,tr_byzantine_emp_2,lists-tables-and-classifications,pt,[1078.] ouside of polity years
+1242,tr_east_roman_emp,lists-tables-and-classifications,pt,[641.] ouside of polity years
+1243,tr_ottoman_emirate,lists-tables-and-classifications,pt,[1413. 1421.] ouside of polity years
+1244,ug_buganda_k_1,lists-tables-and-classifications,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1245,uz_chagatai_khanate,lists-tables-and-classifications,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1246,af_durrani_emp,calendars,pt,[1839.] ouside of polity years
+1247,cn_western_jin_dyn,calendars,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1248,eg_mamluk_sultanate_1,calendars,pt,[1257.] ouside of polity years
+1249,eg_old_k_1,calendars,pt,[-2667. -2345.] ouside of polity years
+1250,eg_ptolemaic_k_1,calendars,pt,[-204.] ouside of polity years
+1251,eg_regions,calendars,pt,[-2004.] ouside of polity years
+1252,eg_thebes_hyksos,calendars,pt,[-1555. -1550.] ouside of polity years
+1253,es_spanish_emp_1,calendars,pt,[1746.] ouside of polity years
+1254,es_spanish_emp_2,calendars,pt,[1833.] ouside of polity years
+1255,fr_valois_k_1,calendars,pt,[1461.] ouside of polity years
+1256,gt_tikal_late_classic,calendars,pt,[889.] ouside of polity years
+1257,il_judea,calendars,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1258,in_carnatic_sul,calendars,pt,[1949.] ouside of polity years
+1259,in_gahadavala_dyn,calendars,pt,[1197.] ouside of polity years
+1260,in_gurjara_pratihara_dyn,calendars,pt,[1036.] ouside of polity years
+1261,in_mauryan_emp,calendars,pt,[-184.] ouside of polity years
+1262,in_rashtrakuta_emp,calendars,pt,[982.] ouside of polity years
+1263,iq_akkad_emp,calendars,pt,[-2279.] ouside of polity years
+1264,iq_neo_assyrian_emp,calendars,pt,[-609.] ouside of polity years
+1265,ir_buyid_confederation,calendars,pt,[1075.] ouside of polity years
+1266,ir_il_khanate,calendars,pt,[1343.] ouside of polity years
+1267,ir_safavid_emp,calendars,pt,[1732. 1736.] ouside of polity years
+1268,ir_sassanid_emp_2,calendars,pt,[651.] ouside of polity years
+1269,ir_seljuk_sultanate,calendars,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1270,it_roman_k,calendars,pt,[-753.] ouside of polity years
+1271,it_st_peter_rep_2,calendars,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1272,jp_ashikaga,calendars,pt,[1473. 1489. 1493.] ouside of polity years
+1273,jp_kamakura,calendars,pt,[1336.] ouside of polity years
+1274,jp_nara,calendars,pt,[707.] ouside of polity years
+1275,kh_angkor_2,calendars,pt,[1066. 1080.] ouside of polity years
+1276,no_norway_k_2,calendars,pt,[1257.] ouside of polity years
+1277,pt_portuguese_emp_2,calendars,pt,[1816.] ouside of polity years
+1278,ru_golden_horde,calendars,pt,[1227. 1459.] ouside of polity years
+1279,se_baol_k,calendars,pt,[1894.] ouside of polity years
+1280,th_rattanakosin,calendars,pt,[1910.] ouside of polity years
+1281,tr_byzantine_emp_2,calendars,pt,[1078.] ouside of polity years
+1282,tr_east_roman_emp,calendars,pt,[641.] ouside of polity years
+1283,tr_ottoman_emirate,calendars,pt,[1413. 1421.] ouside of polity years
+1284,ug_buganda_k_1,calendars,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1285,ug_bunyoro_k_2,calendars,pt,[1899.] ouside of polity years
+1286,uz_chagatai_khanate,calendars,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1287,af_durrani_emp,sacred-texts,pt,[1839.] ouside of polity years
+1288,cn_western_jin_dyn,sacred-texts,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1289,eg_old_k_1,sacred-texts,pt,[-2667. -2345.] ouside of polity years
+1290,eg_ptolemaic_k_1,sacred-texts,pt,[-204.] ouside of polity years
+1291,eg_thebes_hyksos,sacred-texts,pt,[-1555. -1550.] ouside of polity years
+1292,es_spanish_emp_1,sacred-texts,pt,[1746.] ouside of polity years
+1293,es_spanish_emp_2,sacred-texts,pt,[1833.] ouside of polity years
+1294,fr_capetian_k_2,sacred-texts,pt,[1137.] ouside of polity years
+1295,fr_merovingian_emp_2,sacred-texts,pt,[690.] ouside of polity years
+1296,fr_valois_k_1,sacred-texts,pt,[1461.] ouside of polity years
+1297,gb_anglo_saxon_1,sacred-texts,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1298,il_judea,sacred-texts,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1299,in_carnatic_sul,sacred-texts,pt,[1949.] ouside of polity years
+1300,in_gahadavala_dyn,sacred-texts,pt,[1197.] ouside of polity years
+1301,in_gurjara_pratihara_dyn,sacred-texts,pt,[1036.] ouside of polity years
+1302,in_mauryan_emp,sacred-texts,pt,[-184.] ouside of polity years
+1303,in_rashtrakuta_emp,sacred-texts,pt,[982.] ouside of polity years
+1304,iq_akkad_emp,sacred-texts,pt,[-2279.] ouside of polity years
+1305,ir_buyid_confederation,sacred-texts,pt,[1075.] ouside of polity years
+1306,ir_il_khanate,sacred-texts,pt,[1343.] ouside of polity years
+1307,it_roman_k,sacred-texts,pt,[-753.] ouside of polity years
+1308,jp_ashikaga,sacred-texts,pt,[1473. 1489. 1493.] ouside of polity years
+1309,jp_kamakura,sacred-texts,pt,[1336.] ouside of polity years
+1310,jp_nara,sacred-texts,pt,[707.] ouside of polity years
+1311,kh_angkor_2,sacred-texts,pt,[1066. 1080.] ouside of polity years
+1312,no_norway_k_2,sacred-texts,pt,[1257.] ouside of polity years
+1313,om_busaidi_imamate_1,sacred-texts,pt,[1913.] ouside of polity years
+1314,pt_portuguese_emp_2,sacred-texts,pt,[1816.] ouside of polity years
+1315,ru_golden_horde,sacred-texts,pt,[1227. 1459.] ouside of polity years
+1316,se_baol_k,sacred-texts,pt,[1894.] ouside of polity years
+1317,th_rattanakosin,sacred-texts,pt,[1910.] ouside of polity years
+1318,tr_byzantine_emp_2,sacred-texts,pt,[1078.] ouside of polity years
+1319,tr_east_roman_emp,sacred-texts,pt,[641.] ouside of polity years
+1320,tr_ottoman_emirate,sacred-texts,pt,[1413. 1421.] ouside of polity years
+1321,ug_buganda_k_1,sacred-texts,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1322,ug_bunyoro_k_2,sacred-texts,pt,[1899.] ouside of polity years
+1323,uz_chagatai_khanate,sacred-texts,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1324,af_durrani_emp,religious-literatures,pt,[1839.] ouside of polity years
+1325,cn_western_jin_dyn,religious-literatures,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1326,eg_mamluk_sultanate_1,religious-literatures,pt,[1257.] ouside of polity years
+1327,eg_old_k_1,religious-literatures,pt,[-2667. -2345.] ouside of polity years
+1328,eg_ptolemaic_k_1,religious-literatures,pt,[-204.] ouside of polity years
+1329,eg_regions,religious-literatures,pt,[-2004.] ouside of polity years
+1330,eg_thebes_hyksos,religious-literatures,pt,[-1555. -1550.] ouside of polity years
+1331,es_spanish_emp_1,religious-literatures,pt,[1746.] ouside of polity years
+1332,es_spanish_emp_2,religious-literatures,pt,[1833.] ouside of polity years
+1333,fr_capetian_k_2,religious-literatures,pt,[1137.] ouside of polity years
+1334,fr_merovingian_emp_1,religious-literatures,pt,[558.] ouside of polity years
+1335,fr_merovingian_emp_2,religious-literatures,pt,[690.] ouside of polity years
+1336,fr_valois_k_1,religious-literatures,pt,[1461.] ouside of polity years
+1337,gb_anglo_saxon_1,religious-literatures,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1338,il_judea,religious-literatures,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1339,in_carnatic_sul,religious-literatures,pt,[1949.] ouside of polity years
+1340,in_gahadavala_dyn,religious-literatures,pt,[1197.] ouside of polity years
+1341,in_gurjara_pratihara_dyn,religious-literatures,pt,[1036.] ouside of polity years
+1342,in_mauryan_emp,religious-literatures,pt,[-184.] ouside of polity years
+1343,in_rashtrakuta_emp,religious-literatures,pt,[982.] ouside of polity years
+1344,iq_akkad_emp,religious-literatures,pt,[-2279.] ouside of polity years
+1345,iq_neo_assyrian_emp,religious-literatures,pt,[-609.] ouside of polity years
+1346,ir_buyid_confederation,religious-literatures,pt,[1075.] ouside of polity years
+1347,ir_il_khanate,religious-literatures,pt,[1343.] ouside of polity years
+1348,ir_safavid_emp,religious-literatures,pt,[1732. 1736.] ouside of polity years
+1349,ir_sassanid_emp_2,religious-literatures,pt,[651.] ouside of polity years
+1350,ir_seljuk_sultanate,religious-literatures,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1351,it_roman_k,religious-literatures,pt,[-753.] ouside of polity years
+1352,it_st_peter_rep_2,religious-literatures,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1353,jp_ashikaga,religious-literatures,pt,[1473. 1489. 1493.] ouside of polity years
+1354,jp_kamakura,religious-literatures,pt,[1336.] ouside of polity years
+1355,jp_nara,religious-literatures,pt,[707.] ouside of polity years
+1356,kh_angkor_2,religious-literatures,pt,[1066. 1080.] ouside of polity years
+1357,no_norway_k_2,religious-literatures,pt,[1257.] ouside of polity years
+1358,om_busaidi_imamate_1,religious-literatures,pt,[1913.] ouside of polity years
+1359,pt_portuguese_emp_2,religious-literatures,pt,[1816.] ouside of polity years
+1360,ru_golden_horde,religious-literatures,pt,[1227. 1459.] ouside of polity years
+1361,se_baol_k,religious-literatures,pt,[1894.] ouside of polity years
+1362,th_rattanakosin,religious-literatures,pt,[1910.] ouside of polity years
+1363,tr_byzantine_emp_2,religious-literatures,pt,[1078.] ouside of polity years
+1364,tr_east_roman_emp,religious-literatures,pt,[641.] ouside of polity years
+1365,tr_ottoman_emirate,religious-literatures,pt,[1413. 1421.] ouside of polity years
+1366,ug_buganda_k_1,religious-literatures,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1367,ug_bunyoro_k_2,religious-literatures,pt,[1899.] ouside of polity years
+1368,uz_chagatai_khanate,religious-literatures,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1369,af_durrani_emp,practical-literatures,pt,[1839.] ouside of polity years
+1370,cn_western_jin_dyn,practical-literatures,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1371,eg_mamluk_sultanate_1,practical-literatures,pt,[1257.] ouside of polity years
+1372,eg_old_k_1,practical-literatures,pt,[-2667. -2345.] ouside of polity years
+1373,eg_ptolemaic_k_1,practical-literatures,pt,[-204.] ouside of polity years
+1374,eg_regions,practical-literatures,pt,[-2004.] ouside of polity years
+1375,es_spanish_emp_1,practical-literatures,pt,[1746.] ouside of polity years
+1376,es_spanish_emp_2,practical-literatures,pt,[1833.] ouside of polity years
+1377,fr_capetian_k_2,practical-literatures,pt,[1137.] ouside of polity years
+1378,fr_merovingian_emp_1,practical-literatures,pt,[558.] ouside of polity years
+1379,fr_merovingian_emp_2,practical-literatures,pt,[690.] ouside of polity years
+1380,gr_macedonian_emp,practical-literatures,pt,[-309.] ouside of polity years
+1381,il_judea,practical-literatures,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1382,in_gahadavala_dyn,practical-literatures,pt,[1197.] ouside of polity years
+1383,in_gurjara_pratihara_dyn,practical-literatures,pt,[1036.] ouside of polity years
+1384,in_mauryan_emp,practical-literatures,pt,[-184.] ouside of polity years
+1385,in_rashtrakuta_emp,practical-literatures,pt,[982.] ouside of polity years
+1386,iq_akkad_emp,practical-literatures,pt,[-2279.] ouside of polity years
+1387,ir_il_khanate,practical-literatures,pt,[1343.] ouside of polity years
+1388,ir_safavid_emp,practical-literatures,pt,[1732. 1736.] ouside of polity years
+1389,ir_sassanid_emp_2,practical-literatures,pt,[651.] ouside of polity years
+1390,ir_seljuk_sultanate,practical-literatures,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1391,jp_ashikaga,practical-literatures,pt,[1473. 1489. 1493.] ouside of polity years
+1392,jp_nara,practical-literatures,pt,[707.] ouside of polity years
+1393,kh_angkor_2,practical-literatures,pt,[1066. 1080.] ouside of polity years
+1394,no_norway_k_2,practical-literatures,pt,[1257.] ouside of polity years
+1395,pt_portuguese_emp_2,practical-literatures,pt,[1816.] ouside of polity years
+1396,ru_golden_horde,practical-literatures,pt,[1227. 1459.] ouside of polity years
+1397,th_rattanakosin,practical-literatures,pt,[1910.] ouside of polity years
+1398,tr_byzantine_emp_2,practical-literatures,pt,[1078.] ouside of polity years
+1399,tr_east_roman_emp,practical-literatures,pt,[641.] ouside of polity years
+1400,tr_ottoman_emirate,practical-literatures,pt,[1413. 1421.] ouside of polity years
+1401,ug_buganda_k_1,practical-literatures,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1402,ug_bunyoro_k_2,practical-literatures,pt,[1899.] ouside of polity years
+1403,af_durrani_emp,histories,pt,[1839.] ouside of polity years
+1404,cn_western_jin_dyn,histories,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1405,eg_mamluk_sultanate_1,histories,pt,[1257.] ouside of polity years
+1406,eg_old_k_1,histories,pt,[-2667. -2345.] ouside of polity years
+1407,eg_ptolemaic_k_1,histories,pt,[-204.] ouside of polity years
+1408,eg_regions,histories,pt,[-2004.] ouside of polity years
+1409,eg_thebes_hyksos,histories,pt,[-1555. -1550.] ouside of polity years
+1410,es_spanish_emp_1,histories,pt,[1746.] ouside of polity years
+1411,es_spanish_emp_2,histories,pt,[1833.] ouside of polity years
+1412,fr_capetian_k_2,histories,pt,[1137.] ouside of polity years
+1413,fr_merovingian_emp_1,histories,pt,[558.] ouside of polity years
+1414,fr_merovingian_emp_2,histories,pt,[690.] ouside of polity years
+1415,fr_valois_k_1,histories,pt,[1461.] ouside of polity years
+1416,gb_anglo_saxon_1,histories,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1417,gr_macedonian_emp,histories,pt,[-309.] ouside of polity years
+1418,il_judea,histories,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1419,in_rashtrakuta_emp,histories,pt,[982.] ouside of polity years
+1420,iq_akkad_emp,histories,pt,[-2279.] ouside of polity years
+1421,ir_buyid_confederation,histories,pt,[1075.] ouside of polity years
+1422,ir_il_khanate,histories,pt,[1343.] ouside of polity years
+1423,ir_safavid_emp,histories,pt,[1732. 1736.] ouside of polity years
+1424,ir_sassanid_emp_2,histories,pt,[651.] ouside of polity years
+1425,ir_seljuk_sultanate,histories,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1426,it_st_peter_rep_2,histories,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1427,jp_ashikaga,histories,pt,[1473. 1489. 1493.] ouside of polity years
+1428,jp_kamakura,histories,pt,[1336.] ouside of polity years
+1429,jp_nara,histories,pt,[707.] ouside of polity years
+1430,kh_angkor_2,histories,pt,[1066. 1080.] ouside of polity years
+1431,ni_kwararafa,histories,pt,[1848.] ouside of polity years
+1432,no_norway_k_2,histories,pt,[1257.] ouside of polity years
+1433,pt_portuguese_emp_2,histories,pt,[1816.] ouside of polity years
+1434,ru_golden_horde,histories,pt,[1227. 1459.] ouside of polity years
+1435,th_rattanakosin,histories,pt,[1910.] ouside of polity years
+1436,tr_byzantine_emp_2,histories,pt,[1078.] ouside of polity years
+1437,tr_east_roman_emp,histories,pt,[641.] ouside of polity years
+1438,tr_ottoman_emirate,histories,pt,[1413. 1421.] ouside of polity years
+1439,ug_buganda_k_1,histories,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1440,ug_bunyoro_k_2,histories,pt,[1899.] ouside of polity years
+1441,uz_chagatai_khanate,histories,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1442,af_durrani_emp,philosophies,pt,[1839.] ouside of polity years
+1443,cn_western_jin_dyn,philosophies,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1444,eg_mamluk_sultanate_1,philosophies,pt,[1257.] ouside of polity years
+1445,eg_old_k_1,philosophies,pt,[-2667. -2345.] ouside of polity years
+1446,eg_ptolemaic_k_1,philosophies,pt,[-204.] ouside of polity years
+1447,es_spanish_emp_1,philosophies,pt,[1746.] ouside of polity years
+1448,es_spanish_emp_2,philosophies,pt,[1833.] ouside of polity years
+1449,fr_capetian_k_2,philosophies,pt,[1137.] ouside of polity years
+1450,fr_merovingian_emp_1,philosophies,pt,[558.] ouside of polity years
+1451,fr_merovingian_emp_2,philosophies,pt,[690.] ouside of polity years
+1452,fr_valois_k_1,philosophies,pt,[1461.] ouside of polity years
+1453,gb_anglo_saxon_1,philosophies,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1454,gr_macedonian_emp,philosophies,pt,[-309.] ouside of polity years
+1455,in_rashtrakuta_emp,philosophies,pt,[982.] ouside of polity years
+1456,ir_buyid_confederation,philosophies,pt,[1075.] ouside of polity years
+1457,ir_il_khanate,philosophies,pt,[1343.] ouside of polity years
+1458,ir_safavid_emp,philosophies,pt,[1732. 1736.] ouside of polity years
+1459,ir_sassanid_emp_2,philosophies,pt,[651.] ouside of polity years
+1460,ir_seljuk_sultanate,philosophies,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1461,it_st_peter_rep_2,philosophies,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1462,jp_ashikaga,philosophies,pt,[1473. 1489. 1493.] ouside of polity years
+1463,jp_kamakura,philosophies,pt,[1336.] ouside of polity years
+1464,jp_nara,philosophies,pt,[707.] ouside of polity years
+1465,kh_angkor_2,philosophies,pt,[1066. 1080.] ouside of polity years
+1466,no_norway_k_2,philosophies,pt,[1257.] ouside of polity years
+1467,pt_portuguese_emp_2,philosophies,pt,[1816.] ouside of polity years
+1468,ru_golden_horde,philosophies,pt,[1227. 1459.] ouside of polity years
+1469,th_rattanakosin,philosophies,pt,[1910.] ouside of polity years
+1470,tr_byzantine_emp_2,philosophies,pt,[1078.] ouside of polity years
+1471,tr_east_roman_emp,philosophies,pt,[641.] ouside of polity years
+1472,tr_ottoman_emirate,philosophies,pt,[1413. 1421.] ouside of polity years
+1473,ug_buganda_k_1,philosophies,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1474,ug_bunyoro_k_2,philosophies,pt,[1899.] ouside of polity years
+1475,uz_chagatai_khanate,philosophies,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1476,cn_western_jin_dyn,scientific-literatures,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1477,eg_mamluk_sultanate_1,scientific-literatures,pt,[1257.] ouside of polity years
+1478,eg_old_k_1,scientific-literatures,pt,[-2667. -2345.] ouside of polity years
+1479,eg_ptolemaic_k_1,scientific-literatures,pt,[-204.] ouside of polity years
+1480,eg_thebes_hyksos,scientific-literatures,pt,[-1555. -1550.] ouside of polity years
+1481,es_spanish_emp_1,scientific-literatures,pt,[1746.] ouside of polity years
+1482,es_spanish_emp_2,scientific-literatures,pt,[1833.] ouside of polity years
+1483,gb_anglo_saxon_1,scientific-literatures,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1484,gr_macedonian_emp,scientific-literatures,pt,[-309.] ouside of polity years
+1485,in_carnatic_sul,scientific-literatures,pt,[1949.] ouside of polity years
+1486,in_mauryan_emp,scientific-literatures,pt,[-184.] ouside of polity years
+1487,in_rashtrakuta_emp,scientific-literatures,pt,[982.] ouside of polity years
+1488,iq_akkad_emp,scientific-literatures,pt,[-2279.] ouside of polity years
+1489,iq_neo_assyrian_emp,scientific-literatures,pt,[-609.] ouside of polity years
+1490,ir_buyid_confederation,scientific-literatures,pt,[1075.] ouside of polity years
+1491,ir_il_khanate,scientific-literatures,pt,[1343.] ouside of polity years
+1492,ir_safavid_emp,scientific-literatures,pt,[1732. 1736.] ouside of polity years
+1493,ir_sassanid_emp_2,scientific-literatures,pt,[651.] ouside of polity years
+1494,ir_seljuk_sultanate,scientific-literatures,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1495,it_st_peter_rep_2,scientific-literatures,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1496,jp_ashikaga,scientific-literatures,pt,[1473. 1489. 1493.] ouside of polity years
+1497,jp_kamakura,scientific-literatures,pt,[1336.] ouside of polity years
+1498,jp_nara,scientific-literatures,pt,[707.] ouside of polity years
+1499,kh_angkor_2,scientific-literatures,pt,[1066. 1080.] ouside of polity years
+1500,no_norway_k_2,scientific-literatures,pt,[1257.] ouside of polity years
+1501,pt_portuguese_emp_2,scientific-literatures,pt,[1816.] ouside of polity years
+1502,ru_golden_horde,scientific-literatures,pt,[1227. 1459.] ouside of polity years
+1503,th_rattanakosin,scientific-literatures,pt,[1910.] ouside of polity years
+1504,tr_byzantine_emp_2,scientific-literatures,pt,[1078.] ouside of polity years
+1505,tr_ottoman_emirate,scientific-literatures,pt,[1413. 1421.] ouside of polity years
+1506,ug_buganda_k_1,scientific-literatures,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1507,ug_bunyoro_k_2,scientific-literatures,pt,[1899.] ouside of polity years
+1508,uz_chagatai_khanate,scientific-literatures,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1509,af_durrani_emp,fictions,pt,[1839.] ouside of polity years
+1510,cn_western_jin_dyn,fictions,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1511,eg_mamluk_sultanate_1,fictions,pt,[1257.] ouside of polity years
+1512,eg_old_k_1,fictions,pt,[-2667. -2345.] ouside of polity years
+1513,eg_ptolemaic_k_1,fictions,pt,[-204.] ouside of polity years
+1514,es_spanish_emp_1,fictions,pt,[1746.] ouside of polity years
+1515,es_spanish_emp_2,fictions,pt,[1833.] ouside of polity years
+1516,fr_capetian_k_2,fictions,pt,[1137.] ouside of polity years
+1517,fr_merovingian_emp_2,fictions,pt,[690.] ouside of polity years
+1518,fr_valois_k_1,fictions,pt,[1461.] ouside of polity years
+1519,gb_anglo_saxon_1,fictions,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1520,gr_macedonian_emp,fictions,pt,[-309.] ouside of polity years
+1521,il_judea,fictions,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1522,in_gurjara_pratihara_dyn,fictions,pt,[1036.] ouside of polity years
+1523,in_mauryan_emp,fictions,pt,[-184.] ouside of polity years
+1524,in_rashtrakuta_emp,fictions,pt,[982.] ouside of polity years
+1525,iq_akkad_emp,fictions,pt,[-2279.] ouside of polity years
+1526,iq_neo_assyrian_emp,fictions,pt,[-609.] ouside of polity years
+1527,ir_buyid_confederation,fictions,pt,[1075.] ouside of polity years
+1528,ir_il_khanate,fictions,pt,[1343.] ouside of polity years
+1529,ir_safavid_emp,fictions,pt,[1732. 1736.] ouside of polity years
+1530,ir_sassanid_emp_2,fictions,pt,[651.] ouside of polity years
+1531,ir_seljuk_sultanate,fictions,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1532,it_st_peter_rep_2,fictions,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1533,jp_ashikaga,fictions,pt,[1473. 1489. 1493.] ouside of polity years
+1534,jp_kamakura,fictions,pt,[1336.] ouside of polity years
+1535,jp_nara,fictions,pt,[707.] ouside of polity years
+1536,no_norway_k_2,fictions,pt,[1257.] ouside of polity years
+1537,pt_portuguese_emp_2,fictions,pt,[1816.] ouside of polity years
+1538,ru_golden_horde,fictions,pt,[1227. 1459.] ouside of polity years
+1539,th_rattanakosin,fictions,pt,[1910.] ouside of polity years
+1540,tr_byzantine_emp_2,fictions,pt,[1078.] ouside of polity years
+1541,tr_east_roman_emp,fictions,pt,[641.] ouside of polity years
+1542,tr_ottoman_emirate,fictions,pt,[1413. 1421.] ouside of polity years
+1543,ug_buganda_k_1,fictions,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1544,ug_bunyoro_k_2,fictions,pt,[1899.] ouside of polity years
+1545,uz_chagatai_khanate,fictions,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1546,af_durrani_emp,articles,pt,[1839.] ouside of polity years
+1547,cn_western_jin_dyn,articles,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1548,eg_mamluk_sultanate_1,articles,pt,[1257.] ouside of polity years
+1549,eg_old_k_1,articles,pt,[-2667. -2345.] ouside of polity years
+1550,eg_ptolemaic_k_1,articles,pt,[-204.] ouside of polity years
+1551,eg_regions,articles,pt,[-2004.] ouside of polity years
+1552,eg_thebes_hyksos,articles,pt,[-1555. -1550.] ouside of polity years
+1553,es_spanish_emp_1,articles,pt,[1746.] ouside of polity years
+1554,fr_merovingian_emp_1,articles,pt,[558.] ouside of polity years
+1555,fr_merovingian_emp_2,articles,pt,[690.] ouside of polity years
+1556,gb_anglo_saxon_1,articles,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1557,gt_tikal_late_classic,articles,pt,[889.] ouside of polity years
+1558,in_mauryan_emp,articles,pt,[-184.] ouside of polity years
+1559,in_rashtrakuta_emp,articles,pt,[982.] ouside of polity years
+1560,iq_akkad_emp,articles,pt,[-2279.] ouside of polity years
+1561,iq_neo_assyrian_emp,articles,pt,[-609.] ouside of polity years
+1562,ir_buyid_confederation,articles,pt,[1075.] ouside of polity years
+1563,ir_il_khanate,articles,pt,[1343.] ouside of polity years
+1564,ir_safavid_emp,articles,pt,[1732. 1736.] ouside of polity years
+1565,ir_sassanid_emp_2,articles,pt,[651.] ouside of polity years
+1566,ir_seljuk_sultanate,articles,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1567,it_italy_k,articles,pt,[493.] ouside of polity years
+1568,it_roman_k,articles,pt,[-753.] ouside of polity years
+1569,it_st_peter_rep_2,articles,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1570,jp_ashikaga,articles,pt,[1473. 1489. 1493.] ouside of polity years
+1571,jp_kamakura,articles,pt,[1336.] ouside of polity years
+1572,jp_nara,articles,pt,[707.] ouside of polity years
+1573,kh_angkor_2,articles,pt,[1066. 1080.] ouside of polity years
+1574,no_norway_k_2,articles,pt,[1257.] ouside of polity years
+1575,om_busaidi_imamate_1,articles,pt,[1913.] ouside of polity years
+1576,pt_portuguese_emp_2,articles,pt,[1816.] ouside of polity years
+1577,ru_golden_horde,articles,pt,[1227. 1459.] ouside of polity years
+1578,se_baol_k,articles,pt,[1894.] ouside of polity years
+1579,th_rattanakosin,articles,pt,[1910.] ouside of polity years
+1580,tr_byzantine_emp_2,articles,pt,[1078.] ouside of polity years
+1581,tr_east_roman_emp,articles,pt,[641.] ouside of polity years
+1582,tr_ottoman_emirate,articles,pt,[1413. 1421.] ouside of polity years
+1583,ug_buganda_k_1,articles,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1584,ug_bunyoro_k_2,articles,pt,[1899.] ouside of polity years
+1585,uz_chagatai_khanate,articles,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1586,zi_torwa_rozvi,articles,pt,[1866.] ouside of polity years
+1587,af_durrani_emp,tokens,pt,[1839.] ouside of polity years
+1588,eg_ptolemaic_k_1,tokens,pt,[-204.] ouside of polity years
+1589,in_gurjara_pratihara_dyn,tokens,pt,[1036.] ouside of polity years
+1590,it_st_peter_rep_2,tokens,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1591,kh_angkor_2,tokens,pt,[1066. 1080.] ouside of polity years
+1592,no_norway_k_2,tokens,pt,[1257.] ouside of polity years
+1593,om_busaidi_imamate_1,tokens,pt,[1913.] ouside of polity years
+1594,pt_portuguese_emp_2,tokens,pt,[1816.] ouside of polity years
+1595,se_baol_k,tokens,pt,[1894.] ouside of polity years
+1596,th_rattanakosin,tokens,pt,[1910.] ouside of polity years
+1597,tr_east_roman_emp,tokens,pt,[641.] ouside of polity years
+1598,ug_buganda_k_1,tokens,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1599,ug_bunyoro_k_2,tokens,pt,[1899.] ouside of polity years
+1600,zi_torwa_rozvi,tokens,pt,[1866.] ouside of polity years
+1601,cn_western_jin_dyn,precious-metals,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1602,eg_mamluk_sultanate_1,precious-metals,pt,[1257.] ouside of polity years
+1603,eg_old_k_1,precious-metals,pt,[-2667. -2345.] ouside of polity years
+1604,eg_ptolemaic_k_1,precious-metals,pt,[-204.] ouside of polity years
+1605,eg_thebes_hyksos,precious-metals,pt,[-1555. -1550.] ouside of polity years
+1606,es_spanish_emp_1,precious-metals,pt,[1746.] ouside of polity years
+1607,es_spanish_emp_2,precious-metals,pt,[1833.] ouside of polity years
+1608,fr_merovingian_emp_1,precious-metals,pt,[558.] ouside of polity years
+1609,fr_merovingian_emp_2,precious-metals,pt,[690.] ouside of polity years
+1610,gb_anglo_saxon_1,precious-metals,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1611,il_judea,precious-metals,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1612,in_carnatic_sul,precious-metals,pt,[1949.] ouside of polity years
+1613,in_mauryan_emp,precious-metals,pt,[-184.] ouside of polity years
+1614,in_rashtrakuta_emp,precious-metals,pt,[982.] ouside of polity years
+1615,iq_akkad_emp,precious-metals,pt,[-2279.] ouside of polity years
+1616,iq_neo_assyrian_emp,precious-metals,pt,[-609.] ouside of polity years
+1617,ir_il_khanate,precious-metals,pt,[1343.] ouside of polity years
+1618,ir_seljuk_sultanate,precious-metals,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1619,it_st_peter_rep_2,precious-metals,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1620,jp_ashikaga,precious-metals,pt,[1473. 1489. 1493.] ouside of polity years
+1621,jp_kamakura,precious-metals,pt,[1336.] ouside of polity years
+1622,jp_nara,precious-metals,pt,[707.] ouside of polity years
+1623,kh_angkor_2,precious-metals,pt,[1066. 1080.] ouside of polity years
+1624,no_norway_k_2,precious-metals,pt,[1257.] ouside of polity years
+1625,om_busaidi_imamate_1,precious-metals,pt,[1913.] ouside of polity years
+1626,ru_golden_horde,precious-metals,pt,[1227. 1459.] ouside of polity years
+1627,th_rattanakosin,precious-metals,pt,[1910.] ouside of polity years
+1628,tr_byzantine_emp_2,precious-metals,pt,[1078.] ouside of polity years
+1629,tr_east_roman_emp,precious-metals,pt,[641.] ouside of polity years
+1630,tr_ottoman_emirate,precious-metals,pt,[1413. 1421.] ouside of polity years
+1631,ug_buganda_k_1,precious-metals,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1632,ug_bunyoro_k_2,precious-metals,pt,[1899.] ouside of polity years
+1633,af_durrani_emp,foreign-coins,pt,[1839.] ouside of polity years
+1634,eg_mamluk_sultanate_1,foreign-coins,pt,[1257.] ouside of polity years
+1635,eg_old_k_1,foreign-coins,pt,[-2667. -2345.] ouside of polity years
+1636,eg_ptolemaic_k_1,foreign-coins,pt,[-204.] ouside of polity years
+1637,eg_regions,foreign-coins,pt,[-2004.] ouside of polity years
+1638,eg_thebes_hyksos,foreign-coins,pt,[-1555. -1550.] ouside of polity years
+1639,es_spanish_emp_1,foreign-coins,pt,[1746.] ouside of polity years
+1640,fr_merovingian_emp_1,foreign-coins,pt,[558.] ouside of polity years
+1641,fr_merovingian_emp_2,foreign-coins,pt,[690.] ouside of polity years
+1642,gb_anglo_saxon_1,foreign-coins,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1643,gr_macedonian_emp,foreign-coins,pt,[-309.] ouside of polity years
+1644,il_judea,foreign-coins,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1645,in_mauryan_emp,foreign-coins,pt,[-184.] ouside of polity years
+1646,iq_akkad_emp,foreign-coins,pt,[-2279.] ouside of polity years
+1647,iq_neo_assyrian_emp,foreign-coins,pt,[-609.] ouside of polity years
+1648,ir_buyid_confederation,foreign-coins,pt,[1075.] ouside of polity years
+1649,ir_il_khanate,foreign-coins,pt,[1343.] ouside of polity years
+1650,ir_safavid_emp,foreign-coins,pt,[1732. 1736.] ouside of polity years
+1651,ir_sassanid_emp_2,foreign-coins,pt,[651.] ouside of polity years
+1652,ir_seljuk_sultanate,foreign-coins,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1653,it_roman_k,foreign-coins,pt,[-753.] ouside of polity years
+1654,it_st_peter_rep_2,foreign-coins,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1655,jp_ashikaga,foreign-coins,pt,[1473. 1489. 1493.] ouside of polity years
+1656,jp_kamakura,foreign-coins,pt,[1336.] ouside of polity years
+1657,jp_nara,foreign-coins,pt,[707.] ouside of polity years
+1658,kh_angkor_2,foreign-coins,pt,[1066. 1080.] ouside of polity years
+1659,no_norway_k_2,foreign-coins,pt,[1257.] ouside of polity years
+1660,om_busaidi_imamate_1,foreign-coins,pt,[1913.] ouside of polity years
+1661,pt_portuguese_emp_2,foreign-coins,pt,[1816.] ouside of polity years
+1662,ru_golden_horde,foreign-coins,pt,[1227. 1459.] ouside of polity years
+1663,se_baol_k,foreign-coins,pt,[1894.] ouside of polity years
+1664,th_rattanakosin,foreign-coins,pt,[1910.] ouside of polity years
+1665,tr_byzantine_emp_2,foreign-coins,pt,[1078.] ouside of polity years
+1666,tr_east_roman_emp,foreign-coins,pt,[641.] ouside of polity years
+1667,tr_ottoman_emirate,foreign-coins,pt,[1413. 1421.] ouside of polity years
+1668,ug_buganda_k_1,foreign-coins,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1669,ug_bunyoro_k_2,foreign-coins,pt,[1899.] ouside of polity years
+1670,af_durrani_emp,indigenous-coins,pt,[1839.] ouside of polity years
+1671,eg_mamluk_sultanate_1,indigenous-coins,pt,[1257.] ouside of polity years
+1672,eg_old_k_1,indigenous-coins,pt,[-2667. -2345.] ouside of polity years
+1673,eg_ptolemaic_k_1,indigenous-coins,pt,[-204.] ouside of polity years
+1674,eg_thebes_hyksos,indigenous-coins,pt,[-1555. -1550.] ouside of polity years
+1675,es_spanish_emp_1,indigenous-coins,pt,[1746.] ouside of polity years
+1676,es_spanish_emp_2,indigenous-coins,pt,[1833.] ouside of polity years
+1677,fr_capetian_k_2,indigenous-coins,pt,[1137.] ouside of polity years
+1678,fr_merovingian_emp_1,indigenous-coins,pt,[558.] ouside of polity years
+1679,fr_merovingian_emp_2,indigenous-coins,pt,[690.] ouside of polity years
+1680,gb_anglo_saxon_1,indigenous-coins,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1681,gr_macedonian_emp,indigenous-coins,pt,[-309.] ouside of polity years
+1682,il_judea,indigenous-coins,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1683,in_gahadavala_dyn,indigenous-coins,pt,[1197.] ouside of polity years
+1684,in_gurjara_pratihara_dyn,indigenous-coins,pt,[1036.] ouside of polity years
+1685,in_mauryan_emp,indigenous-coins,pt,[-184.] ouside of polity years
+1686,in_rashtrakuta_emp,indigenous-coins,pt,[982.] ouside of polity years
+1687,iq_akkad_emp,indigenous-coins,pt,[-2279.] ouside of polity years
+1688,iq_neo_assyrian_emp,indigenous-coins,pt,[-609.] ouside of polity years
+1689,ir_buyid_confederation,indigenous-coins,pt,[1075.] ouside of polity years
+1690,ir_il_khanate,indigenous-coins,pt,[1343.] ouside of polity years
+1691,ir_safavid_emp,indigenous-coins,pt,[1732. 1736.] ouside of polity years
+1692,ir_sassanid_emp_2,indigenous-coins,pt,[651.] ouside of polity years
+1693,ir_seljuk_sultanate,indigenous-coins,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1694,it_italy_k,indigenous-coins,pt,[493.] ouside of polity years
+1695,it_roman_k,indigenous-coins,pt,[-753.] ouside of polity years
+1696,it_st_peter_rep_2,indigenous-coins,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1697,jp_ashikaga,indigenous-coins,pt,[1473. 1489. 1493.] ouside of polity years
+1698,jp_kamakura,indigenous-coins,pt,[1336.] ouside of polity years
+1699,jp_nara,indigenous-coins,pt,[707.] ouside of polity years
+1700,kh_angkor_2,indigenous-coins,pt,[1066. 1080.] ouside of polity years
+1701,no_norway_k_2,indigenous-coins,pt,[1257.] ouside of polity years
+1702,om_busaidi_imamate_1,indigenous-coins,pt,[1913.] ouside of polity years
+1703,pt_portuguese_emp_2,indigenous-coins,pt,[1816.] ouside of polity years
+1704,ru_golden_horde,indigenous-coins,pt,[1227. 1459.] ouside of polity years
+1705,th_rattanakosin,indigenous-coins,pt,[1910.] ouside of polity years
+1706,tr_byzantine_emp_2,indigenous-coins,pt,[1078.] ouside of polity years
+1707,tr_east_roman_emp,indigenous-coins,pt,[641.] ouside of polity years
+1708,tr_ottoman_emirate,indigenous-coins,pt,[1413. 1421.] ouside of polity years
+1709,ug_buganda_k_1,indigenous-coins,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1710,ug_bunyoro_k_2,indigenous-coins,pt,[1899.] ouside of polity years
+1711,uz_chagatai_khanate,indigenous-coins,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1712,af_durrani_emp,paper-currencies,pt,[1839.] ouside of polity years
+1713,cn_western_jin_dyn,paper-currencies,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1714,eg_mamluk_sultanate_1,paper-currencies,pt,[1257.] ouside of polity years
+1715,eg_old_k_1,paper-currencies,pt,[-2667. -2345.] ouside of polity years
+1716,eg_ptolemaic_k_1,paper-currencies,pt,[-204.] ouside of polity years
+1717,eg_regions,paper-currencies,pt,[-2004.] ouside of polity years
+1718,eg_thebes_hyksos,paper-currencies,pt,[-1555. -1550.] ouside of polity years
+1719,es_spanish_emp_1,paper-currencies,pt,[1746.] ouside of polity years
+1720,es_spanish_emp_2,paper-currencies,pt,[1833.] ouside of polity years
+1721,gb_anglo_saxon_1,paper-currencies,pt,[ 939.  946.  955.  959.  975.  978. 1014. 1016. 1035. 1040. 1042. 1066.] ouside of polity years
+1722,il_judea,paper-currencies,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1723,in_gurjara_pratihara_dyn,paper-currencies,pt,[1036.] ouside of polity years
+1724,in_mauryan_emp,paper-currencies,pt,[-184.] ouside of polity years
+1725,in_rashtrakuta_emp,paper-currencies,pt,[982.] ouside of polity years
+1726,iq_akkad_emp,paper-currencies,pt,[-2279.] ouside of polity years
+1727,iq_neo_assyrian_emp,paper-currencies,pt,[-609.] ouside of polity years
+1728,ir_il_khanate,paper-currencies,pt,[1343.] ouside of polity years
+1729,ir_sassanid_emp_2,paper-currencies,pt,[651.] ouside of polity years
+1730,ir_seljuk_sultanate,paper-currencies,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1731,it_roman_k,paper-currencies,pt,[-753.] ouside of polity years
+1732,it_st_peter_rep_2,paper-currencies,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1733,jp_ashikaga,paper-currencies,pt,[1473. 1489. 1493.] ouside of polity years
+1734,jp_kamakura,paper-currencies,pt,[1336.] ouside of polity years
+1735,jp_nara,paper-currencies,pt,[707.] ouside of polity years
+1736,kh_angkor_2,paper-currencies,pt,[1066. 1080.] ouside of polity years
+1737,no_norway_k_2,paper-currencies,pt,[1257.] ouside of polity years
+1738,om_busaidi_imamate_1,paper-currencies,pt,[1913.] ouside of polity years
+1739,pt_portuguese_emp_2,paper-currencies,pt,[1816.] ouside of polity years
+1740,ru_golden_horde,paper-currencies,pt,[1227. 1459.] ouside of polity years
+1741,th_rattanakosin,paper-currencies,pt,[1910.] ouside of polity years
+1742,tr_byzantine_emp_2,paper-currencies,pt,[1078.] ouside of polity years
+1743,tr_east_roman_emp,paper-currencies,pt,[641.] ouside of polity years
+1744,tr_ottoman_emirate,paper-currencies,pt,[1413. 1421.] ouside of polity years
+1745,ug_buganda_k_1,paper-currencies,pt,[1408. 1420. 1447. 1717.] ouside of polity years
+1746,af_durrani_emp,couriers,pt,[1839.] ouside of polity years
+1747,cn_western_jin_dyn,couriers,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1748,eg_mamluk_sultanate_1,couriers,pt,[1257.] ouside of polity years
+1749,eg_old_k_1,couriers,pt,[-2667. -2345.] ouside of polity years
+1750,eg_ptolemaic_k_1,couriers,pt,[-204.] ouside of polity years
+1751,eg_regions,couriers,pt,[-2004.] ouside of polity years
+1752,eg_thebes_hyksos,couriers,pt,[-1555. -1550.] ouside of polity years
+1753,es_spanish_emp_1,couriers,pt,[1746.] ouside of polity years
+1754,es_spanish_emp_2,couriers,pt,[1833.] ouside of polity years
+1755,fr_capetian_k_2,couriers,pt,[1137.] ouside of polity years
+1756,fr_valois_k_1,couriers,pt,[1461.] ouside of polity years
+1757,il_judea,couriers,pt,[-165. -160.  -40.  -37.] ouside of polity years
+1758,in_mauryan_emp,couriers,pt,[-184.] ouside of polity years
+1759,iq_akkad_emp,couriers,pt,[-2279.] ouside of polity years
+1760,iq_neo_assyrian_emp,couriers,pt,[-609.] ouside of polity years
+1761,ir_buyid_confederation,couriers,pt,[1075.] ouside of polity years
+1762,ir_il_khanate,couriers,pt,[1343.] ouside of polity years
+1763,ir_safavid_emp,couriers,pt,[1732. 1736.] ouside of polity years
+1764,ir_sassanid_emp_2,couriers,pt,[651.] ouside of polity years
+1765,ir_seljuk_sultanate,couriers,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1766,it_roman_k,couriers,pt,[-753.] ouside of polity years
+1767,it_st_peter_rep_2,couriers,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1768,jp_ashikaga,couriers,pt,[1473. 1489. 1493.] ouside of polity years
+1769,jp_kamakura,couriers,pt,[1336.] ouside of polity years
+1770,jp_nara,couriers,pt,[707.] ouside of polity years
+1771,kh_angkor_2,couriers,pt,[1066. 1080.] ouside of polity years
+1772,no_norway_k_2,couriers,pt,[1257.] ouside of polity years
+1773,pt_portuguese_emp_2,couriers,pt,[1816.] ouside of polity years
+1774,ru_golden_horde,couriers,pt,[1227. 1459.] ouside of polity years
+1775,tr_byzantine_emp_2,couriers,pt,[1078.] ouside of polity years
+1776,tr_east_roman_emp,couriers,pt,[641.] ouside of polity years
+1777,tr_ottoman_emirate,couriers,pt,[1413. 1421.] ouside of polity years
+1778,ug_bunyoro_k_2,couriers,pt,[1899.] ouside of polity years
+1779,uz_chagatai_khanate,couriers,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1780,af_durrani_emp,postal-stations,pt,[1839.] ouside of polity years
+1781,cn_western_jin_dyn,postal-stations,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1782,eg_mamluk_sultanate_1,postal-stations,pt,[1257.] ouside of polity years
+1783,eg_ptolemaic_k_1,postal-stations,pt,[-204.] ouside of polity years
+1784,eg_regions,postal-stations,pt,[-2004.] ouside of polity years
+1785,eg_thebes_hyksos,postal-stations,pt,[-1555. -1550.] ouside of polity years
+1786,es_spanish_emp_1,postal-stations,pt,[1746.] ouside of polity years
+1787,es_spanish_emp_2,postal-stations,pt,[1833.] ouside of polity years
+1788,fr_capetian_k_2,postal-stations,pt,[1137.] ouside of polity years
+1789,in_mauryan_emp,postal-stations,pt,[-184.] ouside of polity years
+1790,iq_akkad_emp,postal-stations,pt,[-2279.] ouside of polity years
+1791,iq_neo_assyrian_emp,postal-stations,pt,[-609.] ouside of polity years
+1792,ir_buyid_confederation,postal-stations,pt,[1075.] ouside of polity years
+1793,ir_il_khanate,postal-stations,pt,[1343.] ouside of polity years
+1794,ir_safavid_emp,postal-stations,pt,[1732. 1736.] ouside of polity years
+1795,ir_sassanid_emp_2,postal-stations,pt,[651.] ouside of polity years
+1796,ir_seljuk_sultanate,postal-stations,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1797,it_roman_k,postal-stations,pt,[-753.] ouside of polity years
+1798,it_st_peter_rep_2,postal-stations,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1799,jp_ashikaga,postal-stations,pt,[1473. 1489. 1493.] ouside of polity years
+1800,jp_kamakura,postal-stations,pt,[1336.] ouside of polity years
+1801,jp_nara,postal-stations,pt,[707.] ouside of polity years
+1802,kh_angkor_2,postal-stations,pt,[1066. 1080.] ouside of polity years
+1803,no_norway_k_2,postal-stations,pt,[1257.] ouside of polity years
+1804,pt_portuguese_emp_2,postal-stations,pt,[1816.] ouside of polity years
+1805,ru_golden_horde,postal-stations,pt,[1227. 1459.] ouside of polity years
+1806,tr_byzantine_emp_2,postal-stations,pt,[1078.] ouside of polity years
+1807,tr_east_roman_emp,postal-stations,pt,[641.] ouside of polity years
+1808,tr_ottoman_emirate,postal-stations,pt,[1413. 1421.] ouside of polity years
+1809,uz_chagatai_khanate,postal-stations,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1810,af_durrani_emp,general-postal-services,pt,[1839.] ouside of polity years
+1811,eg_mamluk_sultanate_1,general-postal-services,pt,[1257.] ouside of polity years
+1812,eg_old_k_1,general-postal-services,pt,[-2667. -2345.] ouside of polity years
+1813,eg_ptolemaic_k_1,general-postal-services,pt,[-204.] ouside of polity years
+1814,eg_regions,general-postal-services,pt,[-2004.] ouside of polity years
+1815,eg_thebes_hyksos,general-postal-services,pt,[-1555. -1550.] ouside of polity years
+1816,es_spanish_emp_1,general-postal-services,pt,[1746.] ouside of polity years
+1817,es_spanish_emp_2,general-postal-services,pt,[1833.] ouside of polity years
+1818,fr_capetian_k_2,general-postal-services,pt,[1137.] ouside of polity years
+1819,fr_valois_k_1,general-postal-services,pt,[1461.] ouside of polity years
+1820,in_mauryan_emp,general-postal-services,pt,[-184.] ouside of polity years
+1821,iq_neo_assyrian_emp,general-postal-services,pt,[-609.] ouside of polity years
+1822,ir_buyid_confederation,general-postal-services,pt,[1075.] ouside of polity years
+1823,ir_il_khanate,general-postal-services,pt,[1343.] ouside of polity years
+1824,ir_safavid_emp,general-postal-services,pt,[1732. 1736.] ouside of polity years
+1825,ir_sassanid_emp_2,general-postal-services,pt,[651.] ouside of polity years
+1826,it_roman_k,general-postal-services,pt,[-753.] ouside of polity years
+1827,it_st_peter_rep_2,general-postal-services,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1828,jp_ashikaga,general-postal-services,pt,[1473. 1489. 1493.] ouside of polity years
+1829,jp_nara,general-postal-services,pt,[707.] ouside of polity years
+1830,kh_angkor_2,general-postal-services,pt,[1066. 1080.] ouside of polity years
+1831,no_norway_k_2,general-postal-services,pt,[1257.] ouside of polity years
+1832,pt_portuguese_emp_2,general-postal-services,pt,[1816.] ouside of polity years
+1833,ru_golden_horde,general-postal-services,pt,[1227. 1459.] ouside of polity years
+1834,th_rattanakosin,general-postal-services,pt,[1910.] ouside of polity years
+1835,tr_byzantine_emp_2,general-postal-services,pt,[1078.] ouside of polity years
+1836,tr_east_roman_emp,general-postal-services,pt,[641.] ouside of polity years
+1837,tr_ottoman_emirate,general-postal-services,pt,[1413. 1421.] ouside of polity years
+1838,af_durrani_emp,moral-concern-is-primary,pt,[1839.] ouside of polity years
+1839,cn_northern_wei_dyn,moral-concern-is-primary,pt,[535.] ouside of polity years
+1840,cn_western_jin_dyn,moral-concern-is-primary,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1841,eg_mamluk_sultanate_1,moral-concern-is-primary,pt,[1257. 1259.] ouside of polity years
+1842,eg_new_k_2,moral-concern-is-primary,pt,[-1294. -1069.] ouside of polity years
+1843,eg_old_k_1,moral-concern-is-primary,pt,[-2667. -2345.] ouside of polity years
+1844,eg_ptolemaic_k_1,moral-concern-is-primary,pt,[-204.] ouside of polity years
+1845,eg_regions,moral-concern-is-primary,pt,[-2004.] ouside of polity years
+1846,eg_thebes_hyksos,moral-concern-is-primary,pt,[-1555. -1550.] ouside of polity years
+1847,es_spanish_emp_1,moral-concern-is-primary,pt,[1746.] ouside of polity years
+1848,fr_capetian_k_2,moral-concern-is-primary,pt,[1137.] ouside of polity years
+1849,fr_merovingian_emp_1,moral-concern-is-primary,pt,[558.] ouside of polity years
+1850,fr_merovingian_emp_2,moral-concern-is-primary,pt,[690.] ouside of polity years
+1851,fr_valois_k_1,moral-concern-is-primary,pt,[1461.] ouside of polity years
+1852,in_gahadavala_dyn,moral-concern-is-primary,pt,[1194. 1197.] ouside of polity years
+1853,in_mauryan_emp,moral-concern-is-primary,pt,[-184.] ouside of polity years
+1854,in_rashtrakuta_emp,moral-concern-is-primary,pt,[982.] ouside of polity years
+1855,iq_akkad_emp,moral-concern-is-primary,pt,[-2279.] ouside of polity years
+1856,iq_neo_assyrian_emp,moral-concern-is-primary,pt,[-609.] ouside of polity years
+1857,ir_achaemenid_emp,moral-concern-is-primary,pt,[-330.] ouside of polity years
+1858,ir_buyid_confederation,moral-concern-is-primary,pt,[1075.] ouside of polity years
+1859,ir_il_khanate,moral-concern-is-primary,pt,[1343.] ouside of polity years
+1860,ir_safavid_emp,moral-concern-is-primary,pt,[1732. 1736.] ouside of polity years
+1861,ir_sassanid_emp_1,moral-concern-is-primary,pt,[488.] ouside of polity years
+1862,ir_sassanid_emp_2,moral-concern-is-primary,pt,[651.] ouside of polity years
+1863,ir_seljuk_sultanate,moral-concern-is-primary,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1864,it_ravenna_exarchate,moral-concern-is-primary,pt,[752.] ouside of polity years
+1865,it_roman_principate,moral-concern-is-primary,pt,[285.] ouside of polity years
+1866,it_st_peter_rep_2,moral-concern-is-primary,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1867,jp_ashikaga,moral-concern-is-primary,pt,[1473. 1489. 1493.] ouside of polity years
+1868,jp_kamakura,moral-concern-is-primary,pt,[1336.] ouside of polity years
+1869,kh_angkor_2,moral-concern-is-primary,pt,[1066. 1080.] ouside of polity years
+1870,no_norway_k_2,moral-concern-is-primary,pt,[1257.] ouside of polity years
+1871,pe_inca_emp,moral-concern-is-primary,pt,[1533.] ouside of polity years
+1872,th_rattanakosin,moral-concern-is-primary,pt,[1910.] ouside of polity years
+1873,tr_byzantine_emp_1,moral-concern-is-primary,pt,[867.] ouside of polity years
+1874,tr_byzantine_emp_2,moral-concern-is-primary,pt,[1078.] ouside of polity years
+1875,tr_east_roman_emp,moral-concern-is-primary,pt,[641.] ouside of polity years
+1876,tr_ottoman_emirate,moral-concern-is-primary,pt,[1413. 1421.] ouside of polity years
+1877,uz_chagatai_khanate,moral-concern-is-primary,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1878,af_durrani_emp,moralizing-enforcement-is-certain,pt,[1839.] ouside of polity years
+1879,cn_northern_wei_dyn,moralizing-enforcement-is-certain,pt,[535.] ouside of polity years
+1880,cn_western_jin_dyn,moralizing-enforcement-is-certain,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1881,eg_mamluk_sultanate_1,moralizing-enforcement-is-certain,pt,[1257. 1259.] ouside of polity years
+1882,eg_new_k_2,moralizing-enforcement-is-certain,pt,[-1294. -1069.] ouside of polity years
+1883,eg_old_k_1,moralizing-enforcement-is-certain,pt,[-2667. -2345.] ouside of polity years
+1884,eg_ptolemaic_k_1,moralizing-enforcement-is-certain,pt,[-204.] ouside of polity years
+1885,eg_regions,moralizing-enforcement-is-certain,pt,[-2004.] ouside of polity years
+1886,eg_thebes_hyksos,moralizing-enforcement-is-certain,pt,[-1555. -1550.] ouside of polity years
+1887,es_spanish_emp_1,moralizing-enforcement-is-certain,pt,[1746.] ouside of polity years
+1888,fr_capetian_k_2,moralizing-enforcement-is-certain,pt,[1137.] ouside of polity years
+1889,fr_merovingian_emp_1,moralizing-enforcement-is-certain,pt,[558.] ouside of polity years
+1890,fr_merovingian_emp_2,moralizing-enforcement-is-certain,pt,[690.] ouside of polity years
+1891,fr_valois_k_1,moralizing-enforcement-is-certain,pt,[1461.] ouside of polity years
+1892,in_gahadavala_dyn,moralizing-enforcement-is-certain,pt,[1194. 1197.] ouside of polity years
+1893,in_mauryan_emp,moralizing-enforcement-is-certain,pt,[-184.] ouside of polity years
+1894,in_rashtrakuta_emp,moralizing-enforcement-is-certain,pt,[982.] ouside of polity years
+1895,iq_akkad_emp,moralizing-enforcement-is-certain,pt,[-2279.] ouside of polity years
+1896,iq_neo_assyrian_emp,moralizing-enforcement-is-certain,pt,[-609.] ouside of polity years
+1897,ir_achaemenid_emp,moralizing-enforcement-is-certain,pt,[-330.] ouside of polity years
+1898,ir_buyid_confederation,moralizing-enforcement-is-certain,pt,[1075.] ouside of polity years
+1899,ir_il_khanate,moralizing-enforcement-is-certain,pt,[1343.] ouside of polity years
+1900,ir_safavid_emp,moralizing-enforcement-is-certain,pt,[1732. 1736.] ouside of polity years
+1901,ir_sassanid_emp_1,moralizing-enforcement-is-certain,pt,[488.] ouside of polity years
+1902,ir_sassanid_emp_2,moralizing-enforcement-is-certain,pt,[651.] ouside of polity years
+1903,ir_seljuk_sultanate,moralizing-enforcement-is-certain,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1904,it_ravenna_exarchate,moralizing-enforcement-is-certain,pt,[752.] ouside of polity years
+1905,it_roman_principate,moralizing-enforcement-is-certain,pt,[285.] ouside of polity years
+1906,it_st_peter_rep_2,moralizing-enforcement-is-certain,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1907,jp_ashikaga,moralizing-enforcement-is-certain,pt,[1473. 1489. 1493.] ouside of polity years
+1908,jp_kamakura,moralizing-enforcement-is-certain,pt,[1336.] ouside of polity years
+1909,kh_angkor_2,moralizing-enforcement-is-certain,pt,[1066. 1080.] ouside of polity years
+1910,no_norway_k_2,moralizing-enforcement-is-certain,pt,[1257.] ouside of polity years
+1911,pe_inca_emp,moralizing-enforcement-is-certain,pt,[1533.] ouside of polity years
+1912,th_rattanakosin,moralizing-enforcement-is-certain,pt,[1910.] ouside of polity years
+1913,tr_byzantine_emp_1,moralizing-enforcement-is-certain,pt,[867.] ouside of polity years
+1914,tr_byzantine_emp_2,moralizing-enforcement-is-certain,pt,[1078.] ouside of polity years
+1915,tr_east_roman_emp,moralizing-enforcement-is-certain,pt,[641.] ouside of polity years
+1916,tr_ottoman_emirate,moralizing-enforcement-is-certain,pt,[1413. 1421.] ouside of polity years
+1917,uz_chagatai_khanate,moralizing-enforcement-is-certain,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1918,af_durrani_emp,moralizing-norms-are-broad,pt,[1839.] ouside of polity years
+1919,cn_northern_wei_dyn,moralizing-norms-are-broad,pt,[535.] ouside of polity years
+1920,cn_western_jin_dyn,moralizing-norms-are-broad,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1921,eg_mamluk_sultanate_1,moralizing-norms-are-broad,pt,[1257. 1259.] ouside of polity years
+1922,eg_new_k_2,moralizing-norms-are-broad,pt,[-1294. -1069.] ouside of polity years
+1923,eg_old_k_1,moralizing-norms-are-broad,pt,[-2667. -2345.] ouside of polity years
+1924,eg_ptolemaic_k_1,moralizing-norms-are-broad,pt,[-204.] ouside of polity years
+1925,eg_regions,moralizing-norms-are-broad,pt,[-2004.] ouside of polity years
+1926,eg_thebes_hyksos,moralizing-norms-are-broad,pt,[-1555. -1550.] ouside of polity years
+1927,es_spanish_emp_1,moralizing-norms-are-broad,pt,[1746.] ouside of polity years
+1928,fr_capetian_k_2,moralizing-norms-are-broad,pt,[1137.] ouside of polity years
+1929,fr_merovingian_emp_1,moralizing-norms-are-broad,pt,[558.] ouside of polity years
+1930,fr_merovingian_emp_2,moralizing-norms-are-broad,pt,[690.] ouside of polity years
+1931,fr_valois_k_1,moralizing-norms-are-broad,pt,[1461.] ouside of polity years
+1932,in_gahadavala_dyn,moralizing-norms-are-broad,pt,[1194. 1197.] ouside of polity years
+1933,in_mauryan_emp,moralizing-norms-are-broad,pt,[-184.] ouside of polity years
+1934,in_rashtrakuta_emp,moralizing-norms-are-broad,pt,[982.] ouside of polity years
+1935,iq_akkad_emp,moralizing-norms-are-broad,pt,[-2279.] ouside of polity years
+1936,iq_neo_assyrian_emp,moralizing-norms-are-broad,pt,[-609.] ouside of polity years
+1937,ir_achaemenid_emp,moralizing-norms-are-broad,pt,[-330.] ouside of polity years
+1938,ir_buyid_confederation,moralizing-norms-are-broad,pt,[1075.] ouside of polity years
+1939,ir_il_khanate,moralizing-norms-are-broad,pt,[1343.] ouside of polity years
+1940,ir_safavid_emp,moralizing-norms-are-broad,pt,[1732. 1736.] ouside of polity years
+1941,ir_sassanid_emp_1,moralizing-norms-are-broad,pt,[488.] ouside of polity years
+1942,ir_sassanid_emp_2,moralizing-norms-are-broad,pt,[651.] ouside of polity years
+1943,ir_seljuk_sultanate,moralizing-norms-are-broad,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1944,it_ravenna_exarchate,moralizing-norms-are-broad,pt,[752.] ouside of polity years
+1945,it_roman_principate,moralizing-norms-are-broad,pt,[285.] ouside of polity years
+1946,it_st_peter_rep_2,moralizing-norms-are-broad,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1947,jp_ashikaga,moralizing-norms-are-broad,pt,[1473. 1489. 1493.] ouside of polity years
+1948,jp_kamakura,moralizing-norms-are-broad,pt,[1336.] ouside of polity years
+1949,kh_angkor_2,moralizing-norms-are-broad,pt,[1066. 1080.] ouside of polity years
+1950,no_norway_k_2,moralizing-norms-are-broad,pt,[1257.] ouside of polity years
+1951,pe_inca_emp,moralizing-norms-are-broad,pt,[1533.] ouside of polity years
+1952,th_rattanakosin,moralizing-norms-are-broad,pt,[1910.] ouside of polity years
+1953,tr_byzantine_emp_1,moralizing-norms-are-broad,pt,[867.] ouside of polity years
+1954,tr_byzantine_emp_2,moralizing-norms-are-broad,pt,[1078.] ouside of polity years
+1955,tr_east_roman_emp,moralizing-norms-are-broad,pt,[641.] ouside of polity years
+1956,tr_ottoman_emirate,moralizing-norms-are-broad,pt,[1413. 1421.] ouside of polity years
+1957,uz_chagatai_khanate,moralizing-norms-are-broad,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1958,af_durrani_emp,moralizing-enforcement-is-targeted,pt,[1839.] ouside of polity years
+1959,cn_northern_wei_dyn,moralizing-enforcement-is-targeted,pt,[535.] ouside of polity years
+1960,cn_western_jin_dyn,moralizing-enforcement-is-targeted,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+1961,eg_mamluk_sultanate_1,moralizing-enforcement-is-targeted,pt,[1257. 1259.] ouside of polity years
+1962,eg_new_k_2,moralizing-enforcement-is-targeted,pt,[-1294. -1069.] ouside of polity years
+1963,eg_old_k_1,moralizing-enforcement-is-targeted,pt,[-2667. -2345.] ouside of polity years
+1964,eg_ptolemaic_k_1,moralizing-enforcement-is-targeted,pt,[-204.] ouside of polity years
+1965,eg_regions,moralizing-enforcement-is-targeted,pt,[-2004.] ouside of polity years
+1966,eg_thebes_hyksos,moralizing-enforcement-is-targeted,pt,[-1555. -1550.] ouside of polity years
+1967,es_spanish_emp_1,moralizing-enforcement-is-targeted,pt,[1746.] ouside of polity years
+1968,fr_capetian_k_2,moralizing-enforcement-is-targeted,pt,[1137.] ouside of polity years
+1969,fr_merovingian_emp_1,moralizing-enforcement-is-targeted,pt,[558.] ouside of polity years
+1970,fr_merovingian_emp_2,moralizing-enforcement-is-targeted,pt,[690.] ouside of polity years
+1971,fr_valois_k_1,moralizing-enforcement-is-targeted,pt,[1461.] ouside of polity years
+1972,in_gahadavala_dyn,moralizing-enforcement-is-targeted,pt,[1194. 1197.] ouside of polity years
+1973,in_mauryan_emp,moralizing-enforcement-is-targeted,pt,[-184.] ouside of polity years
+1974,in_rashtrakuta_emp,moralizing-enforcement-is-targeted,pt,[982.] ouside of polity years
+1975,iq_akkad_emp,moralizing-enforcement-is-targeted,pt,[-2279.] ouside of polity years
+1976,iq_neo_assyrian_emp,moralizing-enforcement-is-targeted,pt,[-609.] ouside of polity years
+1977,ir_achaemenid_emp,moralizing-enforcement-is-targeted,pt,[-330.] ouside of polity years
+1978,ir_buyid_confederation,moralizing-enforcement-is-targeted,pt,[1075.] ouside of polity years
+1979,ir_il_khanate,moralizing-enforcement-is-targeted,pt,[1343.] ouside of polity years
+1980,ir_safavid_emp,moralizing-enforcement-is-targeted,pt,[1732. 1736.] ouside of polity years
+1981,ir_sassanid_emp_1,moralizing-enforcement-is-targeted,pt,[488.] ouside of polity years
+1982,ir_sassanid_emp_2,moralizing-enforcement-is-targeted,pt,[651.] ouside of polity years
+1983,ir_seljuk_sultanate,moralizing-enforcement-is-targeted,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+1984,it_ravenna_exarchate,moralizing-enforcement-is-targeted,pt,[752.] ouside of polity years
+1985,it_roman_principate,moralizing-enforcement-is-targeted,pt,[285.] ouside of polity years
+1986,it_st_peter_rep_2,moralizing-enforcement-is-targeted,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+1987,jp_ashikaga,moralizing-enforcement-is-targeted,pt,[1473. 1489. 1493.] ouside of polity years
+1988,jp_kamakura,moralizing-enforcement-is-targeted,pt,[1336.] ouside of polity years
+1989,kh_angkor_2,moralizing-enforcement-is-targeted,pt,[1066. 1080.] ouside of polity years
+1990,no_norway_k_2,moralizing-enforcement-is-targeted,pt,[1257.] ouside of polity years
+1991,pe_inca_emp,moralizing-enforcement-is-targeted,pt,[1533.] ouside of polity years
+1992,th_rattanakosin,moralizing-enforcement-is-targeted,pt,[1910.] ouside of polity years
+1993,tr_byzantine_emp_1,moralizing-enforcement-is-targeted,pt,[867.] ouside of polity years
+1994,tr_byzantine_emp_2,moralizing-enforcement-is-targeted,pt,[1078.] ouside of polity years
+1995,tr_east_roman_emp,moralizing-enforcement-is-targeted,pt,[641.] ouside of polity years
+1996,tr_ottoman_emirate,moralizing-enforcement-is-targeted,pt,[1413. 1421.] ouside of polity years
+1997,uz_chagatai_khanate,moralizing-enforcement-is-targeted,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+1998,af_durrani_emp,moralizing-enforcement-of-rulers,pt,[1839.] ouside of polity years
+1999,cn_northern_wei_dyn,moralizing-enforcement-of-rulers,pt,[535.] ouside of polity years
+2000,cn_western_jin_dyn,moralizing-enforcement-of-rulers,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+2001,eg_mamluk_sultanate_1,moralizing-enforcement-of-rulers,pt,[1257. 1259.] ouside of polity years
+2002,eg_new_k_2,moralizing-enforcement-of-rulers,pt,[-1294. -1069.] ouside of polity years
+2003,eg_old_k_1,moralizing-enforcement-of-rulers,pt,[-2667. -2345.] ouside of polity years
+2004,eg_ptolemaic_k_1,moralizing-enforcement-of-rulers,pt,[-204.] ouside of polity years
+2005,eg_regions,moralizing-enforcement-of-rulers,pt,[-2004.] ouside of polity years
+2006,eg_thebes_hyksos,moralizing-enforcement-of-rulers,pt,[-1555. -1550.] ouside of polity years
+2007,es_spanish_emp_1,moralizing-enforcement-of-rulers,pt,[1746.] ouside of polity years
+2008,fr_capetian_k_2,moralizing-enforcement-of-rulers,pt,[1137.] ouside of polity years
+2009,fr_merovingian_emp_1,moralizing-enforcement-of-rulers,pt,[558.] ouside of polity years
+2010,fr_merovingian_emp_2,moralizing-enforcement-of-rulers,pt,[690.] ouside of polity years
+2011,fr_valois_k_1,moralizing-enforcement-of-rulers,pt,[1461.] ouside of polity years
+2012,in_gahadavala_dyn,moralizing-enforcement-of-rulers,pt,[1194. 1197.] ouside of polity years
+2013,in_mauryan_emp,moralizing-enforcement-of-rulers,pt,[-184.] ouside of polity years
+2014,in_rashtrakuta_emp,moralizing-enforcement-of-rulers,pt,[982.] ouside of polity years
+2015,iq_akkad_emp,moralizing-enforcement-of-rulers,pt,[-2279.] ouside of polity years
+2016,iq_neo_assyrian_emp,moralizing-enforcement-of-rulers,pt,[-609.] ouside of polity years
+2017,ir_achaemenid_emp,moralizing-enforcement-of-rulers,pt,[-330.] ouside of polity years
+2018,ir_buyid_confederation,moralizing-enforcement-of-rulers,pt,[1075.] ouside of polity years
+2019,ir_il_khanate,moralizing-enforcement-of-rulers,pt,[1343.] ouside of polity years
+2020,ir_safavid_emp,moralizing-enforcement-of-rulers,pt,[1732. 1736.] ouside of polity years
+2021,ir_sassanid_emp_1,moralizing-enforcement-of-rulers,pt,[488.] ouside of polity years
+2022,ir_sassanid_emp_2,moralizing-enforcement-of-rulers,pt,[651.] ouside of polity years
+2023,ir_seljuk_sultanate,moralizing-enforcement-of-rulers,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+2024,it_ravenna_exarchate,moralizing-enforcement-of-rulers,pt,[752.] ouside of polity years
+2025,it_roman_principate,moralizing-enforcement-of-rulers,pt,[285.] ouside of polity years
+2026,it_st_peter_rep_2,moralizing-enforcement-of-rulers,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+2027,jp_ashikaga,moralizing-enforcement-of-rulers,pt,[1473. 1489. 1493.] ouside of polity years
+2028,jp_kamakura,moralizing-enforcement-of-rulers,pt,[1336.] ouside of polity years
+2029,kh_angkor_2,moralizing-enforcement-of-rulers,pt,[1066. 1080.] ouside of polity years
+2030,no_norway_k_2,moralizing-enforcement-of-rulers,pt,[1257.] ouside of polity years
+2031,pe_inca_emp,moralizing-enforcement-of-rulers,pt,[1533.] ouside of polity years
+2032,th_rattanakosin,moralizing-enforcement-of-rulers,pt,[1910.] ouside of polity years
+2033,tr_byzantine_emp_1,moralizing-enforcement-of-rulers,pt,[867.] ouside of polity years
+2034,tr_byzantine_emp_2,moralizing-enforcement-of-rulers,pt,[1078.] ouside of polity years
+2035,tr_east_roman_emp,moralizing-enforcement-of-rulers,pt,[641.] ouside of polity years
+2036,tr_ottoman_emirate,moralizing-enforcement-of-rulers,pt,[1413. 1421.] ouside of polity years
+2037,uz_chagatai_khanate,moralizing-enforcement-of-rulers,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+2038,af_durrani_emp,moralizing-religion-adopted-by-elites,pt,[1839.] ouside of polity years
+2039,cn_northern_wei_dyn,moralizing-religion-adopted-by-elites,pt,[535.] ouside of polity years
+2040,cn_western_jin_dyn,moralizing-religion-adopted-by-elites,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+2041,eg_mamluk_sultanate_1,moralizing-religion-adopted-by-elites,pt,[1257. 1259.] ouside of polity years
+2042,eg_new_k_2,moralizing-religion-adopted-by-elites,pt,[-1294. -1069.] ouside of polity years
+2043,eg_old_k_1,moralizing-religion-adopted-by-elites,pt,[-2667. -2345.] ouside of polity years
+2044,eg_ptolemaic_k_1,moralizing-religion-adopted-by-elites,pt,[-204.] ouside of polity years
+2045,eg_regions,moralizing-religion-adopted-by-elites,pt,[-2004.] ouside of polity years
+2046,eg_thebes_hyksos,moralizing-religion-adopted-by-elites,pt,[-1555. -1550.] ouside of polity years
+2047,es_spanish_emp_1,moralizing-religion-adopted-by-elites,pt,[1746.] ouside of polity years
+2048,fr_capetian_k_2,moralizing-religion-adopted-by-elites,pt,[1137.] ouside of polity years
+2049,fr_merovingian_emp_1,moralizing-religion-adopted-by-elites,pt,[558.] ouside of polity years
+2050,fr_merovingian_emp_2,moralizing-religion-adopted-by-elites,pt,[690.] ouside of polity years
+2051,fr_valois_k_1,moralizing-religion-adopted-by-elites,pt,[1461.] ouside of polity years
+2052,in_gahadavala_dyn,moralizing-religion-adopted-by-elites,pt,[1194. 1197.] ouside of polity years
+2053,in_mauryan_emp,moralizing-religion-adopted-by-elites,pt,[-184.] ouside of polity years
+2054,in_rashtrakuta_emp,moralizing-religion-adopted-by-elites,pt,[982.] ouside of polity years
+2055,iq_akkad_emp,moralizing-religion-adopted-by-elites,pt,[-2279.] ouside of polity years
+2056,iq_neo_assyrian_emp,moralizing-religion-adopted-by-elites,pt,[-609.] ouside of polity years
+2057,ir_achaemenid_emp,moralizing-religion-adopted-by-elites,pt,[-330.] ouside of polity years
+2058,ir_buyid_confederation,moralizing-religion-adopted-by-elites,pt,[1075.] ouside of polity years
+2059,ir_il_khanate,moralizing-religion-adopted-by-elites,pt,[1343.] ouside of polity years
+2060,ir_safavid_emp,moralizing-religion-adopted-by-elites,pt,[1732. 1736.] ouside of polity years
+2061,ir_sassanid_emp_1,moralizing-religion-adopted-by-elites,pt,[488.] ouside of polity years
+2062,ir_sassanid_emp_2,moralizing-religion-adopted-by-elites,pt,[651.] ouside of polity years
+2063,ir_seljuk_sultanate,moralizing-religion-adopted-by-elites,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+2064,it_ravenna_exarchate,moralizing-religion-adopted-by-elites,pt,[752.] ouside of polity years
+2065,it_roman_principate,moralizing-religion-adopted-by-elites,pt,[285.] ouside of polity years
+2066,it_st_peter_rep_2,moralizing-religion-adopted-by-elites,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+2067,jp_ashikaga,moralizing-religion-adopted-by-elites,pt,[1473. 1489. 1493.] ouside of polity years
+2068,jp_kamakura,moralizing-religion-adopted-by-elites,pt,[1336.] ouside of polity years
+2069,kh_angkor_2,moralizing-religion-adopted-by-elites,pt,[1066. 1080.] ouside of polity years
+2070,no_norway_k_2,moralizing-religion-adopted-by-elites,pt,[1257.] ouside of polity years
+2071,pe_inca_emp,moralizing-religion-adopted-by-elites,pt,[1533.] ouside of polity years
+2072,th_rattanakosin,moralizing-religion-adopted-by-elites,pt,[1910.] ouside of polity years
+2073,tr_byzantine_emp_1,moralizing-religion-adopted-by-elites,pt,[867.] ouside of polity years
+2074,tr_byzantine_emp_2,moralizing-religion-adopted-by-elites,pt,[1078.] ouside of polity years
+2075,tr_east_roman_emp,moralizing-religion-adopted-by-elites,pt,[641.] ouside of polity years
+2076,tr_ottoman_emirate,moralizing-religion-adopted-by-elites,pt,[1413. 1421.] ouside of polity years
+2077,uz_chagatai_khanate,moralizing-religion-adopted-by-elites,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+2078,af_durrani_emp,moralizing-religion-adopted-by-commoners,pt,[1839.] ouside of polity years
+2079,cn_northern_wei_dyn,moralizing-religion-adopted-by-commoners,pt,[535.] ouside of polity years
+2080,cn_western_jin_dyn,moralizing-religion-adopted-by-commoners,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+2081,eg_mamluk_sultanate_1,moralizing-religion-adopted-by-commoners,pt,[1257. 1259.] ouside of polity years
+2082,eg_new_k_2,moralizing-religion-adopted-by-commoners,pt,[-1294. -1069.] ouside of polity years
+2083,eg_old_k_1,moralizing-religion-adopted-by-commoners,pt,[-2667. -2345.] ouside of polity years
+2084,eg_ptolemaic_k_1,moralizing-religion-adopted-by-commoners,pt,[-204.] ouside of polity years
+2085,eg_regions,moralizing-religion-adopted-by-commoners,pt,[-2004.] ouside of polity years
+2086,eg_thebes_hyksos,moralizing-religion-adopted-by-commoners,pt,[-1555. -1550.] ouside of polity years
+2087,es_spanish_emp_1,moralizing-religion-adopted-by-commoners,pt,[1746.] ouside of polity years
+2088,fr_capetian_k_2,moralizing-religion-adopted-by-commoners,pt,[1137.] ouside of polity years
+2089,fr_merovingian_emp_1,moralizing-religion-adopted-by-commoners,pt,[558.] ouside of polity years
+2090,fr_merovingian_emp_2,moralizing-religion-adopted-by-commoners,pt,[690.] ouside of polity years
+2091,fr_valois_k_1,moralizing-religion-adopted-by-commoners,pt,[1461.] ouside of polity years
+2092,in_gahadavala_dyn,moralizing-religion-adopted-by-commoners,pt,[1194. 1197.] ouside of polity years
+2093,in_mauryan_emp,moralizing-religion-adopted-by-commoners,pt,[-184.] ouside of polity years
+2094,in_rashtrakuta_emp,moralizing-religion-adopted-by-commoners,pt,[982.] ouside of polity years
+2095,iq_akkad_emp,moralizing-religion-adopted-by-commoners,pt,[-2279.] ouside of polity years
+2096,iq_neo_assyrian_emp,moralizing-religion-adopted-by-commoners,pt,[-609.] ouside of polity years
+2097,ir_achaemenid_emp,moralizing-religion-adopted-by-commoners,pt,[-330.] ouside of polity years
+2098,ir_buyid_confederation,moralizing-religion-adopted-by-commoners,pt,[1075.] ouside of polity years
+2099,ir_il_khanate,moralizing-religion-adopted-by-commoners,pt,[1343.] ouside of polity years
+2100,ir_safavid_emp,moralizing-religion-adopted-by-commoners,pt,[1732. 1736.] ouside of polity years
+2101,ir_sassanid_emp_1,moralizing-religion-adopted-by-commoners,pt,[488.] ouside of polity years
+2102,ir_sassanid_emp_2,moralizing-religion-adopted-by-commoners,pt,[651.] ouside of polity years
+2103,ir_seljuk_sultanate,moralizing-religion-adopted-by-commoners,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+2104,it_ravenna_exarchate,moralizing-religion-adopted-by-commoners,pt,[752.] ouside of polity years
+2105,it_roman_principate,moralizing-religion-adopted-by-commoners,pt,[285.] ouside of polity years
+2106,it_st_peter_rep_2,moralizing-religion-adopted-by-commoners,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+2107,jp_ashikaga,moralizing-religion-adopted-by-commoners,pt,[1473. 1489. 1493.] ouside of polity years
+2108,jp_kamakura,moralizing-religion-adopted-by-commoners,pt,[1336.] ouside of polity years
+2109,kh_angkor_2,moralizing-religion-adopted-by-commoners,pt,[1066. 1080.] ouside of polity years
+2110,no_norway_k_2,moralizing-religion-adopted-by-commoners,pt,[1257.] ouside of polity years
+2111,pe_inca_emp,moralizing-religion-adopted-by-commoners,pt,[1533.] ouside of polity years
+2112,th_rattanakosin,moralizing-religion-adopted-by-commoners,pt,[1910.] ouside of polity years
+2113,tr_byzantine_emp_1,moralizing-religion-adopted-by-commoners,pt,[867.] ouside of polity years
+2114,tr_byzantine_emp_2,moralizing-religion-adopted-by-commoners,pt,[1078.] ouside of polity years
+2115,tr_east_roman_emp,moralizing-religion-adopted-by-commoners,pt,[641.] ouside of polity years
+2116,tr_ottoman_emirate,moralizing-religion-adopted-by-commoners,pt,[1413. 1421.] ouside of polity years
+2117,uz_chagatai_khanate,moralizing-religion-adopted-by-commoners,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+2118,af_durrani_emp,moralizing-enforcement-in-afterlife,pt,[1839.] ouside of polity years
+2119,cn_northern_wei_dyn,moralizing-enforcement-in-afterlife,pt,[535.] ouside of polity years
+2120,cn_western_jin_dyn,moralizing-enforcement-in-afterlife,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+2121,eg_mamluk_sultanate_1,moralizing-enforcement-in-afterlife,pt,[1257. 1259.] ouside of polity years
+2122,eg_new_k_2,moralizing-enforcement-in-afterlife,pt,[-1294. -1069.] ouside of polity years
+2123,eg_old_k_1,moralizing-enforcement-in-afterlife,pt,[-2667. -2345.] ouside of polity years
+2124,eg_ptolemaic_k_1,moralizing-enforcement-in-afterlife,pt,[-204.] ouside of polity years
+2125,eg_regions,moralizing-enforcement-in-afterlife,pt,[-2004.] ouside of polity years
+2126,eg_thebes_hyksos,moralizing-enforcement-in-afterlife,pt,[-1555. -1550.] ouside of polity years
+2127,es_spanish_emp_1,moralizing-enforcement-in-afterlife,pt,[1746.] ouside of polity years
+2128,fr_capetian_k_2,moralizing-enforcement-in-afterlife,pt,[1137.] ouside of polity years
+2129,fr_merovingian_emp_1,moralizing-enforcement-in-afterlife,pt,[558.] ouside of polity years
+2130,fr_merovingian_emp_2,moralizing-enforcement-in-afterlife,pt,[690.] ouside of polity years
+2131,fr_valois_k_1,moralizing-enforcement-in-afterlife,pt,[1461.] ouside of polity years
+2132,in_gahadavala_dyn,moralizing-enforcement-in-afterlife,pt,[1194. 1197.] ouside of polity years
+2133,in_mauryan_emp,moralizing-enforcement-in-afterlife,pt,[-184.] ouside of polity years
+2134,in_rashtrakuta_emp,moralizing-enforcement-in-afterlife,pt,[982.] ouside of polity years
+2135,iq_akkad_emp,moralizing-enforcement-in-afterlife,pt,[-2279.] ouside of polity years
+2136,iq_neo_assyrian_emp,moralizing-enforcement-in-afterlife,pt,[-609.] ouside of polity years
+2137,ir_achaemenid_emp,moralizing-enforcement-in-afterlife,pt,[-330.] ouside of polity years
+2138,ir_buyid_confederation,moralizing-enforcement-in-afterlife,pt,[1075.] ouside of polity years
+2139,ir_il_khanate,moralizing-enforcement-in-afterlife,pt,[1343.] ouside of polity years
+2140,ir_safavid_emp,moralizing-enforcement-in-afterlife,pt,[1732. 1736.] ouside of polity years
+2141,ir_sassanid_emp_1,moralizing-enforcement-in-afterlife,pt,[488.] ouside of polity years
+2142,ir_sassanid_emp_2,moralizing-enforcement-in-afterlife,pt,[651.] ouside of polity years
+2143,ir_seljuk_sultanate,moralizing-enforcement-in-afterlife,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+2144,it_ravenna_exarchate,moralizing-enforcement-in-afterlife,pt,[752.] ouside of polity years
+2145,it_roman_principate,moralizing-enforcement-in-afterlife,pt,[285.] ouside of polity years
+2146,it_st_peter_rep_2,moralizing-enforcement-in-afterlife,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+2147,jp_ashikaga,moralizing-enforcement-in-afterlife,pt,[1473. 1489. 1493.] ouside of polity years
+2148,jp_kamakura,moralizing-enforcement-in-afterlife,pt,[1336.] ouside of polity years
+2149,kh_angkor_2,moralizing-enforcement-in-afterlife,pt,[1066. 1080.] ouside of polity years
+2150,no_norway_k_2,moralizing-enforcement-in-afterlife,pt,[1257.] ouside of polity years
+2151,pe_inca_emp,moralizing-enforcement-in-afterlife,pt,[1533.] ouside of polity years
+2152,th_rattanakosin,moralizing-enforcement-in-afterlife,pt,[1910.] ouside of polity years
+2153,tr_byzantine_emp_1,moralizing-enforcement-in-afterlife,pt,[867.] ouside of polity years
+2154,tr_byzantine_emp_2,moralizing-enforcement-in-afterlife,pt,[1078.] ouside of polity years
+2155,tr_east_roman_emp,moralizing-enforcement-in-afterlife,pt,[641.] ouside of polity years
+2156,tr_ottoman_emirate,moralizing-enforcement-in-afterlife,pt,[1413. 1421.] ouside of polity years
+2157,uz_chagatai_khanate,moralizing-enforcement-in-afterlife,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+2158,af_durrani_emp,moralizing-enforcement-in-this-life,pt,[1839.] ouside of polity years
+2159,cn_northern_wei_dyn,moralizing-enforcement-in-this-life,pt,[535.] ouside of polity years
+2160,cn_western_jin_dyn,moralizing-enforcement-in-this-life,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+2161,eg_mamluk_sultanate_1,moralizing-enforcement-in-this-life,pt,[1257. 1259.] ouside of polity years
+2162,eg_new_k_2,moralizing-enforcement-in-this-life,pt,[-1294. -1069.] ouside of polity years
+2163,eg_ptolemaic_k_1,moralizing-enforcement-in-this-life,pt,[-204.] ouside of polity years
+2164,eg_regions,moralizing-enforcement-in-this-life,pt,[-2004.] ouside of polity years
+2165,eg_thebes_hyksos,moralizing-enforcement-in-this-life,pt,[-1555. -1550.] ouside of polity years
+2166,es_spanish_emp_1,moralizing-enforcement-in-this-life,pt,[1746.] ouside of polity years
+2167,fr_capetian_k_2,moralizing-enforcement-in-this-life,pt,[1137.] ouside of polity years
+2168,fr_merovingian_emp_1,moralizing-enforcement-in-this-life,pt,[558.] ouside of polity years
+2169,fr_merovingian_emp_2,moralizing-enforcement-in-this-life,pt,[690.] ouside of polity years
+2170,fr_valois_k_1,moralizing-enforcement-in-this-life,pt,[1461.] ouside of polity years
+2171,in_gahadavala_dyn,moralizing-enforcement-in-this-life,pt,[1194. 1197.] ouside of polity years
+2172,in_mauryan_emp,moralizing-enforcement-in-this-life,pt,[-184.] ouside of polity years
+2173,in_rashtrakuta_emp,moralizing-enforcement-in-this-life,pt,[982.] ouside of polity years
+2174,iq_akkad_emp,moralizing-enforcement-in-this-life,pt,[-2279.] ouside of polity years
+2175,iq_neo_assyrian_emp,moralizing-enforcement-in-this-life,pt,[-609.] ouside of polity years
+2176,ir_achaemenid_emp,moralizing-enforcement-in-this-life,pt,[-330.] ouside of polity years
+2177,ir_buyid_confederation,moralizing-enforcement-in-this-life,pt,[1075.] ouside of polity years
+2178,ir_il_khanate,moralizing-enforcement-in-this-life,pt,[1343.] ouside of polity years
+2179,ir_safavid_emp,moralizing-enforcement-in-this-life,pt,[1732. 1736.] ouside of polity years
+2180,ir_sassanid_emp_1,moralizing-enforcement-in-this-life,pt,[488.] ouside of polity years
+2181,ir_sassanid_emp_2,moralizing-enforcement-in-this-life,pt,[651.] ouside of polity years
+2182,ir_seljuk_sultanate,moralizing-enforcement-in-this-life,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+2183,it_ravenna_exarchate,moralizing-enforcement-in-this-life,pt,[752.] ouside of polity years
+2184,it_roman_principate,moralizing-enforcement-in-this-life,pt,[285.] ouside of polity years
+2185,it_st_peter_rep_2,moralizing-enforcement-in-this-life,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+2186,jp_ashikaga,moralizing-enforcement-in-this-life,pt,[1473. 1489. 1493.] ouside of polity years
+2187,jp_kamakura,moralizing-enforcement-in-this-life,pt,[1336.] ouside of polity years
+2188,kh_angkor_2,moralizing-enforcement-in-this-life,pt,[1066. 1080.] ouside of polity years
+2189,no_norway_k_2,moralizing-enforcement-in-this-life,pt,[1257.] ouside of polity years
+2190,pe_inca_emp,moralizing-enforcement-in-this-life,pt,[1533.] ouside of polity years
+2191,th_rattanakosin,moralizing-enforcement-in-this-life,pt,[1910.] ouside of polity years
+2192,tr_byzantine_emp_1,moralizing-enforcement-in-this-life,pt,[867.] ouside of polity years
+2193,tr_byzantine_emp_2,moralizing-enforcement-in-this-life,pt,[1078.] ouside of polity years
+2194,tr_east_roman_emp,moralizing-enforcement-in-this-life,pt,[641.] ouside of polity years
+2195,tr_ottoman_emirate,moralizing-enforcement-in-this-life,pt,[1413. 1421.] ouside of polity years
+2196,uz_chagatai_khanate,moralizing-enforcement-in-this-life,pt,[1242. 1246. 1252. 1260.] ouside of polity years
+2197,af_durrani_emp,moralizing-enforcement-is-agentic,pt,[1839.] ouside of polity years
+2198,cn_northern_wei_dyn,moralizing-enforcement-is-agentic,pt,[535.] ouside of polity years
+2199,cn_western_jin_dyn,moralizing-enforcement-is-agentic,pt,"[323. 325. 342. 344. 361. 365. 372. 396. 403. 404. 419. 420. 422. 424.
+ 453. 464. 466. 472. 477. 479.] ouside of polity years"
+2200,eg_mamluk_sultanate_1,moralizing-enforcement-is-agentic,pt,[1257. 1259.] ouside of polity years
+2201,eg_new_k_2,moralizing-enforcement-is-agentic,pt,[-1294. -1069.] ouside of polity years
+2202,eg_old_k_1,moralizing-enforcement-is-agentic,pt,[-2667. -2345.] ouside of polity years
+2203,eg_ptolemaic_k_1,moralizing-enforcement-is-agentic,pt,[-204.] ouside of polity years
+2204,eg_regions,moralizing-enforcement-is-agentic,pt,[-2004.] ouside of polity years
+2205,eg_thebes_hyksos,moralizing-enforcement-is-agentic,pt,[-1555. -1550.] ouside of polity years
+2206,es_spanish_emp_1,moralizing-enforcement-is-agentic,pt,[1746.] ouside of polity years
+2207,fr_capetian_k_2,moralizing-enforcement-is-agentic,pt,[1137.] ouside of polity years
+2208,fr_merovingian_emp_1,moralizing-enforcement-is-agentic,pt,[558.] ouside of polity years
+2209,fr_merovingian_emp_2,moralizing-enforcement-is-agentic,pt,[690.] ouside of polity years
+2210,fr_valois_k_1,moralizing-enforcement-is-agentic,pt,[1461.] ouside of polity years
+2211,in_gahadavala_dyn,moralizing-enforcement-is-agentic,pt,[1194. 1197.] ouside of polity years
+2212,in_mauryan_emp,moralizing-enforcement-is-agentic,pt,[-184.] ouside of polity years
+2213,in_rashtrakuta_emp,moralizing-enforcement-is-agentic,pt,[982.] ouside of polity years
+2214,iq_akkad_emp,moralizing-enforcement-is-agentic,pt,[-2279.] ouside of polity years
+2215,iq_neo_assyrian_emp,moralizing-enforcement-is-agentic,pt,[-609.] ouside of polity years
+2216,ir_achaemenid_emp,moralizing-enforcement-is-agentic,pt,[-330.] ouside of polity years
+2217,ir_buyid_confederation,moralizing-enforcement-is-agentic,pt,[1075.] ouside of polity years
+2218,ir_il_khanate,moralizing-enforcement-is-agentic,pt,[1343.] ouside of polity years
+2219,ir_safavid_emp,moralizing-enforcement-is-agentic,pt,[1732. 1736.] ouside of polity years
+2220,ir_sassanid_emp_1,moralizing-enforcement-is-agentic,pt,[488.] ouside of polity years
+2221,ir_sassanid_emp_2,moralizing-enforcement-is-agentic,pt,[651.] ouside of polity years
+2222,ir_seljuk_sultanate,moralizing-enforcement-is-agentic,pt,[1160. 1170. 1180. 1194.] ouside of polity years
+2223,it_ravenna_exarchate,moralizing-enforcement-is-agentic,pt,[752.] ouside of polity years
+2224,it_roman_principate,moralizing-enforcement-is-agentic,pt,[285.] ouside of polity years
+2225,it_st_peter_rep_2,moralizing-enforcement-is-agentic,pt,"[1216. 1227. 1241. 1254. 1261. 1264. 1268. 1276. 1280. 1285. 1287. 1292.
+ 1303. 1305. 1314.] ouside of polity years"
+2226,jp_ashikaga,moralizing-enforcement-is-agentic,pt,[1473. 1489. 1493.] ouside of polity years
+2227,jp_kamakura,moralizing-enforcement-is-agentic,pt,[1336.] ouside of polity years
+2228,kh_angkor_2,moralizing-enforcement-is-agentic,pt,[1066. 1080.] ouside of polity years
+2229,no_norway_k_2,moralizing-enforcement-is-agentic,pt,[1257.] ouside of polity years
+2230,pe_inca_emp,moralizing-enforcement-is-agentic,pt,[1533.] ouside of polity years
+2231,th_rattanakosin,moralizing-enforcement-is-agentic,pt,[1910.] ouside of polity years
+2232,tr_byzantine_emp_1,moralizing-enforcement-is-agentic,pt,[867.] ouside of polity years
+2233,tr_byzantine_emp_2,moralizing-enforcement-is-agentic,pt,[1078.] ouside of polity years
+2234,tr_east_roman_emp,moralizing-enforcement-is-agentic,pt,[641.] ouside of polity years
+2235,tr_ottoman_emirate,moralizing-enforcement-is-agentic,pt,[1413. 1421.] ouside of polity years
+2236,uz_chagatai_khanate,moralizing-enforcement-is-agentic,pt,[1242. 1246. 1252. 1260.] ouside of polity years

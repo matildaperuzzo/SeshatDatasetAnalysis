@@ -11,7 +11,7 @@ from src.mappings import PT_value_mapping, ideology_mapping
 from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc'], template_path='datasets/SC_WF_MSP_template.csv')
+dataset = TSD(categories=['sc','wf'], template_path='datasets/SC_WF_MSP_template.csv')
 dataset.add_polities()
 
 url = "https://seshat-db.com/api/crisisdb/power-transitions/"
@@ -40,7 +40,7 @@ for idx, row in pt_df.iterrows():
     year_to = row['year_to']
     if pd.notna(year_from) and pd.notna(year_to):
         year = year_to
-        duration = year_to - year_from
+        duration = np.abs(year_to - year_from)
     elif pd.notna(year_from) and pd.isna(year_to):
         year = year_to
         duration = np.nan
@@ -69,24 +69,23 @@ dataset.raw = dataset.raw.sort_values(by=['PolityID', 'Year'])
 dataset.raw.reset_index(drop=True, inplace=True)
 
 # download sc raw variables at PT years
-error = 160
+error = 500
 dataset.download_all_categories(polity_year_error=error)
 
 for key in ideology_mapping['MSP'].keys():
     dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
-    
 
 # remove all rows that have less than 30% of the columns filled in
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
-# dataset.build_warfare()
-# dataset.build_MSP()
+dataset.build_warfare()
+dataset.build_MSP()
 
 # add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
 dataset_25y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
-dataset_25y.scv['dataset'] = '25y'
+dataset_25y.scv['dataset'] = '100y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
 dataset.scv = pd.concat([pt_dat, dataset_25y.scv])

@@ -10,15 +10,15 @@ from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 from src.utils import download_data
 from src.mappings import value_mapping, ideology_mapping
 
-dt = 100
+dt = 25
 filename = f"{dt}_yr_dataset"
 template_path = f"datasets/SC_WF_MSP_template.csv"
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc'], template_path=template_path)
+dataset = TSD(categories=['sc','wf'], template_path=template_path)
 dataset.initialize_dataset_grid(-10000,2024,dt)
 
-error = 150
+error = 100
 dataset.download_all_categories(polity_year_error=error)
 for key in ideology_mapping['MSP'].keys():
     dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
@@ -27,8 +27,8 @@ for key in ideology_mapping['MSP'].keys():
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
-
-# dataset.build_MSP()
+dataset.build_MSP()
+dataset.build_warfare()
 
 # imp_columns =  ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
 # dataset.impute_missing_values()
