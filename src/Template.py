@@ -121,6 +121,22 @@ class Template():
     # ---------------------- BUILDING FUNCTIONS ---------------------- #
 
     def initialize_dataset(self, url):
+        """
+        Initializes the dataset by downloading polity data from the given URL and populating a template DataFrame.
+        Args:
+            url (str): The URL from which to download the polity data.
+        Returns:
+            None
+        This function performs the following steps:
+        1. Sets up an empty template DataFrame with columns ["NGA", "PolityID", "PolityName"].
+        2. Specifies the data type for the "PolityID" column as integer.
+        3. Downloads the polity data from the provided URL.
+        4. Iterates over all unique polity IDs in the downloaded data.
+        5. For each polity ID, creates a temporary DataFrame with relevant data.
+        6. Adds the temporary DataFrame to the template.
+        7. Resets the index of the template DataFrame.
+        """
+
         # set up empty template
         self.template = pd.DataFrame(columns = ["NGA", "PolityID", "PolityName"])
         # specify the columns data types
@@ -144,6 +160,14 @@ class Template():
         self.template.reset_index(drop=True, inplace=True)
 
     def download_all_categories(self):
+        """
+        Downloads datasets for all categories in the attribute self.categories.
+        This method iterates over all categories, fetches URLs for each category,
+        and then adds the datasets from the fetched URLs to the instance.
+        Returns:
+            None
+        """
+
         urls = {}
         for category in self.categories:
             urls.update(fetch_urls(category))
@@ -151,6 +175,17 @@ class Template():
             self.add_dataset_from_url(key,urls[key])
     
     def add_dataset_from_url(self, key, url):
+        """
+        Adds a dataset to the template from a given URL.
+        This method checks if the dataset identified by the given key is already present in the template's dataframe.
+        If the dataset is not present, it downloads the data from the specified URL, measures the download time,
+        and adds the dataset to the template.
+        Parameters:
+        key (str): The key to identify the dataset in the dataframe.
+        url (str): The URL from which to download the dataset.
+        Returns:
+        None
+        """
 
         # check if the dataset is already in the dataframe
         if key in self.template.columns:
@@ -169,6 +204,20 @@ class Template():
 
 
     def add_to_template(self, df, key):
+        """
+        Adds data from a given DataFrame to the template based on a specified key.
+        This function processes the input DataFrame `df` and adds its data to the template.
+        It checks for the presence of specific columns and handles the addition of data
+        for each polity in the template. If a polity is not found in the DataFrame, it
+        attempts to download the data from a specified URL. The function also performs
+        tests after adding the data to ensure consistency.
+        Args:
+            df (pandas.DataFrame): The DataFrame containing the data to be added.
+            key (str): The key used to identify the dataset and construct the URL for downloading missing data.
+        Returns:
+            None
+        """
+
         variable_name = df.name.unique()[0].lower()
         range_var =  variable_name + "_from" in df.columns
         col_name = key.split('/')[-1]
@@ -192,6 +241,22 @@ class Template():
         print(f"Added {key} dataset to template")
 
     def add_polity(self, pol_df, range_var, variable_name, col_name):
+        """
+        Adds polity data to the template.
+        This function processes a DataFrame containing polity data, checks for duplicates, handles disputed and uncertain entries, 
+        and appends the processed data to the template. It ensures that the data is in chronological order and handles various 
+        cases where year data might be missing or overlapping.
+        Parameters:
+        pol_df (pd.DataFrame): DataFrame containing polity data with columns such as 'polity_id', 'year_from', 'year_to', 
+                               'is_disputed', 'is_uncertain', and the variable of interest.
+        range_var (bool): Indicates whether the variable of interest is a range variable.
+        variable_name (str): The name of the variable to be processed.
+        col_name (str): The name of the column in the template where the processed data will be stored.
+        Returns:
+        None
+        Raises:
+        SystemExit: If there is an unexpected overlap in year data or other critical issues.
+        """
         
         # create a dataframe with only the data for the current polity and sort it by year
         # this allows to assume entries are dealth with in chronological order
@@ -306,7 +371,7 @@ class Template():
                     
                 t.append(year)
 
-            # elif (row.year_from != row.year_to) and ((row.year_from is not None) or (pd.isnan(row.year_from))) and ((row.year_to is not None) or (pd.isnan(row.year_to))):
+            # check if both years are defined
             elif (row.year_from != row.year_to) and pd.notna(row.year_from) and pd.notna(row.year_to):
                 
                 if range_var:
@@ -422,7 +487,21 @@ class Template():
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
 
-    def sample_dict(self, variable_dict, t, error):
+    def sample_dict(self, variable_dict, t, error, interpolation = 'zero'):
+        """
+        Samples values from a given dictionary of timelines based on the provided time(s) and error margin.
+        Parameters:
+        variable_dict (dict): A dictionary containing 't', 'value', and 'polity_years' keys.
+                              't' is a list of time points, 'value' is a list of value ranges corresponding to the time points,
+                              and 'polity_years' is a list of years defining the polity period.
+        t (int, float, list, np.ndarray): The time or list of times at which to sample the values.
+        error (int, float): The error margin to extend the polity years.
+        Returns:
+        list or float: The sampled value(s) at the given time(s). If the time is out of bounds, returns "Out of bounds".
+                       If the input time is not a number, returns "Error: The year is not a number".
+                       If the input dictionary is None or invalid, returns None.
+        """
+
         if variable_dict is None or pd.isna(variable_dict):
             return None
         if len(variable_dict['t'][0]) == 0:
@@ -449,7 +528,25 @@ class Template():
             values = values + [values[-1]]
 
         times = np.array(times)
-        
+        if interpolation == 'zero':
+            pass
+        elif (interpolation == 'linear') or (interpolation == 'smooth'):
+            # create a smoothing effect on the data with a smoothing window of 50 years
+            import scipy.interpolate as spi
+            x = np.array(times)
+            y = np.array(values)
+            smooth_window = 50
+            if interpolation == 'linear':
+                smoothing = np.ones(smooth_window)
+                smoothing = smoothing / smoothing.sum()
+            elif interpolation == 'smooth':
+                smoothing = np.exp(-np.linspace(-3, 3, smooth_window)**2)
+                smoothing /= smoothing.sum()
+            x_new = np.arange(min(x), max(x), smooth_window // 5)
+            y_new = spi.interp1d(x, y)(x_new)
+            y_new = np.pad(y_new, smooth_window, mode='edge')
+            y_new = np.convolve(y_new, smoothing, mode='same')[smooth_window:-smooth_window]
+            
         random_number = random.random()
         if isinstance(t, (list, np.ndarray)):
             vals = [None] * len(t)
@@ -458,20 +555,26 @@ class Template():
                     print(f"Error: The year {time} is outside the polity years {polity_years}")
                     vals[i] = "Out of bounds"
                     continue
-                time_selection = times[times<=time]
-                ind = np.argmin(np.abs(np.array(time_selection) - time))
-                val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
-                vals[i] = val
+                if interpolation == 'zero':
+                    time_selection = times[times<=time]
+                    ind = np.argmin(np.abs(np.array(time_selection) - time))
+                    val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
+                    vals[i] = val
+                elif (interpolation == 'linear') or (interpolation == 'smooth'):
+                    vals[i] = y_new[np.argmin(np.abs(x_new - time))]
             return vals
         elif isinstance(t, (int, float, np.int64, np.int32, np.float64, np.float32)):
             if t < polity_years[0] or t > polity_years[1]:
                 print(f"Error: The year {t} is outside the polity years {polity_years}")
                 return "Out of bounds"
             # find the closest year to t
-            times = times[times<=t]
-            ind = np.argmin(np.abs(np.array(times) - t))
-            # sample the values
-            val = values[ind][0] + random.random() * (values[ind][1] - values[ind][0])
+            if interpolation == 'zero':
+                times = times[times<=t]
+                ind = np.argmin(np.abs(np.array(times) - t))
+                # sample the values
+                val = values[ind][0] + random.random() * (values[ind][1] - values[ind][0])
+            elif (interpolation == 'linear') or (interpolation == 'smooth'):
+                val = y_new[np.argmin(np.abs(x_new - t))]
             return val
         else:
             print("Error: The year is not a number")

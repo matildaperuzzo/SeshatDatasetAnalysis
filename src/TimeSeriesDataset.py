@@ -122,20 +122,20 @@ class TimeSeriesDataset():
             self.raw.drop(row.index, inplace=True)
         self.raw.reset_index(drop=True, inplace=True)
 
-    def download_all_categories(self, polity_year_error = 0):
+    def download_all_categories(self, polity_year_error = 0, sampling_interpolation = 'zero'):
         urls = {}
         for category in self.categories:
             urls.update(fetch_urls(category))
         for key in urls.keys():
-            self.add_column(key, polity_year_error = polity_year_error)
+            self.add_column(key, polity_year_error = polity_year_error, sampling_interpolation = sampling_interpolation)
     
-    def add_column(self, key, polity_year_error = 0):
+    def add_column(self, key, polity_year_error = 0, sampling_interpolation = 'zero'):
         variable_name = key.split('/')[-1]
-        grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name, polity_year_error=polity_year_error))
+        grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name, polity_year_error=polity_year_error, sampling_interpolation=sampling_interpolation))
         for polity in grouped_variables.index:
             self.raw.loc[self.raw.PolityName == polity, variable_name] = grouped_variables[polity]
 
-    def sample_from_template(self, rows, variable, label = 'pt', polity_year_error = 0):
+    def sample_from_template(self, rows, variable, label = 'pt', polity_year_error = 0, sampling_interpolation = 'zero'):
         pol = rows.PolityID.values[0]
         years = rows.Year.values
         entry = self.template.template.loc[(self.template.template.PolityID == pol), variable]
@@ -145,7 +145,7 @@ class TimeSeriesDataset():
             return [np.nan]*len(years)
         
         _dict = eval(entry.values[0])
-        results = self.template.sample_dict(_dict, years, error = polity_year_error)
+        results = self.template.sample_dict(_dict, years, error = polity_year_error, interpolation = sampling_interpolation)
 
         # check if any of the years are out of bounds
         not_in_bounds = np.array([r == "Out of bounds" for r in results])
