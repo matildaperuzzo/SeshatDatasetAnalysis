@@ -10,8 +10,8 @@ from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 from src.utils import download_data
 from src.mappings import value_mapping, ideology_mapping
 
-dt = 25
-filename = f"{dt}_yr_dataset"
+dt = 100
+filename = f"{dt}_yr_dataset_smooth_interp"
 template_path = f"datasets/SC_WF_MSP_template.csv"
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
@@ -19,7 +19,7 @@ dataset = TSD(categories=['sc','wf'], template_path=template_path)
 dataset.initialize_dataset_grid(-10000,2024,dt)
 
 error = 100
-dataset.download_all_categories(polity_year_error=error)
+dataset.download_all_categories(polity_year_error=error, sampling_interpolation='smooth')
 for key in ideology_mapping['MSP'].keys():
     dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
 

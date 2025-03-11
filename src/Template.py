@@ -528,13 +528,14 @@ class Template():
             values = values + [values[-1]]
 
         times = np.array(times)
+        random_number = random.random()
         if interpolation == 'zero':
             pass
         elif (interpolation == 'linear') or (interpolation == 'smooth'):
             # create a smoothing effect on the data with a smoothing window of 50 years
             import scipy.interpolate as spi
             x = np.array(times)
-            y = np.array(values)
+            y = np.array([v[0] + random_number*(v[1]-v[0]) for v in values])
             smooth_window = 50
             if interpolation == 'linear':
                 smoothing = np.ones(smooth_window)
@@ -547,7 +548,6 @@ class Template():
             y_new = np.pad(y_new, smooth_window, mode='edge')
             y_new = np.convolve(y_new, smoothing, mode='same')[smooth_window:-smooth_window]
             
-        random_number = random.random()
         if isinstance(t, (list, np.ndarray)):
             vals = [None] * len(t)
             for i, time in enumerate(t):

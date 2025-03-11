@@ -199,21 +199,25 @@ class TimeSeriesDataset():
     def build_warfare(self):
         # build warfare variables
         from src.mappings import miltech_mapping
+
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
-        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon'), axis=1)
+        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', imputation='zero'), axis=1)
         self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean"), axis=1)
-        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals"), axis=1)
-        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals"), axis=1)
+        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", imputation='zero'), axis=1)
+        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals", imputation='zero'), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
-        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications"), axis=1)
+        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", imputation='zero'), axis=1)
         long_wall = self.raw['long-walls'].notna()*1
-        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings"), axis=1)
+        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings", imputation='zero'), axis=1)
         self.scv['Defense'] = fort_max + fort_mean + long_wall + surroundings
         self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite-bows"] or row["self-bows"]) and row["horses"], axis=1)
         self.scv['Iron'] = self.raw['irons']
-        self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] and row["Cavalry"], axis=1)
-
+        self.scv[['Iron','Cavalry']] = self.scv[['Iron','Cavalry']].fillna(0)
+        self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
+        miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
+        self.scv[list(miltech_mapping['Miltech'].keys())] = self.scv[list(miltech_mapping['Miltech'].keys())].fillna(0)
+        self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', imputation='zero'), axis=1)
 
     def build_MSP(self):
         from src.mappings import ideology_mapping
@@ -296,13 +300,13 @@ class TimeSeriesDataset():
             nan_cols = row[row.isna()].index
             non_nan_cols = row[row.notna()].index
             # check if non_nan_cols is greater than 1
-            if len(non_nan_cols) < 2:
+            if len(non_nan_cols) < 1:
                 continue
             for col in nan_cols:
                 col_df = df_fits.loc[df_fits['Y column'] == col]
                 overlap_rows = (col_df['X columns'].apply(lambda x: len(x)*set(x).issubset(set(non_nan_cols))))
                 # find positions of best overlap
-                best_overlap = np.where(overlap_rows == True)[0]
+                best_overlap = np.where(overlap_rows > 0)[0]
                 try:
                     if len(best_overlap) == 0:
                         print(f"No best overlap found for {col}")
