@@ -199,11 +199,10 @@ class TimeSeriesDataset():
     def build_warfare(self):
         # build warfare variables
         from src.mappings import miltech_mapping
-
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
         self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', imputation='zero'), axis=1)
-        self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean"), axis=1)
+        self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean", imputation='zero'), axis=1)
         self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", imputation='zero'), axis=1)
         self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals", imputation='zero'), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
@@ -213,7 +212,7 @@ class TimeSeriesDataset():
         self.scv['Defense'] = fort_max + fort_mean + long_wall + surroundings
         self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite-bows"] or row["self-bows"]) and row["horses"], axis=1)
         self.scv['Iron'] = self.raw['irons']
-        self.scv[['Iron','Cavalry']] = self.scv[['Iron','Cavalry']].fillna(0)
+        self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] and row["Cavalry"], axis=1)
         self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
         miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
         self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', imputation='zero'), axis=1)

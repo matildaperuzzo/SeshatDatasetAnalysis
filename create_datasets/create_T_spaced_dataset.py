@@ -20,14 +20,14 @@ dataset.initialize_dataset_grid(-10000,2024,dt)
 
 error = 100
 dataset.download_all_categories(polity_year_error=error, sampling_interpolation='smooth')
-for key in ideology_mapping['MSP'].keys():
-    dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
+# for key in ideology_mapping['MSP'].keys():
+#     dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
 
 # remove all rows that have less than 30% of the columns filled in
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
-dataset.build_MSP()
+# dataset.build_MSP()
 dataset.build_warfare()
 
 # imp_columns =  ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
