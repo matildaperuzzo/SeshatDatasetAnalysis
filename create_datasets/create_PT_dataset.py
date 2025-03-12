@@ -11,11 +11,21 @@ from src.mappings import PT_value_mapping, ideology_mapping
 from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc','wf'], template_path='datasets/SC_WF_MSP_template.csv')
+dataset = TSD(categories=['sc','wf'], template_path='datasets/template.csv')
 dataset.add_polities()
 
 url = "https://seshat-db.com/api/crisisdb/power-transitions/"
 pt_df = download_data(url)
+if len(pt_df) == 0:
+    pt_df = pd.read_csv('datasets/crisisdb_power_transition_20250312_083844.csv', sep='|')
+    pt_df['polity_id'] = pt_df['polity_new_ID'].apply(lambda x: dataset.raw.loc[dataset.raw.PolityName == x, 'PolityID'].values[0] if x in dataset.raw.PolityName.values else np.nan)
+    pt_df.rename(columns={'polity_new_ID':'polity_new_name'}, inplace=True)
+    pt_df['year_from'] = pt_df['transition_year']
+    pt_df['year_to'] = pt_df['transition_year']
+    polity_df = download_data("https://seshat-db.com/api/core/polities/")
+    pt_df['polity_start_year'] = pt_df['polity_new_name'].apply(lambda x: polity_df.loc[polity_df['new_name'] == x, 'start_year'].values[0] if x in polity_df['new_name'].values else np.nan)
+    pt_df['polity_end_year'] = pt_df['polity_new_name'].apply(lambda x: polity_df.loc[polity_df['new_name'] == x, 'end_year'].values[0] if x in polity_df['new_name'].values else np.nan)
+    
 pt_df.reset_index(drop=True, inplace=True)
 
 PT_types = ['overturn', 'predecessor_assassination', 'intra_elite',
@@ -72,23 +82,23 @@ dataset.raw.reset_index(drop=True, inplace=True)
 error = 500
 dataset.download_all_categories(polity_year_error=error)
 
-for key in ideology_mapping['MSP'].keys():
-    dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
+# for key in ideology_mapping['MSP'].keys():
+#     dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
 
 # remove all rows that have less than 30% of the columns filled in
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
 dataset.build_warfare()
-dataset.build_MSP()
+# dataset.build_MSP()
 
 # add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
-dataset_25y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
-dataset_25y.scv['dataset'] = '100y'
+dataset_100y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
+dataset_100y.scv['dataset'] = '100y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
-dataset.scv = pd.concat([pt_dat, dataset_25y.scv])
+dataset.scv = pd.concat([pt_dat, dataset_100y.scv])
 dataset.scv.reset_index(drop=True, inplace=True)
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
 dataset.scv_imputed = pd.DataFrame([])
