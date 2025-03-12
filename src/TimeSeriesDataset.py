@@ -216,7 +216,6 @@ class TimeSeriesDataset():
         self.scv[['Iron','Cavalry']] = self.scv[['Iron','Cavalry']].fillna(0)
         self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
         miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
-        self.scv[list(miltech_mapping['Miltech'].keys())] = self.scv[list(miltech_mapping['Miltech'].keys())].fillna(0)
         self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', imputation='zero'), axis=1)
 
     def build_MSP(self):
