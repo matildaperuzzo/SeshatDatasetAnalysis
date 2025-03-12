@@ -15,7 +15,7 @@ def download_data(url,size = 1000):
         url = url+"?page_size="+str(size)
     df = pd.DataFrame()
     
-    auth = ('matilda.peruzzo@gmail.com','SesameSage19!')
+
     while True:
         try:
             try:
