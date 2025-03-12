@@ -11,7 +11,7 @@ from src.mappings import PT_value_mapping, ideology_mapping
 from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc','wf'], template_path='datasets/SC_WF_MSP_template.csv')
+dataset = TSD(categories=['sc','wf'], template_path='datasets/template.csv')
 dataset.add_polities()
 
 url = "https://seshat-db.com/api/crisisdb/power-transitions/"
