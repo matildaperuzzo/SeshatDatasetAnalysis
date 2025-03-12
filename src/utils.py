@@ -15,11 +15,10 @@ def download_data(url,size = 1000):
         url = url+"?page_size="+str(size)
     df = pd.DataFrame()
     
-    auth = ('matilda.peruzzo@gmail.com','SesameSage19!')
     while True:
         try:
             try:
-                response = requests.get(url, auth= auth, timeout=5)
+                response = requests.get(url, timeout=5)
             except requests.exceptions.Timeout:
                 # print("Timeout occurred")
                 continue
