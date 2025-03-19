@@ -122,20 +122,20 @@ class TimeSeriesDataset():
             self.raw.drop(row.index, inplace=True)
         self.raw.reset_index(drop=True, inplace=True)
 
-    def download_all_categories(self, polity_year_error = 0, sampling_interpolation = 'zero'):
+    def download_all_categories(self, polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
         urls = {}
         for category in self.categories:
             urls.update(fetch_urls(category))
         for key in urls.keys():
-            self.add_column(key, polity_year_error = polity_year_error, sampling_interpolation = sampling_interpolation)
+            self.add_column(key, polity_year_error = polity_year_error, sampling_interpolation = sampling_interpolation, sampling_ranges=sampling_ranges)
     
-    def add_column(self, key, polity_year_error = 0, sampling_interpolation = 'zero'):
+    def add_column(self, key, polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
         variable_name = key.split('/')[-1]
-        grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name, polity_year_error=polity_year_error, sampling_interpolation=sampling_interpolation))
+        grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name, polity_year_error=polity_year_error, sampling_interpolation=sampling_interpolation, sampling_ranges = sampling_ranges))
         for polity in grouped_variables.index:
             self.raw.loc[self.raw.PolityName == polity, variable_name] = grouped_variables[polity]
 
-    def sample_from_template(self, rows, variable, label = 'pt', polity_year_error = 0, sampling_interpolation = 'zero'):
+    def sample_from_template(self, rows, variable, label = 'pt', polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
         pol = rows.PolityID.values[0]
         years = rows.Year.values
         entry = self.template.template.loc[(self.template.template.PolityID == pol), variable]
@@ -145,7 +145,7 @@ class TimeSeriesDataset():
             return [np.nan]*len(years)
         
         _dict = eval(entry.values[0])
-        results = self.template.sample_dict(_dict, years, error = polity_year_error, interpolation = sampling_interpolation)
+        results = self.template.sample_dict(_dict, years, error = polity_year_error, interpolation = sampling_interpolation, sampling = sampling_ranges)
 
         # check if any of the years are out of bounds
         not_in_bounds = np.array([r == "Out of bounds" for r in results])
@@ -202,21 +202,21 @@ class TimeSeriesDataset():
 
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
-        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', imputation='zero'), axis=1)
+        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', imputation='remove'), axis=1)
         self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean"), axis=1)
-        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", imputation='zero'), axis=1)
-        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals", imputation='zero'), axis=1)
+        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", imputation='remove'), axis=1)
+        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals", imputation='remove'), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
-        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", imputation='zero'), axis=1)
+        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", imputation='remove'), axis=1)
         long_wall = self.raw['long-walls'].notna()*1
-        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings", imputation='zero'), axis=1)
+        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings", imputation='remove'), axis=1)
         self.scv['Defense'] = fort_max + fort_mean + long_wall + surroundings
         self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite-bows"] or row["self-bows"]) and row["horses"], axis=1)
         self.scv['Iron'] = self.raw['irons']
         self.scv[['Iron','Cavalry']] = self.scv[['Iron','Cavalry']].fillna(0)
         self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
         miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
-        self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', imputation='zero'), axis=1)
+        self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', imputation='remove'), axis=1)
 
     def build_MSP(self):
         from src.mappings import ideology_mapping
@@ -265,10 +265,9 @@ class TimeSeriesDataset():
                     print('Not enough significant variables')
                     print(f'p-values for {col} are {p_values}')
                 else:
-
                     relevant_cols = p_values[p_values<0.05].index
                     # check if the amount of relevant columns is greater than 1
-                    if len(relevant_cols) < 1:
+                    if len(relevant_cols) < 2:
                         continue
                     # check if the fit is already in the dataframe
                     if len(df_fits.loc[(df_fits["Y column"] == col) & df_fits['X columns'].apply(lambda x: is_same(x, relevant_cols))]) > 0:
@@ -299,7 +298,7 @@ class TimeSeriesDataset():
             nan_cols = row[row.isna()].index
             non_nan_cols = row[row.notna()].index
             # check if non_nan_cols is greater than 1
-            if len(non_nan_cols) < 1:
+            if len(non_nan_cols) < 2:
                 continue
             for col in nan_cols:
                 col_df = df_fits.loc[df_fits['Y column'] == col]
@@ -313,7 +312,7 @@ class TimeSeriesDataset():
                     elif len(best_overlap) > 1:
                         # if there are multiple best overlaps, choose the one with the highest number of rows
                         sorted_col_df = col_df.iloc[best_overlap].copy()
-                        sorted_col_df.sort_values('num_rows', ascending=False)
+                        sorted_col_df.sort_values('R2', ascending=False)
                         if sorted_col_df is None:
                             print('Oh no')
                         best_overlap =  sorted_col_df.index[0]
@@ -347,8 +346,12 @@ class TimeSeriesDataset():
         if pca_func is None:
             pca = PCA(n_components=n_PCA)
             pca.fit(df_scaled)
-        else:
+        # check if pca_func is a PCA object
+        elif isinstance(pca_func, PCA):
             pca = pca_func
+        else:
+            print("pca_func must be a PCA object")
+            return
         
         if len(self.scv_clean) == 0:
             scv_clean = self.scv.copy()
@@ -360,6 +363,7 @@ class TimeSeriesDataset():
 
         scv_scaled = scaler.transform(self.scv_clean[cols])
         # Quantify variance explained by each PC
+
         explained_variance = pca.explained_variance_ratio_
 
         print("Explained variance by each PC:")

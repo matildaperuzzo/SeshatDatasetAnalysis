@@ -487,7 +487,7 @@ class Template():
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
 
-    def sample_dict(self, variable_dict, t, error, interpolation = 'zero'):
+    def sample_dict(self, variable_dict, t, error, interpolation = 'zero', sampling = 'uniform'):
         """
         Samples values from a given dictionary of timelines based on the provided time(s) and error margin.
         Parameters:
@@ -535,7 +535,10 @@ class Template():
             # create a smoothing effect on the data with a smoothing window of 50 years
             import scipy.interpolate as spi
             x = np.array(times)
-            y = np.array([v[0] + random_number*(v[1]-v[0]) for v in values])
+            if sampling == 'uniform':
+                y = np.array([v[0] + random_number*(v[1]-v[0]) for v in values])
+            elif sampling == 'mean':
+                y = np.array([np.mean([v[0],v[1]]) for v in values])
             smooth_window = 50
             if interpolation == 'linear':
                 smoothing = np.ones(smooth_window)
@@ -558,7 +561,10 @@ class Template():
                 if interpolation == 'zero':
                     time_selection = times[times<=time]
                     ind = np.argmin(np.abs(np.array(time_selection) - time))
-                    val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
+                    if sampling == 'uniform':
+                        val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
+                    elif sampling == 'mean':
+                        val = np.mean(values[ind])
                     vals[i] = val
                 elif (interpolation == 'linear') or (interpolation == 'smooth'):
                     vals[i] = y_new[np.argmin(np.abs(x_new - time))]

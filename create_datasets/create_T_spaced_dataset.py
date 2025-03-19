@@ -19,7 +19,7 @@ dataset = TSD(categories=['sc','wf'], template_path=template_path)
 dataset.initialize_dataset_grid(-10000,2024,dt)
 
 error = 100
-dataset.download_all_categories(polity_year_error=error)
+dataset.download_all_categories(polity_year_error=error, sampling_ranges='mean')
 # for key in ideology_mapping['MSP'].keys():
 #     dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
 

@@ -102,7 +102,7 @@ def weighted_mean(row, mappings, category = "Metal", imputation = 'remove', min_
     return np.average(values, weights = entries)
 
 
-def get_max(row, mappings, category = "Metal"):
+def get_max(row, mappings, category):
 
     result = -1
     for key, entry in mappings[category].items():
