@@ -15,11 +15,10 @@ def download_data(url,size = 1000):
         url = url+"?page_size="+str(size)
     df = pd.DataFrame()
     
-
     while True:
         try:
             try:
-                response = requests.get(url, auth= auth, timeout=5)
+                response = requests.get(url, timeout=5)
             except requests.exceptions.Timeout:
                 # print("Timeout occurred")
                 continue
@@ -103,7 +102,7 @@ def weighted_mean(row, mappings, category = "Metal", imputation = 'remove', min_
     return np.average(values, weights = entries)
 
 
-def get_max(row, mappings, category = "Metal"):
+def get_max(row, mappings, category):
 
     result = -1
     for key, entry in mappings[category].items():
