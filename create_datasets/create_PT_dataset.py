@@ -14,7 +14,7 @@ from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 dataset = TSD(categories=['sc','wf'], template_path='datasets/template.csv')
 dataset.add_polities()
 
-url = "https://seshat-db.com/api/crisisdb/power-transitions/"
+url = "https://seshatdata.com/api/crisisdb/power-transitions/"
 pt_df = download_data(url)
 if len(pt_df) == 0:
     pt_df = pd.read_csv('datasets/crisisdb_power_transition_20250312_083844.csv', sep='|')
@@ -43,8 +43,11 @@ for idx, row in pt_df.iterrows():
     polity = row['polity_id']
     # check if polity is in dataset 
     if polity not in dataset.raw.PolityID.unique():
-        print(f"Polity {row['polity_new_name']} in PT dataset but not in polity dataset")
-        continue
+        if row['polity_new_name'] in dataset.raw.PolityName.unique():
+            polity = dataset.raw.loc[dataset.raw.PolityName == row['polity_new_name'], 'PolityID'].values[0]
+        else:
+            print(f"Polity {row['polity_new_name']} in PT dataset but not in polity dataset")
+            continue
     # get year
     year_from = row['year_from']
     year_to = row['year_to']
@@ -105,13 +108,13 @@ dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
 # impute scale and non scale variables separately
 scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
-dataset.impute_missing_values(scale_cols, use_duplicates = False)
+dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0.0)
 non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-dataset.impute_missing_values(non_scale_cols, use_duplicates = False)
+dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0.0)
 dataset.scv_imputed['dataset'] = dataset.scv['dataset']
 
 dataset.scv.reset_index(drop=True, inplace=True)
 dataset.scv_imputed.reset_index(drop=True, inplace=True)
 
 # remove dataset column
-dataset.save_dataset(path='datasets/', name='power_transitions')
+dataset.save_dataset(path='datasets/', name='power_transitions_nolim')

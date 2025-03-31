@@ -202,27 +202,26 @@ class TimeSeriesDataset():
 
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
-        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', imputation='remove'), axis=1)
+        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', imputation='remove', min_vals = 0.5), axis=1)
         self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean"), axis=1)
-        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", imputation='remove'), axis=1)
-        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals", imputation='remove'), axis=1)
+        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", imputation='remove', min_vals = 0.5), axis=1)
+        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals", imputation='remove', min_vals = 0.5), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
-        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", imputation='remove'), axis=1)
+        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", imputation='remove', min_vals = 0.5), axis=1)
         long_wall = self.raw['long-walls'].notna()*1
-        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings", imputation='remove'), axis=1)
+        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings", imputation='remove', min_vals = 0.5), axis=1)
         self.scv['Defense'] = fort_max + fort_mean + long_wall + surroundings
         self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite-bows"] or row["self-bows"]) and row["horses"], axis=1)
         self.scv['Iron'] = self.raw['irons']
-        self.scv[['Iron','Cavalry']] = self.scv[['Iron','Cavalry']].fillna(0)
         self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
         miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
-        self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', imputation='remove'), axis=1)
+        self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', imputation='remove', min_vals = 0.5), axis=1)
 
     def build_MSP(self):
         from src.mappings import ideology_mapping
         self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", imputation='remove'), axis=1)
 
-    def impute_missing_values(self, columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money'], use_duplicates = False):
+    def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.5):
 
         if self.scv_imputed.empty:
             polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']
@@ -234,9 +233,13 @@ class TimeSeriesDataset():
         if not use_duplicates:
             # remove duplicates
             scv = scv.drop_duplicates()
+            # identify duplicates in scv_imputed
+        unique_rows = scv.copy()
+        self.scv_imputed['unique'] = 0
+        self.scv_imputed.loc[unique_rows.index, 'unique'] = 1
 
         self.scv_imputed[columns] = self.scv[columns].copy()
-
+        
         df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values", 'R2'])
         df_fits['X columns'] = df_fits['X columns'].astype(object)
 
@@ -267,7 +270,7 @@ class TimeSeriesDataset():
                 else:
                     relevant_cols = p_values[p_values<0.05].index
                     # check if the amount of relevant columns is greater than 1
-                    if len(relevant_cols) < 2:
+                    if len(relevant_cols) < 1:
                         continue
                     # check if the fit is already in the dataframe
                     if len(df_fits.loc[(df_fits["Y column"] == col) & df_fits['X columns'].apply(lambda x: is_same(x, relevant_cols))]) > 0:
@@ -291,17 +294,24 @@ class TimeSeriesDataset():
                     except Exception as e:
                         print(f"Error fitting {col} with {relevant_cols[1:]}")
                         print(e)
-        self.imputation_fits = df_fits
+        df_fits = df_fits.loc[df_fits['R2']>r2_lim]
+        df_fits['unique_imputed_points'] = 0
+        # check if imputation fits exists
+        if not hasattr(self, 'imputation_fits'):
+            self.imputation_fits = df_fits
+        else:
+            self.imputation_fits = pd.concat([self.imputation_fits, df_fits])
+            self.imputation_fits.drop_duplicates(subset=['Y column', 'R2','num_rows'], inplace=True)
 
         for index, row in self.scv[columns].iterrows():
             # find positions of nans
             nan_cols = row[row.isna()].index
             non_nan_cols = row[row.notna()].index
             # check if non_nan_cols is greater than 1
-            if len(non_nan_cols) < 2:
+            if len(non_nan_cols) < 1:
                 continue
             for col in nan_cols:
-                col_df = df_fits.loc[df_fits['Y column'] == col]
+                col_df = self.imputation_fits.loc[self.imputation_fits['Y column'] == col]
                 overlap_rows = (col_df['X columns'].apply(lambda x: len(x)*set(x).issubset(set(non_nan_cols))))
                 # find positions of best overlap
                 best_overlap = np.where(overlap_rows > 0)[0]
@@ -316,8 +326,13 @@ class TimeSeriesDataset():
                         if sorted_col_df is None:
                             print('Oh no')
                         best_overlap =  sorted_col_df.index[0]
+                        # if 
+                        if self.scv_imputed.loc[index,'unique'] == 1:
+                            self.imputation_fits.loc[best_overlap, 'unique_imputed_points'] += 1
                     else:
                         best_overlap = col_df.iloc[best_overlap].index[0]
+                        if self.scv_imputed.loc[index,'unique'] == 1:
+                            self.imputation_fits.loc[best_overlap, 'unique_imputed_points'] += 1
                 except Exception as e:
                     print(f"Error finding best overlap for {col}")
                     print(e)
@@ -326,6 +341,7 @@ class TimeSeriesDataset():
                 feature_columns = col_df.loc[best_overlap]['X columns']
                 input_data = pd.DataFrame([row[feature_columns].values], columns=feature_columns)
                 self.scv_imputed.loc[index, col] = col_df.loc[best_overlap]['fit'].predict(input_data)[0]
+        self.scv_imputed.drop(columns='unique', inplace=True)
 
     ######################################## PCA FUNCTIONS #################################################
 
@@ -401,6 +417,9 @@ class TimeSeriesDataset():
             self.scv_imputed.to_excel(writer, sheet_name='SCV_Imputed', index=False)
             self.scv_clean.to_excel(writer, sheet_name='SCV_Clean', index=False)
             self.debug.to_excel(writer, sheet_name='Debug', index=False)
+            # check if fit imputations exists
+            if hasattr(self, 'imputation_fits'):
+                self.imputation_fits.to_excel(writer, sheet_name='Imputation_Fits', index=False)
 
         print(f"Dataset saved to {file_path}")
 
@@ -415,6 +434,9 @@ class TimeSeriesDataset():
             self.scv_imputed = pd.read_excel(reader, sheet_name='SCV_Imputed')
             self.scv_clean = pd.read_excel(reader, sheet_name='SCV_Clean')
             self.debug = pd.read_excel(reader, sheet_name='Debug')
+            # check if fit imputations exists
+            if 'Imputation_Fits' in reader.sheet_names:
+                self.imputation_fits = pd.read_excel(reader, sheet_name='Imputation_Fits')
 
         print(f"Dataset loaded from {file_path}")
         
