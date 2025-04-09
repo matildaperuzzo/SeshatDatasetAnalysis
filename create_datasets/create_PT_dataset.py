@@ -85,17 +85,11 @@ dataset.raw.reset_index(drop=True, inplace=True)
 error = 500
 dataset.download_all_categories(polity_year_error=error)
 
-# for key in ideology_mapping['MSP'].keys():
-#     dataset.add_column('ideo/'+key.lower(), polity_year_error=error)
-
-# remove all rows that have less than 30% of the columns filled in
-# dataset.remove_incomplete_rows(nan_threshold=0.3)
 # build the social complexity variables
 dataset.build_social_complexity()
 dataset.build_warfare()
 # dataset.build_MSP()
 
-# add 100 year dataset to PT dataset to increase the number of datapoints used
 # in imputation and reduce bias
 dataset_100y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
 dataset_100y.scv['dataset'] = '100y'
@@ -108,13 +102,13 @@ dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
 # impute scale and non scale variables separately
 scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
-dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0.0)
+dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0., add_resid=True)
 non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0.0)
+dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0., add_resid=True)
 dataset.scv_imputed['dataset'] = dataset.scv['dataset']
 
 dataset.scv.reset_index(drop=True, inplace=True)
 dataset.scv_imputed.reset_index(drop=True, inplace=True)
 
 # remove dataset column
-dataset.save_dataset(path='datasets/', name='power_transitions_nolim')
+dataset.save_dataset(path='datasets/', name='power_transitions_with_resid')

@@ -221,7 +221,7 @@ class TimeSeriesDataset():
         from src.mappings import ideology_mapping
         self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", imputation='remove'), axis=1)
 
-    def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.5):
+    def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.0, add_resid = False):
 
         if self.scv_imputed.empty:
             polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']
@@ -240,7 +240,7 @@ class TimeSeriesDataset():
 
         self.scv_imputed[columns] = self.scv[columns].copy()
         
-        df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values", 'R2'])
+        df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values", 'R2',"residuals"])
         df_fits['X columns'] = df_fits['X columns'].astype(object)
 
         for index, row in scv.iterrows():
@@ -289,7 +289,8 @@ class TimeSeriesDataset():
                                         "fit": reg,
                                         "num_rows": len(X),
                                         "p-values": p_values,
-                                        "R2": r2}
+                                        "R2": r2,
+                                        "residuals": y - reg.predict(X)}
                         df_fits = pd.concat([df_fits, pd.DataFrame([fit_row_dict], columns=df_fits.columns)], ignore_index=True)
                     except Exception as e:
                         print(f"Error fitting {col} with {relevant_cols[1:]}")
@@ -314,23 +315,23 @@ class TimeSeriesDataset():
                 col_df = self.imputation_fits.loc[self.imputation_fits['Y column'] == col]
                 overlap_rows = (col_df['X columns'].apply(lambda x: len(x)*set(x).issubset(set(non_nan_cols))))
                 # find positions of best overlap
-                best_overlap = np.where(overlap_rows > 0)[0]
+                best_overlap = col_df.index[np.where(overlap_rows > 0)[0]]
                 try:
                     if len(best_overlap) == 0:
                         print(f"No best overlap found for {col}")
                         continue
                     elif len(best_overlap) > 1:
                         # if there are multiple best overlaps, choose the one with the highest number of rows
-                        sorted_col_df = col_df.iloc[best_overlap].copy()
-                        sorted_col_df.sort_values('R2', ascending=False)
+                        sorted_col_df = col_df.loc[best_overlap].copy()
+                        sorted_col_df = sorted_col_df.sort_values('R2', ascending=False)
                         if sorted_col_df is None:
                             print('Oh no')
                         best_overlap =  sorted_col_df.index[0]
-                        # if 
+                        # if more than one best overlap, choose the one with the highest R2
                         if self.scv_imputed.loc[index,'unique'] == 1:
                             self.imputation_fits.loc[best_overlap, 'unique_imputed_points'] += 1
                     else:
-                        best_overlap = col_df.iloc[best_overlap].index[0]
+                        best_overlap = col_df.loc[best_overlap].index[0]
                         if self.scv_imputed.loc[index,'unique'] == 1:
                             self.imputation_fits.loc[best_overlap, 'unique_imputed_points'] += 1
                 except Exception as e:
@@ -340,8 +341,75 @@ class TimeSeriesDataset():
 
                 feature_columns = col_df.loc[best_overlap]['X columns']
                 input_data = pd.DataFrame([row[feature_columns].values], columns=feature_columns)
-                self.scv_imputed.loc[index, col] = col_df.loc[best_overlap]['fit'].predict(input_data)[0]
+                if add_resid:
+                    resid = col_df.loc[best_overlap]['residuals'].sample().values[0]
+                else:
+                    resid = 0
+                self.scv_imputed.loc[index, col] = col_df.loc[best_overlap]['fit'].predict(input_data)[0] + resid
         self.scv_imputed.drop(columns='unique', inplace=True)
+
+    def compute_bootstraps_imputation(self, cols, n_nga_bootstraps = 100, n_resid_boostraps = 20, use_duplicates = False, r2_lim = 0.0):
+
+        # create empty dataframes
+        all_imputed = pd.DataFrame(columns = self.scv.columns)
+        original_scv = self.scv.copy()
+        original_scv_imputed = self.scv_imputed.copy()
+        if len(self.scv_imputed) == 0:
+            original_scv_imputed = self.scv.copy()
+        self.scv.loc[self.scv.NGA.isna(), 'NGA'] = "Unknown"
+        ngas = self.scv.NGA.unique()
+
+        for n in range(n_nga_bootstraps):
+            # create a new dataframe with the same columns as the original scv
+            new_scv = pd.DataFrame(columns = self.scv.columns)
+            
+            while len(new_scv) < len(self.scv):
+                # sample a NGA from the original scv
+                nga = np.random.choice(ngas, 1)[0]
+                # add rows from the original scv to the new scv
+                nga_rows = original_scv.loc[self.scv.NGA == nga].copy()
+                if len(nga_rows) == 0:
+                    continue
+                new_scv = pd.concat([new_scv, nga_rows], ignore_index=True)
+            
+            for i in range(n_nga_bootstraps):
+                # compute the imputation for the new scv
+                self.scv = new_scv.copy()
+                self.imputation_fits = pd.DataFrame([])
+                self.scv_imputed = pd.DataFrame([])
+                self.impute_missing_values(cols, use_duplicates=use_duplicates, r2_lim=r2_lim, add_resid=True)
+                # add the imputed values to the all_imputed dataframe
+                all_imputed = pd.concat([all_imputed, self.scv_imputed], ignore_index=True)
+
+        self.scv_imputed = original_scv_imputed
+        errors = pd.DataFrame(0, columns=cols, index=original_scv.index)
+        # reconstruct imputed csv
+        for index, row in original_scv.iterrows():
+            # find positions of nans
+            year = row['Year']
+            polity = row['PolityID']
+            row = row[cols]
+            nan_cols = row[row.isna()].index
+            non_nan_cols = row[row.notna()].index
+            if len(non_nan_cols) == 0:
+                continue
+            for col in nan_cols:
+                # find the rows in all_imputed where the columns are not nan
+                imputed_vals = all_imputed.loc[(all_imputed['Year'] == year) & (all_imputed['PolityID'] == polity), col]
+                imputed_vals = imputed_vals.dropna()
+                # check if imputed_vals is empty    
+                if len(imputed_vals) == 0:
+                    continue
+                # check if imputed_vals is a series
+                else:
+                    imputed_val = imputed_vals.mean()
+                    self.scv_imputed.loc[index, col] = imputed_val
+                    # calculate the error
+                    errors.loc[index, col] = imputed_vals.std()
+        
+        self.scv = original_scv
+                
+
 
     ######################################## PCA FUNCTIONS #################################################
 
@@ -450,11 +518,8 @@ if __name__ == "__main__":
     from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 
     dataset = TSD(categories=['sc'], file_path="datasets/power_transitions.csv")
-    dataset.scv_imputed = pd.DataFrame()
-    imp_columns =  ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
-    dataset.impute_missing_values(imp_columns, use_duplicates=False)
-    sc_columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
+    dataset.scv_imputed = pd.DataFrame()    
+    dataset.compute_bootstraps_imputation(cols = ['Pop','Terr','Cap','Hierarchy',"Hierarchy_sq"], n_nga_bootstraps=5, n_resid_boostraps=2)
+    dataset.compute_bootstraps_imputation(cols = ['Government', 'Infrastructure', 'Information', 'Money'], n_nga_bootstraps=5, n_resid_boostraps=2)
 
-    pca = dataset.compute_PCA(imp_columns, 'PC', n_cols = 2, n_PCA = 8)
-
-    print(dataset.scv_clean)
+    dataset.save_dataset(path='datasets/', name='power_transitions_bootstrap')
