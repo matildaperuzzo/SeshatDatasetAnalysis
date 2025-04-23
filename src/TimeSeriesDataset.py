@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.decomposition import PCA
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
-
+from scipy.stats import shapiro
 
 class TimeSeriesDataset():
     def __init__(self, 
@@ -240,7 +240,7 @@ class TimeSeriesDataset():
 
         self.scv_imputed[columns] = self.scv[columns].copy()
         
-        df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values", 'R2',"residuals"])
+        df_fits = pd.DataFrame(columns=["Y column", "X columns", "fit", "num_rows","p-values", 'R2',"residuals", "S-W test"])
         df_fits['X columns'] = df_fits['X columns'].astype(object)
 
         for index, row in scv.iterrows():
@@ -283,6 +283,8 @@ class TimeSeriesDataset():
                     try:
                         reg = LinearRegression().fit(X, y)
                         r2 = reg.score(X, y)
+                        residuals = y - reg.predict(X)
+                        shapiro_stat, shapiro_p_val = shapiro(residuals)
                         # impute the missing values
                         fit_row_dict = {"Y column": col, 
                                         "X columns": relevant_cols[1:], 
@@ -290,7 +292,8 @@ class TimeSeriesDataset():
                                         "num_rows": len(X),
                                         "p-values": p_values,
                                         "R2": r2,
-                                        "residuals": y - reg.predict(X)}
+                                        "residuals": residuals.values,
+                                        "S-W test": shapiro_p_val}
                         df_fits = pd.concat([df_fits, pd.DataFrame([fit_row_dict], columns=df_fits.columns)], ignore_index=True)
                     except Exception as e:
                         print(f"Error fitting {col} with {relevant_cols[1:]}")
@@ -342,72 +345,74 @@ class TimeSeriesDataset():
                 feature_columns = col_df.loc[best_overlap]['X columns']
                 input_data = pd.DataFrame([row[feature_columns].values], columns=feature_columns)
                 if add_resid:
-                    resid = col_df.loc[best_overlap]['residuals'].sample().values[0]
+                    resid_vec = col_df.loc[best_overlap]['residuals']
+                    resid = resid_vec[np.random.choice(len(resid_vec),1)]
                 else:
                     resid = 0
                 self.scv_imputed.loc[index, col] = col_df.loc[best_overlap]['fit'].predict(input_data)[0] + resid
         self.scv_imputed.drop(columns='unique', inplace=True)
+        self.imputation_fits = df_fits.copy()
 
-    def compute_bootstraps_imputation(self, cols, n_nga_bootstraps = 100, n_resid_boostraps = 20, use_duplicates = False, r2_lim = 0.0):
+    # def compute_bootstraps_imputation(self, cols, n_nga_bootstraps = 100, n_resid_boostraps = 20, use_duplicates = False, r2_lim = 0.0):
 
-        # create empty dataframes
-        all_imputed = pd.DataFrame(columns = self.scv.columns)
-        original_scv = self.scv.copy()
-        original_scv_imputed = self.scv_imputed.copy()
-        if len(self.scv_imputed) == 0:
-            original_scv_imputed = self.scv.copy()
-        self.scv.loc[self.scv.NGA.isna(), 'NGA'] = "Unknown"
-        ngas = self.scv.NGA.unique()
+    #     # create empty dataframes
+    #     all_imputed = pd.DataFrame(columns = self.scv.columns)
+    #     original_scv = self.scv.copy()
+    #     original_scv_imputed = self.scv_imputed.copy()
+    #     if len(self.scv_imputed) == 0:
+    #         original_scv_imputed = self.scv.copy()
+    #     self.scv.loc[self.scv.NGA.isna(), 'NGA'] = "Unknown"
+    #     ngas = self.scv.NGA.unique()
 
-        for n in range(n_nga_bootstraps):
-            # create a new dataframe with the same columns as the original scv
-            new_scv = pd.DataFrame(columns = self.scv.columns)
+    #     for n in range(n_nga_bootstraps):
+    #         # create a new dataframe with the same columns as the original scv
+    #         new_scv = pd.DataFrame(columns = self.scv.columns)
             
-            while len(new_scv) < len(self.scv):
-                # sample a NGA from the original scv
-                nga = np.random.choice(ngas, 1)[0]
-                # add rows from the original scv to the new scv
-                nga_rows = original_scv.loc[self.scv.NGA == nga].copy()
-                if len(nga_rows) == 0:
-                    continue
-                new_scv = pd.concat([new_scv, nga_rows], ignore_index=True)
+    #         while len(new_scv) < len(self.scv):
+    #             # sample a NGA from the original scv
+    #             nga = np.random.choice(ngas, 1)[0]
+    #             # add rows from the original scv to the new scv
+    #             nga_rows = original_scv.loc[self.scv.NGA == nga].copy()
+    #             if len(nga_rows) == 0:
+    #                 continue
+    #             new_scv = pd.concat([new_scv, nga_rows], ignore_index=True)
             
-            for i in range(n_nga_bootstraps):
-                # compute the imputation for the new scv
-                self.scv = new_scv.copy()
-                self.imputation_fits = pd.DataFrame([])
-                self.scv_imputed = pd.DataFrame([])
-                self.impute_missing_values(cols, use_duplicates=use_duplicates, r2_lim=r2_lim, add_resid=True)
-                # add the imputed values to the all_imputed dataframe
-                all_imputed = pd.concat([all_imputed, self.scv_imputed], ignore_index=True)
+    #         for i in range(n_nga_bootstraps):
+    #             # compute the imputation for the new scv
+    #             self.scv = new_scv.copy()
+    #             self.imputation_fits = pd.DataFrame([])
+    #             self.scv_imputed = pd.DataFrame([])
+    #             self.impute_missing_values(cols, use_duplicates=use_duplicates, r2_lim=r2_lim, add_resid=True)
+    #             # add the imputed values to the all_imputed dataframe
+    #             all_imputed = pd.concat([all_imputed, self.scv_imputed], ignore_index=True)
 
-        self.scv_imputed = original_scv_imputed
-        errors = pd.DataFrame(0, columns=cols, index=original_scv.index)
-        # reconstruct imputed csv
-        for index, row in original_scv.iterrows():
-            # find positions of nans
-            year = row['Year']
-            polity = row['PolityID']
-            row = row[cols]
-            nan_cols = row[row.isna()].index
-            non_nan_cols = row[row.notna()].index
-            if len(non_nan_cols) == 0:
-                continue
-            for col in nan_cols:
-                # find the rows in all_imputed where the columns are not nan
-                imputed_vals = all_imputed.loc[(all_imputed['Year'] == year) & (all_imputed['PolityID'] == polity), col]
-                imputed_vals = imputed_vals.dropna()
-                # check if imputed_vals is empty    
-                if len(imputed_vals) == 0:
-                    continue
-                # check if imputed_vals is a series
-                else:
-                    imputed_val = imputed_vals.mean()
-                    self.scv_imputed.loc[index, col] = imputed_val
-                    # calculate the error
-                    errors.loc[index, col] = imputed_vals.std()
+    #     self.scv_imputed = original_scv_imputed
+    #     errors = pd.DataFrame(0, columns=cols, index=original_scv.index)
+    #     # reconstruct imputed csv
+    #     for index, row in original_scv.iterrows():
+    #         # find positions of nans
+    #         year = row['Year']
+    #         polity = row['PolityID']
+    #         row = row[cols]
+    #         nan_cols = row[row.isna()].index
+    #         non_nan_cols = row[row.notna()].index
+    #         if len(non_nan_cols) == 0:
+    #             continue
+    #         for col in nan_cols:
+    #             # find the rows in all_imputed where the columns are not nan
+    #             imputed_vals = all_imputed.loc[(all_imputed['Year'] == year) & (all_imputed['PolityID'] == polity), col]
+    #             imputed_vals = imputed_vals.dropna()
+    #             # check if imputed_vals is empty    
+    #             if len(imputed_vals) == 0:
+    #                 continue
+    #             # check if imputed_vals is a series
+    #             else:
+    #                 imputed_val = imputed_vals.mean()
+    #                 self.scv_imputed.loc[index, col] = imputed_val
+    #                 # calculate the error
+    #                 errors.loc[index, col] = imputed_vals.std()
         
-        self.scv = original_scv
+    #     self.scv = original_scv
                 
 
 

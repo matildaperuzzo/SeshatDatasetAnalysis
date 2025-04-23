@@ -30,8 +30,8 @@ dataset.build_social_complexity()
 # dataset.build_MSP()
 dataset.build_warfare()
 
-# imp_columns =  ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
-# dataset.impute_missing_values()
+imp_columns =  ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
+dataset.impute_missing_values()
 # sc_columns = ['Pop','Cap','Terr','Hierarchy', 'Government', 'Infrastructure', 'Information', 'Money']
 # find rows in sc_columns with NaN values
 # nan_rows = dataset.scv_imputed[sc_columns].isnull().any(axis=1)
