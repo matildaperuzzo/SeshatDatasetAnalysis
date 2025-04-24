@@ -2,10 +2,11 @@ import sys
 import os
 import numpy as np
 import pandas as pd
+from sklearn.linear_model import LinearRegression as LinearRegression
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Add the src directory to the Python path
-from src.utils import download_data, weighted_mean
+from src.utils import download_data, download_data_json, weighted_mean
 from src.mappings import PT_value_mapping, ideology_mapping
 # Now you can import the TimeSeriesDataset class
 from src.TimeSeriesDataset import TimeSeriesDataset as TSD
@@ -14,14 +15,17 @@ from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 dataset = TSD(categories=['sc','wf'], template_path='datasets/template.csv')
 dataset.add_polities()
 
-url = "https://seshatdata.com/api/crisisdb/power-transitions/"
+url = "https://seshat-db.com/api/crisisdb/power-transitions/"
 pt_df = download_data(url)
 if len(pt_df) == 0:
-    pt_df = pd.read_csv('datasets/crisisdb_power_transition_20250312_083844.csv', sep='|')
-    pt_df['polity_id'] = pt_df['polity_new_ID'].apply(lambda x: dataset.raw.loc[dataset.raw.PolityName == x, 'PolityID'].values[0] if x in dataset.raw.PolityName.values else np.nan)
-    pt_df.rename(columns={'polity_new_ID':'polity_new_name'}, inplace=True)
-    pt_df['year_from'] = pt_df['transition_year']
-    pt_df['year_to'] = pt_df['transition_year']
+    pt_df = download_data_json('datasets/power_transitions.json')
+    new_col_names = {}
+    for col in pt_df.columns:
+        if col.startswith('coded_values_'):
+            new_col_names[col] = col.replace('coded_values_', '')
+    new_col_names['polity_new_ID'] = 'polity_new_name'
+    pt_df.rename(columns=new_col_names, inplace=True)
+    pt_df['polity_id'] = pt_df['polity_new_name'].apply(lambda x: dataset.raw.loc[dataset.raw.PolityName == x, 'PolityID'].values[0] if x in dataset.raw.PolityName.values else np.nan)
     polity_df = download_data("https://seshat-db.com/api/core/polities/")
     pt_df['polity_start_year'] = pt_df['polity_new_name'].apply(lambda x: polity_df.loc[polity_df['new_name'] == x, 'start_year'].values[0] if x in polity_df['new_name'].values else np.nan)
     pt_df['polity_end_year'] = pt_df['polity_new_name'].apply(lambda x: polity_df.loc[polity_df['new_name'] == x, 'end_year'].values[0] if x in polity_df['new_name'].values else np.nan)
@@ -91,7 +95,7 @@ dataset.build_warfare()
 # dataset.build_MSP()
 
 # in imputation and reduce bias
-dataset_100y = TSD(categories=['sc'], file_path="datasets/100_yr_dataset.csv")
+dataset_100y = TSD(categories=['sc',"wf"], file_path="datasets/100_yr_dataset.csv")
 dataset_100y.scv['dataset'] = '100y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
@@ -102,13 +106,40 @@ dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
 # impute scale and non scale variables separately
 scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
-dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0., add_resid=True)
+dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
 non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0., add_resid=True)
+dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
 dataset.scv_imputed['dataset'] = dataset.scv['dataset']
 
 dataset.scv.reset_index(drop=True, inplace=True)
 dataset.scv_imputed.reset_index(drop=True, inplace=True)
 
-# remove dataset column
-dataset.save_dataset(path='datasets/', name='power_transitions_with_resid')
+# compute scale variable
+scale_pca_cols = ['Pop','Terr','Cap']
+scale_pca = dataset.compute_PCA(cols = scale_pca_cols, col_name = 'Scale', n_cols = 1, n_PCA= len(scale_pca_cols))
+lm_df = dataset.scv_imputed[['Pop', 'Scale_1']].dropna()
+X = lm_df[['Pop']]
+y = lm_df['Scale_1']
+
+# Normalize the Scale column to Pop
+# Create and fit the model
+model = LinearRegression()
+model.fit(X, y)
+print(f"Intercept: {model.intercept_}, Slope: {model.coef_[0]}")
+
+# Extract the coefficients
+intercept = model.intercept_
+slope = model.coef_[0]
+dataset.scv_imputed['Scale_1'] = (dataset.scv_imputed['Scale_1'] - intercept) / slope
+
+# Calculate Comp variable
+comp_mapping = {'Comp':{'Government': 11, 'Infrastructure': 12, 'Information':13, 'Money': 6}}
+dataset.scv_imputed['Comp'] = dataset.scv_imputed.apply(lambda row: weighted_mean(row, comp_mapping,category = 'Comp',imputation = "remove", min_vals=0.5), axis=1)
+
+# Move Miltech variables to imputed dataset
+transfer_cols = ['Miltech','IronCav','Cavalry']
+for col in transfer_cols:
+    dataset.scv_imputed[col] = dataset.scv[col]
+
+# save dataset
+dataset.save_dataset(path='datasets/', name='power_transitions')

@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 from pandas import json_normalize
+import json
 import numpy as np
 import os
 import sys
@@ -38,6 +39,15 @@ def download_data(url,size = 1000):
                 print(f"Downloaded {len(df)} rows")
             return df
 
+def download_data_json(filepath):
+
+    data = json.load(open(filepath))
+    df = pd.DataFrame()
+    for row in data:
+        # unpack polity_dict
+        flattened_dict = json_normalize(row, sep='_')
+        df = pd.concat([df, flattened_dict], axis=0)
+    return df
 
 def fetch_urls(category):
     url = "https://seshat-db.com/api/"
