@@ -102,6 +102,7 @@ pt_dat['dataset'] = 'PT'
 dataset.scv = pd.concat([pt_dat, dataset_100y.scv])
 dataset.scv.reset_index(drop=True, inplace=True)
 # dataset.remove_incomplete_rows(nan_threshold=0.3)
+dataset.scv = dataset.scv.loc[dataset.scv["Year"] <= 1800]
 dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
 # impute scale and non scale variables separately
@@ -125,7 +126,6 @@ y = lm_df['Scale_1']
 # Create and fit the model
 model = LinearRegression()
 model.fit(X, y)
-print(f"Intercept: {model.intercept_}, Slope: {model.coef_[0]}")
 
 # Extract the coefficients
 intercept = model.intercept_
