@@ -235,8 +235,11 @@ class TimeSeriesDataset():
             scv = scv.drop_duplicates()
             # identify duplicates in scv_imputed
         unique_rows = scv.copy()
-        self.scv_imputed['unique'] = [[0 for _ in range(len(columns))] for _ in range(len(self.scv_imputed))]
-        self.scv_imputed["fit"] = [[0 for _ in range(len(columns))] for _ in range(len(self.scv_imputed))]
+        self.scv_imputed['unique'] = 0
+        # if fit is a column of imputed dataset
+        if 'fit' not in self.scv_imputed.columns:
+            self.scv_imputed["fit"] = [[0 for _ in range(len(self.scv.columns))] for _ in range(len(self.scv_imputed))]
+        
         self.scv_imputed.loc[unique_rows.index, 'unique'] = 1
 
         self.scv_imputed[columns] = self.scv[columns].copy()
@@ -361,7 +364,7 @@ class TimeSeriesDataset():
 
                 
                 self.scv_imputed.loc[index, col] = col_df.loc[best_overlap]['fit'].predict(input_data)[0] + resid
-                self.scv_imputed.loc[index, "fit"][columns.index(col)] = col_df.loc[best_overlap]['fit_num']
+                self.scv_imputed.loc[index, "fit"][list(self.scv.columns).index(col)] = col_df.loc[best_overlap]['fit_num']
         self.scv_imputed.drop(columns='unique', inplace=True)
         self.imputation_fits = df_fits.copy()
                 
