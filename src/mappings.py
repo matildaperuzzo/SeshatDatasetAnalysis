@@ -176,9 +176,9 @@ social_complexity_mapping = {
 }
 
 ideology_mapping = {
-    'MSP' : {"moral-concern-is-primary" : 1, # "PrimaryMSP"
+    'MSP' : {"moralizing-supernatural-concern-is-primary" : 1, # "PrimaryMSP"
                 "moralizing-enforcement-is-certain" : 1, # "CertainMSP"
-                "moralizing-norms-are-broad" : 1, # "BroadMSP"
+                "moralizing-enforcement-is-broad" : 1, # "BroadMSP"
                 "moralizing-enforcement-is-targeted" : 1, # "TargetedMSP"
                 "moralizing-enforcement-of-rulers" : 1, # "RulerMSP"
                 "moralizing-religion-adopted-by-elites" : 1, # "ElitesMSP"
