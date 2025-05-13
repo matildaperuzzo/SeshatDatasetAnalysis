@@ -40682,6 +40682,446 @@ Yemeni Coastal Plain,372,ye_tahirid_dyn,wf,chainmails,present,,,,False,False
 Yemeni Coastal Plain,359,ye_ziyad_dyn,wf,chainmails,present,,,,False,False
 Galilee,105,il_yisrael,wf,chainmails,absent,,,,False,False
 Orkhon Valley,444,mn_zungharian_emp,wf,chainmails,present,,,,False,False
+Southern Mesopotamia,132,iq_abbasid_cal_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,484,iq_abbasid_cal_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,637,so_adal_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,639,so_ajuran_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Susiana,508,ir_ak_koyunlu,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Ghanaian Coast,113,gh_akan,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Southern Mesopotamia,476,iq_akkad_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,223,ma_almoravid_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,479,iq_babylonia_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Sogdiana,463,kz_andronovo,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,633,sl_anuradhapura_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,635,sl_anuradhapura_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,631,sl_anuradhapura_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,629,sl_anuradhapura_4,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Basin of Mexico,6,mx_basin_of_mexico_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Crete,67,gr_crete_archaic,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,665,ni_aro,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Ghanaian Coast,114,gh_ashanti_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Kansai,149,jp_ashikaga,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kansai,146,jp_asuka,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,448,fr_atlantic_complex,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,565,at_habsburg_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,567,at_habsburg_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,208,et_aksum_emp_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cambodian Basin,44,th_ayutthaya,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,367,eg_ayyubid_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Basin of Mexico,16,mx_aztec_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+Basin of Mexico,16,mx_aztec_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+Upper Egypt,510,eg_badarian,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,411,in_bahmani_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,481,iq_bazi_dyn,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,447,fr_beaker_eba,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,409,bd_bengal_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cambodian Basin,35,kh_cambodia_ba,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Susiana,362,ir_buyid_confederation,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,73,tr_byzantine_emp_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,75,tr_byzantine_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Crete,76,tr_byzantine_emp_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cahokia,22,us_woodland_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,27,us_emergent_mississippian_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,34,us_emergent_mississippian_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,24,us_woodland_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,25,us_woodland_4,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,26,us_woodland_5,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,32,us_cahokia_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,23,us_woodland_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,33,us_cahokia_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cahokia,28,us_cahokia_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Galilee,103,il_canaan,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,701,in_carnatic_sul,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,309,fr_carolingian_emp_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,311,fr_carolingian_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Deccan,92,in_badami_chalukya_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Deccan,94,in_kalyani_chalukya_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,780,bd_chandra_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,397,in_chola_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Chuuk Islands,57,fm_truk_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Chuuk Islands,58,fm_truk_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Basin of Mexico,12,mx_basin_of_mexico_7,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+,710,tz_tana,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Crete,68,gr_crete_classical,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cuzco,78,pe_cuzco_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cuzco,79,pe_cuzco_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cuzco,77,pe_cuzco_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cuzco,81,pe_cuzco_5,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cuzco,82,pe_cuzco_6,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,628,sl_dambadeniya,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Deccan,86,in_deccan_ia,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Deccan,85,in_deccan_nl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,135,in_delhi_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,779,bd_deva_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kachi Plain,137,af_durrani_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,482,iq_dynasty_e,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Garo Hills,111,in_achik_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,715,tz_east_africa_ia_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Basin of Mexico,8,mx_basin_of_mexico_3,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Cahokia,30,us_early_illinois_confederation,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,304,fr_merovingian_emp_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,442,mn_mongol_early,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Valley of Oaxaca,525,mx_monte_alban_1_early,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Valley of Oaxaca,525,mx_monte_alban_1_early,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Middle Yellow River Valley,1,cn_qing_dyn_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,653,et_aussa_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,716,tz_early_tana_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,717,tz_early_tana_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,569,mx_mexico_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,437,mn_hunnu_early,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,798,de_east_francia,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,72,tr_east_roman_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Yellow River Valley,253,cn_eastern_han_dyn,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Orkhon Valley,283,mn_turk_khaganate_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Upper Egypt,516,eg_old_k_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,513,eg_naqada_3,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Upper Egypt,514,eg_dynasty_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Upper Egypt,515,eg_dynasty_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,521,eg_kushite,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,517,eg_old_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,232,eg_mamluk_sultanate_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,236,eg_mamluk_sultanate_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,239,eg_mamluk_sultanate_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,519,eg_middle_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,199,eg_new_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,198,eg_new_k_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,518,eg_regions,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,203,eg_saite,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,520,eg_thebes_hyksos,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,200,eg_thebes_libyan,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,361,eg_thulunid_ikhshidid,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,361,eg_thulunid_ikhshidid,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Susiana,502,ir_elam_8,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,497,ir_elam_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,500,ir_elam_6,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,499,ir_elam_5,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,498,ir_elam_4,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,496,ir_elam_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,501,ir_elam_7,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,503,ir_neo_elam_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,504,ir_neo_elam_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,505,ir_neo_elam_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,803,de_bavaria_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,841,es_cordoba_emirate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,652,et_harar_emirate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,302,gb_tudor_stuart,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Basin of Mexico,13,mx_basin_of_mexico_8,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+Middle Yellow River Valley,422,cn_erligang,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Middle Yellow River Valley,421,cn_erlitou,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,234,et_ethiopian_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,789,et_ethiopian_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,788,et_ethiopian_k_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Latium,187,it_ravenna_exarchate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,221,tn_fatimid_cal,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Susiana,486,ir_susiana_formative,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,671,ni_dahomey_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,671,ni_dahomey_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Paris Basin,460,fr_bourbon_k_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,333,fr_valois_k_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,461,fr_bourbon_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,458,fr_capetian_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,459,fr_valois_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cambodian Basin,37,kh_funan_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,649,et_funj_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,610,gu_futa_jallon,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Ganga,405,in_gahadavala_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Crete,66,gr_crete_geometric,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Kachi Plain,134,af_ghur_principality,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,337,ru_moskva_rurik_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Yellow River Valley,269,cn_ming_dyn,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Middle Yellow River Valley,268,cn_yuan_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Ganga,388,in_gupta_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Ganga,418,in_gurjara_pratihara_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,640,so_habr_yunis,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,645,et_hadiya_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,449,fr_hallstatt_a_b1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,450,fr_hallstatt_b2_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,451,fr_hallstatt_c,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,452,fr_hallstatt_d,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Konya Plain,164,tr_hatti_new_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Konya Plain,162,tr_hatti_old_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Finger Lakes,101,us_haudenosaunee_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Finger Lakes,102,us_haudenosaunee_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,669,ni_hausa_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Big Island Hawaii,17,us_hawaii_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Big Island Hawaii,18,us_hawaii_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Big Island Hawaii,19,us_hawaii_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Kansai,147,jp_heian,rt,moralizing-supernatural-concern-is-primary,A~P,,,,False,False
+Crete,69,gr_crete_hellenistic,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Yemeni Coastal Plain,353,ye_himyar_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,800,de_empire_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,807,de_empire_2_sub,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,799,de_empire_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Deccan,95,in_hoysala_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,811,hu_later_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,810,hu_arpad_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kapuasi Basin,154,id_iban_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kapuasi Basin,153,id_iban_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Iceland,115,is_icelandic_commonwealth,rt,moralizing-supernatural-concern-is-primary,absent,,930,1000,False,False
+Iceland,115,is_icelandic_commonwealth,rt,moralizing-supernatural-concern-is-primary,present,,1001,1262,False,False
+,646,so_ifat_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,660,ni_igodomingodo,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,680,se_futa_toro_imamate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,711,om_busaidi_imamate_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cuzco,83,pe_inca_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Basin of Mexico,7,mx_basin_of_mexico_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,594,at_interwar_austria,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cambodian Basin,36,kh_cambodia_ia,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,654,so_isaaq_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,478,iq_isin_larsa,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,548,it_italy_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,634,sl_jaffa_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kansai,151,jp_azuchi_momoyama,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kansai,140,jp_jomon_3,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kansai,143,jp_jomon_6,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kansai,138,jp_jomon_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kansai,139,jp_jomon_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kansai,142,jp_jomon_5,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kansai,141,jp_jomon_4,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Niger Inland Delta,427,ml_jenne_jeno_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Niger Inland Delta,428,ml_jenne_jeno_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Niger Inland Delta,430,ml_jenne_jeno_3,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Niger Inland Delta,431,ml_jenne_jeno_4,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Middle Yellow River Valley,266,cn_later_great_jin,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,679,se_jolof_emp,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,679,se_jolof_emp,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,679,se_jolof_emp,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,117,pk_kachi_enl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,118,pk_kachi_lnl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,119,pk_kachi_ca,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,123,pk_kachi_post_urban,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,120,pk_kachi_pre_urban,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,121,pk_kachi_urban_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Kachi Plain,122,pk_kachi_urban_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Deccan,91,in_kadamba_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,406,in_kalachuri_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kansai,148,jp_kamakura,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Deccan,96,in_kampili_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,670,ni_bornu_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Ganga,417,in_kannauj_varman_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kansai,145,jp_kofun,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Kansai,144,jp_yayoi,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Southern Mesopotamia,342,iq_babylonia_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Central Java,49,id_kediri_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,791,bd_khadga_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Sogdiana,469,uz_janid_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,288,mn_khitan_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cambodian Basin,43,kh_khmer_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,676,se_baol_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,676,se_baol_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,568,cz_bohemian_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,598,cz_bohemian_k_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,641,et_gomma_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,651,et_gumma_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Big Island Hawaii,20,us_kamehameha_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Big Island Hawaii,21,us_hawaii_k,rt,moralizing-supernatural-concern-is-primary,A~P,,,,False,False
+,682,se_jolof_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,682,se_jolof_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,168,tr_lydia_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Iceland,116,no_norway_k_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,540,ye_saba_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,675,se_saloum_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,675,se_saloum_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,675,se_saloum_k,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Sogdiana,464,uz_koktepe_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,156,tr_konya_mnl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,160,tr_konya_eba,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,158,tr_konya_eca,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,155,tr_konya_enl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,163,tr_konya_lba,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Konya Plain,159,tr_konya_lca,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,157,tr_konya_lnl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,658,ni_kwararafa,rt,moralizing-supernatural-concern-is-primary,A~P,,596,1599,False,False
+,658,ni_kwararafa,rt,moralizing-supernatural-concern-is-primary,present,,1600,1820,False,False
+Paris Basin,453,fr_la_tene_a_b1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,454,fr_la_tene_b2_c1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Paris Basin,455,fr_la_tene_c2_d,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Garo Hills,112,in_achik_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Cambodian Basin,42,kh_angkor_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,772,tz_east_africa_ia_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Basin of Mexico,10,mx_basin_of_mexico_5,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+,657,ni_formative_yoruba,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Orkhon Valley,443,mn_mongol_late,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,702,in_pallava_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Yellow River Valley,2,cn_qing_dyn_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Middle Yellow River Valley,243,cn_late_shang_dyn,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,582,mx_mexico_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,274,mn_hunnu_late,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Latium,179,it_latium_ba,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Latium,180,it_latium_ia,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,305,it_lombard_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Yellow River Valley,420,cn_longshan,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Middle Ganga,385,in_sunga_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Central Java,50,id_majapahit_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,648,so_majeerteen_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Niger Inland Delta,229,ml_mali_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Central Java,51,id_mataram_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Central Java,48,id_medang_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,647,er_medri_bahri,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,909,iq_middle_assyrian_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Konya Plain,161,tr_central_anatolia_mba,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Basin of Mexico,9,mx_basin_of_mexico_4,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Paris Basin,306,fr_merovingian_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Basin of Mexico,15,mx_basin_of_mexico_10,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+Niger Inland Delta,216,mr_wagadu_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,615,ni_nok_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,612,ni_nok_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,748,fr_france_modern_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,267,mn_mongol_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Valley of Oaxaca,527,mx_monte_alban_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Valley of Oaxaca,528,mx_monte_alban_3_a,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Valley of Oaxaca,529,mx_monte_alban_3_b_4,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Valley of Oaxaca,526,mx_monte_alban_1_late,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Valley of Oaxaca,532,mx_monte_alban_5,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,566,fr_france_napoleonic,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Upper Egypt,511,eg_naqada_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Upper Egypt,512,eg_naqada_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,263,jp_nara,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,781,bd_nawabs_of_bengal,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,705,in_madurai_nayaks,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,704,in_thanjavur_nayaks,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+North Colombia,435,co_neguanje,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Southern Mesopotamia,106,iq_neo_assyrian_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Southern Mesopotamia,346,iq_neo_babylonian_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Konya Plain,165,tr_neo_hittite_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Crete,59,gr_crete_nl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Middle Ganga,414,in_ganga_nl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Yemeni Coastal Plain,536,ye_yemen_lnl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Crete,62,gr_crete_new_palace,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,586,gb_england_norman,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Crete,61,gr_crete_old_palace,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Oro PNG,445,pg_orokaiva_pre_colonial,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Latium,186,it_ostrogoth_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,173,tr_ottoman_emirate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,174,tr_ottoman_emp_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,175,tr_ottoman_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,176,tr_ottoman_emp_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Konya Plain,177,tr_ottoman_emp_4,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,542,tr_ottoman_emp_4_copy,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,396,in_pala_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,697,in_pandya_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,627,in_pandya_emp_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Latium,193,it_papal_state_4,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Latium,190,it_papal_state_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Latium,191,it_papal_state_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Susiana,125,ir_parthian_emp_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,483,iq_parthian_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Galilee,104,lb_phoenician_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,579,gb_england_plantagenet,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,334,pl_jagiellonian_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,317,pl_piast_dyn_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,809,pl_piast_dyn_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,808,pl_poland_lithuania_commonwealth,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,630,sl_polonnaruva,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,709,pt_portuguese_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,708,pt_portuguese_emp_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Susiana,485,ir_susiana_pre_ceramic,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,616,si_pre_sape,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Crete,60,gr_crete_pre_palace,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Paris Basin,456,fr_merovingian_emp_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Paris Basin,457,fr_capetian_k_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,655,ni_proto_yoruba,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,664,ni_proto_yoruboid,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Susiana,509,ir_qajar_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,539,ye_qatabanian_commonwealth,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Deccan,93,in_rashtrakuta_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,368,ye_rasulid_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cambodian Basin,45,th_rattanakosin,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Latium,188,it_st_peter_rep_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Crete,544,it_venetian_rep_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Crete,545,it_venetian_rep_4,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Latium,181,it_roman_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Latium,189,it_st_peter_rep_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,278,mn_rouran_khaganate,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Konya Plain,171,tr_rum_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,600,ru_romanov_dyn_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,571,ru_romanov_dyn_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Niger Inland Delta,432,ma_saadi_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,538,ye_sabaean_commonwealth,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,374,ir_safavid_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,360,ir_saffarid_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Lena River Valley,194,ru_sakha_early,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Lena River Valley,195,ru_sakha_late,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Sogdiana,462,tj_sarasm,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Susiana,128,ir_sassanid_emp_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Susiana,130,ir_sassanid_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Deccan,89,in_satavahana_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,480,iq_isin_dynasty2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Orkhon Valley,440,mn_turk_khaganate_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Susiana,364,ir_seljuk_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,793,bd_sena_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,439,mn_shiwei,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,643,et_showa_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Lowland Andes,196,ec_shuar_1,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Lowland Andes,197,ec_shuar_2,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Kachi Plain,133,pk_sind_abbasid_fatimid,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kachi Plain,136,pk_samma_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Sogdiana,468,uz_sogdiana_city_states,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,666,ni_sokoto_cal,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Niger Inland Delta,242,ml_songhai_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,472,iq_so_mesopotamia_nl,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,570,es_spanish_emp_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,718,es_spanish_emp_3,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,330,pl_teutonic_order,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Yellow River Valley,260,cn_sui_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,642,so_geledi_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,589,in_sur_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Susiana,487,ir_susiana_archaic,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Susiana,488,ir_susiana_a,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Susiana,489,ir_susiana_b,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Konya Plain,167,tr_tabal_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+North Colombia,436,co_tairona,rt,moralizing-supernatural-concern-is-primary,unknown,,,,True,False
+Middle Yellow River Valley,261,cn_tang_dyn_1,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Middle Yellow River Valley,264,cn_tang_dyn_2,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Basin of Mexico,11,mx_basin_of_mexico_6,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+,761,th_reform_period_thailand,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,699,in_thanjavur_maratha_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Crete,74,gr_crete_emirate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Sogdiana,370,uz_timurid_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Kansai,152,jp_tokugawa_shogunate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Basin of Mexico,14,mx_toltec,rt,moralizing-supernatural-concern-is-primary,absent,,,,True,False
+,680,se_futa_toro_imamate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,623,zi_toutswe,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,638,so_tunni_sultanate,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,782,bd_twelve_bhuyans,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,473,iq_ubaid,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Orkhon Valley,286,mn_uygur_khaganate,rt,moralizing-supernatural-concern-is-primary,unknown,,745,761,False,False
+Orkhon Valley,286,mn_uygur_khaganate,rt,moralizing-supernatural-concern-is-primary,present,,762,840,False,False
+Southern Mesopotamia,131,sy_umayyad_cal,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Southern Mesopotamia,477,iq_ur_dyn_3,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,344,tr_urartu_k,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Southern Mesopotamia,474,iq_uruk,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Deccan,90,in_vakataka_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,794,in_vanga_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Deccan,97,in_vijayanagara_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Cuzco,80,pe_wari_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Kansai,150,jp_sengoku_jidai,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,787,ic_wattara_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,619,bf_west_burkina_faso_red_1,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,617,bf_west_burkina_faso_red_2,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,618,bf_west_burkina_faso_red_4,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,613,bf_west_burkina_faso_yellow_5,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+,622,bf_west_burkina_faso_yellow_6,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Middle Yellow River Valley,251,cn_western_han_dyn,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Latium,185,it_western_roman_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Sogdiana,282,kg_western_turk_khaganate,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Middle Yellow River Valley,244,cn_western_zhou_dyn,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+,673,ni_wukari_fed,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,673,ni_wukari_fed,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,673,ni_wukari_fed,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,438,mn_xianbei,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Orkhon Valley,272,mn_hunnu_emp,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Middle Yellow River Valley,419,cn_yangshao,rt,moralizing-supernatural-concern-is-primary,absent,,,,False,False
+Galilee,110,il_judea,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,365,ye_warlords,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,537,ye_yemen_lba,rt,moralizing-supernatural-concern-is-primary,unknown,,,,False,False
+Yemeni Coastal Plain,541,ye_qasimid_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,541,ye_qasimid_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,372,ye_tahirid_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,358,sa_rashidun_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Yemeni Coastal Plain,359,ye_ziyad_dyn,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+Orkhon Valley,444,mn_zungharian_emp,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
+,668,ni_nri_k,rt,moralizing-supernatural-concern-is-primary,present,,,,False,False
 Southern Mesopotamia,132,iq_abbasid_cal_1,rt,moralizing-enforcement-is-certain,present,,,,False,False
 Southern Mesopotamia,484,iq_abbasid_cal_2,rt,moralizing-enforcement-is-certain,present,,,,False,False
 ,637,so_adal_sultanate,rt,moralizing-enforcement-is-certain,present,,,,False,False
@@ -41118,6 +41558,452 @@ Yemeni Coastal Plain,372,ye_tahirid_dyn,rt,moralizing-enforcement-is-certain,pre
 Yemeni Coastal Plain,359,ye_ziyad_dyn,rt,moralizing-enforcement-is-certain,present,,,,False,False
 Orkhon Valley,444,mn_zungharian_emp,rt,moralizing-enforcement-is-certain,present,,,,False,False
 ,668,ni_nri_k,rt,moralizing-enforcement-is-certain,present,,,,False,False
+Southern Mesopotamia,132,iq_abbasid_cal_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,484,iq_abbasid_cal_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,637,so_adal_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,639,so_ajuran_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,508,ir_ak_koyunlu,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Ghanaian Coast,113,gh_akan,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,476,iq_akkad_emp,rt,moralizing-enforcement-is-broad,A~P,,,,False,False
+,223,ma_almoravid_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,479,iq_babylonia_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Sogdiana,463,kz_andronovo,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,633,sl_anuradhapura_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,635,sl_anuradhapura_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,631,sl_anuradhapura_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,629,sl_anuradhapura_4,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Basin of Mexico,6,mx_basin_of_mexico_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Crete,67,gr_crete_archaic,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,665,ni_aro,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Ghanaian Coast,114,gh_ashanti_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,149,jp_ashikaga,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,146,jp_asuka,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Paris Basin,448,fr_atlantic_complex,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,565,at_habsburg_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,567,at_habsburg_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,208,et_aksum_emp_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cambodian Basin,44,th_ayutthaya,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,367,eg_ayyubid_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Basin of Mexico,16,mx_aztec_emp,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+Upper Egypt,510,eg_badarian,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,411,in_bahmani_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,481,iq_bazi_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,447,fr_beaker_eba,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,409,bd_bengal_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cambodian Basin,35,kh_cambodia_ba,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Susiana,362,ir_buyid_confederation,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,73,tr_byzantine_emp_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,75,tr_byzantine_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,76,tr_byzantine_emp_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cahokia,22,us_woodland_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,27,us_emergent_mississippian_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,34,us_emergent_mississippian_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,24,us_woodland_3,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,25,us_woodland_4,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,26,us_woodland_5,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,32,us_cahokia_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,23,us_woodland_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,33,us_cahokia_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cahokia,28,us_cahokia_3,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Galilee,103,il_canaan,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,701,in_carnatic_sul,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,309,fr_carolingian_emp_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,311,fr_carolingian_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Deccan,92,in_badami_chalukya_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Deccan,94,in_kalyani_chalukya_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,780,bd_chandra_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,397,in_chola_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Chuuk Islands,57,fm_truk_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Chuuk Islands,58,fm_truk_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Basin of Mexico,12,mx_basin_of_mexico_7,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+,710,tz_tana,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,68,gr_crete_classical,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cuzco,78,pe_cuzco_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cuzco,79,pe_cuzco_3,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cuzco,77,pe_cuzco_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cuzco,81,pe_cuzco_5,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cuzco,82,pe_cuzco_6,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,628,sl_dambadeniya,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Deccan,86,in_deccan_ia,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Deccan,85,in_deccan_nl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,135,in_delhi_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,779,bd_deva_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kachi Plain,137,af_durrani_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,482,iq_dynasty_e,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Garo Hills,111,in_achik_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Southern Mesopotamia,475,iq_early_dynastic,rt,moralizing-enforcement-is-broad,A~P,,,,False,False
+,715,tz_east_africa_ia_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Basin of Mexico,8,mx_basin_of_mexico_3,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Cahokia,30,us_early_illinois_confederation,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Paris Basin,304,fr_merovingian_emp_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,442,mn_mongol_early,rt,moralizing-enforcement-is-broad,uncoded,,,,False,False
+Valley of Oaxaca,525,mx_monte_alban_1_early,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Middle Yellow River Valley,1,cn_qing_dyn_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,653,et_aussa_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,716,tz_early_tana_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,717,tz_early_tana_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,569,mx_mexico_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,437,mn_hunnu_early,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,798,de_east_francia,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,72,tr_east_roman_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,253,cn_eastern_han_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,283,mn_turk_khaganate_1,rt,moralizing-enforcement-is-broad,uncoded,,,,False,False
+Upper Egypt,516,eg_old_k_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,513,eg_naqada_3,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Upper Egypt,514,eg_dynasty_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Upper Egypt,515,eg_dynasty_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,521,eg_kushite,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,517,eg_old_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,232,eg_mamluk_sultanate_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,236,eg_mamluk_sultanate_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,239,eg_mamluk_sultanate_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,519,eg_middle_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,199,eg_new_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,198,eg_new_k_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,518,eg_regions,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,203,eg_saite,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,520,eg_thebes_hyksos,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,200,eg_thebes_libyan,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,361,eg_thulunid_ikhshidid,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,502,ir_elam_8,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,497,ir_elam_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,500,ir_elam_6,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,499,ir_elam_5,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,498,ir_elam_4,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,496,ir_elam_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,501,ir_elam_7,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,503,ir_neo_elam_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,504,ir_neo_elam_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,505,ir_neo_elam_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,803,de_bavaria_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,841,es_cordoba_emirate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,652,et_harar_emirate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,302,gb_tudor_stuart,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Basin of Mexico,13,mx_basin_of_mexico_8,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+Middle Yellow River Valley,422,cn_erligang,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Middle Yellow River Valley,421,cn_erlitou,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,234,et_ethiopian_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,789,et_ethiopian_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,788,et_ethiopian_k_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,788,et_ethiopian_k_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Latium,187,it_ravenna_exarchate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,221,tn_fatimid_cal,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,65,gr_crete_post_palace_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Susiana,486,ir_susiana_formative,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,671,ni_dahomey_k,rt,moralizing-enforcement-is-broad,uncoded,,,,False,False
+Paris Basin,460,fr_bourbon_k_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,333,fr_valois_k_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,461,fr_bourbon_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,458,fr_capetian_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,459,fr_valois_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cambodian Basin,37,kh_funan_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,649,et_funj_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,610,gu_futa_jallon,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Ganga,405,in_gahadavala_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,66,gr_crete_geometric,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Kachi Plain,134,af_ghur_principality,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,337,ru_moskva_rurik_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,269,cn_ming_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,268,cn_yuan_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Ganga,388,in_gupta_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Ganga,418,in_gurjara_pratihara_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,640,so_habr_yunis,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,645,et_hadiya_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,449,fr_hallstatt_a_b1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Paris Basin,450,fr_hallstatt_b2_3,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Paris Basin,451,fr_hallstatt_c,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Paris Basin,452,fr_hallstatt_d,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Konya Plain,164,tr_hatti_new_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Konya Plain,162,tr_hatti_old_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Finger Lakes,101,us_haudenosaunee_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Finger Lakes,102,us_haudenosaunee_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,669,ni_hausa_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Big Island Hawaii,17,us_hawaii_1,rt,moralizing-enforcement-is-broad,A~P,,,,False,False
+Big Island Hawaii,18,us_hawaii_2,rt,moralizing-enforcement-is-broad,A~P,,,,False,False
+Big Island Hawaii,19,us_hawaii_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,147,jp_heian,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,69,gr_crete_hellenistic,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,353,ye_himyar_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,800,de_empire_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,807,de_empire_2_sub,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,799,de_empire_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Deccan,95,in_hoysala_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,811,hu_later_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,810,hu_arpad_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kapuasi Basin,154,id_iban_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kapuasi Basin,153,id_iban_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kapuasi Basin,153,id_iban_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Iceland,115,is_icelandic_commonwealth,rt,moralizing-enforcement-is-broad,absent,,930,1000,False,False
+Iceland,115,is_icelandic_commonwealth,rt,moralizing-enforcement-is-broad,present,,1001,1262,False,False
+,646,so_ifat_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,660,ni_igodomingodo,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,680,se_futa_toro_imamate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,711,om_busaidi_imamate_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cuzco,83,pe_inca_emp,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Basin of Mexico,7,mx_basin_of_mexico_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,594,at_interwar_austria,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cambodian Basin,36,kh_cambodia_ia,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,654,so_isaaq_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,478,iq_isin_larsa,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,548,it_italy_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,634,sl_jaffa_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,151,jp_azuchi_momoyama,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,140,jp_jomon_3,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kansai,143,jp_jomon_6,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kansai,138,jp_jomon_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kansai,139,jp_jomon_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kansai,142,jp_jomon_5,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kansai,141,jp_jomon_4,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Niger Inland Delta,427,ml_jenne_jeno_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Niger Inland Delta,428,ml_jenne_jeno_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Niger Inland Delta,430,ml_jenne_jeno_3,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Niger Inland Delta,431,ml_jenne_jeno_4,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Middle Yellow River Valley,266,cn_later_great_jin,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,679,se_jolof_emp,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,117,pk_kachi_enl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,118,pk_kachi_lnl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,119,pk_kachi_ca,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,123,pk_kachi_post_urban,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,120,pk_kachi_pre_urban,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,121,pk_kachi_urban_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Kachi Plain,122,pk_kachi_urban_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Deccan,91,in_kadamba_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,703,in_kalabhra_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,406,in_kalachuri_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,148,jp_kamakura,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Deccan,96,in_kampili_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,670,ni_bornu_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Ganga,417,in_kannauj_varman_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,145,jp_kofun,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Kansai,144,jp_yayoi,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Southern Mesopotamia,342,iq_babylonia_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Central Java,49,id_kediri_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,791,bd_khadga_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Sogdiana,469,uz_janid_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,288,mn_khitan_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cambodian Basin,43,kh_khmer_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cambodian Basin,43,kh_khmer_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,676,se_baol_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,676,se_baol_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,676,se_baol_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,568,cz_bohemian_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,598,cz_bohemian_k_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,641,et_gomma_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,651,et_gumma_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Big Island Hawaii,20,us_kamehameha_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Big Island Hawaii,21,us_hawaii_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,682,se_jolof_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,168,tr_lydia_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Iceland,116,no_norway_k_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,540,ye_saba_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,675,se_saloum_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,675,se_saloum_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,675,se_saloum_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,675,se_saloum_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,675,se_saloum_k,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Sogdiana,464,uz_koktepe_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,156,tr_konya_mnl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,160,tr_konya_eba,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,158,tr_konya_eca,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,155,tr_konya_enl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,163,tr_konya_lba,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Konya Plain,159,tr_konya_lca,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,157,tr_konya_lnl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,658,ni_kwararafa,rt,moralizing-enforcement-is-broad,A~P,,596,1599,False,False
+,658,ni_kwararafa,rt,moralizing-enforcement-is-broad,present,,1600,1820,False,False
+Paris Basin,453,fr_la_tene_a_b1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Paris Basin,454,fr_la_tene_b2_c1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Paris Basin,455,fr_la_tene_c2_d,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Garo Hills,112,in_achik_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Cambodian Basin,42,kh_angkor_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,772,tz_east_africa_ia_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Basin of Mexico,10,mx_basin_of_mexico_5,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+,657,ni_formative_yoruba,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Orkhon Valley,443,mn_mongol_late,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,702,in_pallava_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,2,cn_qing_dyn_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,243,cn_late_shang_dyn,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,582,mx_mexico_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,274,mn_hunnu_late,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Latium,179,it_latium_ba,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Latium,180,it_latium_ia,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,305,it_lombard_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,420,cn_longshan,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Middle Ganga,385,in_sunga_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Central Java,50,id_majapahit_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,648,so_majeerteen_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Niger Inland Delta,229,ml_mali_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Central Java,51,id_mataram_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Central Java,48,id_medang_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,647,er_medri_bahri,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,909,iq_middle_assyrian_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,161,tr_central_anatolia_mba,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Basin of Mexico,9,mx_basin_of_mexico_4,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Paris Basin,306,fr_merovingian_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Basin of Mexico,15,mx_basin_of_mexico_10,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+Basin of Mexico,15,mx_basin_of_mexico_10,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+Niger Inland Delta,216,mr_wagadu_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,615,ni_nok_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,612,ni_nok_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,748,fr_france_modern_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,267,mn_mongol_emp,rt,moralizing-enforcement-is-broad,uncoded,,,,False,False
+Crete,63,gr_crete_mono_palace,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Valley of Oaxaca,527,mx_monte_alban_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Valley of Oaxaca,528,mx_monte_alban_3_a,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Valley of Oaxaca,529,mx_monte_alban_3_b_4,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Valley of Oaxaca,526,mx_monte_alban_1_late,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Valley of Oaxaca,532,mx_monte_alban_5,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,566,fr_france_napoleonic,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Upper Egypt,511,eg_naqada_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Upper Egypt,512,eg_naqada_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,263,jp_nara,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,781,bd_nawabs_of_bengal,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,705,in_madurai_nayaks,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,704,in_thanjavur_nayaks,rt,moralizing-enforcement-is-broad,present,,,,False,False
+North Colombia,435,co_neguanje,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Southern Mesopotamia,106,iq_neo_assyrian_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,346,iq_neo_babylonian_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,165,tr_neo_hittite_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Crete,59,gr_crete_nl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Middle Ganga,414,in_ganga_nl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Yemeni Coastal Plain,536,ye_yemen_lnl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Crete,62,gr_crete_new_palace,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,586,gb_england_norman,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,61,gr_crete_old_palace,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Oro PNG,445,pg_orokaiva_pre_colonial,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Latium,186,it_ostrogoth_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,173,tr_ottoman_emirate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,174,tr_ottoman_emp_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,175,tr_ottoman_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,176,tr_ottoman_emp_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,177,tr_ottoman_emp_4,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,542,tr_ottoman_emp_4_copy,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,396,in_pala_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,697,in_pandya_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,627,in_pandya_emp_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Latium,193,it_papal_state_4,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Latium,190,it_papal_state_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Latium,191,it_papal_state_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,125,ir_parthian_emp_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,483,iq_parthian_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Galilee,104,lb_phoenician_emp,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,579,gb_england_plantagenet,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,334,pl_jagiellonian_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,317,pl_piast_dyn_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,809,pl_piast_dyn_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,808,pl_poland_lithuania_commonwealth,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,630,sl_polonnaruva,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,709,pt_portuguese_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,708,pt_portuguese_emp_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,64,gr_crete_post_palace_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Susiana,485,ir_susiana_pre_ceramic,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,616,si_pre_sape,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Crete,60,gr_crete_pre_palace,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Paris Basin,456,fr_merovingian_emp_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Paris Basin,457,fr_capetian_k_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,655,ni_proto_yoruba,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,664,ni_proto_yoruboid,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Susiana,509,ir_qajar_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,539,ye_qatabanian_commonwealth,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Deccan,93,in_rashtrakuta_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,368,ye_rasulid_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cambodian Basin,45,th_rattanakosin,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Latium,188,it_st_peter_rep_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,544,it_venetian_rep_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,545,it_venetian_rep_4,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Latium,181,it_roman_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Latium,189,it_st_peter_rep_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,278,mn_rouran_khaganate,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Konya Plain,171,tr_rum_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Konya Plain,171,tr_rum_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,600,ru_romanov_dyn_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,571,ru_romanov_dyn_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Niger Inland Delta,432,ma_saadi_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,538,ye_sabaean_commonwealth,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Susiana,374,ir_safavid_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,374,ir_safavid_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,360,ir_saffarid_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Lena River Valley,194,ru_sakha_early,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Lena River Valley,195,ru_sakha_late,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Sogdiana,462,tj_sarasm,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Susiana,128,ir_sassanid_emp_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,130,ir_sassanid_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Deccan,89,in_satavahana_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,480,iq_isin_dynasty2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,440,mn_turk_khaganate_2,rt,moralizing-enforcement-is-broad,uncoded,,,,False,False
+Susiana,364,ir_seljuk_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,793,bd_sena_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,439,mn_shiwei,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+,643,et_showa_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Lowland Andes,196,ec_shuar_1,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Lowland Andes,197,ec_shuar_2,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Kachi Plain,133,pk_sind_abbasid_fatimid,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kachi Plain,136,pk_samma_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Sogdiana,468,uz_sogdiana_city_states,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,666,ni_sokoto_cal,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Niger Inland Delta,242,ml_songhai_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,472,iq_so_mesopotamia_nl,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,570,es_spanish_emp_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,718,es_spanish_emp_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,330,pl_teutonic_order,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,260,cn_sui_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,642,so_geledi_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,589,in_sur_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Susiana,487,ir_susiana_archaic,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Susiana,488,ir_susiana_a,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Susiana,489,ir_susiana_b,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Konya Plain,167,tr_tabal_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+North Colombia,436,co_tairona,rt,moralizing-enforcement-is-broad,unknown,,,,True,False
+Middle Yellow River Valley,261,cn_tang_dyn_1,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Middle Yellow River Valley,264,cn_tang_dyn_2,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Basin of Mexico,11,mx_basin_of_mexico_6,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+,761,th_reform_period_thailand,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,699,in_thanjavur_maratha_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Crete,74,gr_crete_emirate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Sogdiana,370,uz_timurid_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Kansai,152,jp_tokugawa_shogunate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Basin of Mexico,14,mx_toltec,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+,680,se_futa_toro_imamate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,623,zi_toutswe,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,638,so_tunni_sultanate,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,782,bd_twelve_bhuyans,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,473,iq_ubaid,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Orkhon Valley,286,mn_uygur_khaganate,rt,moralizing-enforcement-is-broad,unknown,,745,761,False,False
+Orkhon Valley,286,mn_uygur_khaganate,rt,moralizing-enforcement-is-broad,present,,762,840,False,False
+Southern Mesopotamia,131,sy_umayyad_cal,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Southern Mesopotamia,477,iq_ur_dyn_3,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,344,tr_urartu_k,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Southern Mesopotamia,474,iq_uruk,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Deccan,90,in_vakataka_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,794,in_vanga_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Deccan,97,in_vijayanagara_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Cuzco,80,pe_wari_emp,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Kansai,150,jp_sengoku_jidai,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,787,ic_wattara_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,619,bf_west_burkina_faso_red_1,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,617,bf_west_burkina_faso_red_2,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,618,bf_west_burkina_faso_red_4,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,613,bf_west_burkina_faso_yellow_5,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+,622,bf_west_burkina_faso_yellow_6,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Middle Yellow River Valley,251,cn_western_han_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Latium,185,it_western_roman_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Sogdiana,282,kg_western_turk_khaganate,rt,moralizing-enforcement-is-broad,uncoded,,,,False,False
+Middle Yellow River Valley,244,cn_western_zhou_dyn,rt,moralizing-enforcement-is-broad,absent,,,,True,False
+,673,ni_wukari_fed,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,673,ni_wukari_fed,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,673,ni_wukari_fed,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,438,mn_xianbei,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Orkhon Valley,272,mn_hunnu_emp,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Middle Yellow River Valley,419,cn_yangshao,rt,moralizing-enforcement-is-broad,absent,,,,False,False
+Galilee,110,il_judea,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,365,ye_warlords,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,537,ye_yemen_lba,rt,moralizing-enforcement-is-broad,unknown,,,,False,False
+Yemeni Coastal Plain,541,ye_qasimid_dyn,rt,moralizing-enforcement-is-broad,uncoded,,,,False,False
+Yemeni Coastal Plain,372,ye_tahirid_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,358,sa_rashidun_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Yemeni Coastal Plain,359,ye_ziyad_dyn,rt,moralizing-enforcement-is-broad,present,,,,False,False
+Orkhon Valley,444,mn_zungharian_emp,rt,moralizing-enforcement-is-broad,present,,,,False,False
+,668,ni_nri_k,rt,moralizing-enforcement-is-broad,present,,,,False,False
 Southern Mesopotamia,132,iq_abbasid_cal_1,rt,moralizing-enforcement-is-targeted,present,,,,False,False
 Southern Mesopotamia,484,iq_abbasid_cal_2,rt,moralizing-enforcement-is-targeted,present,,,,False,False
 ,637,so_adal_sultanate,rt,moralizing-enforcement-is-targeted,present,,,,False,False
