@@ -61,6 +61,8 @@ def fetch_urls(category):
         mapping = mappings.social_complexity_mapping
     elif category == 'id':
         mapping = mappings.ideology_mapping
+    elif category == 'rt':
+        mapping = mappings.ideology_mapping
     
     used_keys = []
     for key in mapping.keys():

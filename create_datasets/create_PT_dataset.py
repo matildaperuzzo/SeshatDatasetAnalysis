@@ -103,18 +103,18 @@ dataset.scv = pd.concat([pt_dat, dataset_100y.scv])
 dataset.scv.reset_index(drop=True, inplace=True)
 
 
-# dataset.scv = dataset.scv.loc[dataset.scv["Year"] <= 1800]
+dataset.scv = dataset.scv.loc[dataset.scv["Year"] <= 1800]
 dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
 
 # impute scale and non scale variables separately
-scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
-dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
-non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
+# scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
+# dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
+# non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
+# dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
 
-# imp_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq', 'Government', 'Infrastructure', 'Information', 'Money']
-# dataset.impute_missing_values(imp_cols, use_duplicates = False, r2_lim=0., add_resid=False)
+imp_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq', 'Government', 'Infrastructure', 'Information', 'Money']
+dataset.impute_missing_values(imp_cols, use_duplicates = False, r2_lim=0., add_resid=False)
 
 dataset.scv_imputed['dataset'] = dataset.scv['dataset']
 
@@ -148,4 +148,4 @@ for col in transfer_cols:
     dataset.scv_imputed[col] = dataset.scv[col]
 
 # save dataset
-dataset.save_dataset(path='datasets/', name='pt_sc_cp_imputation_all_yr.csv')
+dataset.save_dataset(path='datasets/', name='pt_sc_imputation_all_yr_only_nga')
