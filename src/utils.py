@@ -63,6 +63,8 @@ def fetch_urls(category):
         mapping = mappings.ideology_mapping
     elif category == 'rt':
         mapping = mappings.ideology_mapping
+    elif category == 'ec':
+        mapping = mappings.luxury_mapping
     
     used_keys = []
     for key in mapping.keys():

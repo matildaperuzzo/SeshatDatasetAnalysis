@@ -716,7 +716,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc','wf','rt'], save_excel=True)
+    template = Template(categories = ['sc','wf','rt','ec'], save_excel=True)
     template.download_all_categories()
     template.full_dataset.to_csv("datasets/full_dataset.csv", index = False)
     template.save_dataset("datasets/template.csv")
