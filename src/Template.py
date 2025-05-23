@@ -151,12 +151,11 @@ class Template():
         polityIDs = df.id.unique()
         # iterate over all polities
         for polID in polityIDs:
-            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'new_name', 'name','start_year','end_year']]
+            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'name','start_year','end_year']]
             # create a temporary dataframe with all data for current polity
             pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
                                             "PolityID": pol_df.id.values[0], 
-                                            "PolityName": pol_df.new_name.values[0], 
-                                            "PolityOldName": pol_df.name.values[0],
+                                            "PolityName": pol_df.name.values[0],
                                             "StartYear": pol_df.start_year.values[0],
                                             "EndYear": pol_df.end_year.values[0]}), index = [0])
             # add the temporary dataframe to the template
@@ -236,15 +235,15 @@ class Template():
             new_df = pd.DataFrame(columns=["NGA", "PolityID", "PolityName", "Section", "Subsection","value_from", "value_to", "year_from", "year_to", "is_disputed", "is_uncertain"])
         
         for pol in polities:
-            if pol not in df.polity_new_name.values:
-                pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
-                pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity__name__icontains={pol_old_name}",size = None)
+            if pol not in df.polity_name.values:
+                # pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
+                pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity_name__icontains={pol}",size = None)
                 if pol_df.empty:
                     continue
                 else:
-                    print(f"Found {pol_old_name} in {key} dataset")
+                    print(f"Found {pol} in {key} dataset")
             else:
-                pol_df = df.loc[df.polity_new_name == pol]
+                pol_df = df.loc[df.polity_name == pol]
             
             self.add_polity(pol_df, range_var, variable_name, col_name)
         
@@ -253,7 +252,7 @@ class Template():
                     new_df = pd.DataFrame({
                         "NGA": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
                         "PolityID": pol_df['polity_id'],
-                        "PolityName": pol_df['polity_new_name'],
+                        "PolityName": pol_df['polity_name'],
                         "Section": key.split('/')[0],
                         "Subsection": key.split('/')[1],
                         "value_from": pol_df[row_variable_name + '_from'],
@@ -267,7 +266,7 @@ class Template():
                     new_df = pd.DataFrame({
                         "NGA": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
                         "PolityID": pol_df['polity_id'],
-                        "PolityName": pol_df['polity_new_name'],
+                        "PolityName": pol_df['polity_name'],
                         "Section": key.split('/')[0],
                         "Subsection": key.split('/')[1],
                         "value_from": pol_df[row_variable_name],
