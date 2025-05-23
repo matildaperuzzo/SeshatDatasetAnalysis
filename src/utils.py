@@ -189,3 +189,52 @@ def compare(old, new, common_columns):
             print("same values for", col)
 
             continue
+
+def standardize_column(df, column_name):
+    """
+    Check if all values in a column are the same. If not, set all values to the most common value.
+    
+    Parameters:
+        df (pandas.DataFrame): The dataframe to modify
+        column_name (str): The name of the column to check and potentially standardize
+        
+    Returns:
+        pandas.DataFrame: The modified dataframe
+    """
+    # Check if column exists
+    if column_name not in df.columns:
+        print(f"Column '{column_name}' not found in dataframe")
+        return df
+        
+    # Get unique values
+    unique_values = df[column_name].unique()
+    
+    # If there's only one unique value (or column is empty), nothing needs to be done
+    if len(unique_values) <= 1:
+        print(f"All values in '{column_name}' are the same. No changes needed.")
+        return df
+        
+    # Get the most common value using value_counts()
+    most_common = df[column_name].value_counts().idxmax()
+    
+    print(f"Values in '{column_name}' differ. Setting all to most common value: {most_common}")
+    
+    # Make a copy to avoid modifying the original
+    result_df = df.copy()
+    result_df[column_name] = most_common
+    
+    return result_df
+
+def longest_substring_finder(string1, string2):
+    answer = ""
+    len1, len2 = len(string1), len(string2)
+    for i in range(len1):
+        for j in range(len2):
+            lcs_temp = 0
+            match = ''
+            while ((i+lcs_temp < len1) and (j+lcs_temp<len2) and string1[i+lcs_temp] == string2[j+lcs_temp]):
+                match += string2[j+lcs_temp]
+                lcs_temp += 1
+            if len(match) > len(answer):
+                answer = match
+    return answer
