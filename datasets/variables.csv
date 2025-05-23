@@ -1,0 +1,175 @@
+api_variable_name,sql_variable_name,equinox_variable_name,old_variable_name
+polity-original-names,original_name,Original name,not found
+polity-alternative-names,alternative_names,Alternative names,not found
+polity-degree-of-centralizations,degree_of_centralization,Degree of centralization,not found
+polity-suprapolities,supra-polity_relations,Supra-polity relations,not found
+polity-utm-timezones,supra-polity_relations,Supra-polity relations,not found
+polity-capitals,polity_capital,Supra-polity relations,not found
+polity-languages,language,not found,not found
+polity-linguistic-families,linguistic_family,Supra-polity relations,not found
+polity-language-genuses,language,not found,not found
+polity-religion-genuses,religion_genus,not found,not found
+polity-religion-families,religion_genus,not found,not found
+polity-religions,religion_genus,not found,not found
+polity-relationship-to-preceding-entities,relationship_to_preceding_(quasi)polity,relationship to preceding (quasi)polity,not found
+polity-preceding-entities,relationship_to_preceding_(quasi)polity,relationship to preceding (quasi)polity,not found
+polity-succeeding-entities,succeeding_(quasi)polity,succeeding (quasi)polity,not found
+polity-supracultural-entities,supracultural_entity,Supracultural entity,not found
+polity-scale-of-supracultural-interactions,supracultural_entity,scale of supra-cultural interaction,not found
+polity-alternate-religion-genuses,alternate_religion_genus,not found,not found
+polity-alternate-religion-families,alternate_religion_genus,not found,not found
+polity-alternate-religions,alternate_religion_genus,not found,not found
+polity-religious-traditions,syncretism of religious practices at the level of individual believers,Supra-polity relations,not found
+polity-territories,polity_territory,Polity territory,PolTerr
+polity-populations,polity_population,Polity Population,PolPop
+population-of-the-largest-settlements,settlements_in_a_defensive_position,Population of the largest settlement,DefPosition
+settlement-hierarchies,population_of_the_largest_settlement,Settlement hierarchy,Population of the largest settlement
+administrative-levels,administrative_level,Administrative levels,AdmLev
+religious-levels,syncretism of religious practices at the level of individual believers,Religious levels,not found
+military-levels,military_level,Military levels,MilLev
+professional-military-officers,professional_military_officer,Professional military officers,ProfOfficer
+professional-soldiers,professional_military_officer,Professional soldiers,ProfOfficer
+professional-priesthoods,professional_military_officer,Professional priesthood,ProfOfficer
+full-time-bureaucrats,full_time_bureaucrat,Full-time bureaucrats,FullTBur
+examination-systems,examination_system,Examination system,ExamSyst
+merit-promotions,merit_promotion,Merit promotion,MeritProm
+specialized-government-buildings,specialized_government_building,Specialized government buildings,Specialized government buildings
+formal-legal-codes,formal_legal_code,Formal legal code,LegCode
+judges,judge,Judges,Judge
+courts,court,Courts,Court
+professional-lawyers,professional_military_officer,Professional Lawyers,ProfOfficer
+irrigation-systems,irrigation_system,irrigation systems,Irrigation
+drinking-water-supplies,drinking_water_supply_system,drinking water supply systems,WaterSuppl
+markets,market,markets,Market
+food-storage-sites,food_storage_site,food storage sites,FoodStor
+roads,road,Roads,Road
+bridges,bridge,Bridges,Bridge
+canals,canal,Canals,Canal
+ports,port,Ports,Port
+mines-or-quarries,mines_or_quarry,Mines or quarries,Mine
+mnemonic-devices,mnemonic_device,Mnemonic devices,Mnemonic
+nonwritten-records,nonwritten_record,Nonwritten records,NonWRecord
+written-records,nonwritten_record,Written records,NonWRecord
+scripts,script,Script,Script
+non-phonetic-writings,non_phonetic_writing,Non-phonetic writing,NonPhWrit
+phonetic-alphabetic-writings,phonetic_alphabetic_writing,Phonetic alphabetic writing,PhAlph
+lists-tables-and-classifications,lists_tables_and_classification,Lists tables and classifications,Lists
+calendars,calendar,Calendar,Calendar
+sacred-texts,sacred_text,Sacred Texts,SacrTxt
+religious-literatures,religious_literature,Religious literature,ReligLit
+practical-literatures,religious_literature,Practical literature,ReligLit
+histories,history,History,History
+philosophies,philosophy,Philosophy,Philosophy
+scientific-literatures,religious_literature,Scientific literature,ReligLit
+fictions,fiction,Fiction,Fiction
+articles,article,Articles,Article
+tokens,token,Tokens,Token
+precious-metals,precious_metal,Precious metals,PrecMetal
+foreign-coins,foreign_coin,Foreign coins,ForCoin
+indigenous-coins,indigenous_coin,Indigenous coins,IndigCoin
+paper-currencies,paper_currency,Paper currency,PaperCurr
+couriers,courier,Couriers,Courier
+postal-stations,postal_station,Postal stations,PostStation
+general-postal-services,general_postal_service,General postal service,General postal service
+communal-buildings,specialized_government_building,Specialized government buildings,Specialized government buildings
+utilitarian-public-buildings,utilitarian_public_building,Specialized government buildings,not found
+symbolic-buildings,specialized_government_building,Specialized government buildings,Specialized government buildings
+entertainment-buildings,entertainment_building,Specialized government buildings,not found
+knowledge-or-information-buildings,knowledge_or_information_building,Specialized government buildings,not found
+other-utilitarian-public-buildings,utilitarian_public_building,Specialized government buildings,not found
+special-purpose-sites,specialized_government_building,Specialized government buildings,Specialized government buildings
+ceremonial-sites,ceremonial_site,food storage sites,not found
+burial-sites,burial_site,food storage sites,not found
+trading-emporia,trading_emporia,preceding (quasi)polity,not found
+enclosures,enclosure,Full-time bureaucrats,not found
+length-measurement-systems,length_measurement_system,irrigation systems,not found
+area-measurement-systems,length_measurement_system,irrigation systems,not found
+volume-measurement-systems,length_measurement_system,irrigation systems,not found
+weight-measurement-systems,length_measurement_system,irrigation systems,not found
+time-measurement-systems,length_measurement_system,irrigation systems,not found
+geometrical-measurement-systems,length_measurement_system,irrigation systems,not found
+other-measurement-systems,length_measurement_system,irrigation systems,not found
+debt-and-credit-structures,debt_and_credit_structure,Lists tables and classifications,not found
+stores-of-wealth,store_of_wealth,Degree of centralization,not found
+sources-of-support,source_of_support,scale of supra-cultural interaction,not found
+occupational-complexities,occupational_complexity,Complex fortifications,not found
+special-purpose-houses,specialized_government_building,Specialized government buildings,Specialized government buildings
+other-special-purpose-sites,specialized_government_building,Specialized government buildings,Specialized government buildings
+largest-communication-distances,largest_communication_distance,Population of the largest settlement,not found
+fastest-individual-communications,largest_communication_distance,Lists tables and classifications,not found
+long-walls,stone_walls_non_mortared,Long walls,NonMStone
+coppers,copper,Copper,Copper
+bronzes,bronze,Bronze,Bronze
+irons,iron,Iron,Iron
+steels,steel,Steel,Steel
+javelins,javelin,Javelins,Javelin
+atlatls,atlatl,Atlatl,Atlatl
+slings,sling,Slings,Sling
+self-bows,self_bow,Self bow,SelfBow
+composite-bows,composite_bow,Composite bow,CompBow
+crossbows,crossbow,Crossbow,Crossbow
+tension-siege-engines,tension_siege_engine,Tension siege engines,TensSiege
+sling-siege-engines,tension_siege_engine,Sling siege engines,TensSiege
+gunpowder-siege-artilleries,gunpowder_siege_artillery,Gunpowder siege artillery,Gunpowder siege artillery
+handheld-firearms,handheld_firearm,Handheld firearms,HandGun
+war-clubs,war_club,War clubs,WarClub
+battle-axes,battle_axe,Battle axes,BattleAxe
+daggers,dagger,Daggers,Dagger
+swords,sword,Swords,Sword
+spears,spear,Spears,Spear
+polearms,polearm,Polearms,Polearm
+dogs,dog,Dogs,Dog
+donkeys,donkey,Donkeys,Donkey
+horses,horse,Horses,Horse
+camels,camel,Camels,Camel
+elephants,elephant,Elephants,Elephant
+wood-bark-etc,wood_bark_etc,Wood bark etc,WoodArmor
+leathers,leather_cloth,Leather cloth,LeathArmor
+shields,shield,Shields,Shield
+helmets,helmet,Helmets,Helmet
+breastplates,breastplate,Breastplates,Breastplate
+limb-protections,limb_protection,Limb protection,LimbProt
+scaled-armors,scaled_armor,Scaled armor,ScaleArmor
+laminar-armors,laminar_armor,Laminar armor,LaminArmor
+plate-armors,breastplate,Plate armor,Breastplate
+small-vessel-canoe-etc,small_vessels_canoes_etc,Small vessels (canoes etc),SmallVessel
+merchant-ship-pressed-into-service,merchant_ships_pressed_into_service,Merchant ships pressed into service,Merchant
+specialized-military-vessels,specialized_government_building,Specialized military vessels,Specialized government buildings
+settlement-in-defensive-positions,population_of_the_largest_settlement,Settlements in a defensive position,Population of the largest settlement
+wooden-palisades,wooden_palisade,Wooden palisades,Palisade
+earth-ramparts,earth_rampart,Earth ramparts,Rampart
+ditches,ditch,Ditch,Ditch
+moats,moat,Moat,Moat
+stone-walls-non-mortared,stone_walls_non_mortared,Stone walls (non-mortared),NonMStone
+stone-walls-mortared,stone_walls_non_mortared,Stone walls (non-mortared),NonMStone
+fortified-camps,fortified_camp,Fortified camps,FortCamp
+complex-fortifications,complex_fortification,Complex fortifications,ComplxFort
+modern-fortifications,complex_fortification,Modern fortifications,ComplxFort
+chainmails,chainmail,Chainmail,Chainmail
+lux-precious-metal,precious_metal,not found,PrecMetal
+luxury-fabrics,luxury_fabrics,not found,not found
+luxury-manufactured-goods,luxury_manufactured_goods,not found,not found
+luxury-spices-incense-and-dyes,luxury_spices_incense_and_dyes,not found,not found
+luxury-drink-alcohol,luxury_drink_alcohol,not found,not found
+luxury-glass-goods,luxury_fabrics,not found,not found
+lux-fine-ceramic-wares,lux_fine_ceramic_wares,not found,not found
+lux-precious-stone,precious_metal,not found,PrecMetal
+lux-statuary,lux_statuary,not found,not found
+luxury-food,luxury_fabrics,not found,not found
+other-luxury-personal-items,other_luxury_personal_items,Professional military officers,not found
+syncretism-of-religious-practices-at-the-level-of-individual-believers,syncretism of religious practices at the level of individual believers,Religious levels,not found
+religious-fragmentations,religious fragmentation,Religious levels,not found
+moralizing-supernatural-punishment-and-reward,moralizing_supernatural_punishment_and_reward,Moralizing enforcement is certain,not found
+moralizing-supernatural-concern-is-primary,moralizing_supernatural_punishment_and_reward,Moral concern is primary,not found
+moralizing-enforcement-is-certain,moralizing_enforcement_is_certain,Moralizing enforcement is certain,not found
+moralizing-enforcement-is-broad,moralizing_enforcement_is_certain,Moralizing enforcement is certain,not found
+moralizing-enforcement-is-targeted,moralizing_enforcement_is_certain,Moralizing enforcement is targeted,not found
+moralizing-enforcement-of-rulers,moralizing_enforcement_is_certain,Moralizing enforcement of rulers,not found
+moralizing-religion-adopted-by-elites,moralizing_supernatural_punishment_and_reward,Moralizing religion adopted by elites,not found
+moralizing-religion-adopted-by-commoners,moralizing_supernatural_punishment_and_reward,Moralizing religion adopted by commoners,not found
+moralizing-enforcement-in-afterlife,moralizing_enforcement_is_certain,Moralizing enforcement in afterlife,not found
+moralizing-enforcement-in-this-life,moralizing_enforcement_is_certain,Moralizing enforcement in this life,not found
+moralizing-enforcement-is-agentic,moralizing_enforcement_is_certain,Moralizing enforcement is agentic,not found
+human-sacrifices,human_sacrifice,not found,not found
+crisis-consequences,not found,not found,not found
+power-transitions,not found,not found,not found
