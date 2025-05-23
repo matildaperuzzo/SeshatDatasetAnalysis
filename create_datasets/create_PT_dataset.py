@@ -12,23 +12,25 @@ from src.mappings import PT_value_mapping, ideology_mapping
 from src.TimeSeriesDataset import TimeSeriesDataset as TSD
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc','wf'], template_path='datasets/template.csv')
+dataset = TSD(categories=['sc','wf','rt'], template_path='datasets/template.csv')
 dataset.add_polities()
 
 url = "https://seshat-db.com/api/crisisdb/power-transitions/"
 pt_df = download_data(url)
 if len(pt_df) == 0:
-    pt_df = download_data_json('datasets/power_transitions.json')
+    pt_df = download_data_json('datasets/crisisdb_power_transition_20250523_094154.json')
+
     new_col_names = {}
     for col in pt_df.columns:
         if col.startswith('coded_values_'):
             new_col_names[col] = col.replace('coded_values_', '')
-    new_col_names['polity_new_ID'] = 'polity_new_name'
+    new_col_names['polity_new_ID'] = 'polity_name'
+    new_col_names['polity_name'] = 'polity_long_name'
     pt_df.rename(columns=new_col_names, inplace=True)
-    pt_df['polity_id'] = pt_df['polity_new_name'].apply(lambda x: dataset.raw.loc[dataset.raw.PolityName == x, 'PolityID'].values[0] if x in dataset.raw.PolityName.values else np.nan)
+    pt_df['polity_id'] = pt_df['polity_name'].apply(lambda x: dataset.raw.loc[dataset.raw.PolityName == x, 'PolityID'].values[0] if x in dataset.raw.PolityName.values else np.nan)
     polity_df = download_data("https://seshat-db.com/api/core/polities/")
-    pt_df['polity_start_year'] = pt_df['polity_new_name'].apply(lambda x: polity_df.loc[polity_df['new_name'] == x, 'start_year'].values[0] if x in polity_df['new_name'].values else np.nan)
-    pt_df['polity_end_year'] = pt_df['polity_new_name'].apply(lambda x: polity_df.loc[polity_df['new_name'] == x, 'end_year'].values[0] if x in polity_df['new_name'].values else np.nan)
+    pt_df['polity_start_year'] = pt_df['polity_name'].apply(lambda x: polity_df.loc[polity_df['name'] == x, 'start_year'].values[0] if x in polity_df['name'].values else np.nan)
+    pt_df['polity_end_year'] = pt_df['polity_name'].apply(lambda x: polity_df.loc[polity_df['name'] == x, 'end_year'].values[0] if x in polity_df['name'].values else np.nan)
     
 pt_df.reset_index(drop=True, inplace=True)
 
@@ -108,13 +110,13 @@ dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
 
 # impute scale and non scale variables separately
-# scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
-# dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
-# non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-# dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
+scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
+dataset.impute_missing_values(scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
+non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
+dataset.impute_missing_values(non_scale_cols, use_duplicates = False, r2_lim=0., add_resid=False)
 
-imp_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq', 'Government', 'Infrastructure', 'Information', 'Money']
-dataset.impute_missing_values(imp_cols, use_duplicates = False, r2_lim=0., add_resid=False)
+# imp_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq', 'Government', 'Infrastructure', 'Information', 'Money']
+# dataset.impute_missing_values(imp_cols, use_duplicates = False, r2_lim=0., add_resid=False)
 
 dataset.scv_imputed['dataset'] = dataset.scv['dataset']
 
@@ -148,4 +150,4 @@ for col in transfer_cols:
     dataset.scv_imputed[col] = dataset.scv[col]
 
 # save dataset
-dataset.save_dataset(path='datasets/', name='pt_sc_imputation_all_yr_only_nga')
+dataset.save_dataset(path='datasets/', name='power_transitions')

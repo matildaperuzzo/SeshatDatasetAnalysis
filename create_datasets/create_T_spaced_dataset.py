@@ -15,7 +15,7 @@ filename = f"{dt}_yr_dataset"
 template_path = f"datasets/template.csv"
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc','wf'], template_path=template_path)
+dataset = TSD(categories=['sc','wf','rt'], template_path=template_path)
 dataset.initialize_dataset_grid(-10000,2024,dt)
 
 error = 100

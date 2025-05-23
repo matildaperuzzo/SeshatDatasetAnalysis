@@ -66,11 +66,11 @@ class TimeSeriesDataset():
         timeline = np.arange(start_year, end_year, dt)
 
         for polID in polityIDs:
-            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'new_name','start_year','end_year']]
+            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'name','start_year','end_year']]
             # create a temporary dataframe with all data for current polity
             pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
                                             "PolityID": pol_df.id.values[0], 
-                                            "PolityName": pol_df.new_name.values[0], 
+                                            "PolityName": pol_df.name.values[0], 
                                             "Year": timeline, 
                                             "PolityActive": False}))
             row = pol_df.iloc[0]
@@ -100,11 +100,11 @@ class TimeSeriesDataset():
         polityIDs = df.id.unique()
 
         for polID in polityIDs:
-            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'new_name','start_year','end_year']]
+            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'name','start_year','end_year']]
             # create a temporary dataframe with all data for current polity
             pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
                                             "PolityID": pol_df.id.values[0], 
-                                            "PolityName": pol_df.new_name.values[0], 
+                                            "PolityName": pol_df.name.values[0], 
                                             "Year": np.nan}), index=[0])
             self.raw = pd.concat([self.raw, pol_df_new])
         self.raw.reset_index(drop=True, inplace=True)
