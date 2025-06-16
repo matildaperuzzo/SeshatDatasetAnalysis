@@ -97,10 +97,13 @@ dataset.build_warfare()
 # dataset.build_MSP()
 
 # in imputation and reduce bias
-dataset_100y = TSD(categories=['sc',"wf"], file_path="datasets/100_yr_dataset.csv")
+dataset_100y = TSD(categories=['sc',"wf","rt"], file_path="datasets/100_yr_dataset.csv")
+dataset_100y.raw["dataset"] = '100y'
 dataset_100y.scv['dataset'] = '100y'
 pt_dat = dataset.scv.copy()
 pt_dat['dataset'] = 'PT'
+dataset.raw['dataset'] = 'PT'
+dataset.raw = pd.concat([dataset.raw, dataset_100y.raw])
 dataset.scv = pd.concat([pt_dat, dataset_100y.scv])
 dataset.scv.reset_index(drop=True, inplace=True)
 

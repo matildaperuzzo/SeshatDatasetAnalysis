@@ -39,7 +39,7 @@ PT_value_mapping = {
     'IP': 0.9,
     'SU': np.nan,
     'None': np.nan,
-    'DIS' : random.choice([0,1])
+    'DIS' : 0.5
 }
 
 miltech_mapping = {

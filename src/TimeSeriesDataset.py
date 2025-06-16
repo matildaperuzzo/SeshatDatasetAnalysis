@@ -144,7 +144,10 @@ class TimeSeriesDataset():
         if pd.isna(entry.values[0]):
             return [np.nan]*len(years)
         
-        _dict = eval(entry.values[0])
+        if isinstance(entry.values[0], str):
+            _dict = eval(entry.values[0])
+        elif isinstance(entry.values[0], dict):
+            _dict = entry.values[0]
         results = self.template.sample_dict(_dict, years, error = polity_year_error, interpolation = sampling_interpolation, sampling = sampling_ranges)
 
         # check if any of the years are out of bounds
