@@ -145,7 +145,7 @@ dataset.scv_imputed['Scale_1'] = (dataset.scv_imputed['Scale_1'] - intercept) / 
 
 # Calculate Comp variable
 comp_mapping = {'Comp':{'Government': 11, 'Infrastructure': 12, 'Information':13, 'Money': 6}}
-dataset.scv_imputed['Comp'] = dataset.scv_imputed.apply(lambda row: weighted_mean(row, comp_mapping,category = 'Comp',imputation = "remove", min_vals=0.5), axis=1)
+dataset.scv_imputed['Comp'] = dataset.scv_imputed.apply(lambda row: weighted_mean(row, comp_mapping,category = 'Comp',nan_handling = "remove", min_vals=0.5), axis=1)
 
 # Move Miltech variables to imputed dataset
 transfer_cols = ['Miltech','IronCav','Cavalry']
