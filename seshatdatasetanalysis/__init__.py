@@ -1,4 +1,4 @@
-# src/__init__.py
+# seshatdatasetanalysis/__init__.py
 
 from .mappings import *
 from .TimeSeriesDataset import *

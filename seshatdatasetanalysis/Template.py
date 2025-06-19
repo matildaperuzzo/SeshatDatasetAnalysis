@@ -5,8 +5,8 @@ import sys
 import os
 import random
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.utils import download_data, fetch_urls, weighted_mean, get_max
-from src.mappings import value_mapping, social_complexity_mapping, miltech_mapping, ideology_mapping
+from seshatdatasetanalysis.utils import download_data, fetch_urls, weighted_mean, get_max
+from seshatdatasetanalysis.mappings import value_mapping, social_complexity_mapping, miltech_mapping, ideology_mapping
 
 
 class Template():

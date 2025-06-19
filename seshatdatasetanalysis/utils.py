@@ -55,7 +55,7 @@ def fetch_urls(category):
     response = requests.get(url)
     data = response.json()
     variable_urs = dict()
-    import src.mappings as mappings
+    import seshatdatasetanalysis.mappings as mappings
     if category == 'wf':
         mapping = mappings.miltech_mapping
     elif category == 'sc':

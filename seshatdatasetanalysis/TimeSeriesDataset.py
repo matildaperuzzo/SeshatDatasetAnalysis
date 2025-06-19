@@ -4,8 +4,8 @@ import time
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.utils import download_data, fetch_urls, weighted_mean, get_max, is_same
-from src.Template import Template
+from seshatdatasetanalysis.utils import download_data, fetch_urls, weighted_mean, get_max, is_same
+from seshatdatasetanalysis.Template import Template
 
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
@@ -166,7 +166,7 @@ class TimeSeriesDataset():
 
     def remove_incomplete_rows(self, nan_threshold = 0.3):
         # add all columns from sc_mapping
-        from src.mappings import social_complexity_mapping
+        from seshatdatasetanalysis.mappings import social_complexity_mapping
         cols = []
         for key in social_complexity_mapping.keys():
             cols += [key for key in list(social_complexity_mapping[key].keys())]
@@ -176,7 +176,7 @@ class TimeSeriesDataset():
         self.raw.reset_index(drop=True, inplace=True)
 
     def build_social_complexity(self):
-        from src.mappings import social_complexity_mapping
+        from seshatdatasetanalysis.mappings import social_complexity_mapping
         # create dataframe for social complexity
         self.scv = self.raw[['NGA', 'PolityID', 'PolityName', 'Year']].copy()
 
@@ -201,7 +201,7 @@ class TimeSeriesDataset():
     
     def build_warfare(self):
         # build warfare variables
-        from src.mappings import miltech_mapping
+        from seshatdatasetanalysis.mappings import miltech_mapping
 
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
@@ -221,7 +221,7 @@ class TimeSeriesDataset():
         self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', nan_handling='remove', min_vals = 0.5), axis=1)
 
     def build_MSP(self):
-        from src.mappings import ideology_mapping
+        from seshatdatasetanalysis.mappings import ideology_mapping
         self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", nan_handling='remove'), axis=1)
 
     def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.0, add_resid = False):
@@ -479,8 +479,8 @@ if __name__ == "__main__":
     # Add the src directory to the Python path
     sys.path.append(os.path.abspath(os.path.join('..')))
     from utils import download_data
-    from src.mappings import value_mapping
-    from src.TimeSeriesDataset import TimeSeriesDataset as TSD
+    from seshatdatasetanalysis.mappings import value_mapping
+    from seshatdatasetanalysis.TimeSeriesDataset import TimeSeriesDataset as TSD
 
     dataset = TSD(categories=['sc'], file_path="datasets/power_transitions.csv")
     dataset.scv_imputed = pd.DataFrame()    
