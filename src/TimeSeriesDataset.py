@@ -225,7 +225,7 @@ class TimeSeriesDataset():
         self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", nan_handling='remove'), axis=1)
 
     def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.0, add_resid = False):
-        self.get_imputation_fits( columns, use_duplicates = False, r2_lim = r2_lim)
+        self.get_imputation_fits( columns, use_duplicates = use_duplicates, r2_lim = r2_lim)
         self.impute_values_with_fits(columns, add_resid = add_resid)
 
 
@@ -245,8 +245,8 @@ class TimeSeriesDataset():
         unique_rows = scv.copy()
         self.scv_imputed['unique'] = 0
         # if fit is a column of imputed dataset
-        if 'fit' not in self.scv_imputed.columns:
-            self.scv_imputed["fit"] = [[0 for _ in range(len(self.scv.columns))] for _ in range(len(self.scv_imputed))]
+        # if 'fit' not in self.scv_imputed.columns:
+        #     self.scv_imputed["fit"] = [[0 for _ in range(len(self.scv.columns))] for _ in range(len(self.scv_imputed))]
         
         self.scv_imputed.loc[unique_rows.index, 'unique'] = 1
 
@@ -373,7 +373,7 @@ class TimeSeriesDataset():
 
                 
                 self.scv_imputed.loc[index, col] = col_df.loc[best_overlap]['fit'].predict(input_data)[0] + resid
-                self.scv_imputed.loc[index, "fit"][list(self.scv.columns).index(col)] = col_df.loc[best_overlap]['fit_num']
+                # self.scv_imputed.loc[index, "fit"][list(self.scv.columns).index(col)] = col_df.loc[best_overlap]['fit_num']
         self.scv_imputed.drop(columns='unique', inplace=True)
 
     ######################################## PCA FUNCTIONS #################################################

@@ -5,6 +5,7 @@ import json
 import numpy as np
 import os
 import sys
+import statsmodels.api as sm
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
@@ -240,3 +241,67 @@ def longest_substring_finder(string1, string2):
             if len(match) > len(answer):
                 answer = match
     return answer
+
+
+def fit_logit_to_variables(df, y_col, x_cols, p_max = 0.05, print_all = False):
+
+    best_fit_found = False
+    while not best_fit_found:
+        Xy = df[x_cols + [y_col]].dropna()
+        if len(Xy) < 2:
+            print("Not enough data to fit model")
+            return None
+        if len(x_cols) == 0:
+            print("No variables are significant")
+            return None
+        X = Xy[x_cols]
+        y = Xy[y_col].round().astype(int)
+        X = sm.add_constant(X)
+        model = sm.Logit(y, X).fit()
+        
+        if model.pvalues[1:].max() < p_max:
+            best_fit_found = True
+            print("Best fit found")
+            print(model.summary())
+            print(model.pvalues)
+            return model
+            break
+        
+        if print_all:
+            print(model.summary())
+            print(model.pvalues)
+        # Remove the variable with the highest p-value
+        x_cols.remove(model.pvalues[1:].idxmax())
+        print(f"Removing {model.pvalues[1:].idxmax()} with p-value {model.pvalues[1:].max()}")
+
+
+def fit_linear_to_variables(df, y_col, x_cols, p_max = 0.05, print_all = False):
+
+    best_fit_found = False
+    while not best_fit_found:
+        Xy = df[x_cols + [y_col]].dropna()
+        if len(Xy) < 2:
+            print("Not enough data to fit model")
+            return None
+        if len(x_cols) == 0:
+            print("No variables are significant")
+            return None
+        X = Xy[x_cols]
+        y = Xy[y_col]
+        X = sm.add_constant(X)
+        model = sm.OLS(y, X).fit()
+        
+        if model.pvalues[1:].max() < p_max:
+            best_fit_found = True
+            print("Best fit found")
+            print(model.summary())
+            print(model.pvalues)
+            return model
+            break
+        
+        if print_all:
+            print(model.summary())
+            print(model.pvalues)
+        # Remove the variable with the highest p-value
+        x_cols.remove(model.pvalues[1:].idxmax())
+        print(f"Removing {model.pvalues[1:].idxmax()} with p-value {model.pvalues[1:].max()}")
