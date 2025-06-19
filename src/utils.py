@@ -1,9 +1,11 @@
 import pandas as pd
 import requests
 from pandas import json_normalize
+import json
 import numpy as np
 import os
 import sys
+import statsmodels.api as sm
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
@@ -38,6 +40,15 @@ def download_data(url,size = 1000):
                 print(f"Downloaded {len(df)} rows")
             return df
 
+def download_data_json(filepath):
+
+    data = json.load(open(filepath))
+    df = pd.DataFrame()
+    for row in data:
+        # unpack polity_dict
+        flattened_dict = json_normalize(row, sep='_')
+        df = pd.concat([df, flattened_dict], axis=0)
+    return df
 
 def fetch_urls(category):
     url = "https://seshat-db.com/api/"
@@ -51,6 +62,10 @@ def fetch_urls(category):
         mapping = mappings.social_complexity_mapping
     elif category == 'id':
         mapping = mappings.ideology_mapping
+    elif category == 'rt':
+        mapping = mappings.ideology_mapping
+    elif category == 'ec':
+        mapping = mappings.luxury_mapping
     
     used_keys = []
     for key in mapping.keys():
@@ -63,7 +78,7 @@ def fetch_urls(category):
     return variable_urs
 
 
-def weighted_mean(row, mappings, category = "Metal", imputation = 'remove', min_vals = 0.):
+def weighted_mean(row, mappings, category = "Metal", nan_handling = 'remove', min_vals = 0.):
     weights = 0
     result = 0
 
@@ -82,18 +97,18 @@ def weighted_mean(row, mappings, category = "Metal", imputation = 'remove', min_
     if values.isna().sum() >= len(values)*(1-min_vals):
         return np.nan
     
-    if imputation == 'remove':
+    if nan_handling == 'remove':
         entries = [entry for entry, value in zip(entries, values) if not np.isnan(value)]
         values = values.dropna()
-    elif imputation == 'mean':
+    elif nan_handling == 'mean':
         values = values.infer_objects()
         values = values.fillna(values.mean())
         entries = [entry for entry, value in zip(entries, values) if not np.isnan(value)]
-    elif imputation == 'zero':
+    elif nan_handling == 'zero':
         values = values.infer_objects()
         values = values.fillna(0)
         entries = [entry for entry, value in zip(entries, values) if not np.isnan(value)]
-    elif imputation == 'half':
+    elif nan_handling == 'half':
         values = values.infer_objects()
         values = values.fillna(0.5)
     
@@ -177,3 +192,116 @@ def compare(old, new, common_columns):
             print("same values for", col)
 
             continue
+
+def standardize_column(df, column_name):
+    """
+    Check if all values in a column are the same. If not, set all values to the most common value.
+    
+    Parameters:
+        df (pandas.DataFrame): The dataframe to modify
+        column_name (str): The name of the column to check and potentially standardize
+        
+    Returns:
+        pandas.DataFrame: The modified dataframe
+    """
+    # Check if column exists
+    if column_name not in df.columns:
+        print(f"Column '{column_name}' not found in dataframe")
+        return df
+        
+    # Get unique values
+    unique_values = df[column_name].unique()
+    
+    # If there's only one unique value (or column is empty), nothing needs to be done
+    if len(unique_values) <= 1:
+        print(f"All values in '{column_name}' are the same. No changes needed.")
+        return df
+        
+    # Get the most common value using value_counts()
+    most_common = df[column_name].value_counts().idxmax()
+    
+    print(f"Values in '{column_name}' differ. Setting all to most common value: {most_common}")
+    
+    # Make a copy to avoid modifying the original
+    result_df = df.copy()
+    result_df[column_name] = most_common
+    
+    return result_df
+
+def longest_substring_finder(string1, string2):
+    answer = ""
+    len1, len2 = len(string1), len(string2)
+    for i in range(len1):
+        for j in range(len2):
+            lcs_temp = 0
+            match = ''
+            while ((i+lcs_temp < len1) and (j+lcs_temp<len2) and string1[i+lcs_temp] == string2[j+lcs_temp]):
+                match += string2[j+lcs_temp]
+                lcs_temp += 1
+            if len(match) > len(answer):
+                answer = match
+    return answer
+
+
+def fit_logit_to_variables(df, y_col, x_cols, p_max = 0.05, print_all = False):
+
+    best_fit_found = False
+    while not best_fit_found:
+        Xy = df[x_cols + [y_col]].dropna()
+        if len(Xy) < 2:
+            print("Not enough data to fit model")
+            return None
+        if len(x_cols) == 0:
+            print("No variables are significant")
+            return None
+        X = Xy[x_cols]
+        y = Xy[y_col].round().astype(int)
+        X = sm.add_constant(X)
+        model = sm.Logit(y, X).fit()
+        
+        if model.pvalues[1:].max() < p_max:
+            best_fit_found = True
+            print("Best fit found")
+            print(model.summary())
+            print(model.pvalues)
+            return model
+            break
+        
+        if print_all:
+            print(model.summary())
+            print(model.pvalues)
+        # Remove the variable with the highest p-value
+        x_cols.remove(model.pvalues[1:].idxmax())
+        print(f"Removing {model.pvalues[1:].idxmax()} with p-value {model.pvalues[1:].max()}")
+
+
+def fit_linear_to_variables(df, y_col, x_cols, p_max = 0.05, print_all = False):
+
+    best_fit_found = False
+    while not best_fit_found:
+        Xy = df[x_cols + [y_col]].dropna()
+        if len(Xy) < 2:
+            print("Not enough data to fit model")
+            return None
+        if len(x_cols) == 0:
+            print("No variables are significant")
+            return None
+        X = Xy[x_cols]
+        y = Xy[y_col]
+        X = sm.add_constant(X)
+        model = sm.OLS(y, X).fit()
+        
+        if model.pvalues[1:].max() < p_max:
+            best_fit_found = True
+            print("Best fit found")
+            print(model.summary())
+            print(model.pvalues)
+            return model
+            break
+        
+        if print_all:
+            print(model.summary())
+            print(model.pvalues)
+        # Remove the variable with the highest p-value
+        x_cols.remove(model.pvalues[1:].idxmax())
+        print(f"Removing {model.pvalues[1:].idxmax()} with p-value {model.pvalues[1:].max()}")

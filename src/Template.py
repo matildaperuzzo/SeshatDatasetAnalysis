@@ -13,13 +13,17 @@ class Template():
     def __init__(self, 
                  categories = list(['sc']),
                  polity_url = "https://seshat-db.com/api/core/polities/",
-                 file_path = None
+                 file_path = None,
+                 save_excel = False
                  ):
         self.template = pd.DataFrame()
         self.categories = categories
         self.polity_url = polity_url
+        self.save_excel = save_excel
 
         self.debug = pd.DataFrame(columns=["polity", "variable", "label", "issue"])
+        if self.save_excel:
+            self.full_dataset = pd.DataFrame(columns=["NGA", "PolityID", "PolityName", "Section", "Subsection","value_from", "value_to", "year_from", "year_to", "is_disputed", "is_uncertain"])
 
         if (polity_url is not None ) and (file_path is None):
             self.initialize_dataset(polity_url)
@@ -147,12 +151,11 @@ class Template():
         polityIDs = df.id.unique()
         # iterate over all polities
         for polID in polityIDs:
-            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'new_name', 'name','start_year','end_year']]
+            pol_df = df.loc[df.id == polID, ['home_nga_name', 'id', 'name','start_year','end_year']]
             # create a temporary dataframe with all data for current polity
             pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
                                             "PolityID": pol_df.id.values[0], 
-                                            "PolityName": pol_df.new_name.values[0], 
-                                            "PolityOldName": pol_df.name.values[0],
+                                            "PolityName": pol_df.name.values[0],
                                             "StartYear": pol_df.start_year.values[0],
                                             "EndYear": pol_df.end_year.values[0]}), index = [0])
             # add the temporary dataframe to the template
@@ -219,25 +222,62 @@ class Template():
         """
 
         variable_name = df.name.unique()[0].lower()
+        row_variable_name = variable_name
+        if (variable_name not in df.columns) and (variable_name + "_from" not in df.columns):
+            row_variable_name = 'coded_value'
         range_var =  variable_name + "_from" in df.columns
         col_name = key.split('/')[-1]
         self.add_empty_col(col_name)
         polities = self.template.PolityName.unique()
+        df.columns = df.columns.str.lower()
+        
+        if self.save_excel:
+            new_df = pd.DataFrame(columns=["NGA", "PolityID", "PolityName", "Section", "Subsection","value_from", "value_to", "year_from", "year_to", "is_disputed", "is_uncertain"])
         
         for pol in polities:
-            if pol not in df.polity_new_name.values:
-                pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
-                pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity__name__icontains={pol_old_name}",size = None)
+            if pol not in df.polity_name.values:
+                # pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
+                pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity_name__icontains={pol}",size = None)
                 if pol_df.empty:
                     continue
                 else:
-                    print(f"Found {pol_old_name} in {key} dataset")
+                    print(f"Found {pol} in {key} dataset")
             else:
-                pol_df = df.loc[df.polity_new_name == pol]
+                pol_df = df.loc[df.polity_name == pol]
             
             self.add_polity(pol_df, range_var, variable_name, col_name)
         
-        self.perform_tests(df, variable_name, range_var, col_name)
+            if self.save_excel and len(pol_df) > 0:
+                if range_var:
+                    new_df = pd.DataFrame({
+                        "NGA": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
+                        "PolityID": pol_df['polity_id'],
+                        "PolityName": pol_df['polity_name'],
+                        "Section": key.split('/')[0],
+                        "Subsection": key.split('/')[1],
+                        "value_from": pol_df[row_variable_name + '_from'],
+                        "value_to": pol_df[row_variable_name + '_to'],
+                        "year_from": pol_df['year_from'],
+                        "year_to": pol_df['year_to'],
+                        "is_disputed": pol_df['is_disputed'],
+                        "is_uncertain": pol_df['is_uncertain']
+                    })
+                else:
+                    new_df = pd.DataFrame({
+                        "NGA": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
+                        "PolityID": pol_df['polity_id'],
+                        "PolityName": pol_df['polity_name'],
+                        "Section": key.split('/')[0],
+                        "Subsection": key.split('/')[1],
+                        "value_from": pol_df[row_variable_name],
+                        "value_to": np.nan,
+                        "year_from": pol_df['year_from'],
+                        "year_to": pol_df['year_to'],
+                        "is_disputed": pol_df['is_disputed'],
+                        "is_uncertain": pol_df['is_uncertain']
+                    })
+                self.full_dataset = pd.concat([self.full_dataset, new_df], ignore_index=True)
+        self.perform_tests(df, row_variable_name, range_var, col_name)
         print(f"Added {key} dataset to template")
 
     def add_polity(self, pol_df, range_var, variable_name, col_name):
@@ -270,19 +310,24 @@ class Template():
         # reset variable dict variables
         times = [[]]
         values = [[]]
-
+        
         for ind,row in pol_df.iterrows():
             # reset variables
             disp = False
             unc = False
+            row_variable_name = variable_name
+            if (variable_name not in row) and (variable_name + "_from" not in row):
+                row_variable_name = 'coded_value'
+
             t = []
             value = []
             # check if the polity has multiple rows
             if ind > 0:
                 if range_var:
-                    relevant_columns = ['polity_id','year_from', 'year_to', 'is_disputed', 'is_uncertain', variable_name+'_from', variable_name +'_to']
+                    relevant_columns = ['polity_id','year_from', 'year_to', 'is_disputed', 'is_uncertain', row_variable_name+'_from', row_variable_name +'_to']
                 else:
-                    relevant_columns = ['polity_id','year_from', 'year_to', 'is_disputed', 'is_uncertain', variable_name]
+                    relevant_columns = ['polity_id','year_from', 'year_to', 'is_disputed', 'is_uncertain', row_variable_name]
+               
                 # if the row is a duplicate of the previous row, skip it
                 if pol_df.loc[:ind-1, relevant_columns].apply(lambda x: self.is_same(x, pol_df.loc[ind,relevant_columns]), axis=1).any():
                     print("Duplicate rows found")
@@ -312,21 +357,23 @@ class Template():
             if (row.year_from is None or pd.isna(row.year_from)) and (row.year_to is None or pd.isna(row.year_to)):
                 # if the variable is a range variable, check if the range is defined
                 if range_var:
-                    val_from = row[variable_name + "_from"]
-                    val_to = row[variable_name + "_to"]
+
+                    val_from = row[row_variable_name + "_from"]
+                    val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
                 else:
-                    v = value_mapping.get(row[variable_name], -1)
+                    v = value_mapping.get(row[row_variable_name], -1)
                     if (v is None) or pd.isna(v):
                         continue
                     elif v == -1:
-                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
+                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[row_variable_name]} is not in mapping"}, index = [0])
                         self.debug = pd.concat([self.debug, debug_row])
                         continue
-                    val = (value_mapping[row[variable_name]], value_mapping[row[variable_name]])
+
+                    val = (value_mapping[row[row_variable_name]], value_mapping[row[row_variable_name]])
 
                 # append the values and times to the lists
                 value.append(val)
@@ -338,19 +385,19 @@ class Template():
             elif (row.year_from == row.year_to) or ((row.year_from is None) and (row.year_to is not None)) or ((row.year_from is not None) and (row.year_to is None)):
                 # if variable is a range variable, check if the range is defined
                 if range_var:
-                    val_from = row[variable_name + "_from"]
-                    val_to = row[variable_name + "_to"]
+                    val_from = row[row_variable_name + "_from"]
+                    val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
                     
                 else:
-                    v = value_mapping.get(row[variable_name], -1)
+                    v = value_mapping.get(row[row_variable_name], -1)
                     if (v is None) or pd.isna(v):
                         continue
                     elif v == -1:
-                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
+                        debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[row_variable_name]} is not in mapping"}, index = [0])
                         self.debug = pd.concat([self.debug, debug_row])
                         continue
                     val = (v, v)
@@ -375,22 +422,23 @@ class Template():
             elif (row.year_from != row.year_to) and pd.notna(row.year_from) and pd.notna(row.year_to):
                 
                 if range_var:
-                    val_from = row[variable_name + "_from"]
-                    val_to = row[variable_name + "_to"]
+                    val_from = row[row_variable_name + "_from"]
+                    val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
                 else:
+                    
                     # check if row[variable_name] is a finite number
-                    if isinstance(row[variable_name], (int, float)) and pd.notna(row[variable_name]):
-                        v = row[variable_name]
+                    if isinstance(row[row_variable_name], (int, float)) and pd.notna(row[row_variable_name]):
+                        v = row[row_variable_name]
                     else:
-                        v = value_mapping.get(row[variable_name], -1)
+                        v = value_mapping.get(row[row_variable_name], -1)
                         if (v is None) or pd.isna(v):
                             continue
                         elif v == -1:
-                            debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[variable_name]} is not in mapping"}, index = [0])
+                            debug_row = pd.DataFrame({"polity": pol, "variable": variable_name, "label": 'template', "issue": f"value {row[row_variable_name]} is not in mapping"}, index = [0])
                             self.debug = pd.concat([self.debug, debug_row])
                             continue
                     val = (v, v)
@@ -667,7 +715,8 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['wf','sc'])
+    template = Template(categories = ['sc','wf','rt','ec'], save_excel=True)
     template.download_all_categories()
+    template.full_dataset.to_csv("datasets/full_dataset.csv", index = False)
     template.save_dataset("datasets/template.csv")
-
+    

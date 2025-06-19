@@ -39,7 +39,7 @@ PT_value_mapping = {
     'IP': 0.9,
     'SU': np.nan,
     'None': np.nan,
-    'DIS' : random.choice([0,1])
+    'DIS' : 0.5
 }
 
 miltech_mapping = {
@@ -176,9 +176,9 @@ social_complexity_mapping = {
 }
 
 ideology_mapping = {
-    'MSP' : {"moral-concern-is-primary" : 1, # "PrimaryMSP"
+    'MSP' : {"moralizing-supernatural-concern-is-primary" : 1, # "PrimaryMSP"
                 "moralizing-enforcement-is-certain" : 1, # "CertainMSP"
-                "moralizing-norms-are-broad" : 1, # "BroadMSP"
+                "moralizing-enforcement-is-broad" : 1, # "BroadMSP"
                 "moralizing-enforcement-is-targeted" : 1, # "TargetedMSP"
                 "moralizing-enforcement-of-rulers" : 1, # "RulerMSP"
                 "moralizing-religion-adopted-by-elites" : 1, # "ElitesMSP"
@@ -187,15 +187,32 @@ ideology_mapping = {
                 "moralizing-enforcement-in-this-life" : 1, # "ThislifeMSP"
                 "moralizing-enforcement-is-agentic" : 1
     },
-    'EgalID' : {"Ideological-reinforcement-of-equality" : 1,
-                "Ideological-thought-equates-elites-and-commoners" : 1,
-                "Ideological-thought-equates-rulers-and-commoners" : 1
-                },
-    'Prosoc' : {"Ideology-reinforces-prosociality" : 1,
-                'production-of-public-goods' : 1
-                },
-    'Constrain' : {"Constraint-on-executive-by-government" : 1,
-                   "Constraint-on-executive-by-non-government" : 1,
-                   "Impeachment" : 1
+    # 'EgalID' : {"Ideological-reinforcement-of-equality" : 1,
+    #             "Ideological-thought-equates-elites-and-commoners" : 1,
+    #             "Ideological-thought-equates-rulers-and-commoners" : 1
+    #             },
+    # 'Prosoc' : {"Ideology-reinforces-prosociality" : 1,
+    #             'production-of-public-goods' : 1
+    #             },
+    # 'Constrain' : {"Constraint-on-executive-by-government" : 1,
+    #                "Constraint-on-executive-by-non-government" : 1,
+    #                "Impeachment" : 1
+    #             },
+    "HumanSacrifice" : {"human-sacrifice" : 1
                 }
+
 }
+
+luxury_mapping = {"LuxuryItems" : {"lux-precious-metal" : 1,
+                                    "luxury-fabrics" : 1,
+                                    "luxury-manufactured-goods" : 1,
+                                    "luxury-spices-incense-and-dyes" : 1,
+                                    "luxury-drink-alcohol" : 1,
+                                    "luxury-glass-goods" : 1,
+                                    "lux-fine-ceramic-wares" : 1,
+                                    "lux-precious-stone" : 1,
+                                    "lux-statuary" : 1,
+                                    "luxury-food" : 1,
+                                    "other-luxury-personal-items" : 1
+                                   }
+                }
