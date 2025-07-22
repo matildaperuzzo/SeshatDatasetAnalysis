@@ -16,7 +16,7 @@ statsmodels = "^0.13.2"
 pyreadr = "^0.4.5"
 openpyxl = "^3.0.9"
 xlsxwriter = "^3.0.3"
-seshat-api = {git = "https://github.com/Seshat-Global-History-Databank/seshat_api.git"}
+
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
