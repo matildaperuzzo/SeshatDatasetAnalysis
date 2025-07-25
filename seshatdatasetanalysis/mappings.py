@@ -216,3 +216,10 @@ luxury_mapping = {"LuxuryItems" : {"lux-precious-metal" : 1,
                                     "other-luxury-personal-items" : 1
                                    }
                 }
+
+
+religion_mapping = {"Religion" : {"polity-religion-genuses" : 1,
+                                  "polity-religion-families" : 1,
+                                  "polity-religions" : 1
+                                 }
+        }

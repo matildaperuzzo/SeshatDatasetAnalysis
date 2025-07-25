@@ -58,21 +58,29 @@ def fetch_urls(category):
     import seshatdatasetanalysis.mappings as mappings
     if category == 'wf':
         mapping = mappings.miltech_mapping
+        api_category = 'wf'
     elif category == 'sc':
         mapping = mappings.social_complexity_mapping
+        api_category = 'sc'
     elif category == 'id':
         mapping = mappings.ideology_mapping
+        api_category = 'id'
     elif category == 'rt':
         mapping = mappings.ideology_mapping
+        api_category = 'rt'
     elif category == 'ec':
         mapping = mappings.luxury_mapping
-    
+        api_category = 'ec'
+    elif category == 'rel':
+        mapping = mappings.religion_mapping
+        api_category = 'general'
+
     used_keys = []
     for key in mapping.keys():
         used_keys.append(mapping[key].keys())
-    used_keys = [category+'/'+key for sublist in used_keys for key in sublist]
+    used_keys = [api_category+'/'+key for sublist in used_keys for key in sublist]
     for key in data.keys():
-        if key.split('/')[0] == category:
+        if key.split('/')[0] == api_category:
             if key in used_keys:
                 variable_urs[key] = data[key]
     return variable_urs

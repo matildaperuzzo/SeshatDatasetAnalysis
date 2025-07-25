@@ -225,8 +225,14 @@ class Template():
         row_variable_name = variable_name
         if (variable_name not in df.columns) and (variable_name + "_from" not in df.columns):
             row_variable_name = 'coded_value'
-        range_var =  variable_name + "_from" in df.columns
+        range_var = False
         col_name = key.split('/')[-1]
+        if variable_name + "_from" in df.columns:
+            range_var = True
+        elif ('religion' in variable_name) and ('polity' in variable_name):
+            col_name = col_name.replace('polity-', '')
+            row_variable_name = variable_name.replace('polity_', '')
+        
         self.add_empty_col(col_name)
         polities = self.template.PolityName.unique()
         df.columns = df.columns.str.lower()
@@ -237,7 +243,7 @@ class Template():
         for pol in polities:
             if pol not in df.polity_name.values:
                 # pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
-                pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity_name__icontains={pol}",size = None)
+                pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity__new_name__icontains={pol}",size = None)
                 if pol_df.empty:
                     continue
                 else:
@@ -316,7 +322,9 @@ class Template():
             disp = False
             unc = False
             row_variable_name = variable_name
-            if (variable_name not in row) and (variable_name + "_from" not in row):
+            if 'religion' in variable_name:
+                row_variable_name = variable_name.replace('polity_', '')
+            if (row_variable_name not in row) and (row_variable_name + "_from" not in row):
                 row_variable_name = 'coded_value'
 
             t = []
@@ -364,6 +372,9 @@ class Template():
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
+                elif isinstance(row[row_variable_name], str) and 'religion' in variable_name:
+                    v = row[row_variable_name].lower()
+                    val = (v,v)
                 else:
                     v = value_mapping.get(row[row_variable_name], -1)
                     if (v is None) or pd.isna(v):
@@ -391,7 +402,9 @@ class Template():
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
-                    
+                elif isinstance(row[row_variable_name], str) and 'religion' in variable_name:
+                    v = row[row_variable_name].lower()
+                    val = (v,v)
                 else:
                     v = value_mapping.get(row[row_variable_name], -1)
                     if (v is None) or pd.isna(v):
@@ -428,6 +441,9 @@ class Template():
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
+                elif isinstance(row[row_variable_name], str) and 'religion' in variable_name:
+                    v = row[row_variable_name].lower()
+                    val = (v,v)
                 else:
                     
                     # check if row[variable_name] is a finite number
@@ -609,12 +625,19 @@ class Template():
                 if interpolation == 'zero':
                     time_selection = times[times<=time]
                     ind = np.argmin(np.abs(np.array(time_selection) - time))
+                    if isinstance(values[ind][0], str):
+                        vals[i] = values[ind][0]
+                        continue
                     if sampling == 'uniform':
                         val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
                     elif sampling == 'mean':
                         val = np.mean(values[ind])
                     vals[i] = val
                 elif (interpolation == 'linear') or (interpolation == 'smooth'):
+                    if isinstance(values[ind][0], str):
+                        print(f"Error: String column must use 'zero' interpolation")
+                        vals[i] = np.nan
+                        continue
                     vals[i] = y_new[np.argmin(np.abs(x_new - time))]
             return vals
         elif isinstance(t, (int, float, np.int64, np.int32, np.float64, np.float32)):
@@ -715,7 +738,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc','wf','rt','ec'], save_excel=True)
+    template = Template(categories = ['rel','sc','wf','rt','ec'], save_excel=False)
     template.download_all_categories()
     template.full_dataset.to_csv("datasets/full_dataset.csv", index = False)
     template.save_dataset("datasets/template.csv")
