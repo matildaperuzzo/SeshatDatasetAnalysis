@@ -131,6 +131,8 @@ class TimeSeriesDataset():
     
     def add_column(self, key, polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
         variable_name = key.split('/')[-1]
+        if 'polity-religion' in variable_name:
+            variable_name = variable_name.replace('polity-religion', 'religion')
         grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name, polity_year_error=polity_year_error, sampling_interpolation=sampling_interpolation, sampling_ranges = sampling_ranges))
         for polity in grouped_variables.index:
             self.raw.loc[self.raw.PolityName == polity, variable_name] = grouped_variables[polity]
