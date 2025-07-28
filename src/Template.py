@@ -234,7 +234,7 @@ class Template():
             row_variable_name = variable_name.replace('polity_', '')
         
         self.add_empty_col(col_name)
-        polities = self.template.PolityName.unique()
+        polities = self.template.PolityName.unique()        
         df.columns = df.columns.str.lower()
         
         if self.save_excel:
@@ -322,7 +322,7 @@ class Template():
             disp = False
             unc = False
             row_variable_name = variable_name
-            if 'religion' in variable_name:
+            if 'polity_religion' in variable_name:
                 row_variable_name = variable_name.replace('polity_', '')
             if (row_variable_name not in row) and (row_variable_name + "_from" not in row):
                 row_variable_name = 'coded_value'
@@ -738,7 +738,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['rel','sc','wf','rt','ec'], save_excel=False)
+    template = Template(categories = ['rt'], save_excel=False)
     template.download_all_categories()
     template.save_dataset("datasets/template.csv")
     
