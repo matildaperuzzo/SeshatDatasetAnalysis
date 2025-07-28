@@ -322,7 +322,7 @@ class Template():
             disp = False
             unc = False
             row_variable_name = variable_name
-            if 'religion' in variable_name:
+            if 'polity_religion' in variable_name:
                 row_variable_name = variable_name.replace('polity_', '')
             if (row_variable_name not in row) and (row_variable_name + "_from" not in row):
                 row_variable_name = 'coded_value'

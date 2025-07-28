@@ -18,7 +18,7 @@ SeshatDatasetAnalysis is a project for analyzing time series datasets. This proj
 To install the dependencies, first install [Poetry](https://python-poetry.org/docs/#installation) and then run the following command:
 
 ```sh
-poetry install
+pip install seshatdatasetanalysis
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ poetry install
 To use the `TimeSeriesDataset` class, you can import it as follows:
 
 ```python
-from src.TimeSeriesDataset import TimeSeriesDataset as TSD
+from seshatdatasetanalysis import TimeSeriesDataset as TSD
 ```
 
 The notebook `create dataset` contains an example of how to use the class
