@@ -236,45 +236,35 @@ tsd = sda.TimeSeriesDataset(['sc'], file_path='your_dataset_path')
 plt.figure(figsize=(15, 10))
 
 # 1. Polity bubble plot
-plt.subplot(2, 2, 1)
 plotting.polity_bubble_plot(
     tsd, 
     'Pop', 'Information', 'Hierarchy',
     show_background_data=True
 )
-plt.title('Polity Bubble Plot')
 
 # 2. Grid bubble plot  
-plt.subplot(2, 2, 2)
 plotting.grid_bubble_plot(
     tsd,
     'Hierarchy', 'Pop', 'Information',
     grid_size=0.5
 )
-plt.title('Grid Bubble Plot')
 
 # 3. Coefficient plot
-plt.subplot(2, 2, 3)
 plotting.plot_fit_coefficients(
     tsd,
     y_cols=['Information', 'Infrastructure'],
     x_cols=['Pop', 'Hierarchy'],
     regression_type='linear'
 )
-plt.title('Regression Coefficients')
 
 # 4. Band plot
-plt.subplot(2, 2, 4)
 plotting.band_plot(
     tsd,
     'Pop', 'Information', 'Cap',
     nbins=8,
     error='sem'
 )
-plt.title('Band Plot with Error Bars')
 
-plt.tight_layout()
-plt.show()
 ```
 
 ## Return Values

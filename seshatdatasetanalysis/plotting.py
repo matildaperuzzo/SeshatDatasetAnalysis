@@ -63,7 +63,7 @@ def polity_bubble_plot(tsd, col_x, col_y, col_color, show_background_data = Fals
     plt.colorbar(scatter, label=col_color)
     plt.xlabel(col_x)
     plt.ylabel(col_y)
-    plt.show()
+    # plt.show()
 
     return fig, ax, scatter
 
@@ -178,12 +178,11 @@ def plot_fit_coefficients(tsd, y_cols, x_cols, regression_type, pval_max = 0.05,
         data = tsd
     else:
         raise TypeError("tsd must be a TimeSeriesDataset or a pandas DataFrame")
-
+    cmap = plt.get_cmap(cmap)
     colors = [cmap(i/len(y_cols)) for i in range(len(y_cols))]
 
     fig,ax = plt.subplots(1,len(x_cols), figsize=(3*len(x_cols), 3))
     # hide y tick labels
-    cmap = mpl.colormaps[cmap]
     x_lims = np.zeros((len(x_cols),2))
     for i, col in enumerate(x_cols):
         ax[i].set_title(col)
@@ -226,7 +225,7 @@ def plot_fit_coefficients(tsd, y_cols, x_cols, regression_type, pval_max = 0.05,
     ax[-1].spines['right'].set_visible(True)
     ax[0].spines['left'].set_visible(True)
     plt.subplots_adjust(wspace=0, hspace=0)
-    plt.show()
+    # plt.show()
     return fig, ax
 
 def band_plot(tsd, col_x, col_y, col_z = None, nbins = None, grid_size = 1, cmap = 'coolwarm', error = 'standard'):
@@ -312,7 +311,7 @@ def band_plot(tsd, col_x, col_y, col_z = None, nbins = None, grid_size = 1, cmap
                         elinewidth=2, capsize=3) 
     plt.xlabel(col_x)
     plt.ylabel(col_y)
-    plt.show()
+    # plt.show()
     return fig, ax
 
 if __name__ == "__main__":
