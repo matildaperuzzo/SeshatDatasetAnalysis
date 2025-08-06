@@ -6,6 +6,7 @@ import numpy as np
 import os
 import sys
 import statsmodels.api as sm
+import seshatdatasetanalysis as sda
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
@@ -313,3 +314,94 @@ def fit_linear_to_variables(df, y_col, x_cols, p_max = 0.05, print_all = False):
         # Remove the variable with the highest p-value
         x_cols.remove(model.pvalues[1:].idxmax())
         print(f"Removing {model.pvalues[1:].idxmax()} with p-value {model.pvalues[1:].max()}")
+
+def bin_data_1D(tsd, col,  nbins = None, grid_size = 1, error = 'standard'):
+    """
+    Bin data in a single column into specified bins and calculate the mean and error for each bin.
+    
+    Parameters:
+        tsd (seshatdatasetanalysis.TimeSeriesDataset or pandas.DataFrame): The dataset containing the data to bin.
+        col (str): The name of the column to bin.
+        bins (list): List of bin edges.
+        error (str): Type of error to calculate ('standard' or 'sem').
+        
+    Returns:
+        pandas.DataFrame: DataFrame with binned data, mean, and error.
+    """
+    if isinstance(tsd, sda.TimeSeriesDataset):
+        df = tsd.scv_imputed
+    elif isinstance(tsd, pd.DataFrame):
+        df = tsd
+    else:
+        raise TypeError("tsd must be a TimeSeriesDataset or a pandas DataFrame")
+    
+    xlims = (df[col].min(), df[col].max())
+    if (nbins is None) and (grid_size is None):
+        nbins = 10
+        grid_size = (xlims[1] - xlims[0]) // nbins
+    elif (nbins is not None) and (grid_size is None):
+        grid_size = (xlims[1] - xlims[0]) // nbins
+    elif (nbins is None) and (grid_size is not None):
+        nbins = (xlims[1] - xlims[0]) // grid_size
+    nbins = int(nbins)
+    bins = np.linspace(xlims[0], xlims[1], nbins + 1)
+    binned_data = pd.cut(df[col], bins=bins)
+    grouped = df.groupby(binned_data).agg({col: ['mean', 'count']})
+    
+    if error == 'standard':
+        grouped['error'] = df.groupby(binned_data)[col].std()
+    elif error == 'sem':
+        grouped['error'] = df.groupby(binned_data)[col].sem()
+    
+    return grouped.reset_index()
+
+def bin_data_2D(tsd, col_x, col_y, nbins = None, grid_size = 1, error = 'standard'):
+    """
+    Bin data in two columns into specified bins and calculate the mean and error for each bin.
+    
+    Parameters:
+        tsd (seshatdatasetanalysis.TimeSeriesDataset or pandas.DataFrame): The dataset containing the data to bin.
+        col_x (str): The name of the first column to bin.
+        col_y (str): The name of the second column to bin.
+        nbins (tuple or int, optional): Number of bins for each dimension. If int, same number of bins is used for both dimensions.
+        grid_size (int, optional): Size of each bin in the grid.
+        error (str): Type of error to calculate ('standard' or 'sem').
+        
+    Returns:
+        pandas.DataFrame: DataFrame with binned data, mean, and error.
+    """
+    if isinstance(tsd, sda.TimeSeriesDataset):
+        df = tsd.scv_imputed
+    elif isinstance(tsd, pd.DataFrame):
+        df = tsd
+    else:
+        raise TypeError("tsd must be a TimeSeriesDataset or a pandas DataFrame")
+    
+    xlims = (df[col_x].min(), df[col_x].max())
+    ylims = (df[col_y].min(), df[col_y].max())
+    if (nbins is None) and (grid_size is None):
+        nbins = (10, 10)
+    elif (nbins is not None) and (grid_size is None):
+        if isinstance(nbins, int):
+            nbins = (nbins, nbins)
+        elif len(nbins) == 1:
+            nbins = (nbins[0], nbins[0])
+        elif len(nbins) != 2:
+            raise ValueError("nbins must be an int or a tuple of two ints.")
+        grid_size = (x_bins[1] - x_bins[0], y_bins[1] - y_bins[0])
+    elif grid_size is not None:
+        nbins = ((xlims[1] - xlims[0]) // grid_size, (ylims[1] - ylims[0]) // grid_size)
+    nbins = (int(nbins[0]), int(nbins[1]))
+    x_bins = np.linspace(xlims[0], xlims[1], nbins[1] + 1)
+    y_bins = np.linspace(ylims[0], ylims[1], nbins[0] + 1)
+
+    binned_data = pd.cut(df[col_x], bins=x_bins)
+    binned_data_y = pd.cut(df[col_y], bins=y_bins)
+    grouped = df.groupby([binned_data, binned_data_y]).agg({col_x: ['mean', 'count'], col_y: ['mean']})
+    
+    if error == 'standard':
+        grouped['error'] = df.groupby([binned_data, binned_data_y])[col_x].std()
+    elif error == 'sem':
+        grouped['error'] = df.groupby([binned_data, binned_data_y])[col_x].sem()
+    
+    return grouped.reset_index()

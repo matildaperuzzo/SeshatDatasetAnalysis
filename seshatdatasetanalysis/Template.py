@@ -372,7 +372,7 @@ class Template():
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
-                elif isinstance(row[row_variable_name], str) and variable_name.startswith('religion'):
+                elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
                     v = row[row_variable_name].lower()
                     val = (v,v)
                 else:
@@ -402,7 +402,7 @@ class Template():
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
-                elif isinstance(row[row_variable_name], str) and variable_name.startswith('religion'):
+                elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
                     v = row[row_variable_name].lower()
                     val = (v,v)
                 else:
@@ -441,7 +441,7 @@ class Template():
                     val = self.get_values(val_from, val_to)
                     if val is None:
                         continue
-                elif isinstance(row[row_variable_name], str) and variable_name.startswith('religion'):
+                elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
                     v = row[row_variable_name].lower()
                     val = (v,v)
                 else:
@@ -738,7 +738,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc','wf','rt','rel'], save_excel=False)
+    template = Template(categories = ['sc','wf','rt','ec','rel'], save_excel=False)
     template.download_all_categories()
-    template.save_dataset("datasets/template.csv")
+    template.save_dataset("template.csv")
     

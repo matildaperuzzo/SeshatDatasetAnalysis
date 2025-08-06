@@ -12,6 +12,7 @@ SeshatDatasetAnalysis is a project for analyzing time series datasets. This proj
   - [Creating the Final Database](#creating-the-final-database)
   - [Code References](#code-references)
   - [Example Usage](#example-usage)
+  - [Plotting Module](#plotting-module)
 
 ## Installation
 
@@ -93,3 +94,198 @@ Template Data Structure: The template data structure is constructed in the Templ
 Sampling Function: The sample_var function is used to sample the variable dictionary at a specific time t. This function is part of the Template class.<br />
 TimeSeriesDataset Module: The TimeSeriesDataset class, which creates datasets based on the template, is located in the src/TimeSeriesDataset.py file.<br />
 PCA Computation: The compute_PCA method in the TimeSeriesDataset class performs Principal Component Analysis on specified columns. This method is used to construct social complexity variables.
+
+# Plotting Module
+
+This module provides specialized plotting functions for visualizing Seshat dataset analysis results. It includes functions for creating bubble plots, grid visualizations, coefficient plots, and band plots with error bars.
+
+## Functions Overview
+
+### 1. `polity_bubble_plot()`
+Creates a bubble plot where each bubble represents a polity, with bubble sizes based on the number of observations and colors determined by a specified variable.
+
+**Parameters:**
+- `tsd`: TimeSeriesDataset or pandas DataFrame
+- `col_x`: Column name for x-axis
+- `col_y`: Column name for y-axis  
+- `col_color`: Column name for color coding
+- `show_background_data`: Boolean to show background data points (default: False)
+- `cmap`: Colormap name (default: 'coolwarm')
+- `size_scale`: Scale factor for bubble sizes (default: 10)
+- `vmin`, `vmax`: Color scale limits (optional)
+
+**Example:**
+```python
+import seshatdatasetanalysis as sda
+from seshatdatasetanalysis import plotting
+
+# Load dataset
+tsd = sda.TimeSeriesDataset(['sc'], file_path='test_dataset')
+
+# Create polity bubble plot
+fig, ax, scatter = plotting.polity_bubble_plot(
+    tsd, 
+    col_x='Pop', 
+    col_y='Information', 
+    col_color='Hierarchy',
+    show_background_data=True,
+    cmap='viridis',
+    size_scale=15
+)
+```
+
+### 2. `grid_bubble_plot()`
+Creates a grid-based bubble plot that bins data spatially and shows averaged values within each grid cell.
+
+**Parameters:**
+- `tsd`: TimeSeriesDataset or pandas DataFrame
+- `col_x`: Column name for x-axis
+- `col_y`: Column name for y-axis
+- `col_color`: Column name for color coding
+- `cmap`: Colormap name (default: 'coolwarm')
+- `nbins`: Number of bins (int or tuple, optional)
+- `grid_size`: Size of grid cells (default: 1)
+- `scale_size`: Scale factor for bubble sizes (default: 5)
+- `vmin`, `vmax`: Color scale limits (optional)
+
+**Example:**
+```python
+# Create grid bubble plot
+fig, ax = plotting.grid_bubble_plot(
+    tsd, 
+    col_x='Hierarchy', 
+    col_y='Pop', 
+    col_color='Information',
+    cmap='plasma',
+    grid_size=0.75,
+    scale_size=8
+)
+```
+
+### 3. `plot_fit_coefficients()`
+Visualizes regression coefficients with confidence intervals for multiple dependent and independent variables.
+
+**Parameters:**
+- `tsd`: TimeSeriesDataset or pandas DataFrame
+- `y_cols`: List of dependent variable column names
+- `x_cols`: List of independent variable column names
+- `regression_type`: 'logit' or 'linear'
+- `pval_max`: Maximum p-value for inclusion (default: 0.05)
+- `cmap`: Colormap name (default: 'coolwarm')
+
+**Example:**
+```python
+# Plot regression coefficients
+fig, ax = plotting.plot_fit_coefficients(
+    tsd,
+    y_cols=['Information', 'Infrastructure', 'Money'],
+    x_cols=['Pop', 'Cap', 'Terr'],
+    regression_type='linear',
+    pval_max=0.05,
+    cmap='RdBu'
+)
+```
+
+### 4. `band_plot()`
+Creates a band plot showing mean values with error bands across binned x-values, optionally color-coded by a third variable.
+
+**Parameters:**
+- `tsd`: TimeSeriesDataset or pandas DataFrame
+- `col_x`: Column name for x-axis
+- `col_y`: Column name for y-axis
+- `col_z`: Optional column name for color coding
+- `nbins`: Number of bins (optional)
+- `grid_size`: Size of bins (default: 1)
+- `cmap`: Colormap name (default: 'coolwarm')
+- `error`: Error type - 'standard' or 'sem' (default: 'standard')
+
+**Example:**
+```python
+# Simple band plot without color coding
+fig, ax = plotting.band_plot(
+    tsd,
+    col_x='Pop',
+    col_y='Information',
+    nbins=15,
+    error='sem'
+)
+
+# Band plot with color coding
+fig, ax = plotting.band_plot(
+    tsd,
+    col_x='Pop',
+    col_y='Information',
+    col_z='Cap',
+    nbins=10,
+    cmap='viridis',
+    error='standard'
+)
+```
+
+## Complete Example
+
+```python
+import seshatdatasetanalysis as sda
+from seshatdatasetanalysis import plotting
+import matplotlib.pyplot as plt
+
+# Load your dataset
+tsd = sda.TimeSeriesDataset(['sc'], file_path='your_dataset_path')
+
+# Create multiple visualizations
+plt.figure(figsize=(15, 10))
+
+# 1. Polity bubble plot
+plt.subplot(2, 2, 1)
+plotting.polity_bubble_plot(
+    tsd, 
+    'Pop', 'Information', 'Hierarchy',
+    show_background_data=True
+)
+plt.title('Polity Bubble Plot')
+
+# 2. Grid bubble plot  
+plt.subplot(2, 2, 2)
+plotting.grid_bubble_plot(
+    tsd,
+    'Hierarchy', 'Pop', 'Information',
+    grid_size=0.5
+)
+plt.title('Grid Bubble Plot')
+
+# 3. Coefficient plot
+plt.subplot(2, 2, 3)
+plotting.plot_fit_coefficients(
+    tsd,
+    y_cols=['Information', 'Infrastructure'],
+    x_cols=['Pop', 'Hierarchy'],
+    regression_type='linear'
+)
+plt.title('Regression Coefficients')
+
+# 4. Band plot
+plt.subplot(2, 2, 4)
+plotting.band_plot(
+    tsd,
+    'Pop', 'Information', 'Cap',
+    nbins=8,
+    error='sem'
+)
+plt.title('Band Plot with Error Bars')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Return Values
+
+All plotting functions return:
+- `fig`: matplotlib figure object
+- `ax`: matplotlib axes object  
+- Some functions also return additional objects (e.g., `scatter` object from bubble plots)
+
+## Dependencies
+
+- matplotlib
+- numpy
+- pandas
