@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "seshatdatasetanalysis"
-version = "0.1.7"
+version = "0.2.0"
 readme = "README.md"
 description = "A package for analyzing time series datasets from the Seshat databank."
 authors = ["Matilda Peruzzo <matilda.peruzzo@gmail.com>"]

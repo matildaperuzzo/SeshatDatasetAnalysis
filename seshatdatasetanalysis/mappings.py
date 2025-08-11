@@ -93,7 +93,8 @@ miltech_mapping = {
 
         "Animals" : {
         "donkeys": 1,
-        "other-animals": 2,
+        "elephants": 2,
+        "camels": 2,
         "horses": 3},
 
         "Fortifications" : {
@@ -187,17 +188,7 @@ ideology_mapping = {
                 "moralizing-enforcement-in-this-life" : 1, # "ThislifeMSP"
                 "moralizing-enforcement-is-agentic" : 1
     },
-    # 'EgalID' : {"Ideological-reinforcement-of-equality" : 1,
-    #             "Ideological-thought-equates-elites-and-commoners" : 1,
-    #             "Ideological-thought-equates-rulers-and-commoners" : 1
-    #             },
-    # 'Prosoc' : {"Ideology-reinforces-prosociality" : 1,
-    #             'production-of-public-goods' : 1
-    #             },
-    # 'Constrain' : {"Constraint-on-executive-by-government" : 1,
-    #                "Constraint-on-executive-by-non-government" : 1,
-    #                "Impeachment" : 1
-    #             },
+
     "HumanSacrifice" : {"human-sacrifice" : 1
                 }
 

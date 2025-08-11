@@ -187,35 +187,40 @@ class TimeSeriesDataset():
         self.scv['Terr'] = (self.raw['polity-territories']).apply(np.log10)
         self.scv['Cap'] = (self.raw['population-of-the-largest-settlements']).apply(np.log10)
 
-        # add hierarchy variables
+        # examination systems and merit promotions follow strong evidence rule
         self.raw['examination-systems'] = self.raw['examination-systems'].fillna(0)
         self.raw['merit-promotions'] = self.raw['merit-promotions'].fillna(0)
-        # self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", nan_handling='remove', min_vals=0.5), axis=1)
         self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", nan_handling='remove', min_vals=0.0), axis=1)
         percentage_gov = 4./11. #at least 4/11 of the variables need to be present
         self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", nan_handling = 'remove', min_vals=percentage_gov), axis=1)
-        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", nan_handling= 'remove', min_vals=0.0), axis=1)
+        percentage_infra = 0.
+        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", nan_handling= 'remove', min_vals=percentage_infra), axis=1)
         percentage_info = 2./13. #at least 2/13 of the variables need to be present
+        # Info has nan_handeling = 'zero' unlike other variables
         self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", nan_handling='zero', min_vals=percentage_info), axis=1)
         # find the maximum weight for money
         max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: item[1])[1]
+        # money variable is found with maximum weight
         self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)/max_money
     
     def build_warfare(self):
         # build warfare variables
         from seshatdatasetanalysis.mappings import miltech_mapping
+        miltech_variables = [category for key in miltech_mapping.keys() for category in miltech_mapping[key].keys()]
+        # strong evidence rule for all miltech variables
+        self.raw[miltech_variables] = self.raw[miltech_variables].fillna(0)
 
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
-        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', nan_handling='remove', min_vals = 0.5), axis=1)
+        self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', nan_handling='zero'), axis=1)
         self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean"), axis=1)
-        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", nan_handling='remove', min_vals = 0.5), axis=1)
-        self.scv['Animal'] = len(miltech_mapping["Animals"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Animals", nan_handling='remove', min_vals = 0.5), axis=1)
+        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", nan_handling='remove'), axis=1)
+        self.scv['Animal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Animals"), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
-        fort_mean = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", nan_handling='remove', min_vals = 0.5), axis=1)
-        long_wall = self.raw['long-walls'].notna()*1
-        surroundings = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Surroundings", nan_handling='remove', min_vals = 0.5), axis=1)
-        self.scv['Defense'] = fort_max + fort_mean + long_wall + surroundings
+        fort_type = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", nan_handling='remove'), axis=1)
+        long_wall = (self.raw['long-walls']>0)*1
+        surroundings = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Surroundings"), axis=1)
+        self.scv['Defense'] = fort_max + fort_type + long_wall + surroundings
         self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite-bows"] or row["self-bows"]) and row["horses"], axis=1)
         self.scv['Iron'] = self.raw['irons']
         self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
@@ -224,7 +229,14 @@ class TimeSeriesDataset():
 
     def build_MSP(self):
         from seshatdatasetanalysis.mappings import ideology_mapping
-        self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", nan_handling='remove'), axis=1)
+        # self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", nan_handling='remove'), axis=1)
+        msp_cols = [key for key in ideology_mapping['MSP'].keys()]
+        msp_df = self.raw[msp_cols].copy()
+        msp_df[msp_df == 0.9] = 1
+        msp_df[msp_df == 0.5] = 0.75
+        msp_df[msp_df == 0.1] = 0.5
+        msp_df[msp_df == 0.0] = 0.5
+        self.scv['MSP'] = msp_df.prod(axis=1)
 
     def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.0, add_resid = False):
         self.get_imputation_fits( columns, use_duplicates = use_duplicates, r2_lim = r2_lim)
@@ -484,9 +496,8 @@ if __name__ == "__main__":
     from seshatdatasetanalysis.mappings import value_mapping
     from seshatdatasetanalysis.TimeSeriesDataset import TimeSeriesDataset as TSD
 
-    dataset = TSD(categories=['sc'], file_path="datasets/power_transitions.csv")
-    dataset.scv_imputed = pd.DataFrame()    
-    dataset.compute_bootstraps_imputation(cols = ['Pop','Terr','Cap','Hierarchy',"Hierarchy_sq"], n_nga_bootstraps=5, n_resid_boostraps=2)
-    dataset.compute_bootstraps_imputation(cols = ['Government', 'Infrastructure', 'Information', 'Money'], n_nga_bootstraps=5, n_resid_boostraps=2)
-
-    dataset.save_dataset(path='datasets/', name='power_transitions_bootstrap')
+    dataset = TSD(categories=['sc','wf','rt'], template_path="template.csv")
+    dataset.initialize_dataset_grid(start_year=-10000, end_year=2000, dt=100)
+    dataset.download_all_categories(polity_year_error=0, sampling_interpolation='zero', sampling_ranges='uniform')
+    dataset.save_dataset(path='', name='test_dataset')
+    dataset.build_MSP()
