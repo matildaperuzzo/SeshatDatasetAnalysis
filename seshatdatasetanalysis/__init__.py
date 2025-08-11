@@ -3,3 +3,4 @@
 from .mappings import *
 from .TimeSeriesDataset import *
 from .utils import *
+from .plotting import *
