@@ -208,16 +208,14 @@ class TimeSeriesDataset():
         from seshatdatasetanalysis.mappings import miltech_mapping
         miltech_variables = [category for key in miltech_mapping.keys() for category in miltech_mapping[key].keys()]
         # strong evidence rule for all miltech variables
-        self.raw[miltech_variables] = self.raw[miltech_variables].fillna(0)
-
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
         self.scv['Weapon'] = len(miltech_mapping['Weapon'])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category='Weapon', nan_handling='zero'), axis=1)
         self.scv['Armor'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Armor_max"), axis = 1) + len(miltech_mapping["Armor_mean"])*self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category = "Armor_mean"), axis=1)
-        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", nan_handling='remove'), axis=1)
+        self.raw["other-animals"] = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Other Animals", nan_handling='zero'), axis=1)
         self.scv['Animal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Animals"), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
-        fort_type = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", nan_handling='remove'), axis=1)
+        fort_type = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", nan_handling='zero'), axis=1)
         long_wall = (self.raw['long-walls']>0)*1
         surroundings = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Surroundings"), axis=1)
         self.scv['Defense'] = fort_max + fort_type + long_wall + surroundings
@@ -225,7 +223,7 @@ class TimeSeriesDataset():
         self.scv['Iron'] = self.raw['irons']
         self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
         miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
-        self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', nan_handling='remove', min_vals = 0.5), axis=1)
+        self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', nan_handling='zero', min_vals = 0.5), axis=1)
 
     def build_MSP(self):
         from seshatdatasetanalysis.mappings import ideology_mapping

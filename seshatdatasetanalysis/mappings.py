@@ -123,7 +123,7 @@ social_complexity_mapping = {
              },
              
     "Hierarchy": {"administrative-levels": 1,
-                "religious-levels": 1,
+                # "religious-levels": 1,
                 "military-levels": 1,
                 "settlement-hierarchies": 1
                 },

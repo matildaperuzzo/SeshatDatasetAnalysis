@@ -151,7 +151,7 @@ def grid_bubble_plot(tsd, col_x, col_y, col_color, cmap = 'coolwarm', nbins = No
     ax.set_xlabel(col_x)
     ax.set_ylabel(col_y)
     plt.colorbar(ax.collections[0], label=col_color)
-    plt.show()
+    # plt.show()
     return fig, ax
 
 
@@ -317,7 +317,7 @@ def band_plot(tsd, col_x, col_y, col_z = None, nbins = None, grid_size = 1, cmap
 if __name__ == "__main__":
 
     tsd = sda.TimeSeriesDataset(['sc'], file_path='test_dataset')
-
-    # grid_bubble_plot(tsd.scv, 'Hierarchy', 'Pop', 'Information', cmap='coolwarm', grid_size = 0.75, scale_size = 5)
+    tsd.build_social_complexity()
+    grid_bubble_plot(tsd.scv, 'Hierarchy', 'Pop', 'Information', cmap='coolwarm', grid_size = 0.75, scale_size = 5)
     # plot_fit_coefficients(tsd.scv, x_cols=['Pop','Cap','Terr'], y_cols=['Information','Infrastructure','Money'], regression_type='linear', cmap='coolwarm', pval_max= 1)
-    band_plot(tsd.scv, 'Pop', 'Information', col_z = 'Cap', nbins=10, grid_size=0.75, cmap='coolwarm', error='sem')
+    # band_plot(tsd.scv, 'Pop', 'Information', col_z = 'Cap', nbins=10, grid_size=0.75, cmap='coolwarm', error='sem')
