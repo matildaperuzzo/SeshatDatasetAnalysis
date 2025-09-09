@@ -6,7 +6,7 @@ import seshatdatasetanalysis as sda
 import seshatdatasetanalysis.utils as utils
 
 
-def polity_bubble_plot(tsd, col_x, col_y, col_color, show_background_data = False, cmap = 'coolwarm', size_scale = 10, vmin = None, vmax = None):
+def polity_bubble_plot(tsd, col_x, col_y, col_color, show_background_data = False, cmap = 'coolwarm', size_scale = 10, vmin = None, vmax = None, ax = None):
     """
     Create a bubble plot of polity data with specified x and y columns, color coding, and optional background plot where all x,y points are shown (useful for 
     visualizing how much data is available in col_color compared to col_x and col_y). Bubble sizes are scaled based on the number of observations per polity, and colors are determined by the specified color column.
@@ -20,6 +20,7 @@ def polity_bubble_plot(tsd, col_x, col_y, col_color, show_background_data = Fals
         size_scale: Scale factor for bubble sizes based on number of observations per polity.
         vmin: Minimum value for color scaling (optional).
         vmax: Maximum value for color scaling (optional).
+        ax: Optional matplotlib axes object to plot on (if None, will create a new figure and axes).
     Returns:
         fig: The matplotlib figure object.
         ax: The matplotlib axes object.
@@ -35,8 +36,11 @@ def polity_bubble_plot(tsd, col_x, col_y, col_color, show_background_data = Fals
     
     if col_x not in data.columns or col_y not in data.columns or col_color not in data.columns or 'PolityName' not in data.columns:
         raise ValueError(f"Columns PolityName, {col_x}, {col_y}, or {col_color} not found in the dataset.")
-    
-    fig, ax = plt.subplots(figsize=(4, 5))
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(4, 5))
+    else:
+        fig = ax.figure
 
     if show_background_data:
         dataset_plot = data.copy().dropna(subset=[col_x, col_y])
@@ -67,7 +71,7 @@ def polity_bubble_plot(tsd, col_x, col_y, col_color, show_background_data = Fals
 
     return fig, ax, scatter
 
-def grid_bubble_plot(tsd, col_x, col_y, col_color, cmap = 'coolwarm', nbins = None, grid_size = 1, scale_size = 5, vmin = None, vmax = None):
+def grid_bubble_plot(tsd, col_x, col_y, col_color, cmap = 'coolwarm', nbins = None, grid_size = 1, scale_size = 5, vmin = None, vmax = None, ax = None):
     """
     Create a grid bubble plot of polity data with specified x and y columns, color coding, and bubble sizes scaled based on the number of observations per polity.
     Inputs:
@@ -82,6 +86,7 @@ def grid_bubble_plot(tsd, col_x, col_y, col_color, cmap = 'coolwarm', nbins = No
         scale_size: Scale factor for bubble sizes.
         vmin: Minimum value for color scaling (optional).
         vmax: Maximum value for color scaling (optional).
+        ax: Optional matplotlib axes object to plot on (if None, will create a new figure and axes).
     Returns:
         fig: The matplotlib figure object.
         ax: The matplotlib axes object.
@@ -136,7 +141,11 @@ def grid_bubble_plot(tsd, col_x, col_y, col_color, cmap = 'coolwarm', nbins = No
     counts = df.groupby(['x_bin', 'y_bin'])['z'].count().unstack()
     x,y = np.meshgrid(x_bins, y_bins)
 
-    fig, ax = plt.subplots(figsize=(4, 5))
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(4, 5))
+    else:
+        fig = ax.figure
+
     if vmin is None:
         vmin = grid.min().min()
     if vmax is None:
@@ -228,7 +237,7 @@ def plot_fit_coefficients(tsd, y_cols, x_cols, regression_type, pval_max = 0.05,
     # plt.show()
     return fig, ax
 
-def band_plot(tsd, col_x, col_y, col_z = None, nbins = None, grid_size = 1, cmap = 'coolwarm', error = 'standard'):
+def band_plot(tsd, col_x, col_y, col_z = None, nbins = None, grid_size = 1, cmap = 'coolwarm', error = 'standard', ax = None):
 
     """
     Create a band plot of data with specified x and y columns, color coding, and optional error bands.
@@ -241,11 +250,17 @@ def band_plot(tsd, col_x, col_y, col_z = None, nbins = None, grid_size = 1, cmap
         grid_size: Size of the grid for the band plot.
         cmap: Colormap to use for coloring the bands.
         error: Type of error to calculate ('standard' or 'sem').
+        ax: Optional matplotlib axes object to plot on (if None, will create a new figure and axes).
     Returns:
         fig: The matplotlib figure object.
         ax: The matplotlib axes object.
     """
-    
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(4, 5))
+    else:
+        fig = ax.figure
+
     if isinstance(tsd, sda.TimeSeriesDataset):
         df = tsd.scv_imputed
     elif isinstance(tsd, pd.DataFrame):
