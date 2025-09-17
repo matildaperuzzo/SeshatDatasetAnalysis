@@ -162,11 +162,13 @@ class Template():
             self.template = pd.concat([self.template, pol_df_new])
         self.template.reset_index(drop=True, inplace=True)
 
-    def download_all_categories(self):
+    def download_all_categories(self, check_polities : bool = False):
         """
         Downloads datasets for all categories in the attribute self.categories.
         This method iterates over all categories, fetches URLs for each category,
         and then adds the datasets from the fetched URLs to the instance.
+        Parameters:
+            check_polities (bool): Whether to check if all polities are included in the downloads, and try to separately download missing ones. This will make the download much slower.
         Returns:
             A dict with key-value pairs of variable names and URLs that failed to download.
         """
@@ -176,21 +178,22 @@ class Template():
         for category in self.categories:
             urls.update(fetch_urls(category))
         for key in urls.keys():
-            if not self.add_dataset_from_url(key,urls[key]):
+            if not self.add_dataset_from_url(key, urls[key], check_polities):
                 errors[key] = urls[key]
         return errors
     
-    def add_dataset_from_url(self, key, url):
+    def add_dataset_from_url(self, key, url, check_polities : bool = False):
         """
         Adds a dataset to the template from a given URL.
         This method checks if the dataset identified by the given key is already present in the template's dataframe.
         If the dataset is not present, it downloads the data from the specified URL, measures the download time,
         and adds the dataset to the template.
         Parameters:
-        key (str): The key to identify the dataset in the dataframe.
-        url (str): The URL from which to download the dataset.
+            key (str): The key to identify the dataset in the dataframe.
+            url (str): The URL from which to download the dataset.
+            check_polities (bool): Whether to check if all polities are included in the download, and try to separately download missing ones.
         Returns:
-        Whether the dataset could be successfully downloaded.
+            Whether the dataset could be successfully downloaded.
         """
 
         # check if the dataset is already in the dataframe
@@ -206,11 +209,11 @@ class Template():
         if len(df) == 0:
             print(f"Empty dataset for {key}")
             return False
-        self.add_to_template(df, key)
+        self.add_to_template(df, key, check_polities)
         return True
 
 
-    def add_to_template(self, df, key):
+    def add_to_template(self, df, key, check_polities : bool = False):
         """
         Adds data from a given DataFrame to the template based on a specified key.
         This function processes the input DataFrame `df` and adds its data to the template.
@@ -221,6 +224,7 @@ class Template():
         Args:
             df (pandas.DataFrame): The DataFrame containing the data to be added.
             key (str): The key used to identify the dataset and construct the URL for downloading missing data.
+            check_polities (bool): Whether to check if all polities are included in df, and try to download missing ones.
         Returns:
             None
         """
@@ -245,19 +249,20 @@ class Template():
             new_df = pd.DataFrame(columns=["NGA", "PolityID", "PolityName", "Section", "Subsection","value_from", "value_to", "year_from", "year_to", "is_disputed", "is_uncertain"])
         
         for pol in polities:
-            if pol not in df.polity_name.values:
+            if check_polities and pol not in df.polity_name.values:
                 # pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
                 pol_df = download_data("https://seshat-db.com/api/"+f"{key}/?polity__new_name__icontains={pol}",size = None)
-                if pol_df.empty:
-                    continue
-                else:
-                    print(f"Found {pol} in {key} dataset")
+                if not pol_df.empty:
+                    print(f"Downloaded {pol} for {key} dataset")
             else:
                 pol_df = df.loc[df.polity_name == pol]
             
+            if pol_df.empty:
+                continue
+            
             self.add_polity(pol_df, range_var, variable_name, col_name)
         
-            if self.save_excel and len(pol_df) > 0:
+            if self.save_excel:
                 if range_var:
                     new_df = pd.DataFrame({
                         "NGA": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
