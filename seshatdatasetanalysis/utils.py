@@ -10,7 +10,7 @@ import seshatdatasetanalysis as sda
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
-def download_data(url,size = 1000):
+def download_data(url, size = None):
     
     if pd.isna(size):
         url = url
