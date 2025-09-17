@@ -168,14 +168,17 @@ class Template():
         This method iterates over all categories, fetches URLs for each category,
         and then adds the datasets from the fetched URLs to the instance.
         Returns:
-            None
+            A dict with key-value pairs of variable names and URLs that failed to download.
         """
 
         urls = {}
+        errors = {}
         for category in self.categories:
             urls.update(fetch_urls(category))
         for key in urls.keys():
-            self.add_dataset_from_url(key,urls[key])
+            if not self.add_dataset_from_url(key,urls[key]):
+                errors[key] = urls[key]
+        return errors
     
     def add_dataset_from_url(self, key, url):
         """
@@ -187,7 +190,7 @@ class Template():
         key (str): The key to identify the dataset in the dataframe.
         url (str): The URL from which to download the dataset.
         Returns:
-        None
+        Whether the dataset could be successfully downloaded.
         """
 
         # check if the dataset is already in the dataframe
@@ -202,8 +205,9 @@ class Template():
         print(f"Downloaded {key} dataset with {len(df)} rows in {toc-tic} seconds")
         if len(df) == 0:
             print(f"Empty dataset for {key}")
-            return
+            return False
         self.add_to_template(df, key)
+        return True
 
 
     def add_to_template(self, df, key):
