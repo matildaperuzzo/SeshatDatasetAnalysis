@@ -14,16 +14,15 @@ class Template():
                  categories = list(['sc']),
                  polity_url = "https://seshat-db.com/api/core/polities/",
                  file_path = None,
-                 save_excel = False
+                 keep_raw_data = True
                  ):
         self.template = pd.DataFrame()
         self.categories = categories
         self.polity_url = polity_url
-        self.save_excel = save_excel
+        self.keep_raw_data = keep_raw_data
 
         self.debug = pd.DataFrame(columns=["polity", "variable", "label", "issue"])
-        if self.save_excel:
-            self.full_dataset = pd.DataFrame(columns=["NGA", "PolityID", "PolityName", "Section", "Subsection","value_from", "value_to", "year_from", "year_to", "is_disputed", "is_uncertain"])
+        self.full_dataset = pd.DataFrame()
 
         if (polity_url is not None ) and (file_path is None):
             self.initialize_dataset(polity_url)
@@ -245,9 +244,6 @@ class Template():
         polities = self.template.PolityName.unique()
         df.columns = df.columns.str.lower()
         
-        if self.save_excel:
-            new_df = pd.DataFrame() # do not set columns here, as that can result in warnings in some cases
-        
         for pol in polities:
             if check_polities and pol not in df.polity_name.values:
                 # pol_old_name = self.template.loc[self.template.PolityName == pol, 'PolityOldName'].values[0]
@@ -262,7 +258,7 @@ class Template():
             
             self.add_polity(pol_df, range_var, variable_name, col_name)
         
-            if self.save_excel:
+            if self.keep_raw_data:
                 if range_var:
                     new_df = pd.DataFrame({
                         "seshat_region": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
@@ -751,7 +747,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc','wf','rt','ec','rel'], save_excel=False)
+    template = Template(categories = ['sc','wf','rt','ec','rel'], keep_raw_data=True)
     template.download_all_categories()
     template.save_dataset("template.csv")
     
