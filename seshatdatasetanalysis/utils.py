@@ -21,7 +21,7 @@ def download_data(url, size = None):
     while True:
         try:
             try:
-                response = requests.get(url, timeout=5)
+                response = requests.get(url, timeout=20)
             except requests.exceptions.Timeout:
                 # print("Timeout occurred")
                 continue
