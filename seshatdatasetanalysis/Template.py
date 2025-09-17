@@ -246,7 +246,7 @@ class Template():
         df.columns = df.columns.str.lower()
         
         if self.save_excel:
-            new_df = pd.DataFrame(columns=["NGA", "PolityID", "PolityName", "Section", "Subsection","value_from", "value_to", "year_from", "year_to", "is_disputed", "is_uncertain"])
+            new_df = pd.DataFrame() # do not set columns here, as that can result in warnings in some cases
         
         for pol in polities:
             if check_polities and pol not in df.polity_name.values:
@@ -265,31 +265,35 @@ class Template():
             if self.save_excel:
                 if range_var:
                     new_df = pd.DataFrame({
-                        "NGA": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
-                        "PolityID": pol_df['polity_id'],
-                        "PolityName": pol_df['polity_name'],
-                        "Section": key.split('/')[0],
-                        "Subsection": key.split('/')[1],
+                        "seshat_region": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
+                        "polity_number": pol_df['polity_id'],
+                        "polity_id": pol_df['polity_name'],
+                        "section": key.split('/')[0],
+                        "variable_name": variable_name,
                         "value_from": pol_df[row_variable_name + '_from'],
                         "value_to": pol_df[row_variable_name + '_to'],
                         "year_from": pol_df['year_from'],
                         "year_to": pol_df['year_to'],
                         "is_disputed": pol_df['is_disputed'],
-                        "is_uncertain": pol_df['is_uncertain']
+                        "is_uncertain": pol_df['is_uncertain'],
+                        "api_name": key.split('/')[1],
+                        "range_var": range_var
                     })
                 else:
                     new_df = pd.DataFrame({
-                        "NGA": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
-                        "PolityID": pol_df['polity_id'],
-                        "PolityName": pol_df['polity_name'],
-                        "Section": key.split('/')[0],
-                        "Subsection": key.split('/')[1],
+                        "seshat_region": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
+                        "polity_number": pol_df['polity_id'],
+                        "polity_id": pol_df['polity_name'],
+                        "section": key.split('/')[0],
+                        "variable_name": variable_name,
                         "value_from": pol_df[row_variable_name],
                         "value_to": np.nan,
                         "year_from": pol_df['year_from'],
                         "year_to": pol_df['year_to'],
                         "is_disputed": pol_df['is_disputed'],
-                        "is_uncertain": pol_df['is_uncertain']
+                        "is_uncertain": pol_df['is_uncertain'],
+                        "api_name": key.split('/')[1],
+                        "range_var": range_var
                     })
                 self.full_dataset = pd.concat([self.full_dataset, new_df], ignore_index=True)
         self.perform_tests(df, row_variable_name, range_var, col_name)
