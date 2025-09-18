@@ -10,7 +10,7 @@ import seshatdatasetanalysis as sda
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
-def download_data(url,size = 1000):
+def download_data(url, size = None):
     
     if pd.isna(size):
         url = url
@@ -18,28 +18,39 @@ def download_data(url,size = 1000):
         url = url+"?page_size="+str(size)
     df = pd.DataFrame()
     
+    n_timeout = 0
+    
     while True:
         try:
             try:
-                response = requests.get(url, timeout=5)
+                response = requests.get(url, timeout=20)
             except requests.exceptions.Timeout:
                 # print("Timeout occurred")
+                n_timeout += 1
+                if n_timeout > 10:
+                    print(f"10th timeout when downloading {url}; giving up")
+                    return pd.DataFrame()
                 continue
+            if not response.ok:
+                print(f"Error downloading data from {url}: {response.status_code}")
+                return pd.DataFrame()
+            
             data = response.json()
-            df_temp = pd.DataFrame(data)
-
-            for polity_dict in df_temp.results:
+            
+            for polity_dict in data['results']:
 
                 # unpack polity_dict
                 flattened_dict = json_normalize(polity_dict, sep='_')
                 df = pd.concat([df, flattened_dict], axis=0)
 
-            url = df_temp.next.values[0]
+            url = data['next']
+            if url is None:
+                # got to the end of the dataset
+                print(f"Downloaded {len(df)} rows")
+                return df
 
         except:
-            if len(df) > 0:
-                print(f"Downloaded {len(df)} rows")
-            return df
+            return pd.DataFrame()
 
 def download_data_json(filepath):
 
