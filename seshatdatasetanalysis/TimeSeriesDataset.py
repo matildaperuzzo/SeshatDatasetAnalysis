@@ -256,10 +256,6 @@ class TimeSeriesDataset():
             # identify duplicates in scv_imputed
         unique_rows = scv.copy()
         self.scv_imputed['unique'] = 0
-        # if fit is a column of imputed dataset
-        # if 'fit' not in self.scv_imputed.columns:
-        #     self.scv_imputed["fit"] = [[0 for _ in range(len(self.scv.columns))] for _ in range(len(self.scv_imputed))]
-        
         self.scv_imputed.loc[unique_rows.index, 'unique'] = 1
 
         self.scv_imputed[columns] = self.scv[columns].copy()
@@ -339,6 +335,9 @@ class TimeSeriesDataset():
             self.imputation_fits.drop_duplicates(subset=['Y column', 'R2','num_rows'], inplace=True)
 
     def impute_values_with_fits(self, columns, add_resid = False):
+        unique_rows = self.scv[columns].copy().drop_duplicates()
+        self.scv_imputed['unique'] = 0
+        self.scv_imputed.loc[unique_rows.index, 'unique'] = 1
         for index, row in self.scv[columns].iterrows():
             # find positions of nans
             nan_cols = row[row.isna()].index
