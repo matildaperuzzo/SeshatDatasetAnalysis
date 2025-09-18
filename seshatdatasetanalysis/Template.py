@@ -329,29 +329,39 @@ class Template():
             n_added = 0
             self.add_empty_col(var)
             tmp1 = self.full_dataset.loc[self.full_dataset.variable_name == var]
+            # We need to: (1) detect whether this is a range variable; (2) give the correct column names
+            range_var = False
+            if 'range_var' in tmp1.columns:
+                # data downloaded by us, it should have a consistent marking for range_var
+                range_var = tmp1.range_var.iloc[0]
+                if range_var:
+                    tmp1.value_from = tmp1.value_from.astype(np.float64) # this will throw an exception on non-numeric values
+            else:
+                # check if all are numeric
+                is_numeric = tmp1.value_from.apply(
+                    lambda x: isinstance(x, int) or isinstance(x, float) or
+                    isinstance(x, np.float64) or isinstance(x, np.float32))
+                have_to = not tmp1.value_to.isna().all()
+                if not is_numeric:
+                    try:
+                        tmp2 = tmp1.value_from.astype(np.float64)
+                        tmp1.value_from = tmp2
+                        is_numeric = True
+                    except:
+                        pass
+                if is_numeric:
+                    range_var = True
+                    ##!! TODO: check that value_to is all numeric as well (although this never has been a problem)
+                elif have_to:
+                    raise BaseException(f"Expected numeric values for {var}!")
+            
+            row_variable_name = 'value' if range_var else 'value_from'
+            
             for pol in polities:
                 tmp2 = tmp1.loc[tmp1.polity_id == pol]
                 if not tmp2.empty:
-                    # We need to: (1) detect whether this is a range variable; (2) give the correct column names
-                    range_var = False
-                    if 'range_var' in tmp1.columns:
-                        # data downloaded by us, it should have a consistent marking for range_var
-                        range_var = tmp1.range_var.iloc[0]
-                    else:
-                        # check if all are numeric
-                        is_numeric = tmp2.value_from.apply(
-                            lambda x: isinstance(x, int) or isinstance(x, float) or
-                            isinstance(x, np.float64) or isinstance(x, np.float32))
-                        have_to = not tmp2.value_to.isna().all()
-                        if is_numeric:
-                            range_var = True
-                            ##!! TODO: check that value_to is all numeric as well (although this never has been a problem)
-                            ##!! TODO: when read from a CSV, year_from can be str type ??
-                        elif have_to:
-                            raise BaseException(f"Expected numeric values for {var} (polity: {pol})!")
-                    
-                    row_variable_name = 'value' if range_var else 'value_from'
                     n_added += self.add_polity(pol, tmp2, range_var, row_variable_name, var)
+            
             if n_added == 0:
                 print(f"No valid data added for {var}")
             else:
