@@ -340,7 +340,7 @@ class Template():
                 # check if all are numeric
                 is_numeric = tmp1.value_from.apply(
                     lambda x: isinstance(x, int) or isinstance(x, float) or
-                    isinstance(x, np.float64) or isinstance(x, np.float32))
+                    isinstance(x, np.float64) or isinstance(x, np.float32)).all()
                 have_to = not tmp1.value_to.isna().all()
                 if not is_numeric:
                     try:
@@ -636,6 +636,30 @@ class Template():
             raise BaseException(f"Extra entries in the template for variable {col_name}")
 
         return "Passed tests"
+
+    
+    def read_polaris(self, filename : str):
+        """
+        Read data from Polaris dataset in xlsx format. Data is stored in self.full_dataset
+        without further checks.
+
+        Parameters
+        ----------
+        filename : str
+            Path to xlsx file to read. It is expected to be in the format of the official
+            Polaris release.
+
+        Returns
+        -------
+        None. Will throw exception if the input file is not in the expected format.
+
+        """
+        tmp1 = list()
+        sheets_needed = ["Social complexity", "Warfare", "Luxury goods", "Religion"]
+        for a in sheets_needed:
+            tmp1.append(pd.read_excel(filename, a))
+        self.full_dataset = pd.concat(tmp1)
+        ##!! TODO: do some basic checks, e.g. column names, data types, etc.
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
 
