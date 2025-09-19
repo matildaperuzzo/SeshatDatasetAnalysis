@@ -151,17 +151,13 @@ class TimeSeriesDataset():
     def sample_from_template(self, rows, variable, label = 'pt', polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
         pol = rows.PolityID.values[0]
         years = rows.Year.values
-        entry = self.template.template.loc[(self.template.template.PolityID == pol), variable]
-        if len(entry) == 0:
+        entry = self.template.template[variable].get(pol)
+        if entry is None:
             return [np.nan]*len(years)
-        if pd.isna(entry.values[0]):
-            return [np.nan]*len(years)
+        if not isinstance(entry, dict):
+            raise BaseException(f"Template data is in unexpected format for {pol} -- {variable}!")
         
-        if isinstance(entry.values[0], str):
-            _dict = eval(entry.values[0])
-        elif isinstance(entry.values[0], dict):
-            _dict = entry.values[0]
-        results = self.template.sample_dict(_dict, years, error = polity_year_error, interpolation = sampling_interpolation, sampling = sampling_ranges)
+        results = self.template.sample_dict(entry, years, error = polity_year_error, interpolation = sampling_interpolation, sampling = sampling_ranges)
 
         # check if any of the years are out of bounds
         not_in_bounds = np.array([r == "Out of bounds" for r in results])
