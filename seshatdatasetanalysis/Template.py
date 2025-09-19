@@ -20,6 +20,7 @@ class Template():
         self.categories = categories
         self.polity_url = polity_url
         self.keep_raw_data = keep_raw_data
+        self.vars_in_template = set()
 
         self.debug = pd.DataFrame(columns=["polity", "variable", "label", "issue"])
         self.full_dataset = pd.DataFrame()
@@ -168,6 +169,8 @@ class Template():
             # add the temporary dataframe to the template
             self.template = pd.concat([self.template, pol_df_new])
         self.template.reset_index(drop=True, inplace=True)
+        
+        self.vars_in_template = set()
 
     def download_all_categories(self, check_polities : bool = False, add_to_template : bool = True):
         """
@@ -313,6 +316,7 @@ class Template():
                 print(f"No valid data added for {key}")
             else:
                 self.perform_tests(df, row_variable_name, range_var, variable_name)
+                self.vars_in_template.add(variable_name)
                 print(f"Added {key} dataset to template")
         
     
@@ -366,6 +370,7 @@ class Template():
                 print(f"No valid data added for {var}")
             else:
                 self.perform_tests(tmp1, row_variable_name, range_var, var)
+                self.vars_in_template.add(var)
                 print(f"Added {var} dataset to template")
         
 
