@@ -365,7 +365,7 @@ class Template():
             if n_added == 0:
                 print(f"No valid data added for {var}")
             else:
-                self.perform_tests(tmp2, row_variable_name, range_var, var)
+                self.perform_tests(tmp1, row_variable_name, range_var, var)
                 print(f"Added {var} dataset to template")
         
 
