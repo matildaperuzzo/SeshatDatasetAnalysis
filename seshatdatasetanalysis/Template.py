@@ -6,7 +6,7 @@ import os
 import random
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from seshatdatasetanalysis.utils import download_data, fetch_urls, weighted_mean, get_max
-from seshatdatasetanalysis.mappings import value_mapping, social_complexity_mapping, miltech_mapping, ideology_mapping
+from seshatdatasetanalysis.mappings import value_mapping
 
 
 class Template():
@@ -20,6 +20,7 @@ class Template():
         self.categories = categories
         self.polity_url = polity_url
         self.keep_raw_data = keep_raw_data
+        self.vars_in_template = set()
 
         self.debug = pd.DataFrame(columns=["polity", "variable", "label", "issue"])
         self.full_dataset = pd.DataFrame()
@@ -168,6 +169,8 @@ class Template():
             # add the temporary dataframe to the template
             self.template = pd.concat([self.template, pol_df_new])
         self.template.reset_index(drop=True, inplace=True)
+        
+        self.vars_in_template = set()
 
     def download_all_categories(self, check_polities : bool = False, add_to_template : bool = True):
         """
@@ -313,6 +316,7 @@ class Template():
                 print(f"No valid data added for {key}")
             else:
                 self.perform_tests(df, row_variable_name, range_var, variable_name)
+                self.vars_in_template.add(variable_name)
                 print(f"Added {key} dataset to template")
         
     
@@ -329,33 +333,44 @@ class Template():
             n_added = 0
             self.add_empty_col(var)
             tmp1 = self.full_dataset.loc[self.full_dataset.variable_name == var]
+            # We need to: (1) detect whether this is a range variable; (2) give the correct column names
+            range_var = False
+            if 'range_var' in tmp1.columns:
+                # data downloaded by us, it should have a consistent marking for range_var
+                range_var = tmp1.range_var.iloc[0]
+                if range_var:
+                    tmp1.value_from = tmp1.value_from.astype(np.float64) # this will throw an exception on non-numeric values
+            else:
+                # check if all are numeric
+                is_numeric = tmp1.value_from.apply(
+                    lambda x: isinstance(x, int) or isinstance(x, float) or
+                    isinstance(x, np.float64) or isinstance(x, np.float32)).all()
+                have_to = not tmp1.value_to.isna().all()
+                if not is_numeric:
+                    try:
+                        tmp2 = tmp1.value_from.astype(np.float64)
+                        tmp1.value_from = tmp2
+                        is_numeric = True
+                    except:
+                        pass
+                if is_numeric:
+                    range_var = True
+                    ##!! TODO: check that value_to is all numeric as well (although this never has been a problem)
+                elif have_to:
+                    raise BaseException(f"Expected numeric values for {var}!")
+            
+            row_variable_name = 'value' if range_var else 'value_from'
+            
             for pol in polities:
                 tmp2 = tmp1.loc[tmp1.polity_id == pol]
                 if not tmp2.empty:
-                    # We need to: (1) detect whether this is a range variable; (2) give the correct column names
-                    range_var = False
-                    if 'range_var' in tmp1.columns:
-                        # data downloaded by us, it should have a consistent marking for range_var
-                        range_var = tmp1.range_var.iloc[0]
-                    else:
-                        # check if all are numeric
-                        is_numeric = tmp2.value_from.apply(
-                            lambda x: isinstance(x, int) or isinstance(x, float) or
-                            isinstance(x, np.float64) or isinstance(x, np.float32))
-                        have_to = not tmp2.value_to.isna().all()
-                        if is_numeric:
-                            range_var = True
-                            ##!! TODO: check that value_to is all numeric as well (although this never has been a problem)
-                            ##!! TODO: when read from a CSV, year_from can be str type ??
-                        elif have_to:
-                            raise BaseException(f"Expected numeric values for {var} (polity: {pol})!")
-                    
-                    row_variable_name = 'value' if range_var else 'value_from'
                     n_added += self.add_polity(pol, tmp2, range_var, row_variable_name, var)
+            
             if n_added == 0:
                 print(f"No valid data added for {var}")
             else:
-                self.perform_tests(tmp2, row_variable_name, range_var, var)
+                self.perform_tests(tmp1, row_variable_name, range_var, var)
+                self.vars_in_template.add(var)
                 print(f"Added {var} dataset to template")
         
 
@@ -626,6 +641,30 @@ class Template():
             raise BaseException(f"Extra entries in the template for variable {col_name}")
 
         return "Passed tests"
+
+    
+    def read_polaris(self, filename : str):
+        """
+        Read data from Polaris dataset in xlsx format. Data is stored in self.full_dataset
+        without further checks.
+
+        Parameters
+        ----------
+        filename : str
+            Path to xlsx file to read. It is expected to be in the format of the official
+            Polaris release.
+
+        Returns
+        -------
+        None. Will throw exception if the input file is not in the expected format.
+
+        """
+        tmp1 = list()
+        sheets_needed = ["Social complexity", "Warfare", "Luxury goods", "Religion"]
+        for a in sheets_needed:
+            tmp1.append(pd.read_excel(filename, a))
+        self.full_dataset = pd.concat(tmp1)
+        ##!! TODO: do some basic checks, e.g. column names, data types, etc.
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
 
