@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import json
+import pickle as pkl
 import time
 import sys
 import os
@@ -17,7 +19,7 @@ class Template():
                  file_path = None,
                  keep_raw_data = True
                  ):
-        self.template = pd.DataFrame()
+        self.template = dict() # dict of dicts, keys are variable names, for each variable, we have a dict of polity IDs
         self.categories = categories
         self.polity_url = polity_url
         self.keep_raw_data = keep_raw_data
@@ -30,7 +32,9 @@ class Template():
         if (polity_url is not None ) and (file_path is None):
             self.initialize_dataset(polity_url)
         elif (file_path is not None):
-            self.load_dataset(file_path)
+            #!! TODO: detect format?
+            self.load_template_json(file_path)
+            # self.load_dataset(file_path)
         else:
             print("Please provide either a polity_url or a file_path")
             sys.exit()
@@ -39,7 +43,7 @@ class Template():
         return len(self.template)
 
     def __getitem__(self, idx):
-        return self.template.iloc[idx]
+        return self.template[idx]
     
     # ---------------------- HELPER FUNCTIONS ---------------------- #
     def compare_dicts(self, dict1, dict2):
@@ -69,15 +73,12 @@ class Template():
         """Check if two rows are the same entry by entry. Returns a boolean."""
         return self.compare_rows(row1, row2) == {}
 
-    def check_for_nans(self,d):
+    @staticmethod
+    def check_for_nans(d):
         """Check if a variable dictionary contains NaN values."""
 
         if not isinstance(d, dict):
-            if np.isnan(d):
-                return False
-            else:
-                print(d)
-            return False
+            return True # only valid polities should be present
         
         def contains_nan(values):
             # Check if the values are numeric and contain NaNs
@@ -101,14 +102,6 @@ class Template():
         
         return False
 
-    def check_nan_polities(self, pol, df, variable_name):
-        """Check if a polity has all NaN values for a given variable."""
-        pol_df = df.loc[df.polity_id == pol]
-        if pol_df.empty:
-            return True
-        if pol_df[variable_name].isnull().all():
-            return True
-        return False
 
     @staticmethod
     def is_none_value(val):
@@ -126,8 +119,7 @@ class Template():
         return (val_from, val_to)
 
     def add_empty_col(self, variable_name):
-        self.template[variable_name] = np.nan
-        self.template[variable_name] = self.template[variable_name].astype('object')
+        self.template[variable_name] = dict() # keys are polity IDs
 
     # ---------------------- BUILDING FUNCTIONS ---------------------- #
 
@@ -149,30 +141,24 @@ class Template():
         """
 
         # set up empty template
-        self.template = pd.DataFrame(columns = ["NGA", "PolityID", "PolityName"])
-        # specify the columns data types
-        self.template['PolityID'] = self.template['PolityID'].astype('int')
+        self.template = dict()
         # download the polity data
         if self.polity_df.empty:
             if url is None:
                 raise BaseException('No download URL!')
             self.polity_df = download_data(url)
-
-        polityIDs = self.polity_df.id.unique()
-        # iterate over all polities
-        for polID in polityIDs:
-            pol_df = self.polity_df.loc[self.polity_df.id == polID, ['home_nga_name', 'id', 'name','start_year','end_year']]
-            # create a temporary dataframe with all data for current polity
-            pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
-                                            "PolityID": pol_df.id.values[0], 
-                                            "PolityName": pol_df.name.values[0],
-                                            "StartYear": pol_df.start_year.values[0],
-                                            "EndYear": pol_df.end_year.values[0]}), index = [0])
-            # add the temporary dataframe to the template
-            self.template = pd.concat([self.template, pol_df_new])
-        self.template.reset_index(drop=True, inplace=True)
         
+        for col in ["NGA", "StartYear", "EndYear"]:
+            self.template[col] = dict()
+        for i in range(self.polity_df.shape[0]):
+            polity_id = self.polity_df.name.iloc[i]
+            if not pd.isna(self.polity_df.home_nga_name.iloc[i]):
+                self.template["NGA"][polity_id] = self.polity_df.home_nga_name.iloc[i]
+            self.template["StartYear"][polity_id] = self.polity_df.start_year.iloc[i]
+            self.template["EndYear"][polity_id] = self.polity_df.end_year.iloc[i]
+
         self.vars_in_template = set()
+
 
     def download_all_categories(self, check_polities : bool = False, add_to_template : bool = True):
         """
@@ -210,11 +196,6 @@ class Template():
             Whether the dataset could be successfully downloaded.
         """
 
-        # check if the dataset is already in the dataframe
-        if key in self.template.columns:
-            print(f"Dataset {key} already in dataframe")
-            return
-        
         # download the data
         tic = time.time()
         df = download_data(url)
@@ -248,8 +229,16 @@ class Template():
             # better to throw an exception than silently throw away data if the user
             # called this function with the wrong parameters
             raise BaseException('Nothing to do!')
-
+            
         variable_name = df.name.unique()[0].lower()
+        
+        if add_to_template:
+            if variable_name in template:
+                print("{variable_name} already in template")
+                if not self.keep_raw_data:
+                    return
+                add_to_template = False
+        
         row_variable_name = variable_name
         if (variable_name not in df.columns) and (variable_name + "_from" not in df.columns):
             row_variable_name = 'coded_value'
@@ -260,7 +249,7 @@ class Template():
             row_variable_name = variable_name.replace('polity_', '')
         
         self.add_empty_col(variable_name)
-        polities = self.template.PolityName.unique()
+        polities = self.polity_df.name.unique()
         df.columns = df.columns.str.lower()
         n_added = 0
         
@@ -277,12 +266,12 @@ class Template():
                 continue
             
             if add_to_template:
-                n_added += self.add_polity(pol_df.polity_name.values[0], pol_df, range_var, variable_name, variable_name)
+                n_added += self.add_polity(pol, pol_df, range_var, variable_name, variable_name)
         
             if self.keep_raw_data:
                 if range_var:
                     new_df = pd.DataFrame({
-                        "seshat_region": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
+                        "seshat_region": self.template['NGA'].get(pol),
                         "polity_number": pol_df['polity_id'],
                         "polity_id": pol_df['polity_name'],
                         "section": key.split('/')[0],
@@ -298,7 +287,7 @@ class Template():
                     })
                 else:
                     new_df = pd.DataFrame({
-                        "seshat_region": self.template.loc[self.template.PolityID == pol_df.polity_id.iloc[0],'NGA'].values[0],
+                        "seshat_region": self.template['NGA'].get(pol),
                         "polity_number": pol_df['polity_id'],
                         "polity_id": pol_df['polity_name'],
                         "section": key.split('/')[0],
@@ -405,8 +394,8 @@ class Template():
         pol_df = pol_df.sort_values(by = 'year_from')
         pol_df = pol_df.reset_index(drop=True)
 
-        polity_years = [self.template.loc[self.template.PolityName == polity_id, 'StartYear'].values[0],
-                        self.template.loc[self.template.PolityName == polity_id, 'EndYear'].values[0]]
+        # note: this will throw an exception of polity_id is not known
+        polity_years = [self.template['StartYear'][polity_id], self.template['EndYear'][polity_id]]
         
         # reset variable dict variables
         times = [[]]
@@ -628,7 +617,8 @@ class Template():
             # this is normal if the value is coded as "unknown" for this polity
             return 0
         
-        self.template.loc[self.template.PolityName == polity_id, col_name] = [variable_dict]
+        self.template[col_name][polity_id] = variable_dict
+        # self.template.loc[self.template.PolityName == polity_id, col_name] = [variable_dict]
         return len(variable_dict['value'])
 
     @staticmethod
@@ -772,8 +762,7 @@ class Template():
         pol_df.reset_index(drop = True, inplace = True)
 
         # 2. Check whether date ranges are consistent and cut them to the polity date ranges
-        polity_years = [self.template.loc[self.template.PolityName == polity_id, 'StartYear'].values[0],
-                        self.template.loc[self.template.PolityName == polity_id, 'EndYear'].values[0]]
+        polity_years = [self.template['StartYear'][polity_id], self.template['EndYear'][polity_id]]
     
         pol_df, tmp_errors = Template.check_polity_dates(pol_df, polity_years)
         
@@ -867,22 +856,32 @@ class Template():
             raise BaseException('Unexpected empty result!')
         
         # 6.6. save the results
-        self.template.loc[self.template.PolityName == polity_id, col_name] = [variable_dict]
+        self.template[col_name][polity_id] = variable_dict
+        # self.template.loc[self.template.PolityName == polity_id, col_name] = [variable_dict]
         return len(variable_dict['value'])
 
 
     def perform_tests(self, df, variable_name, range_var, col_name):
-        if self.template[col_name].apply(lambda x: self.check_for_nans(x)).any():
-            raise BaseException(f"Error: NaNs found in the data for variable {col_name}")
+        for x in self.template[col_name].values():
+            if Template.check_for_nans(x):
+                raise BaseException(f"Error: NaNs found in the data for variable {col_name}")
+        
         if range_var:
             var_name = variable_name + "_from"
         else:
             var_name = variable_name
-        if (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) > self.template[col_name].isna()).all():
-            raise BaseException(f"Nans in template that are not in the template for variable {col_name}")
-        elif (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) < self.template[col_name].isna()).all():
+        
+        tmp1 = df.groupby('polity_id').apply(lambda x: x[var_name].isnull().all())
+        # tmp1 == True <=> polity_id should not be in template[col_name]
+        tmp1 = set(tmp1.index[~tmp1])
+        tmp2 = set(self.template[col_name].keys())
+        
+        if len(tmp2.difference(tmp1)) > 0:
             raise BaseException(f"Extra entries in the template for variable {col_name}")
-
+        # note: we cannot test the other case (entries in the original data not in template),
+        # since there are legitimate reasons they would be omitted (e.g. if there were explicit
+        # "unknown" values coded, or dates were outside the polity years, etc.)
+        
         return "Passed tests"
 
     
@@ -1086,13 +1085,49 @@ class Template():
         return result
 
     # ---------------------- SAVING FUNCTIONS ---------------------- #
-    def save_dataset(self, file_path):
-        self.template.to_csv(file_path, index = False)
-        print(f"Saved template to {file_path}")
+#    def save_dataset(self, file_path):
+#        self.template.to_csv(file_path, index = False)
+#        print(f"Saved template to {file_path}")
+
+    # to write Numpy types to JSON, we need to define our own serializer, see:
+    # https://stackoverflow.com/questions/50916422/python-typeerror-object-of-type-int64-is-not-json-serializable
+    
+    class enc(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, (np.int32, np.int64, np.uint16, np.uint32, np.uint64)):
+                return int(obj)
+            elif isinstance(obj, (np.float_, np.float16, np.float32, np.float64)):
+                return float(obj)
+            elif isinstance(obj, (np.ndarray,)):
+                return obj.tolist()
+            return json.JSONEncoder.default(self, obj)
+
+    def save_template_json(self, file_path):
+        with open(file_path, 'w') as f:
+            json.dump(self.template, f, cls=Template.enc)
+        print(f"Saved template to {file_path} in json format")
+    
+    def save_template_pickle(self, file_path):
+        with open(file_path, 'wb') as f:
+            pkl.dump(self.template, f)
+        print(f"Saved template to {file_path} in pickle format")
+
+
     # ---------------------- LOADING FUNCTIONS ---------------------- #
-    def load_dataset(self, file_path):
-        self.template = pd.read_csv(file_path)
+#    def load_dataset(self, file_path):
+#        self.template = pd.read_csv(file_path)
+#        print(f"Loaded template from {file_path}")
+    
+    def load_template_json(self, file_path):
+        with open(file_path, 'r') as f:
+            self.template = json.load(f)
         print(f"Loaded template from {file_path}")
+        
+    def load_template_pickle(self, file_path):
+        with open(file_path, 'rb') as f:
+            self.template = pkl.load(f)
+        print(f"Loaded template from {file_path}")
+
 
 
 # ---------------------- TESTING ---------------------- #
