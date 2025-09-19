@@ -233,7 +233,7 @@ class Template():
         variable_name = df.name.unique()[0].lower()
         
         if add_to_template:
-            if variable_name in template:
+            if variable_name in self.template:
                 print("{variable_name} already in template")
                 if not self.keep_raw_data:
                     return
@@ -306,6 +306,7 @@ class Template():
             if n_added == 0:
                 print(f"No valid data added for {key}")
             else:
+                df['polity_id'] = df['polity_name'] # needed for perform_tests() to work
                 self.perform_tests(df, row_variable_name, range_var, variable_name)
                 self.vars_in_template.add(variable_name)
                 print(f"Added {key} dataset to template")
