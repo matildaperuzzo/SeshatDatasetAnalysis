@@ -123,10 +123,20 @@ class TimeSeriesDataset():
         self.raw.reset_index(drop=True, inplace=True)
 
     def download_all_categories(self, polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
-        urls = {}
-        for category in self.categories:
-            urls.update(fetch_urls(category))
-        for key in urls.keys():
+        """
+        Create the time series dataset from the data stored in self.template.
+        
+        TODO: maybe rename this to reflect that it does not actually download data?
+
+        Parameters:
+        polity_year_error (int): DESCRIPTION. The default is 0.
+        sampling_interpolation (str): The interpolation methods to use. The default is 'zero'.
+        sampling_ranges (str): DESCRIPTION. The default is 'uniform'.
+
+        Returns:
+        None
+        """
+        for key in self.template.vars_in_template:
             self.add_column(key, polity_year_error = polity_year_error, sampling_interpolation = sampling_interpolation, sampling_ranges=sampling_ranges)
     
     def add_column(self, key, polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
