@@ -6,6 +6,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from seshatdatasetanalysis.utils import download_data, fetch_urls, weighted_mean, get_max, is_same
 from seshatdatasetanalysis.Template import Template
+from seshatdatasetanalysis.mappings import get_mapping
 
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
@@ -178,7 +179,7 @@ class TimeSeriesDataset():
 
     def remove_incomplete_rows(self, nan_threshold = 0.3):
         # add all columns from sc_mapping
-        from seshatdatasetanalysis.mappings import social_complexity_mapping
+        social_complexity_mapping = get_mapping('sc')
         cols = []
         for key in social_complexity_mapping.keys():
             cols += [key for key in list(social_complexity_mapping[key].keys())]
@@ -188,18 +189,18 @@ class TimeSeriesDataset():
         self.raw.reset_index(drop=True, inplace=True)
 
     def build_social_complexity(self):
-        from seshatdatasetanalysis.mappings import social_complexity_mapping
+        social_complexity_mapping = get_mapping('sc')
         # create dataframe for social complexity
         self.scv = self.raw[['NGA', 'PolityID', 'PolityName', 'Year']].copy()
 
         # add population variables
-        self.scv['Pop'] = (self.raw['polity-populations']).apply(np.log10)
-        self.scv['Terr'] = (self.raw['polity-territories']).apply(np.log10)
-        self.scv['Cap'] = (self.raw['population-of-the-largest-settlements']).apply(np.log10)
+        self.scv['Pop'] = (self.raw['polity_population']).apply(np.log10)
+        self.scv['Terr'] = (self.raw['polity_territory']).apply(np.log10)
+        self.scv['Cap'] = (self.raw['population_of_the_largest_settlement']).apply(np.log10)
 
         # examination systems and merit promotions follow strong evidence rule
-        self.raw['examination-systems'] = self.raw['examination-systems'].fillna(0)
-        self.raw['merit-promotions'] = self.raw['merit-promotions'].fillna(0)
+        self.raw['examination_system'] = self.raw['examination_system'].fillna(0)
+        self.raw['merit_promotion'] = self.raw['merit_promotion'].fillna(0)
         self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", nan_handling='remove', min_vals=0.0), axis=1)
         percentage_gov = 4./11. #at least 4/11 of the variables need to be present
         self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", nan_handling = 'remove', min_vals=percentage_gov), axis=1)
@@ -215,7 +216,7 @@ class TimeSeriesDataset():
     
     def build_warfare(self):
         # build warfare variables
-        from seshatdatasetanalysis.mappings import miltech_mapping
+        miltech_mapping = get_mapping('miltech')
         miltech_variables = [category for key in miltech_mapping.keys() for category in miltech_mapping[key].keys()]
         # strong evidence rule for all miltech variables
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
@@ -226,17 +227,17 @@ class TimeSeriesDataset():
         self.scv['Animal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Animals"), axis=1)
         fort_max = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Fortifications_max"), axis=1)
         fort_type = self.raw.apply(lambda row: weighted_mean(row, miltech_mapping, category="Fortifications", nan_handling='zero'), axis=1)
-        long_wall = (self.raw['long-walls']>0)*1
+        long_wall = (self.raw['long_wall']>0)*1
         surroundings = self.raw.apply(lambda row: get_max(row, miltech_mapping, category="Surroundings"), axis=1)
         self.scv['Defense'] = fort_max + fort_type + long_wall + surroundings
-        self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite-bows"] or row["self-bows"]) and row["horses"], axis=1)
-        self.scv['Iron'] = self.raw['irons']
+        self.scv["Cavalry"] = self.raw.apply(lambda row: (row["composite_bow"] or row["self_bow"]) and row["horse"], axis=1)
+        self.scv['Iron'] = self.raw['iron']
         self.scv["IronCav"] = self.scv.apply(lambda row: row["Iron"] + row["Cavalry"], axis=1)
         miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
         self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', nan_handling='zero', min_vals = 0.5), axis=1)
 
     def build_MSP(self):
-        from seshatdatasetanalysis.mappings import ideology_mapping
+        ideology_mapping = get_mapping('ideology')
         # self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", nan_handling='remove'), axis=1)
         msp_cols = [key for key in ideology_mapping['MSP'].keys()]
         msp_df = self.raw[msp_cols].copy()
