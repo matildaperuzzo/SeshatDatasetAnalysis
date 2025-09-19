@@ -114,7 +114,8 @@ class Template():
     def is_none_value(val):
         return val is None or pd.isna(val)
 
-    def get_values(self, val_from, val_to):
+    @staticmethod
+    def get_values(val_from, val_to):
         """Clean up the values for a range variable."""
         if Template.is_none_value(val_from) and Template.is_none_value(val_to):
             return None
@@ -463,7 +464,7 @@ class Template():
                     val_from = row[row_variable_name + "_from"]
                     val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
-                    val = self.get_values(val_from, val_to)
+                    val = Template.get_values(val_from, val_to)
                     if val is None:
                         continue
                 elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
@@ -492,7 +493,7 @@ class Template():
                     val_from = row[row_variable_name + "_from"]
                     val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
-                    val = self.get_values(val_from, val_to)
+                    val = Template.get_values(val_from, val_to)
                     if val is None:
                         continue
                 elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
@@ -534,7 +535,7 @@ class Template():
                     val_from = row[row_variable_name + "_from"]
                     val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
-                    val = self.get_values(val_from, val_to)
+                    val = Template.get_values(val_from, val_to)
                     if val is None:
                         continue
                 elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
@@ -803,7 +804,7 @@ class Template():
         
         if range_var:
             # numeric values should already be parsed, we just need to verify that they are not NaN
-            pol_df['val'] = pol_df.apply(lambda x: self.get_values(
+            pol_df['val'] = pol_df.apply(lambda x: Template.get_values(
                 x[row_variable_name + "_from"], x[row_variable_name + "_to"]),
                 axis = 1)
         else:
