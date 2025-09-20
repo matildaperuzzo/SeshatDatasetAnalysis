@@ -31,9 +31,9 @@ class Template():
             self.initialize_dataset(polity_url)
         elif (file_path is not None):
             self.load_dataset(file_path)
-        else:
-            print("Please provide either a polity_url or a file_path")
-            sys.exit()
+#        else: -- Equinox case: pol_df will be created when reading the data
+#            print("Please provide either a polity_url or a file_path")
+#            sys.exit()
         
     def __len__(self):
         return len(self.template)
@@ -148,28 +148,22 @@ class Template():
         7. Resets the index of the template DataFrame.
         """
 
-        # set up empty template
-        self.template = pd.DataFrame(columns = ["NGA", "PolityID", "PolityName"])
-        # specify the columns data types
-        self.template['PolityID'] = self.template['PolityID'].astype('int')
-        # download the polity data
+        # download the polity data if needed
         if self.polity_df.empty:
             if url is None:
                 raise BaseException('No download URL!')
             self.polity_df = download_data(url)
 
-        polityIDs = self.polity_df.id.unique()
-        # iterate over all polities
-        for polID in polityIDs:
-            pol_df = self.polity_df.loc[self.polity_df.id == polID, ['home_nga_name', 'id', 'name','start_year','end_year']]
-            # create a temporary dataframe with all data for current polity
-            pol_df_new = pd.DataFrame(dict({"NGA" : pol_df.home_nga_name.values[0], 
-                                            "PolityID": pol_df.id.values[0], 
-                                            "PolityName": pol_df.name.values[0],
-                                            "StartYear": pol_df.start_year.values[0],
-                                            "EndYear": pol_df.end_year.values[0]}), index = [0])
-            # add the temporary dataframe to the template
-            self.template = pd.concat([self.template, pol_df_new])
+        # set up empty template
+        self.template = self.polity_df[['home_nga_name', 'id', 'name','start_year','end_year']].copy()
+        self.template.rename({
+            'home_nga_name': 'NGA',
+            'id': 'PolityID',
+            'name': 'PolityName',
+            'start_year': 'StartYear',
+            'end_year': 'EndYear'},
+            axis = 1, inplace = True)
+        
         self.template.reset_index(drop=True, inplace=True)
         
         self.vars_in_template = set()
@@ -878,9 +872,9 @@ class Template():
             var_name = variable_name + "_from"
         else:
             var_name = variable_name
-        if (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) > self.template[col_name].isna()).all():
+        if (self.template['PolityName'].apply(lambda x: self.check_nan_polities(x, df, var_name)) > self.template[col_name].isna()).all():
             raise BaseException(f"Nans in template that are not in the template for variable {col_name}")
-        elif (self.template['PolityID'].apply(lambda x: self.check_nan_polities(x, df, var_name)) < self.template[col_name].isna()).all():
+        elif (self.template['PolityName'].apply(lambda x: self.check_nan_polities(x, df, var_name)) < self.template[col_name].isna()).all():
             raise BaseException(f"Extra entries in the template for variable {col_name}")
 
         return "Passed tests"
@@ -908,6 +902,167 @@ class Template():
             tmp1.append(pd.read_excel(filename, a))
         self.full_dataset = pd.concat(tmp1)
         ##!! TODO: do some basic checks, e.g. column names, data types, etc.
+    
+    def read_equinox(self, equinox_spreadsheet : str, variable_mapping : str):
+        """
+        Read data from the Equinox dataset in xlsx format. Data is stored in self.full_dataset
+        after some basic preprocessing, but without further checks. To work correctly, you
+        need to provide additional mappings between the old and new variable names and polity IDs.
+
+        Parameters
+        ----------
+        equinox_spreadsheet : str
+            Path to the Equinox data release spreadsheet in the xlsx format of the official
+            data release. Currently available at:
+                https://seshat-db.com/download_oldcsv/Equinox2020.05.2023.xlsx/
+        variable_mapping : str
+            Path to a CSV file that maps variable names in Equinox to the ones used in Polaris.
+
+        Returns
+        -------
+        None.
+
+        """
+        
+        # 0. load data and mapping files
+        equinox = pd.read_excel(equinox_spreadsheet)
+        # 47477 rows
+        variable_mapping = pd.read_csv(variable_mapping)
+        
+        
+        # 1. Recreate pol_df based on the polities in Equinox
+        
+        # 1.1. extract coded durations + NGAs
+        polity_duration = equinox[(equinox.Section == 'General variables') & (equinox.Variable == 'Duration')]
+        polity_duration = polity_duration[['NGA', 'Polity', 'Value.From']]
+        
+        # 1.2. use the expected column names
+        polity_duration.rename({'Polity': 'name', 'Value.From': 'Duration', 'NGA': 'home_nga_name'},
+                               inplace = True, axis = 1)
+        
+        # 1.3. helpers to parse dates
+        def parse_one_date(x : str, bce_hint):
+            if x.endswith('BCE') or x.endswith('bce'):
+                return -1 * float(x[:-3])
+            if x.endswith('CE') or x.endswith('ce'):
+                return float(x[:-2])
+            if not isinstance(bce_hint, bool):
+                return None
+            return float(x) * (-1 if bce_hint else 1)
+            
+        def parse_duration(x : str):
+            if x is None or pd.isna(x):
+                return (None, None)
+            y = x.split('-')
+            if len(y) != 2:
+                return (None, None)
+            y[0] = y[0].strip()
+            y[1] = y[1].strip()
+            end = parse_one_date(y[1], None)
+            if end is None:
+                return (None, None)
+            start = parse_one_date(y[0], end <= 0)
+            return (start, end)
+         
+        # 1.4. parse all dates
+        tmp1 = polity_duration.Duration.apply(parse_duration)
+        polity_duration['start_year'] = list(x[0] for x in tmp1)
+        polity_duration['end_year'] = list(x[1] for x in tmp1)
+         
+        # 1.5. manually correct some errors and missing values
+        polity_duration.loc[polity_duration.name == 'GrCrEmr', 'start_year'] = 824
+        polity_duration.loc[polity_duration.name == 'GrCrEmr', 'end_year'] = 961
+        polity_duration.loc[polity_duration.name == 'InGupta', 'start_year'] = 320
+        polity_duration.loc[polity_duration.name == 'InGupta', 'end_year'] = 515
+        polity_duration.loc[polity_duration.name == 'JpJomo4', 'start_year'] = -3500
+        polity_duration.loc[polity_duration.name == 'JpJomo4', 'end_year'] = -2500
+        polity_duration.loc[polity_duration.name == 'PeCuzLF', 'start_year'] = -500
+        polity_duration.loc[polity_duration.name == 'PeCuzLF', 'end_year'] = 200
+        polity_duration.loc[polity_duration.name == 'PkUrbn2', 'start_year'] = -2100
+        polity_duration.loc[polity_duration.name == 'PkUrbn2', 'end_year'] = -1800
+        polity_duration.loc[polity_duration.name == 'JpJomo6', 'start_year'] = -1200
+        polity_duration.loc[polity_duration.name == 'JpJomo6', 'end_year'] = -300
+         
+        # 1.6. sanity check (we need this to be available for all polities)
+        if polity_duration.start_year.isnull().any() or polity_duration.end_year.isnull().any():
+            raise BaseException('Missing polity durations!')
+         
+        # 1.7. manually add two more missing values and save the result
+        self.polity_df = pd.concat([polity_duration[['home_nga_name', 'name', 'start_year','end_year']],
+                         pd.DataFrame({
+                            'home_nga_name': None,
+                            'name': ['InAyodE', 'JpJomo6'],
+                            'start_year': [-64, -1200],
+                            'end_year': [34, -300]
+                         })], ignore_index=True)
+         
+        # 1.8. add the useless id column
+        self.polity_df['id'] = np.nan
+
+        # 2. Keep only the interesting variables
+        
+        # 2.1. filter based on the variable mapping
+        # note: in theory we could also match Section and Subsection, but these do not
+        # matter for the variables we are interested in
+        equinox = equinox.merge(variable_mapping, on = 'Variable')
+        # 34392 rows remain
+        
+        # 2.2. get rid of the useless colums now
+        equinox = equinox[['Polity', 'variable_name', 'Value.From',
+               'Value.To', 'Date.From', 'Date.To', 'Value.Note', 'Type']]
+        
+        # 2.3. Add some columns in the correct format
+        equinox['is_disputed'] = (equinox['Value.Note'] == 'disputed')
+        equinox['is_uncertain'] = (equinox['Value.Note'] == 'uncertain')
+        equinox['range_var'] = (equinox['Type'] == 'numeric')
+        
+        
+        # 3. Correct some errors manually
+        
+        # 3.0 rename some columns to be more convenient to use in this step
+        equinox.rename({'Value.From': 'value_from', 'Value.To': 'value_to', 'Polity': 'polity_id'}, inplace = True, axis = 1)
+        
+        # 3.1. long wall (+ other numeric variables) code unknown as NaN, absent as 0
+        equinox.loc[(equinox.variable_name == 'long_wall') & (
+            equinox.value_from.isin(['unknown', 'suspected unknown'])), 'value_from'] = np.nan
+        equinox.loc[(equinox.variable_name == 'long_wall') & (
+            equinox.value_from.isin(['absent', 'inferred absent'])), 'value_from'] = 0
+        equinox.loc[(equinox.Type == 'numeric') & (
+            equinox.value_from.isin(['unknown', 'suspected unknown'])), 'value_from'] = np.nan
+        
+        # 3.2. wrong formatting for Eastern Han Empire population
+        ix1 = np.where(equinox.value_from == '480000-53869588')
+        equinox.loc[ix1[0], 'value_from'] = 48000000
+        equinox.loc[ix1[0], 'value_to'] = 53869588
+        ix1 = np.where(equinox.value_from == '49150220-49730550')
+        equinox.loc[ix1[0], 'value_from'] = 49150220
+        equinox.loc[ix1[0], 'value_to'] = 49730550
+        
+        # 3.3. wrong formatting for MnRourn Specialized government buildings
+        ix1 = np.where(equinox.value_from == 'inferred present 501-551 CE')
+        equinox.loc[ix1[0], 'value_from'] = 'inferred present'
+        equinox.loc[ix1[0], 'Date.From'] = '501CE'
+        equinox.loc[ix1[0], 'Date.To'] = '551CE'
+        
+        # 6. Process dates
+        def process_dates(dt):
+            is_bce = dt.apply(lambda x: (pd.notnull(x) and x.endswith('BCE')))
+            ix_bce = np.where(is_bce)
+            ix_ce = np.where(~is_bce & dt.apply(lambda x: (pd.notnull(x) and x.endswith('CE'))))
+            
+            res = np.full_like(dt, np.NaN, dtype=float)
+            res[ix_bce[0]] = dt[ix_bce[0]].apply(lambda x : -1 * float(x[:-3]))
+            res[ix_ce[0]] = dt[ix_ce[0]].apply(lambda x : float(x[:-2]))
+            return res
+        
+        equinox['year_from'] = process_dates(equinox['Date.From'])
+        equinox['year_to'] = process_dates(equinox['Date.To'])
+        
+        # 6. store the final result, keeping only the useful columns
+        self.full_dataset = equinox[['polity_id', 'variable_name', 'value_from', 'value_to',
+                           'year_from', 'year_to', 'is_disputed', 'is_uncertain', 'range_var']]
+            
+
     
     # ---------------------- SAMPLING FUNCTIONS ---------------------- #
 
