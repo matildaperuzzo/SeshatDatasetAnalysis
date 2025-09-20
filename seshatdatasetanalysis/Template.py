@@ -896,6 +896,16 @@ class Template():
         None. Will throw exception if the input file is not in the expected format.
 
         """
+        # 1. read the list of polities
+        self.polity_df = pd.read_excel(filename, 'Polities')
+        self.polity_df.rename({
+            'polity_number': 'id',
+            'polity_id': 'name',
+            'seshat_region': 'home_nga_name'
+        }, inplace = True, axis = 1)
+        self.polity_df.drop('long_name', inplace = True, axis = 1)
+        
+        # 2. read the main data
         tmp1 = list()
         sheets_needed = ["Social complexity", "Warfare", "Luxury goods", "Religion"]
         for a in sheets_needed:
