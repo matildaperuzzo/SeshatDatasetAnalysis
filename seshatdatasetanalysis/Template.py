@@ -4,6 +4,7 @@ import time
 import sys
 import os
 import random
+import itertools
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from seshatdatasetanalysis.utils import download_data, fetch_urls, weighted_mean, get_max
 from seshatdatasetanalysis.mappings import value_mapping
@@ -113,7 +114,8 @@ class Template():
     def is_none_value(val):
         return val is None or pd.isna(val)
 
-    def get_values(self, val_from, val_to):
+    @staticmethod
+    def get_values(val_from, val_to):
         """Clean up the values for a range variable."""
         if Template.is_none_value(val_from) and Template.is_none_value(val_to):
             return None
@@ -320,7 +322,7 @@ class Template():
                 print(f"Added {key} dataset to template")
         
     
-    def template_from_dataset(self):
+    def template_from_dataset(self, use_new_method : bool = False):
         """
         (Re-)create the template from self.full_dataset. This should be called after the
         data has been downloaded with download_all_categories(add_to_template = False) or
@@ -364,7 +366,8 @@ class Template():
             for pol in polities:
                 tmp2 = tmp1.loc[tmp1.polity_id == pol]
                 if not tmp2.empty:
-                    n_added += self.add_polity(pol, tmp2, range_var, row_variable_name, var)
+                    n_added += (self.add_polity2(pol, tmp2, range_var, row_variable_name, var) if
+                        use_new_method else self.add_polity(pol, tmp2, range_var, row_variable_name, var))
             
             if n_added == 0:
                 print(f"No valid data added for {var}")
@@ -461,7 +464,7 @@ class Template():
                     val_from = row[row_variable_name + "_from"]
                     val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
-                    val = self.get_values(val_from, val_to)
+                    val = Template.get_values(val_from, val_to)
                     if val is None:
                         continue
                 elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
@@ -490,7 +493,7 @@ class Template():
                     val_from = row[row_variable_name + "_from"]
                     val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
-                    val = self.get_values(val_from, val_to)
+                    val = Template.get_values(val_from, val_to)
                     if val is None:
                         continue
                 elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
@@ -532,7 +535,7 @@ class Template():
                     val_from = row[row_variable_name + "_from"]
                     val_to = row[row_variable_name + "_to"]
                     # if no range variables are defined skip the row
-                    val = self.get_values(val_from, val_to)
+                    val = Template.get_values(val_from, val_to)
                     if val is None:
                         continue
                 elif isinstance(row[row_variable_name], str) and row_variable_name.startswith('religion'):
@@ -627,6 +630,246 @@ class Template():
         
         self.template.loc[self.template.PolityName == polity_id, col_name] = [variable_dict]
         return len(variable_dict['value'])
+
+    @staticmethod
+    def check_polity_dates(pol_df : pd.DataFrame, polity_years : list):
+        """
+        Helper function to check that data for a polity has proper time ranges. This includes:
+            - check that either all or no values have an associated date range
+            - filter out values that are outside the polity date range; if a coded value has a date
+                range partially outside, it is cut to the overlap; if a coded value has a date range
+                that completely falls outside the polity date range, it is removed
+            - check that date ranges do not overlap
+        
+        Parameters:
+            pol_df (pd.DataFrame): DataFrame containing data for one polity and one variable
+            polity_year (list of int): date range corresponding to this polity
+        
+        Returns:
+            A tuple with:
+                the first element is pol_df after filtering or None if a fatal error was detected
+                a list of strings with the errors detected
+        """
+        
+        # check that either all or no values have dates
+        have_any_time = pol_df.year_from.notna().any() or pol_df.year_to.notna().any()
+        if have_any_time and not np.all(pol_df.year_from.notna() | pol_df.year_to.notna()):
+            return (None, ["Values both with and without time ranges"])
+        
+        range_error = False
+        
+        if have_any_time:
+            # fill in "missing" values -- if we are here, either year_from or year_to are given
+            ix1 = np.where(pol_df.year_from.isna())
+            pol_df.loc[ix1[0], 'year_from'] = pol_df.loc[ix1[0], 'year_to']
+            ix1 = np.where(pol_df.year_to.isna())
+            pol_df.loc[ix1[0], 'year_to'] = pol_df.loc[ix1[0], 'year_from']
+            
+            # leave out data that is outside the polity time range
+            if (np.any(pol_df.year_from < polity_years[0]) or np.any(pol_df.year_to < polity_years[0]) or
+                      np.any(pol_df.year_from > polity_years[1]) or np.any(pol_df.year_to > polity_years[1])):
+                range_error = True
+            pol_df = pol_df[(pol_df.year_to >= polity_years[0]) & (pol_df.year_from <= polity_years[1])]
+            pol_df.reset_index(inplace = True, drop = True)
+            
+            
+        if pol_df.shape[0] > 0:
+            # potentially cut remaining ranges to be inside the polity date range
+            pol_df.year_from = np.maximum(pol_df.year_from, polity_years[0])
+            pol_df.year_to = np.minimum(pol_df.year_to, polity_years[1])
+        
+            # check for overlaps
+            group1 = pol_df.groupby(['year_from', 'year_to'], dropna = False)
+            
+            tmp_dates = sorted(group1.groups.keys())
+            for i in range(len(tmp_dates) - 1):
+                if tmp_dates[i+1][0] < tmp_dates[i][1]:
+                    return (None, ["Overlapping time ranges"])
+                    
+        errors1 = list()
+        if range_error:
+            errors1.append("Year range outside of polity time range")
+        
+        return (pol_df, errors1)
+        
+    
+    @staticmethod
+    def check_polity_disp_unc(pol_df : pd.DataFrame):
+        """
+        Helper function to check whether disputed and uncertain values are tagged correctly for one
+        polity / variable combination. This includes checking the following after grouping by date ranges:
+            - Each group should have either all or no values marked as disputed
+            - Each group should have either all or no values marked as uncertain
+            - If a group has multiple values, these should be either all marked as disputed or as uncertain
+            - If a value is marked as disputed, it should be part of a group with multiple values
+        All of the above are considered fatal errors. Furthermore, it is also checked that uncertain
+        values are part of a group with multiple values, but this does not result in errors.
+        
+        Parameters:
+        pol_df (pd.DataFrame): DataFrame containing data for one polity and one variable
+
+        Returns:
+        A tuple of a boolean indicator whether a fatal error was found and a string detailing any error found.
+
+        """
+        
+        # group by dates
+        group1 = pol_df.groupby(['year_from', 'year_to'], dropna = False)
+        
+        # check whether disputes and uncertain values are marked consistently
+        if np.any(group1.is_disputed.any() != group1.is_disputed.all()):
+            return (False, "Inconsistent marking of disputed data")
+        if np.any(group1.is_uncertain.any() != group1.is_uncertain.all()):
+            return (False, "Inconsistent marking of uncertain data")
+        
+        # check that groups with multiple values are marked as either disputed or uncertain
+        have_multiple = (group1.is_disputed.count() > 1)
+        if np.any(have_multiple & ~(group1.is_disputed.any() | group1.is_uncertain.any())):
+            return (False, "Multiple values without variable being marked disputed or uncertain")
+        # check that disputed groups actually have multiple values
+        if np.any(group1.is_disputed.any() & ~have_multiple):
+            return (False, "Data marked as disputed, but only one value")
+        # check that uncertain groups actually have multiple values (this is not a fatal error)
+        if np.any(group1.is_uncertain.any() & ~have_multiple):
+            # This is not a fatal error, we will just ignore this
+            return (True, "Data marked as uncertain, but only one value")
+            
+        # all is OK
+        return (True, None)
+    
+
+    def add_polity2(self, polity_id : str, pol_df, range_var, variable_name, col_name):
+        """
+        Adds polity data to the template.
+        This function processes a DataFrame containing polity data, checks for duplicates, handles disputed and uncertain entries, 
+        and appends the processed data to the template. It ensures that the data is in chronological order and handles various 
+        cases where year data might be missing or overlapping.
+        Parameters:
+        pol_df (pd.DataFrame): DataFrame containing polity data with columns such as 'polity_id', 'year_from', 'year_to', 
+                               'is_disputed', 'is_uncertain', and the variable of interest.
+        range_var (bool): Indicates whether the variable of interest is a range variable.
+        variable_name (str): The name of the variable to be processed.
+        col_name (str): The name of the column in the template where the processed data will be stored.
+        Returns:
+        None
+        Raises:
+        SystemExit: If there is an unexpected overlap in year data or other critical issues.
+        
+        Simplified version with the following changes:
+            - throw exception on fatal errors instead of exiting
+            - "missing" values (when parsing returns None) are silently ignored
+        """
+    
+        # 1. get rid of duplicates (this happens in some cases)
+        len1 = pol_df.shape[0]
+        pol_df = pol_df.drop_duplicates()
+        if len1 != pol_df.shape[0]:
+            print(f"Duplicate values for {polity_id} -- {col_name}")
+            debug_row = pd.DataFrame({"polity": polity_id, "variable": col_name, "label": "template", "issue": "Duplicate values"}, index = [0])
+            self.debug = pd.concat([self.debug, debug_row])
+        
+        # ensure we have a sane index (this is needed since pol_df is typically a subset)
+        pol_df.reset_index(drop = True, inplace = True)
+
+        # 2. Check whether date ranges are consistent and cut them to the polity date ranges
+        polity_years = [self.template.loc[self.template.PolityName == polity_id, 'StartYear'].values[0],
+                        self.template.loc[self.template.PolityName == polity_id, 'EndYear'].values[0]]
+    
+        pol_df, tmp_errors = Template.check_polity_dates(pol_df, polity_years)
+        
+        if len(tmp_errors) > 0:
+            for a in tmp_errors:
+                print(f"{a} (polity: {polity_id}, variable: {col_name}")
+            debug_df = pd.DataFrame({"polity": polity_id, "variable": col_name, "label": "template", "issue": tmp_errors}, index = [0])
+            self.debug = pd.concat([self.debug, debug_df])
+        
+        if pol_df is None or pol_df.shape[0] == 0:
+            return 0
+        
+        # 3. Check whether uncertain and disputed values are marked consistently
+        check_ok, tmp_error_str = Template.check_polity_disp_unc(pol_df)
+        if tmp_error_str is not None:
+            print(f"{tmp_error_str} (polity: {polity_id}, variable: {col_name}")
+            debug_row = pd.DataFrame({"polity": polity_id, "variable": col_name, "label": "template", "issue": tmp_error_str}, index = [0])
+            self.debug = pd.concat([self.debug, debug_row])
+        if not check_ok:
+            return 0
+        
+        # 4. Preprocess values
+        row_variable_name = variable_name
+        if 'polity_religion' in variable_name:
+            row_variable_name = variable_name.replace('polity_', '')
+        if (row_variable_name not in pol_df.columns) and (row_variable_name + '_from' not in pol_df.columns):
+            row_variable_name = 'coded_value'
+        
+        if range_var:
+            # numeric values should already be parsed, we just need to verify that they are not NaN
+            pol_df['val'] = pol_df.apply(lambda x: Template.get_values(
+                x[row_variable_name + "_from"], x[row_variable_name + "_to"]),
+                axis = 1)
+        else:
+            # for binary values, we look up the corresponding numeric value
+            def process_value(row):
+                v = value_mapping.get(row[row_variable_name], None)
+                return None if Template.is_none_value(v) else (v, v)
+            pol_df['val'] = pol_df.apply(process_value, axis = 1)
+    
+        # 5. Filter out missing values (explicit NaN for numeric and binary values coded as unknown)
+        pol_df = pol_df[pol_df.val.notna()]
+        if pol_df.shape[0] == 0:
+            # no valid data values -- have to return here, as the below code does not work for empty dataframes
+            # (this is not an error, as data can be explicitly coded as unknown / missing)
+            return 0
+    
+        # 6. Main processing
+        # 6.1. group by time, calculate all combinations for each group    
+        tmp1 = pol_df.groupby(['year_from', 'year_to'], dropna = False).apply(lambda x: list(x.val))
+        times = list(tmp1.index)
+        tmp2 = list(tmp1)
+        values = list(np.array(x, dtype = object) for x in itertools.product(*tmp2))
+        
+        # 6.2. process times -- take care of overlaps
+        # (cases when the last year of a range is the same as the beginning of the next range;
+        # larger overlaps were detected above and resulted in an error)
+        for i in range(len(times) - 1):
+            if times[i][1] == times[i+1][0]:
+                if times[i][0] != times[i][1]:
+                    times[i] = (times[i][0], times[i][1] - 1)
+                else:
+                    times[i+1] = (times[i+1][0] + 1, times[i+1][1])
+        
+        # 6.3. process times -- replace mising cases with the polity duration
+        # and duplicate values that correspond to time ranges
+        times2 = list()
+        ixs = list()
+        for i in range(len(times)):
+            x = times[i]
+            if Template.is_none_value(x[0]):
+                x = tuple(polity_years)
+            if Template.is_none_value(x[1]) or x[0] == x[1]:
+                ixs.append(i)
+                times2.append(x[0])
+            else:
+                ixs.append(i)
+                ixs.append(i)
+                times2.append(x[0])
+                times2.append(x[1])
+        for i in range(len(values)):
+            values[i] = values[i][ixs]
+        times = list(times2 for _ in range(len(values)))
+        
+        # 6.4. construct the final result
+        variable_dict = {"t": times, "value": values, "polity_years": polity_years}
+    
+        # 6.5. final sanity check
+        if len(variable_dict['t'][0]) == 0:
+            # this should not happen, since we already threw out cases with no data above
+            raise BaseException('Unexpected empty result!')
+        
+        # 6.6. save the results
+        self.template.loc[self.template.PolityName == polity_id, col_name] = [variable_dict]
+        return len(variable_dict['value'])
+
 
     def perform_tests(self, df, variable_name, range_var, col_name):
         if self.template[col_name].apply(lambda x: self.check_for_nans(x)).any():
