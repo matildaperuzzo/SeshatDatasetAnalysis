@@ -188,36 +188,53 @@ class TimeSeriesDataset():
         self.raw = self.raw.loc[self.raw[cols].notna().sum(axis=1)/len(cols)>0.3]
         self.raw.reset_index(drop=True, inplace=True)
 
-    def build_social_complexity(self):
+    def build_social_complexity(self, allow_missing : bool = False):
+        """
+        Create the aggregated social complexity dataset used in further analysis.
+        
+        Parameters:
+            allow_missing (bool): Whether to allow some variables to be aggregeted to be missing from the 
+            raw data. Only use this if working with an older data release that did not yet include all
+            variables that would be aggregated in this step.
+        
+        Returns: None.
+        """
         social_complexity_mapping = get_mapping('sc')
         # create dataframe for social complexity
         self.scv = self.raw[['NGA', 'PolityID', 'PolityName', 'Year']].copy()
 
-        # add population variables
+        # add population variables -- these are always required to be present
         self.scv['Pop'] = (self.raw['polity_population']).apply(np.log10)
         self.scv['Terr'] = (self.raw['polity_territory']).apply(np.log10)
         self.scv['Cap'] = (self.raw['population_of_the_largest_settlement']).apply(np.log10)
 
         # examination systems and merit promotions follow strong evidence rule
-        self.raw['examination_system'] = self.raw['examination_system'].fillna(0)
-        self.raw['merit_promotion'] = self.raw['merit_promotion'].fillna(0)
-        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", nan_handling='remove', min_vals=0.0), axis=1)
+        if not allow_missing or 'examination_system' in self.raw.columns:
+            self.raw['examination_system'] = self.raw['examination_system'].fillna(0)
+        if not allow_missing or 'merit_promotion' in self.raw.columns:
+            self.raw['merit_promotion'] = self.raw['merit_promotion'].fillna(0)
+        self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", nan_handling='remove', min_vals=0.0, allow_missing=allow_missing), axis=1)
         percentage_gov = 4./11. #at least 4/11 of the variables need to be present
-        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", nan_handling = 'remove', min_vals=percentage_gov), axis=1)
+        self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", nan_handling = 'remove', min_vals=percentage_gov, allow_missing=allow_missing), axis=1)
         percentage_infra = 0.
-        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", nan_handling= 'remove', min_vals=percentage_infra), axis=1)
+        self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", nan_handling= 'remove', min_vals=percentage_infra, allow_missing=allow_missing), axis=1)
         percentage_info = 2./13. #at least 2/13 of the variables need to be present
         # Info has nan_handeling = 'zero' unlike other variables
-        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", nan_handling='zero', min_vals=percentage_info), axis=1)
+        self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", nan_handling='zero', min_vals=percentage_info, allow_missing=allow_missing), axis=1)
         # find the maximum weight for money
         max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: item[1])[1]
         # money variable is found with maximum weight
-        self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money"), axis=1)/max_money
+        self.scv['Money'] = self.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money", allow_missing=allow_missing), axis=1)/max_money
     
     def build_warfare(self):
+        """
+        Create the aggregated warfare dataset and the MilTech variable.
+        
+        Parameters: None.
+        Returns: None.
+        """
         # build warfare variables
         miltech_mapping = get_mapping('miltech')
-        miltech_variables = [category for key in miltech_mapping.keys() for category in miltech_mapping[key].keys()]
         # strong evidence rule for all miltech variables
         self.scv['Metal'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Metal'), axis=1)
         self.scv['Project'] = self.raw.apply(lambda row: get_max(row, miltech_mapping, category='Project'), axis=1)
@@ -236,10 +253,24 @@ class TimeSeriesDataset():
         miltech_mapping = {'Miltech':{'Metal': 1, 'Project': 1, 'Weapon':1, 'Armor': 1, 'Animal': 1, 'Defense': 1}}
         self.scv['Miltech'] = self.scv.apply(lambda row: weighted_mean(row, miltech_mapping, category='Miltech', nan_handling='zero', min_vals = 0.5), axis=1)
 
-    def build_MSP(self):
+    def build_MSP(self, allow_missing = False):
+        """
+        Create the aggregated moralizing religion variable (MSP) from individual values.
+        
+        Parameters:
+            allow_missing (bool): Whether to allow some variables to be aggregeted to be missing from the 
+            raw data. Only use this if working with an older data release that did not yet include all
+            variables that would be aggregated in this step.
+        
+        Returns: None.
+        """
         ideology_mapping = get_mapping('ideology')
         # self.scv['MSP'] = self.raw.apply(lambda row: weighted_mean(row, ideology_mapping, "MSP", nan_handling='remove'), axis=1)
         msp_cols = [key for key in ideology_mapping['MSP'].keys()]
+        if allow_missing:
+            msp_cols = list(x for x in msp_cols if x in self.raw.columns)
+            if len(msp_cols) == 0:
+                raise BaseException('No data to aggregate!')
         msp_df = self.raw[msp_cols].copy()
         msp_df[msp_df == 0.9] = 1
         msp_df[msp_df == 0.5] = 0.75

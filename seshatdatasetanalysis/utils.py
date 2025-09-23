@@ -98,21 +98,24 @@ def fetch_urls(category):
     return variable_urs
 
 
-def weighted_mean(row, mappings, category = "Metal", nan_handling = 'remove', min_vals = 0.):
-    weights = 0
-    result = 0
-
+def weighted_mean(row, mappings, category = "Metal", nan_handling = 'remove', min_vals = 0., allow_missing = False):
     keys = mappings[category].keys()
-    entries = [mappings[category][key] for key in mappings[category].keys()]
-
+    
     for key in keys:
         if key not in row:
             if key + "_from" in row:
                 row[key] = (row[key + "_from"] + row[key + "_to"]) / 2
             else:
-                print(key, "not in row")
-                continue
+                if not allow_missing:
+                    print(key, "not in row")
     
+    if allow_missing:
+        keys = list(x for x in keys if x in row.index)
+        if len(keys) == 0:
+            raise BaseException('No values to aggregate!')
+    
+    entries = [mappings[category][key] for key in keys]
+
     values = row[keys]
     if values.isna().sum() >= len(values)*(1-min_vals):
         return np.nan
@@ -137,7 +140,7 @@ def weighted_mean(row, mappings, category = "Metal", nan_handling = 'remove', mi
     return np.average(values, weights = entries)
 
 
-def get_max(row, mappings, category):
+def get_max(row, mappings, category, allow_missing = False):
 
     result = -1
     for key, entry in mappings[category].items():
@@ -147,7 +150,8 @@ def get_max(row, mappings, category):
                     continue
                 value = (row[key + "_from"] + row[key + "_to"]) / 2
             else:
-                print(key, "not in row")
+                if not allow_missing:
+                    print(key, "not in row")
                 continue
         else:
             if np.isnan(row[key]):
