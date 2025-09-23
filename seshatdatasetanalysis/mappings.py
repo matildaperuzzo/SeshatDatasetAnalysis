@@ -1,5 +1,4 @@
 import numpy as np
-import random
 
 value_mapping = {
     "present": 1,
@@ -42,7 +41,7 @@ PT_value_mapping = {
     'DIS' : 0.5
 }
 
-miltech_mapping = {
+miltech_mapping_api = {
         "Long_walls" : {
             "long-walls" : 1
             },
@@ -115,7 +114,7 @@ miltech_mapping = {
         
 }
 
-social_complexity_mapping = {
+social_complexity_mapping_api = {
 
     "Scale":{ "polity-populations":1,
              "polity-territories":1,
@@ -176,7 +175,7 @@ social_complexity_mapping = {
               }
 }
 
-ideology_mapping = {
+ideology_mapping_api = {
     'MSP' : {"moralizing-supernatural-concern-is-primary" : 1, # "PrimaryMSP"
                 "moralizing-enforcement-is-certain" : 1, # "CertainMSP"
                 "moralizing-enforcement-is-broad" : 1, # "BroadMSP"
@@ -194,7 +193,7 @@ ideology_mapping = {
 
 }
 
-luxury_mapping = {"LuxuryItems" : {"lux-precious-metal" : 1,
+luxury_mapping_api = {"LuxuryItems" : {"lux-precious-metal" : 1,
                                     "luxury-fabrics" : 1,
                                     "luxury-manufactured-goods" : 1,
                                     "luxury-spices-incense-and-dyes" : 1,
@@ -209,8 +208,232 @@ luxury_mapping = {"LuxuryItems" : {"lux-precious-metal" : 1,
                 }
 
 
-religion_mapping = {"Religion" : {"polity-religion-genuses" : 1,
+religion_mapping_api = {"Religion" : {"polity-religion-genuses" : 1,
                                   "polity-religion-families" : 1,
                                   "polity-religions" : 1
                                  }
         }
+
+
+
+miltech_mapping_polaris = {
+    'Long_walls': {
+        'long_wall': 1
+    },
+    'Metal': {
+        'copper': 1,
+        'bronze': 2,
+        'iron': 3,
+        'steel': 4
+    },
+    'Project': {
+        'javelin': 1,
+        'atlatl': 2,
+        'sling': 3,
+        'self_bow': 4,
+        'composite_bow': 5,
+        'crossbow': 6,
+        'tension_siege_engine': 7,
+        'sling_siege_engine': 8,
+        'gunpowder_siege_artillery': 9,
+        'handheld_firearm': 10
+    },
+    'Weapon': {
+        'war_club': 1,
+        'battle_axe': 1,
+        'dagger': 1,
+        'sword': 1,
+        'spear': 1,
+        'polearm': 1
+    },
+    'Armor_max': {
+        'wood_bark_etc': 1,
+        'leather_cloth': 2,
+        'chainmail': 3,
+        'scaled_armor': 3,
+        'laminar_armor': 4,
+        'plate_armor': 4
+    },
+    'Armor_mean': {
+        'shield': 1,
+        'helmet': 1,
+        'breastplate': 1,
+        'limb_protection': 1
+    },
+    'Other Animals': {
+        'elephant': 2,
+        'camel': 2
+    },
+    'Animals': {
+        'donkey': 1,
+        'elephant': 2,
+        'camel': 2,
+        'horse': 3
+    },
+    'Fortifications': {
+        'fortified_camp': 1,
+        'complex_fortification': 1,
+        'modern_fortification': 1
+    },
+    'Fortifications_max': {
+        'settlements_in_a_defensive_position': 1,
+        'earth_rampart': 2,
+        'stone_walls_non_mortared': 3,
+        'wooden_palisade': 4,
+        'stone_walls_mortared': 5
+    },
+    'Surroundings': {
+        'ditch': 5,
+        'moat': 5
+    }
+}
+
+social_complexity_mapping_polaris = {
+    'Scale': {'polity_population': 1,
+              'polity_territory': 1,
+              'population_of_the_largest_settlement': 1},
+    'Hierarchy': {'administrative_level': 1,
+                  'military_level': 1,
+                  'settlement_hierarchy': 1},
+    'Government': {'professional_military_officer': 1,
+                   'professional_soldier': 1,
+                   'professional_priesthood': 1,
+                   'full_time_bureaucrat': 1,
+                   'professional_lawyer': 1,
+                   'examination_system': 1,
+                   'court': 1,
+                   'judge': 1,
+                   'formal_legal_code': 1,
+                   'merit_promotion': 1,
+                   'specialized_government_building': 1},
+    'Infrastructure': {'irrigation_system': 1,
+                       'drinking_water_supply_system': 1,
+                       'market': 1,
+                       'food_storage_site': 1,
+                       'road': 1,
+                       'bridge': 1,
+                       'canal': 1,
+                       'port': 1,
+                       'mines_or_quarry': 1,
+                       'courier': 1,
+                       'postal_station': 1,
+                       'general_postal_service': 1},
+    'Information': {'mnemonic_device': 1,
+                    'script': 1,
+                    'lists_tables_and_classification': 1,
+                    'phonetic_alphabetic_writing': 1,
+                    'non_phonetic_writing': 1,
+                    'written_record': 1,
+                    'nonwritten_record': 1,
+                    'calendar': 1,
+                    'scientific_literature': 1,
+                    'sacred_text': 1,
+                    'history': 1,
+                    'religious_literature': 1,
+                    'fiction': 1,
+                    'practical_literature': 1,
+                    'philosophy': 1},
+    'Money': {'article': 1,
+              'token': 2,
+              'precious_metal': 3,
+              'foreign_coin': 4,
+              'indigenous_coin': 5,
+              'paper_currency': 6}}
+
+
+
+ideology_mapping_polaris = {
+    'MSP': {'moralizing_supernatural_concern_is_primary': 1,
+            'moralizing_enforcement_is_certain': 1,
+            'moralizing_enforcement_is_broad': 1,
+            'moralizing_enforcement_is_targeted': 1,
+            'moralizing_enforcement_of_rulers': 1,
+            'moralizing_religion_adopted_by_elites': 1,
+            'moralizing_religion_adopted_by_commoners': 1,
+            'moralizing_enforcement_in_afterlife': 1,
+            'moralizing_enforcement_in_this_life': 1,
+            'moralizing_enforcement_is_agentic': 1},
+    "HumanSacrifice": {"human_sacrifice": 1
+                       }
+}
+
+
+luxury_mapping_polaris = {
+    'LuxuryItems': {
+        'lux_precious_metal': 1,
+        'luxury_fabrics': 1,
+        'luxury_manufactured_goods': 1,
+        'luxury_spices_incense_and_dyes': 1,
+        'luxury_drink_alcohol': 1,
+        'luxury_glass_goods': 1,
+        'lux_fine_ceramic_wares': 1,
+        'lux_precious_stone': 1,
+        'lux_statuary': 1,
+        'luxury_food': 1,
+        'other_luxury_personal_items': 1}
+}
+
+
+religion_mapping_polaris = {
+    'Religion': {'polity_religion_genus': 1,
+                 'polity_religion_family': 1,
+                 'polity_religion': 1}
+}
+
+
+
+
+
+
+def get_mapping(category : str, scheme : str = 'polaris'):
+    """
+    Get the variable mapping to aggregate data belonging to a specific category.
+
+    Parameters:
+    category (str): variable category. Must be one of 'miltech', 'social complexity',
+        'ideology', 'luxury', or 'religion'. The shorthand 'sc' can be used for 'social_complexity'.
+    scheme (str): Variable naming scheme to use. Must be one of:
+        'polaris' -- use the variable naming scheme used with the Polaris release (default)
+        'api' -- use the variable naming scheme of the web API (deprecated)
+    TODO: add support for Equinox variable names
+
+    Returns:
+    A dict of dicts with mappings between individual and aggregated variables.
+    """
+    
+    if scheme != 'polaris' and scheme != 'api':
+        raise BaseException('Unknown variable naming scheme!')
+    
+    if category == 'miltech':
+        if scheme == 'polaris':
+            return miltech_mapping_polaris
+        if scheme == 'api':
+            return miltech_mapping_api
+    
+    elif category == 'social_complexity' or category == 'sc':
+        if scheme == 'polaris':
+            return social_complexity_mapping_polaris
+        if scheme == 'api':
+            return social_complexity_mapping_api
+
+    if category == 'ideology':
+        if scheme == 'polaris':
+            return ideology_mapping_polaris
+        if scheme == 'api':
+            return ideology_mapping_api
+    
+    if category == 'luxury':
+        if scheme == 'polaris':
+            return luxury_mapping_polaris
+        if scheme == 'api':
+            return luxury_mapping_api
+    
+    if category == 'religion':
+        if scheme == 'polaris':
+            return religion_mapping_polaris
+        if scheme == 'api':
+            return religion_mapping_api
+    
+    raise BaseException(f'Unknown variable category requested ({category})')
+
+
