@@ -665,7 +665,22 @@ class Template():
                 range_error = True
             pol_df = pol_df[(pol_df.year_to >= polity_years[0]) & (pol_df.year_from <= polity_years[1])]
             pol_df.reset_index(inplace = True, drop = True)
+
+        elif not have_any_time and len(pol_df) == 1:
+            # if no time ranges are given and there is only one value, assign the polity date range
+            pol_df['year_from'] = polity_years[0]
+            pol_df['year_to'] = polity_years[1]
             
+        elif not have_any_time and len(pol_df) > 1:
+            if pol_df.variable_name[0].startswith('polity_religion'):
+                # special case: polity religion data without time ranges can be multiple entries
+                # (this is not ideal, but it is how the data is currently coded)
+                pol_df['year_from'] = polity_years[0]
+                pol_df['year_to'] = polity_years[1]
+                
+            elif (pol_df.is_uncertain.any() or pol_df.is_disputed.any()):
+                pol_df['year_from'] = polity_years[0]
+                pol_df['year_to'] = polity_years[1]
             
         if pol_df.shape[0] > 0:
             # potentially cut remaining ranges to be inside the polity date range
@@ -783,9 +798,17 @@ class Template():
         # 3. Check whether uncertain and disputed values are marked consistently
         check_ok, tmp_error_str = Template.check_polity_disp_unc(pol_df)
         if tmp_error_str is not None:
-            print(f"{tmp_error_str} (polity: {polity_id}, variable: {col_name}")
-            debug_row = pd.DataFrame({"polity": polity_id, "variable": col_name, "label": "template", "issue": tmp_error_str}, index = [0])
-            self.debug = pd.concat([self.debug, debug_row])
+            if pol_df['variable_name'].values[0].startswith('polity_religion') and  ("Multiple values without variable being marked disputed or uncertain" in tmp_error_str):
+                # religion data has often several entries without time ranges, we collect them in a list
+                religions = list(pol_df[variable_name].unique())
+                pol_df = pol_df.drop_duplicates(subset = [variable_name])
+                pol_df = pol_df.reset_index(drop = True)
+                pol_df[variable_name] = [religions for _ in range(pol_df.shape[0])]
+                check_ok = True
+            else:
+                print(f"{tmp_error_str} (polity: {polity_id}, variable: {col_name}")
+                debug_row = pd.DataFrame({"polity": polity_id, "variable": col_name, "label": "template", "issue": tmp_error_str}, index = [0])
+                self.debug = pd.concat([self.debug, debug_row])
         if not check_ok:
             return 0
         
@@ -801,6 +824,13 @@ class Template():
             pol_df['val'] = pol_df.apply(lambda x: Template.get_values(
                 x[row_variable_name + "_from"], x[row_variable_name + "_to"]),
                 axis = 1)
+        elif pol_df['variable_name'].values[0].startswith('polity_religion'):
+
+            # religion data has often several entries without time ranges, we collect them in a list    
+            def process_value(row):
+                v = row[row_variable_name]
+                return (v,v) if (isinstance(v, list) or (isinstance(v, str) and v != '')) else None 
+            pol_df['val'] = pol_df.apply(process_value, axis = 1)
         else:
             # for binary values, we look up the corresponding numeric value
             def process_value(row):
@@ -1263,7 +1293,8 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc','wf','rt','ec','rel'], keep_raw_data=True)
-    template.download_all_categories()
+    template = Template(categories = ['sc','wf','id','ec','rel'], keep_raw_data=True)
+    template.download_all_categories(add_to_template=False)
+    template.template_from_dataset(use_new_method = True)
     template.save_dataset("template.csv")
     
