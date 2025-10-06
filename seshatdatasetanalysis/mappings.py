@@ -193,6 +193,26 @@ ideology_mapping_api = {
 
 }
 
+religious_tolerance_mapping_api = {
+    "ReligiousTolerance" : {
+            "government-restrictions-on-public-worships" : 1,
+            "government-restrictions-on-public-proselytizings" : 1,
+            "government-restrictions-on-conversions" : 1,
+            "government-pressure-to-converts" : 1,
+            "government-restrictions-on-property-ownership-for-adherents-of-any-religious-groups" : 1,
+            "taxes-based-on-religious-adherence-or-on-religious-activities-and-institutions" : 1,
+            "governmental-obligations-for-religious-groups-to-apply-for-official-recognitions" : 1,
+            "government-restrictions-on-construction-of-religious-buildings" : 1,
+            "government-restrictions-on-religious-educations" : 1,
+            "government-restrictions-on-circulation-of-religious-literatures" : 1,
+            "government-discrimination-against-religious-groups-taking-up-certain-occupations-or-functions" : 1,
+            "frequency-of-societal-violence-against-religious-groups" : 1,
+            "societal-discrimination-against-religious-groups-taking-up-certain-occupations-or-functions" : 1,
+            "societal-pressure-to-convert-or-against-conversions" : 1
+    }
+}
+
+
 luxury_mapping_api = {"LuxuryItems" : {"lux-precious-metal" : 1,
                                     "luxury-fabrics" : 1,
                                     "luxury-manufactured-goods" : 1,
@@ -355,6 +375,25 @@ ideology_mapping_polaris = {
             'moralizing_enforcement_is_agentic': 1},
     "HumanSacrifice": {"human_sacrifice": 1
                        }
+}
+
+religious_tolerance_mapping_polaris = {
+    "ReligiousTolerance" : {
+            "government_restrictions_on_public_worships" : 1,
+            "government_restrictions_on_public_proselytizings" : 1,
+            "government_restrictions_on_conversions" : 1,
+            "government_pressure_to_converts" : 1,
+            "government_restrictions_on_property_ownership_for_adherents_of_any_religious_groups" : 1,
+            "taxes_based_on_religious_adherence_or_on_religious_activities_and_institutions" : 1,
+            "governmental_obligations_for_religious_groups_to_apply_for_official_recognitions" : 1,
+            "government_restrictions_on_construction_of_religious_buildings" : 1,
+            "government_restrictions_on_religious_educations" : 1,
+            "government_restrictions_on_circulation_of_religious_literatures" : 1,
+            "government_discrimination_against_religious_groups_taking_up_certain_occupations_or_functions" : 1,
+            "frequency_of_societal_violence_against_religious_groups" : 1,
+            "societal_discrimination_against_religious_groups_taking_up_certain_occupations_or_functions" : 1,
+            "societal_pressure_to_convert_or_against_conversions" : 1
+    }
 }
 
 

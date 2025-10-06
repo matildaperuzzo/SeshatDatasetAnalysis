@@ -1090,7 +1090,7 @@ class Template():
             ix_bce = np.where(is_bce)
             ix_ce = np.where(~is_bce & dt.apply(lambda x: (pd.notnull(x) and x.endswith('CE'))))
             
-            res = np.full_like(dt, np.NaN, dtype=float)
+            res = np.full_like(dt, np.nan, dtype=float)
             res[ix_bce[0]] = dt[ix_bce[0]].apply(lambda x : -1 * float(x[:-3]))
             res[ix_ce[0]] = dt[ix_ce[0]].apply(lambda x : float(x[:-2]))
             return res
@@ -1293,7 +1293,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['sc','wf','id','ec','rel'], keep_raw_data=True)
+    template = Template(categories = ['rt'], keep_raw_data=True)
     template.download_all_categories(add_to_template=False)
     template.template_from_dataset(use_new_method = True)
     template.save_dataset("template.csv")

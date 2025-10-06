@@ -37,6 +37,7 @@ class TimeSeriesDataset():
             self.load_dataset(path=path, name=filename)
         elif (polity_url is not None ) and (template_path is None) and (file_path is None):
             self.template = Template(categories=categories, polity_url=polity_url)
+            self.template.vars_in_template = self.template.columns[4:]
         elif (template_path is not None) and (file_path is None):
             self.template = Template(categories=categories, file_path=template_path)
         else:
@@ -497,7 +498,7 @@ class TimeSeriesDataset():
             path = os.getcwd()
         file_path = os.path.join(path, name + ".xlsx")
         
-        with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
+        with pd.ExcelWriter(file_path, engine='openpyxl') as writer:
             self.raw.to_excel(writer, sheet_name='Raw', index=False)
             self.scv.to_excel(writer, sheet_name='SCV', index=False)
             self.scv_imputed.to_excel(writer, sheet_name='SCV_Imputed', index=False)
@@ -535,8 +536,18 @@ if __name__ == "__main__":
     from seshatdatasetanalysis.mappings import value_mapping
     from seshatdatasetanalysis.TimeSeriesDataset import TimeSeriesDataset as TSD
 
-    dataset = TSD(categories=['sc','wf','rt'], template_path="template.csv")
-    dataset.initialize_dataset_grid(start_year=-10000, end_year=2000, dt=100)
-    dataset.download_all_categories(polity_year_error=0, sampling_interpolation='zero', sampling_ranges='uniform')
-    dataset.save_dataset(path='', name='test_dataset')
-    dataset.build_MSP()
+    # dataset = TSD(categories=['sc','wf','rt'], template_path="template.csv")
+    # dataset.initialize_dataset_grid(start_year=-10000, end_year=2000, dt=100)
+    # dataset.download_all_categories(polity_year_error=0, sampling_interpolation='zero', sampling_ranges='uniform')
+    # dataset.save_dataset(path='', name='test_dataset')
+    # dataset.build_MSP()
+    # eq_template = Template(categories=["sc","wf","rt"])
+    # eq_template.read_equinox(equinox_spreadsheet="Equinox2020.05.2023.xlsx", variable_mapping="equinox_vars_mapping.csv")
+    # eq_template.template_from_dataset(use_new_method = True)
+    # eq_template.save_dataset("equinox_template.csv")
+
+    eq_dataset = TSD(categories=['sc','wf'], template_path="equinox_template.csv")
+    # eq_dataset.template = eq_template
+    eq_dataset.initialize_dataset_grid(start_year=-10000, end_year=2000, dt=100)
+    eq_dataset.download_all_categories(polity_year_error=0, sampling_interpolation='zero', sampling_ranges='uniform')
+    eq_dataset.save_dataset(path='', name='equinox_test_dataset')

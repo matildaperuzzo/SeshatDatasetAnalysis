@@ -1,0 +1,104 @@
+Variable,ShortName,Type,Section,Subsection,variable_name,section,sheet_name,api_variable_name
+Polity Population,PolPop,numeric,Social Complexity variables,Social Scale,polity_population,sc,Social complexity,polity_population
+Polity territory,PolTerr,numeric,Social Complexity variables,Social Scale,polity_territory,sc,Social complexity,polity_territory
+Population of the largest settlement,CapPop,numeric,Social Complexity variables,Social Scale,population_of_the_largest_settlement,sc,Social complexity,population_of_the_largest_settlement
+Administrative levels,AdmLev,numeric,Social Complexity variables,Hierarchical Complexity,administrative_level,sc,Social complexity,administrative_level
+Military levels,MilLev,numeric,Social Complexity variables,Hierarchical Complexity,military_level,sc,Social complexity,military_level
+Religious levels,ReligLev,numeric,Social Complexity variables,Hierarchical Complexity,religious_level,sc,Social complexity,religious_level
+Settlement hierarchy,SettlHier,numeric,Social Complexity variables,Hierarchical Complexity,settlement_hierarchy,sc,Social complexity,settlement_hierarchy
+Professional military officers,ProfOfficer,binary,Social Complexity variables,Professions,professional_military_officer,sc,Social complexity,professional_military_officer
+Professional soldiers,ProfSoldier,binary,Social Complexity variables,Professions,professional_soldier,sc,Social complexity,professional_soldier
+Professional priesthood,ProfPriest,binary,Social Complexity variables,Professions,professional_priesthood,sc,Social complexity,professional_priesthood
+Full-time bureaucrats,FullTBur,binary,Social Complexity variables,Bureaucracy characteristics,full_time_bureaucrat,sc,Social complexity,full_time_bureaucrat
+Examination system,ExamSyst,binary,Social Complexity variables,Bureaucracy characteristics,examination_system,sc,Social complexity,examination_system
+Merit promotion,MeritProm,binary,Social Complexity variables,Bureaucracy characteristics,merit_promotion,sc,Social complexity,merit_promotion
+Specialized government buildings,GovtBldg,binary,Social Complexity variables,Bureaucracy characteristics,specialized_government_building,sc,Social complexity,specialized_government_building
+Courts,Court,binary,Social Complexity variables,Law,court,sc,Social complexity,court
+Formal legal code,LegCode,binary,Social Complexity variables,Law,formal_legal_code,sc,Social complexity,formal_legal_code
+Judges,Judge,binary,Social Complexity variables,Law,judge,sc,Social complexity,judge
+Professional Lawyers,Lawyer,binary,Social Complexity variables,Law,professional_lawyer,sc,Social complexity,professional_lawyer
+irrigation systems,Irrigation,binary,Social Complexity variables,Specialized Buildings: polity owned,irrigation_system,sc,Social complexity,irrigation_system
+drinking water supply systems,WaterSuppl,binary,Social Complexity variables,Specialized Buildings: polity owned,drinking_water_supply_system,sc,Social complexity,drinking_water_supply_system
+markets,Market,binary,Social Complexity variables,Specialized Buildings: polity owned,market,sc,Social complexity,market
+food storage sites,FoodStor,binary,Social Complexity variables,Specialized Buildings: polity owned,food_storage_site,sc,Social complexity,food_storage_site
+Roads,Road,binary,Social Complexity variables,Specialized Buildings: polity owned,road,sc,Social complexity,road
+Bridges,Bridge,binary,Social Complexity variables,Specialized Buildings: polity owned,bridge,sc,Social complexity,bridge
+Canals,Canal,binary,Social Complexity variables,Specialized Buildings: polity owned,canal,sc,Social complexity,canal
+Ports,Port,binary,Social Complexity variables,Specialized Buildings: polity owned,port,sc,Social complexity,port
+Mines or quarries,Mine,binary,Social Complexity variables,Specialized Buildings: polity owned,mines_or_quarry,sc,Social complexity,mines_or_quarry
+Couriers,Courier,binary,Social Complexity variables,Information,courier,sc,Social complexity,courier
+Postal stations,PostStation,binary,Social Complexity variables,Information,postal_station,sc,Social complexity,postal_station
+General postal service,PostService,binary,Social Complexity variables,Information,general_postal_service,sc,Social complexity,general_postal_service
+Mnemonic devices,Mnemonic,binary,Social Complexity variables,Information,mnemonic_device,sc,Social complexity,mnemonic_device
+Nonwritten records,NonWRecord,binary,Social Complexity variables,Information,nonwritten_record,sc,Social complexity,nonwritten_record
+Written records,WRecord,binary,Social Complexity variables,Information,written_record,sc,Social complexity,written_record
+Script,Script,binary,Social Complexity variables,Information,script,sc,Social complexity,script
+Lists tables and classifications,Lists,binary,Social Complexity variables,Information,lists_tables_and_classification,sc,Social complexity,lists_tables_and_classification
+Calendar,Calendar,binary,Social Complexity variables,Information,calendar,sc,Social complexity,calendar
+Sacred Texts,SacrTxt,binary,Social Complexity variables,Information,sacred_text,sc,Social complexity,sacred_text
+Religious literature,ReligLit,binary,Social Complexity variables,Information,religious_literature,sc,Social complexity,religious_literature
+Practical literature,PractLit,binary,Social Complexity variables,Information,practical_literature,sc,Social complexity,practical_literature
+History,History,binary,Social Complexity variables,Information,history,sc,Social complexity,history
+Philosophy,Philosophy,binary,Social Complexity variables,Information,philosophy,sc,Social complexity,philosophy
+Scientific literature,SciLit,binary,Social Complexity variables,Information,scientific_literature,sc,Social complexity,scientific_literature
+Fiction,Fiction,binary,Social Complexity variables,Information,fiction,sc,Social complexity,fiction
+Articles,Article,binary,Social Complexity variables,Information,article,sc,Social complexity,article
+Tokens,Token,binary,Social Complexity variables,Information,token,sc,Social complexity,token
+Precious metals,PrecMetal,binary,Social Complexity variables,Information,precious_metal,sc,Social complexity,precious_metal
+Foreign coins,ForCoin,binary,Social Complexity variables,Information,foreign_coin,sc,Social complexity,foreign_coin
+Indigenous coins,IndigCoin,binary,Social Complexity variables,Information,indigenous_coin,sc,Social complexity,indigenous_coin
+Paper currency,PaperCurr,binary,Social Complexity variables,Information,paper_currency,sc,Social complexity,paper_currency
+Copper,Copper,binary,Warfare variables,Military Technologies,copper,wf,Warfare,copper
+Bronze,Bronze,binary,Warfare variables,Military Technologies,bronze,wf,Warfare,bronze
+Iron,Iron,binary,Warfare variables,Military Technologies,iron,wf,Warfare,iron
+Steel,Steel,binary,Warfare variables,Military Technologies,steel,wf,Warfare,steel
+Javelins,Javelin,binary,Warfare variables,Military Technologies,javelin,wf,Warfare,javelin
+Atlatl,Atlatl,binary,Warfare variables,Military Technologies,atlatl,wf,Warfare,atlatl
+Slings,Sling,binary,Warfare variables,Military Technologies,sling,wf,Warfare,sling
+Self bow,SelfBow,binary,Warfare variables,Military Technologies,self_bow,wf,Warfare,self_bow
+Composite bow,CompBow,binary,Warfare variables,Military Technologies,composite_bow,wf,Warfare,composite_bow
+Crossbow,Crossbow,binary,Warfare variables,Military Technologies,crossbow,wf,Warfare,crossbow
+Tension siege engines,TensSiege,binary,Warfare variables,Military Technologies,tension_siege_engine,wf,Warfare,tension_siege_engine
+Sling siege engines,SlingSiege,binary,Warfare variables,Military Technologies,sling_siege_engine,wf,Warfare,sling_siege_engine
+Gunpowder siege artillery,Artillery,binary,Warfare variables,Military Technologies,gunpowder_siege_artillery,wf,Warfare,gunpowder_siege_artillery
+Handheld firearms,HandGun,binary,Warfare variables,Military Technologies,handheld_firearm,wf,Warfare,handheld_firearm
+War clubs,WarClub,binary,Warfare variables,Military Technologies,war_club,wf,Warfare,war_club
+Battle axes,BattleAxe,binary,Warfare variables,Military Technologies,battle_axe,wf,Warfare,battle_axe
+Daggers,Dagger,binary,Warfare variables,Military Technologies,dagger,wf,Warfare,dagger
+Swords,Sword,binary,Warfare variables,Military Technologies,sword,wf,Warfare,sword
+Spears,Spear,binary,Warfare variables,Military Technologies,spear,wf,Warfare,spear
+Polearms,Polearm,binary,Warfare variables,Military Technologies,polearm,wf,Warfare,polearm
+Donkeys,Donkey,binary,Warfare variables,Military Technologies,donkey,wf,Warfare,donkey
+Horses,Horse,binary,Warfare variables,Military Technologies,horse,wf,Warfare,horse
+Camels,Camel,binary,Warfare variables,Military Technologies,camel,wf,Warfare,camel
+Elephants,Elephant,binary,Warfare variables,Military Technologies,elephant,wf,Warfare,elephant
+Wood bark etc,WoodArmor,binary,Warfare variables,Military Technologies,wood_bark_etc,wf,Warfare,wood_bark_etc
+Leather cloth,LeathArmor,binary,Warfare variables,Military Technologies,leather_cloth,wf,Warfare,leather_cloth
+Shields,Shield,binary,Warfare variables,Military Technologies,shield,wf,Warfare,shield
+Helmets,Helmet,binary,Warfare variables,Military Technologies,helmet,wf,Warfare,helmet
+Breastplates,Breastplate,binary,Warfare variables,Military Technologies,breastplate,wf,Warfare,breastplate
+Limb protection,LimbProt,binary,Warfare variables,Military Technologies,limb_protection,wf,Warfare,limb_protection
+Chainmail,Chainmail,binary,Warfare variables,Military Technologies,chainmail,wf,Warfare,chainmail
+Scaled armor,ScaleArmor,binary,Warfare variables,Military Technologies,scaled_armor,wf,Warfare,scaled_armor
+Laminar armor,LaminArmor,binary,Warfare variables,Military Technologies,laminar_armor,wf,Warfare,laminar_armor
+Plate armor,PlateArmor,binary,Warfare variables,Military Technologies,plate_armor,wf,Warfare,plate_armor
+Settlements in a defensive position,DefPosition,binary,Warfare variables,Military Technologies,settlements_in_a_defensive_position,wf,Warfare,settlements_in_a_defensive_position
+Wooden palisades,Palisade,binary,Warfare variables,Military Technologies,wooden_palisade,wf,Warfare,wooden_palisade
+Earth ramparts,Rampart,binary,Warfare variables,Military Technologies,earth_rampart,wf,Warfare,earth_rampart
+Ditch,Ditch,binary,Warfare variables,Military Technologies,ditch,wf,Warfare,ditch
+Moat,Moat,binary,Warfare variables,Military Technologies,moat,wf,Warfare,moat
+Stone walls (non-mortared),NonMStone,binary,Warfare variables,Military Technologies,stone_walls_non_mortared,wf,Warfare,stone_walls_non_mortared
+Stone walls (mortared),StoneWall,binary,Warfare variables,Military Technologies,stone_walls_mortared,wf,Warfare,stone_walls_mortared
+Fortified camps,FortCamp,binary,Warfare variables,Military Technologies,fortified_camp,wf,Warfare,fortified_camp
+Complex fortifications,ComplxFort,binary,Warfare variables,Military Technologies,complex_fortification,wf,Warfare,complex_fortification
+Long walls,LongWall,numeric,Warfare variables,Military Technologies,long_wall,wf,Warfare,long_wall
+Modern fortifications,ModernFort,binary,Warfare variables,Military Technologies,modern_fortification,wf,Warfare,modern_fortification
+Moral concern is primary,PrimaryMSP,binary,Religion and Normative Ideology,Moralizing Supernatural Powers,moralizing_supernatural_concern_is_primary,rt,Religion,moralizing_supernatural_concern_is_primary
+Moralizing enforcement is certain,CertainMSP,binary,Religion and Normative Ideology,Moralizing Supernatural Powers,moralizing_enforcement_is_certain,rt,Religion,moralizing_enforcement_is_certain
+Moralizing norms are broad,BroadMSP,binary,Religion and Normative Ideology,Moralizing Supernatural Powers,moralizing_enforcement_is_broad,rt,Religion,moralizing_enforcement_is_broad
+Moralizing enforcement is targeted,TargetedMSP,binary,Religion and Normative Ideology,Moralizing Supernatural Powers,moralizing_enforcement_is_targeted,rt,Religion,moralizing_enforcement_is_targeted
+Moralizing enforcement of rulers,RulerMSP,binary,Religion and Normative Ideology,Moralizing Supernatural Powers,moralizing_enforcement_of_rulers,rt,Religion,moralizing_enforcement_of_rulers
+Moralizing religion adopted by elites,ElitesMSP,binary,Religion and Normative Ideology,Moralizing Supernatural Powers,moralizing_religion_adopted_by_elites,rt,Religion,moralizing_religion_adopted_by_elites
+Moralizing religion adopted by commoners,CommonersMSP,binary,Religion and Normative Ideology,Moralizing Supernatural Powers,moralizing_religion_adopted_by_commoners,rt,Religion,moralizing_religion_adopted_by_commoners
+Non-phonetic writing,,binary,Social Complexity variables,Information,non_phonetic_writing,sc,Social complexity,non_phonetic_writing
+Phonetic alphabetic writing,,binary,Social Complexity variables,Information,phonetic_alphabetic_writing,sc,Social complexity,phonetic_alphabetic_writing

@@ -77,15 +77,15 @@ def fetch_urls(category):
     elif category == 'id':
         mapping = mappings.ideology_mapping_api
         api_category = 'id'
-    elif category == 'rt':
-        mapping = mappings.ideology_mapping_api
-        api_category = 'rt'
     elif category == 'ec':
         mapping = mappings.luxury_mapping_api
         api_category = 'ec'
     elif category == 'rel':
         mapping = mappings.religion_mapping_api
         api_category = 'general'
+    elif category == 'rt':
+        mapping = mappings.religious_tolerance_mapping_api
+        api_category = 'rt'
 
     used_keys = []
     for key in mapping.keys():
