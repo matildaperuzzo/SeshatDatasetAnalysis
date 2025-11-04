@@ -37,9 +37,10 @@ class TimeSeriesDataset():
             self.load_dataset(path=path, name=filename)
         elif (polity_url is not None ) and (template_path is None) and (file_path is None):
             self.template = Template(categories=categories, polity_url=polity_url)
-            self.template.vars_in_template = self.template.columns[4:]
+            self.template.vars_in_template = self.template.template.columns[5:]
         elif (template_path is not None) and (file_path is None):
             self.template = Template(categories=categories, file_path=template_path)
+            self.template.vars_in_template = self.template.template.columns[5:]
         else:
             print("Please provide either a polity_url or a template_path")
             sys.exit()
@@ -143,8 +144,8 @@ class TimeSeriesDataset():
     
     def add_column(self, key, polity_year_error = 0, sampling_interpolation = 'zero', sampling_ranges = 'uniform'):
         variable_name = key.split('/')[-1]
-        if 'polity-religion' in variable_name:
-            variable_name = variable_name.replace('polity-religion', 'religion')
+        if 'polity_religion' in variable_name:
+            variable_name = variable_name.replace('polity_religion', 'religion')
         grouped_variables = self.raw.groupby('PolityName').apply(lambda group: self.sample_from_template(group, variable_name, polity_year_error=polity_year_error, sampling_interpolation=sampling_interpolation, sampling_ranges = sampling_ranges))
         for polity in grouped_variables.index:
             self.raw.loc[self.raw.PolityName == polity, variable_name] = grouped_variables[polity]
@@ -186,7 +187,7 @@ class TimeSeriesDataset():
             cols += [key for key in list(social_complexity_mapping[key].keys())]
         
         # remove rows with less than 30% of the columns filled in
-        self.raw = self.raw.loc[self.raw[cols].notna().sum(axis=1)/len(cols)>0.3]
+        self.raw = self.raw.loc[self.raw[cols].notna().sum(axis=1)/len(cols)>nan_threshold]
         self.raw.reset_index(drop=True, inplace=True)
 
     def build_social_complexity(self, allow_missing : bool = False):

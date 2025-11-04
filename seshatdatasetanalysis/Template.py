@@ -943,7 +943,7 @@ class Template():
         self.full_dataset = pd.concat(tmp1)
         ##!! TODO: do some basic checks, e.g. column names, data types, etc.
     
-    def read_equinox(self, equinox_spreadsheet : str, variable_mapping : str):
+    def read_equinox(self, equinox_spreadsheet : str, variable_mapping : str, polity_mapping : str):
         """
         Read data from the Equinox dataset in xlsx format. Data is stored in self.full_dataset
         after some basic preprocessing, but without further checks. To work correctly, you
@@ -1026,7 +1026,7 @@ class Template():
         # 1.6. sanity check (we need this to be available for all polities)
         if polity_duration.start_year.isnull().any() or polity_duration.end_year.isnull().any():
             raise BaseException('Missing polity durations!')
-         
+        
         # 1.7. manually add two more missing values and save the result
         self.polity_df = pd.concat([polity_duration[['home_nga_name', 'name', 'start_year','end_year']],
                          pd.DataFrame({
@@ -1036,8 +1036,11 @@ class Template():
                             'end_year': [34, -300]
                          })], ignore_index=True)
          
-        # 1.8. add the useless id column
-        self.polity_df['id'] = np.nan
+        # 1.8. convert name and id to new format based on the provided mapping
+        polity_table = pd.read_csv(polity_mapping)
+        self.polity_df['name'] = self.polity_df['name'].apply(lambda x: polity_table[polity_table.polity_id_old == x].polity_id.values[0] if not polity_table[polity_table.polity_id_old == x].empty else x)
+        self.polity_df['id'] = self.polity_df['name'].apply(lambda x: polity_table[polity_table.polity_id == x].polity_number.values[0] if not polity_table[polity_table.polity_id == x].empty else np.nan)
+        
 
         # 2. Keep only the interesting variables
         
@@ -1097,7 +1100,9 @@ class Template():
         
         equinox['year_from'] = process_dates(equinox['Date.From'])
         equinox['year_to'] = process_dates(equinox['Date.To'])
-        
+
+        equinox['polity_id'] = equinox['polity_id'].apply(lambda x: polity_table[polity_table.polity_id_old == x].polity_id.values[0] if not polity_table[polity_table.polity_id_old == x].empty else x)
+
         # 6. store the final result, keeping only the useful columns
         self.full_dataset = equinox[['polity_id', 'variable_name', 'value_from', 'value_to',
                            'year_from', 'year_to', 'is_disputed', 'is_uncertain', 'range_var']]
