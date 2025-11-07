@@ -1185,10 +1185,14 @@ class Template():
                 if interpolation == 'zero':
                     time_selection = times[times<=time]
                     ind = np.argmin(np.abs(np.array(time_selection) - time))
+                    if ind >= len(values):
+                        ind = len(values) - 1
                     if isinstance(values[ind][0], str):
                         vals[i] = values[ind][0]
                         continue
-                    if sampling == 'uniform':
+                    if isinstance(values[0][0], str) or isinstance(values[0][0], np.ndarray):
+                        val = random.choice(values[ind][0])         
+                    elif sampling == 'uniform':
                         val = values[ind][0] + random_number * (values[ind][1] - values[ind][0])
                     elif sampling == 'mean':
                         val = np.mean(values[ind])
