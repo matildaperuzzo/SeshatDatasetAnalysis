@@ -883,7 +883,7 @@ class Template():
         times = list(times2 for _ in range(len(values)))
         
         # 6.4. construct the final result
-        variable_dict = {"t": times, "value": values, "polity_years": polity_years}
+        variable_dict = {"t": list(times), "value": list(values), "polity_years": list(polity_years)}
     
         # 6.5. final sanity check
         if len(variable_dict['t'][0]) == 0:
@@ -1302,4 +1302,3 @@ if __name__ == "__main__":
     template.download_all_categories(add_to_template=False)
     template.template_from_dataset(use_new_method = True)
     template.save_dataset("template.csv")
-    
