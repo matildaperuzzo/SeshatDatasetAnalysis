@@ -191,7 +191,7 @@ class TimeSeriesDataset():
         self.raw = self.raw.loc[self.raw[cols].notna().sum(axis=1)/len(cols)>nan_threshold]
         self.raw.reset_index(drop=True, inplace=True)
 
-    def build_social_complexity(self, allow_missing : bool = False):
+    def build_social_complexity(self, allow_missing : bool = False, percentages = 0.5):
         """
         Create the aggregated social complexity dataset used in further analysis.
         
@@ -199,10 +199,26 @@ class TimeSeriesDataset():
             allow_missing (bool): Whether to allow some variables to be aggregeted to be missing from the 
             raw data. Only use this if working with an older data release that did not yet include all
             variables that would be aggregated in this step.
+            percentages (float or list): The minimum percentage of variables required to be present
         
         Returns: None.
         """
         social_complexity_mapping = get_mapping('sc')
+        if isinstance(percentages, (float, int)):
+            if percentages < 0 or percentages > 1:
+                raise ValueError("Percentages must be between 0 and 1")
+            percentage_gov = percentages
+            percentage_infra = percentages
+            percentage_info = percentages
+        else:
+            if len(percentages) != 3:
+                raise ValueError("Percentages must be a single value or a list of three values")
+            if any(p < 0 or p > 1 for p in percentages):
+                raise ValueError("Percentages must be between 0 and 1")
+            percentage_gov = percentages[0]
+            percentage_infra = percentages[1]
+            percentage_info = percentages[2]
+        
         # create dataframe for social complexity
         self.scv = self.raw[['NGA', 'PolityID', 'PolityName', 'Year']].copy()
 
@@ -217,11 +233,8 @@ class TimeSeriesDataset():
         if not allow_missing or 'merit_promotion' in self.raw.columns:
             self.raw['merit_promotion'] = self.raw['merit_promotion'].fillna(0)
         self.scv['Hierarchy'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", nan_handling='remove', min_vals=0.0, allow_missing=allow_missing), axis=1)
-        percentage_gov = 4./11. #at least 4/11 of the variables need to be present
         self.scv['Government'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", nan_handling = 'remove', min_vals=percentage_gov, allow_missing=allow_missing), axis=1)
-        percentage_infra = 0.
         self.scv['Infrastructure'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", nan_handling= 'remove', min_vals=percentage_infra, allow_missing=allow_missing), axis=1)
-        percentage_info = 2./13. #at least 2/13 of the variables need to be present
         # Info has nan_handeling = 'zero' unlike other variables
         self.scv['Information'] = self.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", nan_handling='zero', min_vals=percentage_info, allow_missing=allow_missing), axis=1)
         # find the maximum weight for money

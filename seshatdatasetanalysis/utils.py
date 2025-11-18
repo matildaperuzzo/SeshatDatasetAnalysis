@@ -76,7 +76,7 @@ def fetch_urls(category):
         api_category = 'sc'
     elif category == 'id':
         mapping = mappings.ideology_mapping_api
-        api_category = 'id'
+        api_category = 'rt'
     elif category == 'ec':
         mapping = mappings.luxury_mapping_api
         api_category = 'ec'

@@ -682,6 +682,9 @@ class Template():
                 pol_df['year_from'] = polity_years[0]
                 pol_df['year_to'] = polity_years[1]
             
+            else:
+                return (None, ["Multiple values without time ranges or disputed/uncertain marking"])
+            
         if pol_df.shape[0] > 0:
             # potentially cut remaining ranges to be inside the polity date range
             pol_df.year_from = np.maximum(pol_df.year_from, polity_years[0])
@@ -1302,7 +1305,7 @@ class Template():
 # ---------------------- TESTING ---------------------- #
 if __name__ == "__main__":
     # Test the Template class
-    template = Template(categories = ['rt'], keep_raw_data=True)
+    template = Template(categories = ['sc','wf','id','rel'], keep_raw_data=True)
     template.download_all_categories(add_to_template=False)
     template.template_from_dataset(use_new_method = True)
     template.save_dataset("template.csv")
