@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "seshatdatasetanalysis"
-version = "0.3.5"
+version = "0.3.6"
 readme = "README.md"
 description = "A package for analyzing time series datasets from the Seshat databank."
 authors = ["Matilda Peruzzo <matilda.peruzzo@gmail.com>"]
@@ -10,6 +10,7 @@ license = "MIT"
 python = "^3.10"
 pandas = "^2.1.0"
 numpy = "^1.21.2"
+scipy = "1.15.3"
 scikit-learn = "^1.0.1"
 matplotlib = "^3.4.3"
 seaborn = "0.12.2"
