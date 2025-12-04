@@ -1148,11 +1148,11 @@ class Template():
 
         if polity_years[0] not in times:
             times = [polity_years[0]] + times
-            values = [values[0]] + values
+            values = [values[0]] + list(values)
 
         if polity_years[1] not in times:
             times = times + [polity_years[1]]
-            values = values + [values[-1]]
+            values = list(values) + [values[-1]]
 
         times = np.array(times)
         random_number = random.random()

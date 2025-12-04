@@ -294,13 +294,19 @@ class TimeSeriesDataset():
         msp_df[msp_df == 0.0] = 0.5
         self.scv['MSP'] = msp_df.prod(axis=1)
 
-    def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.0, add_resid = False):
-        self.get_imputation_fits( columns, use_duplicates = use_duplicates, r2_lim = r2_lim)
-        self.impute_values_with_fits(columns, add_resid = add_resid)
+    def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.0, add_resid = False, only_impute_cols = None):
+        self.get_imputation_fits( columns, use_duplicates = use_duplicates, r2_lim = r2_lim, only_impute_cols = only_impute_cols)
+        self.impute_values_with_fits(columns, add_resid = add_resid, only_impute_cols = only_impute_cols)
 
 
-    def get_imputation_fits(self, columns, use_duplicates = False, r2_lim = 0.0):
-
+    def get_imputation_fits(self, columns, use_duplicates = False, r2_lim = 0.0, only_impute_cols = None):
+        if only_impute_cols is None:
+            only_impute_cols = columns
+        for col in only_impute_cols:
+            if col not in columns:
+                print(f'Columns in only_compute_columns variables must be in the imputation columns\n{col} not in {columns}')
+                return None
+                
         if self.scv_imputed.empty:
             polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']
             self.scv_imputed = self.scv[polity_cols].copy()
@@ -319,7 +325,10 @@ class TimeSeriesDataset():
         self.scv_imputed[columns] = self.scv[columns].copy()
 
         if hasattr(self, 'imputation_fits'):
-            fit_num = max(self.imputation_fits["fit_num"])
+            if len(self.imputation_fits) == 0:
+                fit_num = 0
+            else:
+                fit_num = max(self.imputation_fits["fit_num"])
         else:
             fit_num = 0
         
@@ -333,6 +342,8 @@ class TimeSeriesDataset():
             if len(non_nan_cols) == 0:
                 continue
             for col in nan_cols:
+                if col not in only_impute_cols:
+                    continue
 
                 fit_cols = [col] + list(non_nan_cols)
                 # find entries in scv where fit_cols are not nan
@@ -388,11 +399,19 @@ class TimeSeriesDataset():
         # check if imputation fits exists
         if not hasattr(self, 'imputation_fits'):
             self.imputation_fits = df_fits
+        elif len(self.imputation_fits) == 0:
+            self.imputation_fits = df_fits
         else:
             self.imputation_fits = pd.concat([self.imputation_fits, df_fits])
             self.imputation_fits.drop_duplicates(subset=['Y column', 'R2','num_rows'], inplace=True)
 
-    def impute_values_with_fits(self, columns, add_resid = False):
+    def impute_values_with_fits(self, columns, add_resid = False, only_impute_cols = None):
+        if only_impute_cols is None:
+            only_impute_cols = columns
+        for col in only_impute_cols:
+            if col not in columns:
+                print(f'Columns in only_compute_columns variables must be in the imputation columns\n{col} not in {columns}')
+                return None
         unique_rows = self.scv[columns].copy().drop_duplicates()
         self.scv_imputed['unique'] = 0
         self.scv_imputed.loc[unique_rows.index, 'unique'] = 1
@@ -404,6 +423,8 @@ class TimeSeriesDataset():
             if len(non_nan_cols) < 1:
                 continue
             for col in nan_cols:
+                if col not in only_impute_cols:
+                    continue
                 col_df = self.imputation_fits.loc[self.imputation_fits['Y column'] == col]
                 overlap_rows = (col_df['X columns'].apply(lambda x: len(x)*set(x).issubset(set(non_nan_cols))))
                 # find positions of best overlap
