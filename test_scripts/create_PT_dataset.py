@@ -12,13 +12,13 @@ from seshatdatasetanalysis.mappings import PT_value_mapping, ideology_mapping_po
 from seshatdatasetanalysis.TimeSeriesDataset import TimeSeriesDataset as TSD
 
 # initialize dataset by downloading dataset or downloading the data from polity_url
-dataset = TSD(categories=['sc','wf','rt','rel'], template_path='template.csv')
+dataset = TSD(categories=['sc','wf','rt','rel'], template_path='test_scripts/template.csv')
 dataset.add_polities()
 
 url = "https://seshat-db.com/api/crisisdb/power-transitions/"
 pt_df = download_data(url)
 if len(pt_df) == 0:
-    pt_df = download_data_json('crisisdb_power_transition_20250523_094154.json')
+    pt_df = download_data_json('test_scripts/crisisdb_power_transition_20250523_094154.json')
 
     new_col_names = {}
     for col in pt_df.columns:
@@ -92,7 +92,7 @@ error = 500
 dataset.download_all_categories(polity_year_error=error)
 
 # in imputation and reduce bias
-dataset_100y = TSD(categories=['sc',"wf","rt",'rel'], file_path="100_yr_dataset.csv")
+dataset_100y = TSD(categories=['sc',"wf","rt",'rel'], file_path="test_scripts/100_yr_dataset.xlsx")
 dataset_100y.raw["dataset"] = '100y'
 dataset_100y.scv['dataset'] = '100y'
 pt_dat = dataset.scv.copy()
@@ -199,4 +199,4 @@ for col in transfer_cols:
     dataset.scv_imputed[col] = dataset.scv[col]
 
 # save dataset
-dataset.save_dataset(path='', name='power_transitions')
+dataset.save_dataset(path='test_scripts', name='power_transitions')
