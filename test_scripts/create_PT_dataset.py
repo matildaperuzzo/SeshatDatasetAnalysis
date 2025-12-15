@@ -128,7 +128,7 @@ max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: ite
 dataset.scv['Money'] = dataset.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money", allow_missing=allow_missing), axis=1)/max_money
 # dataset.build_social_complexity()
 dataset.build_warfare()
-# dataset.build_MSP()
+dataset.build_MSP()
 
 dataset.scv = dataset.scv.loc[dataset.scv.Year<=1800].reset_index(drop=True)
 dataset.scv.reset_index(drop=True, inplace=True)
@@ -183,7 +183,7 @@ for item, row in dataset.raw.iterrows():
                         most_common_value = imp_df.mode()[0]
                         dataset.raw.at[item, col] = most_common_value
                         continue
-dataset.raw = dataset.raw.reset_index(drop=True)       
+# dataset.raw = dataset.raw.reset_index(drop=True)       
 dataset.scv_imputed['MSP'] = dataset.scv['MSP']
 for ind, row in dataset.raw.iterrows():
     if pd.isna(dataset.scv.at[ind, 'MSP']):
