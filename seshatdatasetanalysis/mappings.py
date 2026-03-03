@@ -455,7 +455,7 @@ def get_mapping(category : str, scheme : str = 'polaris'):
         if scheme == 'api':
             return social_complexity_mapping_api
 
-    if category == 'ideology':
+    if category == 'ideology' or category == 'id':
         if scheme == 'polaris':
             return ideology_mapping_polaris
         if scheme == 'api':
@@ -467,7 +467,7 @@ def get_mapping(category : str, scheme : str = 'polaris'):
         if scheme == 'api':
             return luxury_mapping_api
     
-    if category == 'religion':
+    if category == 'religion' or category == 'rel':
         if scheme == 'polaris':
             return religion_mapping_polaris
         if scheme == 'api':

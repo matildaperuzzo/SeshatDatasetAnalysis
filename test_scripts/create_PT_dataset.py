@@ -101,50 +101,24 @@ dataset.raw['dataset'] = 'PT'
 dataset.raw = pd.concat([dataset.raw, dataset_100y.raw])
 dataset.scv = pd.concat([pt_dat, dataset_100y.scv])
 
-from seshatdatasetanalysis.mappings import social_complexity_mapping_polaris as social_complexity_mapping
-from seshatdatasetanalysis.utils import weighted_mean, get_max
-# build the social complexity variables
-dataset.scv = dataset.raw[['NGA', 'PolityID', 'PolityName', 'Year']].copy()
-dataset.scv['dataset'] = dataset.raw['dataset']
-# add population variables -- these are always required to be present
-dataset.scv['Pop'] = (dataset.raw['polity_population']).apply(np.log10)
-dataset.scv['Terr'] = (dataset.raw['polity_territory']).apply(np.log10)
-dataset.scv['Cap'] = (dataset.raw['population_of_the_largest_settlement']).apply(np.log10)
-allow_missing = True
-# examination systems and merit promotions follow strong evidence rule
-dataset.raw['examination_system'] = dataset.raw['examination_system'].fillna(0)
-dataset.raw['merit_promotion'] = dataset.raw['merit_promotion'].fillna(0)
-dataset.scv['Hierarchy'] = dataset.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Hierarchy", nan_handling='remove', min_vals=0.0, allow_missing=allow_missing), axis=1)
-percentage_gov = 0.5 
-dataset.scv['Government'] = dataset.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Government", nan_handling = 'remove', min_vals=percentage_gov, allow_missing=allow_missing), axis=1)
-percentage_infra = 0.5
-dataset.scv['Infrastructure'] = dataset.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Infrastructure", nan_handling= 'remove', min_vals=percentage_infra, allow_missing=allow_missing), axis=1)
-percentage_info = 0.5 
-# Info has nan_handeling = 'zero' unlike other variables
-dataset.scv['Information'] = dataset.raw.apply(lambda row: weighted_mean(row, social_complexity_mapping, "Information", nan_handling='zero', min_vals=percentage_info, allow_missing=allow_missing), axis=1)
-# find the maximum weight for money
-max_money = max(social_complexity_mapping['Money'].items(), key=lambda item: item[1])[1]
-# money variable is found with maximum weight
-dataset.scv['Money'] = dataset.raw.apply(lambda row: get_max(row, social_complexity_mapping, "Money", allow_missing=allow_missing), axis=1)/max_money
-# dataset.build_social_complexity()
+dataset.build_social_complexity(allow_missing=True, percentages=[0.5, 0.2, 0.5])
 dataset.build_warfare()
 dataset.build_MSP()
 
+dataset.raw = dataset.raw.loc[dataset.raw.Year<=1800].reset_index(drop=True)
+dataset.raw.reset_index(drop=True, inplace=True)
 dataset.scv = dataset.scv.loc[dataset.scv.Year<=1800].reset_index(drop=True)
 dataset.scv.reset_index(drop=True, inplace=True)
 
 dataset.scv_imputed = pd.DataFrame([])
 dataset.scv['Hierarchy_sq'] = dataset.scv['Hierarchy']**2
-dataset.scv_imputed['Hierarchy_sq'] = dataset.scv['Hierarchy_sq']
 # impute scale and non scale variables separately
 scale_cols = ['Pop','Terr','Cap','Hierarchy', 'Hierarchy_sq']
 non_scale_cols = ['Government', 'Infrastructure', 'Information', 'Money']
-# dataset.impute_missing_values(columns = scale_cols, add_resid = False)
-dataset.get_imputation_fits( scale_cols, use_duplicates = False, r2_lim = 0.0)
-dataset.get_imputation_fits( non_scale_cols, use_duplicates = False, r2_lim = 0.0)
-dataset.impute_values_with_fits(scale_cols, add_resid = False)
-dataset.impute_values_with_fits(non_scale_cols, add_resid = False)
+dataset.impute_missing_values(columns = scale_cols, add_resid = False)
+dataset.impute_missing_values(columns = non_scale_cols, add_resid = False)
 
+dataset.scv['dataset'] = dataset.raw['dataset']
 dataset.scv_imputed['dataset'] = dataset.scv['dataset']
 
 dataset.scv.reset_index(drop=True, inplace=True)

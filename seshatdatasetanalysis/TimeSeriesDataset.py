@@ -295,6 +295,8 @@ class TimeSeriesDataset():
         self.scv['MSP'] = msp_df.prod(axis=1)
 
     def impute_missing_values(self, columns, use_duplicates = False, r2_lim = 0.0, add_resid = False, only_impute_cols = None):
+        self.scv.reset_index(inplace=True)
+        self.scv_imputed.reset_index(inplace=True)
         self.get_imputation_fits( columns, use_duplicates = use_duplicates, r2_lim = r2_lim, only_impute_cols = only_impute_cols)
         self.impute_values_with_fits(columns, add_resid = add_resid, only_impute_cols = only_impute_cols)
 
@@ -306,10 +308,9 @@ class TimeSeriesDataset():
             if col not in columns:
                 print(f'Columns in only_compute_columns variables must be in the imputation columns\n{col} not in {columns}')
                 return None
-                
-        if self.scv_imputed.empty:
-            polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']
-            self.scv_imputed = self.scv[polity_cols].copy()
+        polity_cols = ['NGA', 'PolityID', 'PolityName', 'Year']    
+        if self.scv_imputed.empty or not all(col in self.scv_imputed.columns for col in polity_cols):
+            self.scv_imputed[polity_cols] = self.scv[polity_cols].copy()
             self.scv_imputed[columns] = self.scv[columns].copy()
         else:
             self.scv_imputed[columns] = self.scv[columns].copy()
@@ -438,16 +439,22 @@ class TimeSeriesDataset():
                         # if there are multiple best overlaps, choose the one with the highest number of rows
                         sorted_col_df = col_df.loc[best_overlap].copy()
                         sorted_col_df = sorted_col_df.sort_values('R2', ascending=False)
+                        
                         if sorted_col_df is None:
                             print('Oh no')
                         best_overlap =  sorted_col_df.index[0]
+                        best_fit = sorted_col_df.loc[best_overlap]
                         # if more than one best overlap, choose the one with the highest R2
+                        self.imputation_fits.reset_index(drop=True, inplace=True)
+                        best_fit_ind = self.imputation_fits.loc[(self.imputation_fits['Y column'] == best_fit['Y column'])&(self.imputation_fits['R2'] == best_fit['R2'])].index[0]
                         if self.scv_imputed.loc[index,'unique'] == 1:
-                            self.imputation_fits.loc[best_overlap, 'unique_imputed_points'] += 1
+                            self.imputation_fits.loc[best_fit_ind, 'unique_imputed_points'] += 1
                     else:
                         best_overlap = col_df.loc[best_overlap].index[0]
+                        best_fit = col_df.loc[best_overlap]
+                        best_fit_ind = self.imputation_fits.loc[(self.imputation_fits['Y column'] == best_fit['Y column'])&(self.imputation_fits['R2'] == best_fit['R2'])].index[0]
                         if self.scv_imputed.loc[index,'unique'] == 1:
-                            self.imputation_fits.loc[best_overlap, 'unique_imputed_points'] += 1
+                            self.imputation_fits.loc[best_fit_ind, 'unique_imputed_points'] += 1
                 except Exception as e:
                     print(f"Error finding best overlap for {col}")
                     print(e)
